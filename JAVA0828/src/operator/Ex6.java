@@ -95,7 +95,7 @@ public class Ex6 {
 		System.out.println(num<10);	
 		//만약, 두 가지 관계 연산을 하나로 결합하여 적용할 경우
 		// ex) num이 5보다 크고, 10보다 작은가?
-		// => ~이고, 그리고 등의 의미는 AND연산자 && 사용하여 결합
+		// => ~이고, 그리고 등의 의미는 AND연산자 && 사용하여 결합 dd
 		System.out.println((num>5)&&(num<10));
 		
 		//ex) num 이 5보다 작거나 100보다 큰가?
