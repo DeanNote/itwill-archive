@@ -47,21 +47,13 @@ public class Test2 {
 		// => 소문자란? 'a'(97)이상이고 'z'(122)이하인 문자
 		// => 대문자란? 'A'(65)이상이고 'Z'(90) 이하인 문자
 		
-		char ch2 ='b';
+		char ch2 ='r';
 		if (ch2>='a' && ch2<='z') {
-			System.out.println((char)(ch2-32));
+			System.out.println("소문자 : " + ch2);
+			System.out.println("대문자 변환 결과 : "+(char)(ch2-32));
 		}else {
 			System.out.println(ch2 + " : 소문자 아님");
 		}
-		
-		
-		
-		
-		
-		
-		
-		
-		
 		
 		
 	}
