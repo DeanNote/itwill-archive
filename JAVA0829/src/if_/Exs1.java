@@ -1,6 +1,6 @@
 package if_;
 
-public class Ex1 {
+public class Exs1 {
 
 	public static void main(String[] args) {
 		/*
