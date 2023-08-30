@@ -39,15 +39,17 @@ public class Stu_Ex2 {
 			case 8 : // 마지막 case 문에서만 출력하고 나머지는 비워두면
 			case 10 :// break 문이 없으므로 12월까지 내려가서 출력문을 수행
 			case 12 :System.out.println(month+ "월 한달은 31일"); break;
-		
-			case 4 : 
+			case 4 : // 결과값이 4, 6, 9, 11 일때 출력문이 중복되므로 마지막 11월에서만 출력문을 실행하면 된다
 			case 6 : 
 			case 9 : 
 			case 11 :System.out.println(month+ "월 한달은 30일"); break;
-		
 			case 2 : System.out.println(month+ "월 한달은 28일"); break;
-		
 		}
+//		switch(month) {
+//		case 1 : case 3 : case 5 :case 7 :case 8 :case 10 :
+//		case 12 :System.out.println(month+ "월 한달은 31일"); break;
+//		원래 이렇게 표기
+		
 		
 		
 		
