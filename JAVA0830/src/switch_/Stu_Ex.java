@@ -11,26 +11,30 @@ public class Stu_Ex {
 		 * - switch 문의 조건식에는 연산식 도는 변수, 리터럴 등이 올 수 있으나
 		 *   반드시 정수 또는 문자열(또는 enum 타입 변수)만 사용 가능     
 		 *  =>  이 중 정수는 byte, short, char, int 만 사용가능
-		 * - s
-		 *  
-		 *  
-		 *  
-		 *  
-		 *  
-		 *  
-		 *  
+		 * - switch 문에서 지정한 조건에 맞는 값을 case 문에서 탐색하여
+		 * 	 일치하는 값을 갖는 case 문의 문장을 실행함
+		 * 	 이때, case 문에는 조건식 결과를 비교할 리터럴 1개만 명시함
+		 * - 일치하는 case문이 없을 경우 default문을 찾아서 실행함
+		 *  =>else 문의 문장 실행 후 break 문을 만나면 switch 문을 빠져나감
+		 *   단, break 문이 없을 경우 다음 break 문을 만나거나
+		 *   swich 문이 종료될 때까지 현재 문장의 아래쪽 모두 실행 문장을 실행
+		 *   (다른 case 문과 default문의)
+		 
 		 *  
 		 * <기본문법>
 		 */
 //		switch (조건식) {// 조건식에는 정수, 문자열(또는 enum 타입 상수)만 사용 
-//		case value(값1):
+//		case 값1 :
 //		    조건식 결과가 값1과 일치하는 경우 실행할 문장들...
-//		case value2(값2):
+//			[break;]
+//		case 값2 :
 //		    조건식 결과가 값2와 일치하는 경우 실행할 문장들...
-//			break;
-//
-//		default:
-//			break;
+//			[break;]
+//		case 값n :
+//	    	조건식 결과가 값n와 일치하는 경우 실행할 문장들...
+//			[break;]
+//		[default:] case 문 중 일치하는 값이 없을 경우 실행할 문장들...
+//		[]대괄호는 선택가능
 //		}
 		
 		int num = 2;
@@ -38,17 +42,62 @@ public class Stu_Ex {
 		switch(num) {
 			case 1 : System.out.println("num = 1");
 			case 2 : System.out.println("num = 2");
+			//num이 2 일 떼 case2의 문장을 실행하고 break 문이 없기 때문에
+			//아래쪽 case 3의 문장도 모두 실행한다!
+			break;
+			case 3 : System.out.println("num = 3");
+		}
+		System.out.println("-----------------------------------------------------");
+		
+		num = 2;
+		switch (num) {
+			case 1 : System.out.println("num = 1");
+			case 2 : System.out.println("num = 2");
+			case 3 : System.out.println("num = 3");
+			default : System.out.println("일치하는 case 문이 없음!"); 
+			// break 문이 없을 떄 case 문과 default 문 모두
+			// 실행 대상에 포함됨
+
 		}
 		
+		System.out.println("-----------------------------------------------------");
 		
+		num = 2;
+		switch (num) {
+			case 1 : 
+				System.out.println("num = 1");
+				break;
+			case 2 : 
+				System.out.println("num = 2");
+				break;
+				//num이 2일때 case 2의 출력문 실행 후 break 문을 만나므로
+				//아래쪽 나머지 문장을 실행하지 않고 switch 문을 빠져나감
+			case 3 : System.out.println("num = 3");
+				break;
+			default : System.out.println("일치하는 case 문이 없음!"); 
+				//dafault문 아래쪽에는 다른 실행문이 없으므로 break 문 생략 가능
+		}
 		
+		System.out.println("-----------------------------------------------------");
 		
+		// switch 문에 문자열 데이터 전달 시
+		switch("KOREA") {
+			case "대한민국" : System.out.println("대한민국!"); break;
+			case "KOREA" : System.out.println("KOREA!"); break;
+			case "한국" : System.out.println("한국!"); break;
+			default : System.out.println("다른나라!");
+		}
 		
+		System.out.println("-----------------------------------------------------");
 		
+		// switch 문에는 연산식도 가능 하지만
+		// 연산 결과가 정수, 문자열 타입이어야만 한다!
+		switch(10/2) {} //10//2는 결과가 정수이므로 사용 가능
 		
-		
-		
-		
+//		switch(10*3.14) {} 결과가 실수이므로 사용불가!
+		// 오류발생!
+		// Cannot switch on a value of type double. 
+		// Only convertible int values, strings or enum variables are permitted
 		
 	}
 
