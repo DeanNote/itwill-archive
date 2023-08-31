@@ -1,12 +1,28 @@
 package s0831;
 
+import java.util.Iterator;
+
 public class S0831 {
-
+//6-110 자바 클래스 상속
 	public static void main(String[] args) {
-
-	int i, j;
-	int temp;
-	ar = {75, 95, 85, 100, 50};
+		class A{
+			public void fnA() {
+				System.out.println("A");
+			}			
+		}
+		class B extends A{
+			public void fnB() {
+				System.out.println("B");
+			}
+		}
+		class soojebi {
+			public void main(String[] args) {
+				B b = new B();
+				b.fnA();
+				b.fnB();
+			}
+		}
+	
 	
 		
 		
