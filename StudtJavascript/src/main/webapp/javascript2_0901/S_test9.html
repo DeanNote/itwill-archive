@@ -18,10 +18,27 @@
 	document.write("<hr>");
 	
 	
-	for (let i = 0; i < 3; i++) {
-		document.write("Hello, World!<br>");
+	for (var i = 0; i < 3; i++) {
+// 		document.write("Hello, World!<br>");
+		document.write(i + " : Hello, World!<br>");
 
 	}
+	//주의! for 문 외부에서 for문 내의 변수 값에 접근하여면
+	//let 대신 var를 통해 변수를 선언해야 한다!
+	document.write("for문 종료 후 i 값 = " + i);
+
+	/*
+	위의 반복문(for)에 대한 디버깅 과정(=추적)
+	
+	*/
+	document.write("<hr>");
+	//자신의 이름을 10번 반복 출력
+// 	for(var i =1; i<=10; i++){
+// 		document.write("이민석<br>");
+
+// 	}
+// 		document.write("마지막 i값 : " + i);
+	
 	
 	
 	
