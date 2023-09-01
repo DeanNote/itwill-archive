@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	//1. 문자열 String 타입으로 변환
+	// 	 =>참고) alet()함수 전달인자는 string타입이며,
+	//			 다른 타입 전달 시 자동으로 문자열로 변환됨
+	//	   ex) alert(10); //10은 number타입이지만 alert()함수에 전달시 string타입으로 저장
+
+	let value = 10;
+	document.write(value + "변환 전 타입 : " + typeof(value) + "<br>");//number
+
+	value = String(value);
+	document.write(value + "변환 후 타입 : " + typeof(value) + "<br>");//string
+
+	let value2 = true;
+	document.write(value2 + "변환 전 타입 : " + typeof(value2) + "<br>");//boolean
+	
+	value2 = String(true);
+	value2 = value + ""; //동일의미
+	document.write(value2 + "변환 후 타입 : " + typeof(value) + "<br>");//string
+	//=========================================================================
+	// 2. 숫자(number) 타입으로 변환
+	document.write("10"/"2");//5
+	document.write("<br>");
+	document.write("10" + "2");//102
+	document.write("<br>");
+	//덧셈 연산 시 숫자 데이터로 연산을 위해 각 데이터들을 강제 형변환 후 연산	
+	document.write(Number("10") + Number("2")); //12
+	document.write("<br>");
+	
+	let strNum = prompt("첫번째 정수를 입력하세요!");
+	document.write(strNum + "변환 전 타입 : " + typeof(strNum) + "<br>");//string
+	//string 타입 변수 strNum 값을 숫자 타입(number)으로 변환
+	strNum = Number(strNum);
+	document.write(strNum + "변환 후 타입 : " + typeof(strNum) + "<br>");//number
+	
+	let strNum2 = prompt("두번째 정수를 입력하세요!");
+	document.write(strNum2 + "변환 전 타입 : " + typeof(strNum2) + "<br>");//string
+	//string 타입 변수 strNum 값을 숫자 타입(number)으로 변환
+	strNum2 = Number(strNum2);
+	document.write(strNum2 + "변환 후 타입 : " + typeof(strNum2) + "<br>");//number
+	
+	
+	
+	
+	
+	
+</script>
+</head>
+<body>
+
+</body>
+</html>

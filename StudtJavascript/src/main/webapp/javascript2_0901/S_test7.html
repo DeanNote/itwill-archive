@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	//switch case문
+	
+	let session = prompt("관심 세션을 선택해 주세요. \n1-마케팅, 2-개발, 3-디자인");
+	// 주의 입력받는 모든 데이터는 String타입으로 취급됨
+	switch(session){
+		case "1" : //주의! 정수 1 아닌 문자 1로 case문을 지정해야 함
+			document.write("<p>마케팅 세션은 <b>201호</b>입니다.")
+			break;
+		case "2" :
+			document.write("<p>개발 세션은 <b>203호</b>입니다.")
+			break;
+		case "3" :
+			document.write("<p>디자인 세션은 <b>205호</b>입니다.")
+			break;
+		default :
+			alert("선택항목이 잘못 입력되었습니다.");
+	
+	}
+</script>
+</head>
+<body>
+
+</body>
+</html>
