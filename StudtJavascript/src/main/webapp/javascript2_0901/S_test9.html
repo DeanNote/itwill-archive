@@ -43,10 +43,18 @@
 	
 	let num = prompt("숫자(정수) 입력");
 	prompt = Number(prompt);
+// 	for(i=1; i<num; i++){
+// 		document.write(i+"<br>");
+	//입력받은 정수 출력 시 홀수와 짝수로 구분하여 출력
 	for(i=1; i<num; i++){
-		document.write(i+"<br>");
+		//홀수와 짝수 판별을 통해 서로 다른 출력문을 사용
+		if (i%2==0) {
+			document.write(i+" : 짝수<br>");
+		}else{	
+			document.write(i+" : 홀수<br>");
+	    }
 	}
-		document.write("Last i value : " + i);
+	document.write("Last i value : " + i);
 	
 	
 	
