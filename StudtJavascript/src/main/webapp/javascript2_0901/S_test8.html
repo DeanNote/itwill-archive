@@ -94,7 +94,18 @@
 			document.write("선택항목이 잘못 입력되었습니다.");
 	
 	}
+	document.write("<br>");
 
+	switch(Number(session)){
+		case 1 : //주의! 정수 1 아닌 문자 1로 case문을 지정해야 함
+			document.write("<p>마케팅 세션은 <b>201호</b>입니다.")
+			break;
+		case 2 :
+			document.write("<p>개발 세션은 <b>203호</b>입니다.")
+			break;
+		default :
+			document.write("선택항목이 잘못 입력되었습니다.");
+	}
 	
 	
 	
