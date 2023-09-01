@@ -117,6 +117,31 @@
 		} else {
 			document.write(data + " : false");
 		}
+	
+		//-----------------------------------------------------------------
+			document.write("<hr>")
+		// 9/1(금)
+		//if문과 논리연산자 and, or, not 을 조합하여 다양한 조건 설정하기
+		/*
+		1) AND(&&) : 두 연산자가 모두 true이면 true 이면 true, 하나라도 false이면 false
+		2) OR(||)
+		3) NOT(!)
+		정수 x 가 1 ~ 10 사이인지 판별
+		=> 정수 x 가 1보다 크거나 같고, 10보다 작거나 같을 때 true
+		=> ~이고, 그리고 등의 단어가 포함되면 AND 연산자(&&) 로 조건 결합
+		=> 정수 x가 1보다 크거나 같다 and 정수 x가 10보다 작거나 같다
+		
+		*/
+		let x = 15;
+		x = Number(x);
+		if(x>=1 && x<=10){
+			document.write(x + "1~10사이의 값!<br>")
+		}else{
+			document.write(x + "1~10사이의 값이 아님!<br>")
+			
+			
+		}
+	
 		
 		
 	</script>
