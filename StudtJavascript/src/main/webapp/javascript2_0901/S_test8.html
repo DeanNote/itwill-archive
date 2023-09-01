@@ -4,52 +4,97 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script type="text/javascript">
-	//1. 문자열 String 타입으로 변환
-	// 	 =>참고) alet()함수 전달인자는 string타입이며,
-	//			 다른 타입 전달 시 자동으로 문자열로 변환됨
-	//	   ex) alert(10); //10은 number타입이지만 alert()함수에 전달시 string타입으로 저장
+// 	//1. 문자열 String 타입으로 변환
+// 	// 	 =>참고) alet()함수 전달인자는 string타입이며,
+// 	//			 다른 타입 전달 시 자동으로 문자열로 변환됨
+// 	//	   ex) alert(10); //10은 number타입이지만 alert()함수에 전달시 string타입으로 저장
 
-	let value = 10;
-	document.write(value + "변환 전 타입 : " + typeof(value) + "<br>");//number
+// 	let value = 10;
+// 	document.write(value + "변환 전 타입 : " + typeof(value) + "<br>");//number
 
-	value = String(value);
-	document.write(value + "변환 후 타입 : " + typeof(value) + "<br>");//string
+// 	value = String(value);
+// 	document.write(value + "변환 후 타입 : " + typeof(value) + "<br>");//string
 
-	let value2 = true;
-	document.write(value2 + "변환 전 타입 : " + typeof(value2) + "<br>");//boolean
+// 	let value2 = true;
+// 	document.write(value2 + "변환 전 타입 : " + typeof(value2) + "<br>");//boolean
 	
-	value2 = String(true);
-	value2 = value + ""; //동일의미
-	document.write(value2 + "변환 후 타입 : " + typeof(value) + "<br>");//string
+// 	value2 = String(true);
+// 	value2 = value + ""; //동일의미
+// 	document.write(value2 + "변환 후 타입 : " + typeof(value) + "<br>");//string
+// 	//=========================================================================
+// 	// 2. 숫자(number) 타입으로 변환
+// 	document.write("10"/"2");//5
+// 	document.write("<br>");
+// 	document.write("10" + "2");//102
+// 	document.write("<br>");
+// 	//덧셈 연산 시 숫자 데이터로 연산을 위해 각 데이터들을 강제 형변환 후 연산	
+// 	document.write(Number("10") + Number("2")); //12
+// 	document.write("<br>");
+	
+// 	let strNum = prompt("첫번째 정수를 입력하세요!");
+// 	document.write(strNum + "변환 전 타입 : " + typeof(strNum) + "<br>");//string
+// 	//string 타입 변수 strNum 값을 숫자 타입(number)으로 변환
+// 	let num = Number(strNum);
+// 	document.write(strNum + "변환 후 타입 : " + typeof(num) + "<br>");//number
+	
+// 	let strNum2 = prompt("두번째 정수를 입력하세요!");
+// 	document.write(strNum2 + "변환 전 타입 : " + typeof(strNum2) + "<br>");//string
+// 	//string 타입 변수 strNum 값을 숫자 타입(number)으로 변환
+// 	let num2 = Number(strNum2);
+// 	document.write(strNum2 + "변환 후 타입 : " + typeof(num2) + "<br>");//number
+	
+// 	document.write("strNum + strNum2 = "+(strNum + strNum2) +"<br>");//1020
+// 	document.write("Number(strNum) + Number(strNum2) = "+(Number(strNum) + Number(strNum2)) +"<br>");//30
+// 	document.write("num + num2 = " + (num + num2) +"<br>");//30
+	
 	//=========================================================================
-	// 2. 숫자(number) 타입으로 변환
-	document.write("10"/"2");//5
-	document.write("<br>");
-	document.write("10" + "2");//102
-	document.write("<br>");
-	//덧셈 연산 시 숫자 데이터로 연산을 위해 각 데이터들을 강제 형변환 후 연산	
-	document.write(Number("10") + Number("2")); //12
-	document.write("<br>");
+	// 주의! string->number타입 변환 과정에서
+	// 숫자 데이터 외의 다른 데이터(문자 등)가 포함되어 있을 경우
+	// 변화 작업 수행 시 숫자 형태로 변환은 되지만 데이터가 NaN 이라는 특수값이 사용됨
+	// (NaN : Not a Number)의 약자로 숫자가 아니라는 의미의 특수값
+	// -> 즉, 변환 과정에서 오류가 발생하는 것이 아니라 특수값NaN이 저장됨.
+	let strNum3 = "1234a";
+	document.write(strNum3 + "변환 전 타입 : " + typeof(strNum3) + "<br>");//string
 	
-	let strNum = prompt("첫번째 정수를 입력하세요!");
-	document.write(strNum + "변환 전 타입 : " + typeof(strNum) + "<br>");//string
-	//string 타입 변수 strNum 값을 숫자 타입(number)으로 변환
-	let num = Number(strNum);
-	document.write(strNum + "변환 후 타입 : " + typeof(num) + "<br>");//number
-	
-	let strNum2 = prompt("두번째 정수를 입력하세요!");
-	document.write(strNum2 + "변환 전 타입 : " + typeof(strNum2) + "<br>");//string
-	//string 타입 변수 strNum 값을 숫자 타입(number)으로 변환
-	let num2 = Number(strNum2);
-	document.write(strNum2 + "변환 후 타입 : " + typeof(num2) + "<br>");//number
-	
-	document.write("strNum + strNum2 = "+(strNum + strNum2) +"<br>");//1020
-	document.write("Number(strNum) + Number(strNum2) = "+(Number(strNum) + Number(strNum2)) +"<br>");//30
-	document.write("num + num2 = " + (num + num2) +"<br>");//30
-	
-	document.write("(hr)")
+	let num3 = Number(strNum3);
+	document.write(strNum3 + "변환 후 타입 : " + typeof(num3) + "<br>");//number
+	document.write(strNum3 + "변환 후 데이터 : " + num3 + "<br>");//NaN
 	//=========================================================================
+	//주의! boolean타입으로 변환 시 데이터가 존재하기만 하면 무조건 true 로 취급됨
+// 	let str = "false";   true
+// 	let str = "홍길동";  true
+// 	let str = "100";     true
+	let str = "";       false
+// 	let str = null;     false  
+	document.write(str + "변환 전 타입 : " + typeof(str) + "<br>");//string
+	let data = Boolean(str);
+	document.write(str + "변환 후 타입 : " + typeof(data) + "<br>");//number
+	document.write(str + "변환 후 데이터 : " + data + "<br>");//true
+	document.write("<hr>");
+	//=========================================================================
+	//if문을 사용하여 문자로 된 숫자 데이터를 판별하면 비교 연산 등의 과정에서
+	//숫자(number)타입으로 자동 변환 되므로 그대로 판별 가능
+	let strNum5 = "100";
+	if (strNum5 > 0) { //string타입을 number타입으로 일치시킨 후 비교연산 수행하므로 ture
+		document.write(strNum5 + " : 0보다 크다! <br>");
+	}else{
+		document.write(strNum5 + " : 0보다 크지 않다! <br>");
+		
+	}
 	
+	let session = "1";
+	switch(session){
+		case 1 : //주의! 정수 1 아닌 문자 1로 case문을 지정해야 함
+			document.write("<p>마케팅 세션은 <b>201호</b>입니다.")
+			break;
+		case 2 :
+			document.write("<p>개발 세션은 <b>203호</b>입니다.")
+			break;
+		default :
+			alert("선택항목이 잘못 입력되었습니다.");
+	
+	}
+
 	
 	
 	
