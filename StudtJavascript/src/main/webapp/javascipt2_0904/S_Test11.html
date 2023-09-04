@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script type="text/javascript">
+	for(let a = 1; a<4; a++){
+		document.write(a + "Hello, World!<br>");
+	}
+		
+	document.write("<hr>");
+// 	while문으로 만들기
+	let a = 1; 
+	while(a<4){
+		document.write(a + "Hello, World!<br>");
+		 a++
+	}
+	document.write("<hr>");
+	// 정수 1개를 입력받아 변수num에 저장 후 1~ num까지 차례대로 출력
+	let num = 5
+	let i = 1;
+	while(num>=i){
+		document.write(i+"<br>")
+		i++
+	}
+	
+	document.write("<hr>")
+	
+	// 정수 1개를 입력 받아  변수 num에 저장 후 . 1~num까지의 합 계싼하여 출력
+	let total = 0;
+	let num2 = prompt("정수 입력")
+	i = 0;
+	while(i <= num2){
+		total += i
+		i++
+	}
+		document.write(total)
+		document.write("<hr>")
+</script>
+</head>
+<body>
+
+</body>
+</html>
