@@ -14,6 +14,17 @@ public class Stu_Test {
 			i++;
 		}
 		
+		System.out.println("------------------------------------------------------");
+		
+		//whlie문을 사용하여 정수 1~10까지의 합(total)을 계산 후 출력
+		
+		int total = 0;
+		i = 1;
+		while(i<=10) {
+			total = total + i;
+			i++;
+		}
+		System.out.println("1~10까지의 정수의 합 : " + total);
 		
 		
 		
