@@ -3,5 +3,5 @@
  */
 //"메세지" 라는 문자열을 출력하는 showMessage()함수 정의
 function showMessage(){
-	document.write("메세지");
+	document.write("메세지<br>");
 }
