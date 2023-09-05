@@ -3,6 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<!-- 외부 자바스크립트 파일(test13.js) 포함시키기 -->
+<!-- 주의! 함수가 정의된 외부 자바스크립트 파일 포함시키는 코드는 함수 호출 코드보다 먼저 실행되어야 한다. -->
+	<script src="S_test13.js"></script>
 	<script type="text/javascript">
 	//함수 정의 형태에 따른 분류 4가지
 // 	1. 전달인자도 없고, 리턴값도 없는 함수
@@ -23,7 +26,7 @@
 	//	sister_1() 함수 호출
 	sister_1(); //sister_1()함수가 정의된 위치로 코드 흐름(제어권)이 이동
 	document.write("동생이 불끄고 갔다 <br>");	
-
+	showMessage();
 	
 	
 	</script>
