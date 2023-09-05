@@ -21,17 +21,46 @@
 	// => ex) -5전달 시 5리턴, 10을 전달 시 10 그대로 리턴
 	//abs() 함수 정의
 	function abs(a){
+// 		if(a<0){
+// 			return -a;
+// 		} else {
+// 			return a;
+// 	    }
 		if(a<0){
-			return -a;
-		} else {
-			return a;
-	    }
+			a = -a;
+		} 
+		return a;
 	}
+	
 	//abs() 함수 호출
-	let data = abs(-9);
+	let data = abs(6);
  	document.write(data);
-	//-------------------------------------------------------------------------
+ 	// document.write(abs(-9)); 동일 의미
+ 	
+ 	document.write("<hr>")
 
+	//-------------------------------------------------------------------------
+	// 3. 아이디 , 패스워드를 전달받아 일치 여부를 판별하는 login() 함수 정의
+	// => 만약, 아이디가 "admin"이고 패스워드가 "1234"일 경우 "로그인 성공!" 리턴
+	//	  아니면, "로그인 실패!" 리턴
+	// login() 함수 정의
+	 function login(id,pw){
+		if(id == "admin",pw == "1234"){
+			return "로그인성공";
+		}
+		return "로그인실패";
+	 }
+	
+	// login() 함수 호출
+	id = "admin";
+	pw = "1234";
+	document.write(login(id,pw));
+ 	document.write("<hr>")
+
+	
+	
+	
+	
 
 </script>
 </head>
