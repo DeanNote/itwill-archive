@@ -40,14 +40,14 @@
 	
 	// -------------------------------------------------------
 	// 5. 구구단 2단을 출력하는 gugudan()함수
-	function gugudan(y){
-		document.write("<" + y + "단> <br>");
-		for(let i = 1; i<10; i++){
-			document.write(y + " * " + i + " = " + (y*i) + "<br>");
-		}		
-	}
+// 	function gugudan(dan){
+// 		document.write(" < " + dan + "단 > <br>");
+// 		for(let i = 1; i<10; i++){
+// 			document.write(dan + " * " + i + " = " + (dan*i) + "<br>");
+// 		}		
+// 	}
 	
-	gugudan(3);
+// 	gugudan(8);
 	
 	
 	
@@ -69,24 +69,24 @@
 	ex2) 저장된 숫자(정답) : 5, 입력받은 숫자 : 5
    		"정답입니다!" 출력
 	*/
-// 	function number_game(){
-// 		let correctNum = 10; //정답
-// 		return correctNum;
+	function number_game(){
+		let correctNum = 10; //정답
+		return correctNum;
 	
-// 	}
+	}
 	
-//  	let data = prompt("정수 1개를 입력하세요");
-//  	let total = 0;
-//  	total += data
+ 	let data = prompt("정수 1개를 입력하세요");
+ 	let total = 0;
+ 	total += data
  	
-//  	if(data == number_game()){
-//  		document.write("저장된 숫자 : " + number_game() + " 입력받은 숫자 : " + data +"<br>"+ " 정답입니다.<br>");
-//  		document.write(total + "번만에 정답입니다!")
-//  		}else if(data > number_game()) {
-//  			document.write("저장된 숫자 : " + number_game() + " 입력받은 숫자 : " + data +"<br>"+ " 입력한 숫자는 정답보다 큽니다.");
-//  			}else{
-//  	 			document.write("저장된 숫자 : " + number_game() + " 입력받은 숫자 : " + data +"<br>"+ " 입력한 숫자는 정답보다 작습니다.");
-//  				}
+ 	if(data == number_game()){
+ 		document.write("저장된 숫자 : " + number_game() + " 입력받은 숫자 : " + data +"<br>"+ " 정답입니다.<br>");
+ 		document.write(total + "번만에 정답입니다!")
+ 		}else if(data > number_game()) {
+ 			document.write("저장된 숫자 : " + number_game() + " 입력받은 숫자 : " + data +"<br>"+ " 입력한 숫자는 정답보다 큽니다.");
+ 			}else{
+ 	 			document.write("저장된 숫자 : " + number_game() + " 입력받은 숫자 : " + data +"<br>"+ " 입력한 숫자는 정답보다 작습니다.");
+ 				}
 	
 
 	// =======================================================
