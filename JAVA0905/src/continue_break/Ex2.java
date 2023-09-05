@@ -45,7 +45,7 @@ public class Ex2 {
 		 * 		}
 		 * }
 		 */
-		EXIT_FOR: //레이블
+		EXIT_FOR: // 레이블
 		for(int dan = 2; dan <= 9; dan++) { // 2단 ~ 9단 반복
 			System.out.println("< " + dan + "단 >");
 			
@@ -58,6 +58,7 @@ public class Ex2 {
 				if(dan == 5) {
 					// 현재 단이 5단일 때 반복문을 종료하는 것이 아니라
 					// 안쪽 for문을 빠져나가고 바깥쪽 for문의 다음 반복 진행
+//					break;
 					break EXIT_FOR;
 				}
 				
