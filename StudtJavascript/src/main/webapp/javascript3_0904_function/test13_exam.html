@@ -4,39 +4,39 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script type="text/javascript">
-	// [ 전달인자도 없고, 리턴값도 없는 함수 연습 ]
-	// 1. "Hello, World!" 문자열을 출력하는 hello() 함수 정의
-	function hello() {
-		// hello() 함수 호출 시 실행할 코드들...
-		document.write("Hello, World!<br>");
-	} // hello() 함수 끝
+// 	// [ 전달인자도 없고, 리턴값도 없는 함수 연습 ]
+// 	// 1. "Hello, World!" 문자열을 출력하는 hello() 함수 정의
+// 	function hello() {
+// 		// hello() 함수 호출 시 실행할 코드들...
+// 		document.write("Hello, World!<br>");
+// 	} // hello() 함수 끝
 	
-	// -------------------------------------------------------
-	// 2. "Hello, World!" 문자열을 10번 출력하는 hello2() 함수 정의
-	function hello2() {
-		for(let i = 1; i <= 10; i++) {
-			document.write(i + " : Hello, World!<br>");		
-		}
-	}
+// 	// -------------------------------------------------------
+// 	// 2. "Hello, World!" 문자열을 10번 출력하는 hello2() 함수 정의
+// 	function hello2() {
+// 		for(let i = 1; i <= 10; i++) {
+// 			document.write(i + " : Hello, World!<br>");		
+// 		}
+// 	}
 	
-	// -------------------------------------------------------
-	// 3. <hr> 태그를 출력하는 hr() 함수 정의
-	function hr() {
-		document.write("<hr>");
-	}
+// 	// -------------------------------------------------------
+// 	// 3. <hr> 태그를 출력하는 hr() 함수 정의
+// 	function hr() {
+// 		document.write("<hr>");
+// 	}
 	
-	// -------------------------------------------------------
-	// 4. sum() 함수 정의
-	// => 1 ~ 10 까지 정수의 합을 계산하여 결과값(55) 출력
-	function sum() {
-		let total = 0; // 누적변수 선언
+// 	// -------------------------------------------------------
+// 	// 4. sum() 함수 정의
+// 	// => 1 ~ 10 까지 정수의 합을 계산하여 결과값(55) 출력
+// 	function sum() {
+// 		let total = 0; // 누적변수 선언
 		
-		for(let i = 1; i <= 10; i++) {
-			total += i;
-		}
+// 		for(let i = 1; i <= 10; i++) {
+// 			total += i;
+// 		}
 		
-		document.write("1 ~ 10 까지의 합 = " + total);
-	}
+// 		document.write("1 ~ 10 까지의 합 = " + total);
+// 	}
 	
 	// -------------------------------------------------------
 	/*
@@ -59,25 +59,39 @@
 	*/
 	function number_game(){
 		let correctNum = 10; //정답
-		
+		return correctNum;
 	}
 	
+ 	let data = prompt("정수 1개를 입력하세요");
+ 	let total = 0;
+ 	total += data;
+ 	
+ 	if(data == number_game()){
+ 		document.write("저장된 숫자 : " + number_game() + " 입력받은 숫자 : " + data +"<br>"+ " 정답입니다.<br>");
+ 		document.write(total + "번만에 정답입니다!")
+ 		}else if(data > number_game()) {
+ 			document.write("저장된 숫자 : " + number_game() + " 입력받은 숫자 : " + data +"<br>"+ " 입력한 숫자는 정답보다 큽니다.");
+ 			}else{
+ 	 			document.write("저장된 숫자 : " + number_game() + " 입력받은 숫자 : " + data +"<br>"+ " 입력한 숫자는 정답보다 작습니다.");
+ 				}
+	
+
 	// =======================================================
-	// 1. hello() 함수 호출
-	hello();
-// 	document.write("<hr>");
-	// hr() 함수를 호출하여 <hr> 태그 한 줄 출력
-	hr();
+// 	// 1. hello() 함수 호출
+// 	hello();
+// // 	document.write("<hr>");
+// 	// hr() 함수를 호출하여 <hr> 태그 한 줄 출력
+// 	hr();
 	
-	// 2. hello2() 함수 호출
-	hello2();
-	hr();
+// 	// 2. hello2() 함수 호출
+// 	hello2();
+// 	hr();
 	
-	// 3. sum() 함수 호출
-	sum();
+// 	// 3. sum() 함수 호출
+// 	sum();
 	
-	// 5. number_game()함수 호출
-	number_game();
+// 	// 5. number_game()함수 호출
+// 	number_game();
 </script>
 </head>
 <body>
