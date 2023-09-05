@@ -20,12 +20,28 @@
 	
 	// 4. 전달인자도 있고, 리턴값도 있는 함수
 	// -2번과 3번 형태의 함수를 결합한 형태
+	// 정수 1개를 피라미터로 전달받는 함수 sister_4() 정의
+	function sister_4(money){
+		document.write("동생 : 오빠가 준 돈 = " + money + "원<br>")
+		money -= 200;
+		// money 변수에서 200 차감
+		let snack = "새우깡";
+		document.write("동생 : 200원 짜리 새우깡 사고 남은돈 : " + money + "원<br>")
+		return snack;
+		//"새우깡" 리턴
+		// 주의 ! return 문 뒤의 데이터느 ㄴ동시에 하나만 리턴 가능하기 때문에
+		// 자바스크립트에 return문 뒤에 복수개의 데이터 지정 시
+		// 맨 뒤의 데이터만 리턴됨
+		// reture snack, money // 뒤의 money값이 리턴됨
+	}
+	
 	
 	
 	// 4. 전달인자도 있고, 리턴값도 있는 함수 호출
-	
-	
-	
+	document.write("동생아! 천원 줄테니 내 과자도 사와라!<br>");
+	// sister_4()함수를 호출하여 정수 1000을 전달
+	let snack = sister_4(1000);
+	document.write("동생이 사다준 것 : " + snack + "<br>");
 	
 	
 </script>
