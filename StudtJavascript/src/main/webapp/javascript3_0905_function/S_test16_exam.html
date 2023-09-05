@@ -45,7 +45,11 @@
 	//	  아니면, "로그인 실패!" 리턴
 	// login() 함수 정의
 	 function login(id,pw){
-		if(id == "admin",pw == "1234"){
+		// 데이터베이스에 아이디와 패스워드가 저장되어 있다고 가정하고 변수에 아이디, 패스워드
+		let dbId = "admin";
+		let dbPw = "1234";
+		
+		if(id == dbId && pw == dbPw){
 			return "로그인성공";
 		}
 		return "로그인실패";
