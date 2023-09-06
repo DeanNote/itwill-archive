@@ -21,10 +21,36 @@
 	<button onclick="changeColor()">글자색 바꾸기(태그 onclick)</button>
 	
 	<!-- 버튼 생성(텍스트 : 글자색 바꾸기(자바스크립트 onclick)) -->
-	<button>글자색 바꾸기(자바스크립트 onclick)</button>
+	<button id="btn2">글자색 바꾸기(자바스크립트 onclick)</button>
 	
 	<!-- 자바스크립트에서 document.querySelector("p")코드 실행 시 선택되는 태그-->
 	<p>자바스크립트</p>
+	
+	<script>
+	/* 자바스크립트에서 HTML 요소를 찾아 onXXX 이벤트를 지정하는 방법
+	 	id 선택자가 "btn2" 인 요소를 클릭 이벤트와 연결하여 changeColor()함수 호출하도록
+	 	--------------------------------------------------------------------------------
+		1) 
+ 	*/
+	 
+ 	
+// 		1)
+//		let btn2 = document.querySelector("#btn2");
+//  	btn2.onclick = changeColor; //주의! 함수 이름만 지정하고 소괄호는 명시하지 않는다!		
+		
+ 		
+//  	2) 1번 방법의 두 문장을 한 문장으로 결합
+//		document.querySelector("#btn2").onclick = changeColor;
+//		document.querySelector("#btn2").onmouseover = changeColor;
+
+//		3) 별도의 함수를 정의하지 않고, 이벤트에 연결할 함수를 지정하는 위치에
+//		   익명 함수(anonimous)
+		document.querySelector("#btn2").onclick = function(){
+			
+		} 
+
+	</script>
+	
 </body>
 </html>
 
