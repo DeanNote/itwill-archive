@@ -15,6 +15,12 @@ public class Stu_test {
 
 		// 3. 1~10까지 정수의 합(55)을 계산하여 리턴하는 sum()메서드 호출
 		System.out.println("1~10까지 정수의 합 : " + sum());
+		System.out.println("----------------------------------------------");
+		
+		String todayWeather = getWeather();
+		System.out.println("오늘의 날씨 : " + todayWeather);
+		
+		
 		
 	}// main() 메서드 끝
 
@@ -61,5 +67,9 @@ public class Stu_test {
 		}
 	}
 	
+	public static  String getWeather(){
+		String today = "맑음";
+		return today;//return "맑음"; 동일의미
+	}
 
 }// Test클래스 끝
