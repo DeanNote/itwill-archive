@@ -37,14 +37,23 @@
 	function newWindow2(){
 		window.open("http://www.itwillbs.co.kr/","address_itwill","width = 600, height = 600, left = 900, top = 900")
 	}
-	
+	function closeWindow(){
+		//현재 창을 닫고 종료하시겠습니까 질문을 통해
+		//사용자로부터 확인 취소 선택 받아
+		//확인 버튼이 클릭됐을 경우 현재 창 닫기
+		let close = confirm("현재 창을 닫고 종료하시겠습니까?")
+		if(close==true){
+			window.close()
+		}
+	}
 </script>
 <body>
 	<h1>test19.html - window</h1>
 	<input type="text" placeholder = "주소입력">
 	<input type="button" value = "주소검색" onclick="newWindow()">
-	<input type="button" value = "닫기">
+	<input type="button" value = "닫기" onclick="closeWindow()">
 	<hr>
 	<input type="button" value = "아이티윌 홈페이지" onclick="newWindow2()">
+	
 </body>
 </html>
