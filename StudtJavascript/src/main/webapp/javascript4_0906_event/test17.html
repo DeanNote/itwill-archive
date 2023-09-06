@@ -24,6 +24,24 @@
 		return "리턴값";
 	}
 	
+	// 퀴즈를 출제하여 정답을 입력받고 비교 후 결과 출력하는 startQuiz() 함수 정의
+	function startQuiz() {
+		// 사용자로부터 퀴즈 정답을 입력받아 변수 answer 에 저장
+		// => 출력할 퀴즈는 아무거나 작성
+		let answer = prompt("버튼 클릭에 대한 이벤트 이름은?");
+		
+		// 입력받은 정답 출력
+// 		alert(answer);
+		
+		// 입력한 정답이 기존의 정답과 일치하는지 판별
+		// 일치할 경우 "정답입니다!", 아니면 "오답입니다!" 출력
+		if(answer == 'click') {
+			alert("정답입니다!");
+		} else {
+			alert("오답입니다!");
+		}
+		
+	}
 </script>
 </head>
 <body>
@@ -74,8 +92,8 @@
 	<input type="button" onclick="alert('버튼2 클릭!')" value="버튼2">
 	<button ondblclick="alert('버튼3 더블클릭!')">버튼3</button>
 	<!-- 하나의 요소(컴포넌트)에 복수개의 이벤트 연결 가능 -->
-	<input type="button" value="버튼4" 
-			onmouseover="alert('버튼4 mouseover')" onmouseout="alert('버튼4 onmouseout')">
+<!-- 	<input type="button" value="버튼4"  -->
+<!-- 			onmouseover="alert('버튼4 mouseover')" onmouseout="alert('버튼4 onmouseout')"> -->
 	<!-- 버튼5 클릭 시 사용자 정의 함수 btnClick() 호출 -->
 	<input type="button" value="버튼5" onclick="btnClick()">
 	<!-- 버튼6 클릭 시 사용자 정의 함수 btnClick2() 호출(전달인자로 문자열 1개 전달) -->
@@ -85,7 +103,17 @@
 	
 	<!-- "오늘의 퀴즈 풀기" 버튼 클릭 시 startQuiz() 함수 호출 -->
 	<input type="button" value="오늘의 퀴즈 풀기" onclick="startQuiz()">
+	<hr>
 	
+	<!-- 
+	images/1.jpg, 2.jpg, 3.jpg 이미지를 각각 표시(가로크기 : 200, 세로크기 : 150)
+	이미지에 마우스를 갖다 대면(mouseover) zoomIn() 함수 호출하고
+	마우스를 빼면(mouseout) zoomOut() 함수 호출
+	=> 함수 호출 시 파라미터로 자바스크립트 내장객체 event 전달
+	-->
+	<img src="../images/1.jpg" width="200" height="150">
+	<img src="../images/2.jpg" width="200" height="150">
+	<img src="../images/3.jpg" width="200" height="150">
 </body>
 </html>
 

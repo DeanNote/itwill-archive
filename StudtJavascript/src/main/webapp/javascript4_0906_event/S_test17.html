@@ -20,10 +20,32 @@
 	function btnClick3(){
 		return "리턴값";
 	}
-	
+	//퀴즈를 출제하여 정답을 입력받고 비교 후 결과 출력하는 함수 정의
 	function startQiuz(){
-		alert("오늘의 퀴즈는 무엇인가요");
+		// 사용자로부터 퀴즈 정답을 입력받아 변수 answer에 저장
+		let answer = prompt("오늘은 몇일인가요?");
+		
+		if(answer == '9월 6일'){
+			alert("정답입니다.");
+			}else{
+				alert("오답입니다.");
+			}
 	}
+	
+	//마우스 오버 이벤트 발생 대상 이미지 확대 zoomin함수 정의
+	function zoomIn(event){
+		event.target.style.transform="scale(1.2)";// 대상을 1.2배 확대
+		event.target.style.zIndex= 1;
+		event.target.style.transition="all 0.5s";
+	}
+	
+	//마우스 아웃 이벤트 발생 대상 이미지 확대취소 zoomout함수 정의
+	function zoomOut(event){
+		event.target.style.transform="scale(1)";// 대상을 1.2배 확대
+		event.target.style.zIndex= 0;
+		event.target.style.transition="all 0.5s";
+	}
+	
 </script>
 </head>
 <body>
@@ -59,7 +81,21 @@
 	<input type="button" value = "버튼7" onclick="alert(btnClick3())">
 
 	<!-- "오늘의 퀴즈 풀기" 버튼 클릭시 startQiuz()함수 호출 -->
-	<input type="button" value = "오늘의 퀴즈 풀기" onclick="alert(startQiuz())">
+	<input type="button" value = "오늘의 퀴즈 풀기" onclick="startQiuz()">
+	<hr>
+
+	<!-- 
+	images/1.jpg, 2.jpg, 3.jpg 이미지를 각각 표시(가로크기 : 200, 세로크기 : 150)
+	이미지에 마우스를 갖다 대면(mouseover) zoomIn() 함수 호출하고
+	마우스를 빼면(mouseout) zoomOut() 함수 호출
+	=> 함수 호출 시 파라미터로 자바스크립트 내장객체 event 전달
+	-->
+
+
+	<!-- 이미지 1,2,3 이미지 각각 표시하기 가로 200 세로 150 -->
+	<img src="../images/1.jpg" width="200" height="150" onmouseover="zoomIn(event)" onmouseout="zoomOut(event)">
+	<img src="../images/2.jpg" width="200" height="150" onmouseover="zoomIn(event)" onmouseout="zoomOut(event)">
+	<img src="../images/3.jpg" width="200" height="150" onmouseover="zoomIn(event)" onmouseout="zoomOut(event)">
 
 </body>
 </html>
