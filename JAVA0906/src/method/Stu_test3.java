@@ -13,7 +13,7 @@ public class Stu_test3 {
 		//   결과값을 리턴하는 메서드 호출하고 리턴되는 값 출력
 		//   ex) + 10 20 전달하면 10+20 결과 30 리턴
 		
-		System.out.println("결과는 : " + operator(100 , "/" , 20)); 
+		System.out.println("결과는 : " + operator(4 , "-" , 4)); 
 		
 	}//main 끝
 
@@ -32,9 +32,12 @@ public class Stu_test3 {
 		}else if(b == "/") {
 			System.out.printf("%2d%s%2d=%2d\n",a,b,c,a/c);
 			return a/c;
-		}else {
+		}else if(b == "*"){
 			System.out.printf("%2d%s%2d=%2d\n",a,b,c,a*c);
 			return a*c;
+		}else {
+			System.out.println("연산자가 올바르지 않습니다.");
+			return 0;
 		}
 	}
 	
