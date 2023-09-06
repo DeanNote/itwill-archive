@@ -25,11 +25,19 @@
 	if(newPopup == null){
 		alert("팝업 차단됨. 팝업 차단을 해제해 주세요")
 	}
+	
+	// newWindow2()함수 정의
+	// =>test19_popup2.html 파일을 새창에서 열기
+	// 가로 400 세로 300 좌측 500 상단 400
+	function newWindow(){
+		window.open("S_test_popup2.html","","width = 400, height = 300, left = 500, top = 400")
+		}
 </script>
 <body>
 	<h1>test19.html - window</h1>
 	<input type="text" placeholder = "주소입력">
 	<input type="button" value = "주소검색">
 	<input type="button" value = "닫기">
+	newWindow();
 </body>
 </html>
