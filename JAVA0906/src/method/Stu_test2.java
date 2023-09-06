@@ -12,6 +12,7 @@ public class Stu_test2 {
 		//정수 1개 전달하면 홀 짝 판별
 		// checkNumber() 메서드 호출
 		checkNumber(1);
+		System.out.println("-----------------------------------------------------------");
 	
 	
 	
