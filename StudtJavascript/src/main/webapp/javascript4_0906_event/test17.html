@@ -42,6 +42,20 @@
 		}
 		
 	}
+	
+	// mouseover 이벤트가 발생한 대상 이미지를 확대하는 zoomIn() 함수 정의
+	function zoomIn(event) {
+		event.target.style.transform = "scale(1.2)";
+		event.target.style.zIndex = 1;
+		event.target.style.transition = "all 0.5s";
+	}
+	
+	// mouseout 이벤트가 발생한 대상 이미지 확대를 취소하는 zoomOut() 함수 정의
+	function zoomOut(event) {
+		event.target.style.transform = "scale(1)";
+		event.target.style.zIndex = 0;
+		event.target.style.transition = "all 0.5s";
+	}
 </script>
 </head>
 <body>
@@ -111,9 +125,12 @@
 	마우스를 빼면(mouseout) zoomOut() 함수 호출
 	=> 함수 호출 시 파라미터로 자바스크립트 내장객체 event 전달
 	-->
-	<img src="../images/1.jpg" width="200" height="150">
-	<img src="../images/2.jpg" width="200" height="150">
-	<img src="../images/3.jpg" width="200" height="150">
+	<img src="../images/1.jpg" width="200" height="150" 
+				onmouseover="zoomIn(event)" onmouseout="zoomOut(event)">
+	<img src="../images/2.jpg" width="200" height="150" 
+				onmouseover="zoomIn(event)" onmouseout="zoomOut(event)">
+	<img src="../images/3.jpg" width="200" height="150" 
+				onmouseover="zoomIn(event)" onmouseout="zoomOut(event)">
 </body>
 </html>
 
