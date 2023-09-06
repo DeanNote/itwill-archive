@@ -4,9 +4,56 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script type="text/javascript">
+	//btnClick()함수 정의
+	// => 매개변수 없음, 리턴값 없는 함수
+	// => alert()함수를 사용하여 "버튼 5클릭!" 메시지 출력
+	// => 이 함수는 버튼 5클릭시 호출될 함수
+	
+	function btnClick(){
+		alert("버튼 5 클릭!");
+	}
+	
+	function btnClick2(Hello){
+		alert(Hello);
+	}
+	
+	function btnClick3(){
+		return "리턴값";
+	}
+	
 </script>
 </head>
 <body>
 	<h1>test17.html - event</h1>
+	<!-- 
+	HTML 버튼 생성 방법
+	1. <input> type = "button
+	2. <button> 태그 사용
+	 -->
+	<input type="button">
+	<input type="button" value=" 버튼">
+	<button>버튼2</button>
+	<hr>
+	<!-- 
+	버튼 7개 생성하기 
+	click 이벤트에 대한 핸들링 필요
+	onclick 사용 이벤트 처리 => 속성값으로 함수 호출
+	-->
+	<button onclick="alert('버튼 1 클릭')">버튼1</button>
+	<button onclick="alert('버튼 2 클릭')">버튼2</button>
+	<button ondblclick="alert('버튼 3 더블클릭')">버튼3</button>
+	
+	<!-- 하나의 요소에 복수개의 이벤트 열기 가능 -->
+	<button onmouseover="alert('버튼 4 mouseover')" onmouseout="alert('버튼4 mouseout')">버튼4</button>
+	
+	<!-- 버튼 5 클릭 시 사용자 정의 함수 btnClick() 호출 -->
+	<button onclick="btnClick()">버튼5</button>
+	
+	<!-- 버튼 6 클릭 시 사용자 정의 함수 btnClick2() 호출 -->
+	<button onclick="btnClick2('Hello, World')">버튼6</button>
+	
+	<!-- 버튼 7 클릭 시 사용자 정의 함수 btnClick3() 호출(리턴값 전달받아 alert함수로 출력 -->
+	<input type="button" value = "버튼7" onclick="alert(btnClick3())">
+
 </body>
 </html>
