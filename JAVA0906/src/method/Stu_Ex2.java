@@ -31,6 +31,7 @@ public class Stu_Ex2 {
 		System.out.println("동생 만원 줄테니 내 버터링쿠키도 사줘");
 		String snack = sister_4(10000);
 		System.out.println("동생이 사다준 것 : " + snack);
+//		System.out.println("동생이 사다준 것 : " + sister(10000));
 		
 	}//main 메서드 끝 
 	
