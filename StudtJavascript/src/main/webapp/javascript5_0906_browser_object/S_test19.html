@@ -24,20 +24,27 @@
 	// 2) 저장된 변수값이 null이면 팝업 차단되었다는 의미이므로 팝업 차단 해제 요청 메세지 출력가능
 	if(newPopup == null){
 		alert("팝업 차단됨. 팝업 차단을 해제해 주세요")
-	}
+		}
 	
 	// newWindow2()함수 정의
 	// =>test19_popup2.html 파일을 새창에서 열기
 	// 가로 400 세로 300 좌측 500 상단 400
 	function newWindow(){
-		window.open("S_test_popup2.html","","width = 400, height = 300, left = 500, top = 400")
-		}
+		//버튼클릭할때마다 열리는데 만약 1개만 열려있게 하려면 창 이름을 설정하면 됨
+		//만약 다른 내용을 표시할 때도 창이름을 동일하게 지정됨
+		window.open("S_test19_popup2.html","address_window","width = 400, height = 300, left = 500, top = 400")
+	}
+	function newWindow2(){
+		window.open("http://www.itwillbs.co.kr/","address_itwill","width = 600, height = 600, left = 900, top = 900")
+	}
+	
 </script>
 <body>
 	<h1>test19.html - window</h1>
 	<input type="text" placeholder = "주소입력">
-	<input type="button" value = "주소검색">
+	<input type="button" value = "주소검색" onclick="newWindow()">
 	<input type="button" value = "닫기">
-	newWindow();
+	<hr>
+	<input type="button" value = "아이티윌 홈페이지" onclick="newWindow2()">
 </body>
 </html>
