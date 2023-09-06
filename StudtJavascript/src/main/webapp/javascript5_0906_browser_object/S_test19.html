@@ -5,6 +5,26 @@
 <title>Insert title here</title>
 </head>
 <script type="text/javascript">
+	/*
+	window 객체의 open() 메서드를 호출하여 새 창 열기
+	S_test19_popup1.html 페이지를 새 창에서 열기
+	*/
+// 	window.open("S_test19_popup1.html","","");
+	// 이 코드는 자바 스크립트가 실행되는 시점에 즉시 실행되고, 새탭이 열림
+// 	window.open("S_test19_popup1.html" , "" , "width = 500, height = 400");
+	// 위의 코드와 동일한 내용이 표시되지만 , 가로 500 세로 400픽셀 크기의 새창이 열림
+// 	window.open("S_test19_popup1.html" , "" , "width = 500, height = 400, left=800, top=200");
+	// 만약, 웹브라우저 팝업 차단 기능으로 인해 새 창 열기 기능이 차단 될 경우
+	// 팝업 차단 해제 요청 메세지 출력도 가능(=팝업 차단 여부 감지 가능)
+	// 1) 새 창 열기를 호출하는 함수의 리턴값을 변수에 저장
+	let newPopup = window.open("S_test19_popup1.html" , "" , "width = 500, height = 400");
+	// 새 창이 열리면 해당 새 창을 관리하는 객체가 newPopup 변수에 저정됨
+	// 만약, 팝업 차단으로 인해 새 창이 열리지 않으면 객체가 생성되지 않으므로
+	// 특수값인 null값이 변수에 저장됨
+	// 2) 저장된 변수값이 null이면 팝업 차단되었다는 의미이므로 팝업 차단 해제 요청 메세지 출력가능
+	if(newPopup == null){
+		alert("팝업 차단됨. 팝업 차단을 해제해 주세요")
+	}
 </script>
 <body>
 	<h1>test19.html - window</h1>
