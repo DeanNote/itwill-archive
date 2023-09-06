@@ -9,7 +9,8 @@
 	// => 해당 선택자를 갖는 태그 요소를 지정하여, 해당 요소에 다양한 작업(함수 호출 등) 수행 가능
 	function changeColor() {
 		// p 태그로 작성된 "자바스크립트" 요소의 글자색상을 빨간색으로 변경
-		document.querySelector("p"); // => HTML 문서 내에서 <p> 태그 요소를 찾아 리턴하는 함수		
+// 		document.querySelector("p"); // => HTML 문서 내에서 <p> 태그 요소를 찾아 리턴하는 함수		
+		document.querySelector("p").style.color = "red";
 	}
 </script>
 </head>
@@ -22,6 +23,7 @@
 	<!-- 버튼 생성(텍스트 : 글자색 바꾸기(자바스크립트 onclick)) -->
 	<button>글자색 바꾸기(자바스크립트 onclick)</button>
 	
+	<!-- 자바스크립트에서 document.querySelector("p")코드 실행 시 선택되는 태그-->
 	<p>자바스크립트</p>
 </body>
 </html>
