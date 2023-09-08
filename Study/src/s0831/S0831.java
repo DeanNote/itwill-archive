@@ -20,7 +20,6 @@ public class S0831 {
 			public static void main(String[] args) {
 				B b = new B();
 				b.fnA();
-				b.fnB();
 			}
 		}
 	
