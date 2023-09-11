@@ -57,6 +57,17 @@ public class Ex {
 		System.out.println("이름 : " + ani2.name);
 		System.out.println("나이 : " + ani2.age + "살");
 		ani2.cry();
+		
+		System.out.println("-------------------------------------------");
+
+		
+		Animal ani3 = new Animal();
+		ani3.name = "호랑이";
+		ani3.age = 3;
+		
+		System.out.println("이름 : " + ani3.name);
+		System.out.println("나이 : " + ani3.age + "살");
+		ani3.cry();
 
 		
 	}
