@@ -105,11 +105,29 @@ public class Ex {
 
 }//ex class끝
 
-// 하나의 java파일 내에 여러 class를 정의 할 수 있다!
-// 단, 파일명과 동일한 클래스외에는 public 키워드를 붙일 수 없다!
-
- class Student{
-	
+/*
+    하나의 java파일 내에 여러 class를 정의 할 수 있다!
+  	=> 단, 파일명과 동일한 클래스외에는 public 키워드를 붙일 수 없다!
+ 	학생( Student ) 클래스 정의
+	- 속성 : 이름(name 문자열)
+	- 기능 : 공부(study())
+			 휴식(rest())
+			 
+			 
+*/
+class Student{
+	String name;
+	int id;
+	String className;
+	//메서드 정의
+	public void study(String subjectName) {
+		System.out.println(subjectName + "과목 공부!");
+	}
+	public void rest() {
+		System.out.println("휴식!");
+	}
 }
+
+	
 
 
