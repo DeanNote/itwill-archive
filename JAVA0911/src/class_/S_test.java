@@ -10,8 +10,8 @@ public class S_test {
 		bob.isHungry = false;
 		
 		bob.showPersonInfo();
-		bob.eat("라면");
 		bob.talk();
+		bob.eat("라면");
 	}
 
 }
