@@ -7,7 +7,7 @@ public class S_test2 {
 		Account a = new Account();
 		a.accounNo = "1234-1234-123";
 		a.ownerName = "이순신";
-		a.balance = 1000000000;
+		a.balance = 100000000000000000l;
 		
 		a.showAccountInfo();
 		
@@ -35,11 +35,11 @@ public class S_test2 {
 class Account {
 	String accounNo;
 	String ownerName;
-	int balance;
+	long balance;
 	
 	public void showAccountInfo(){
 		System.out.println("계좌번호 : " + accounNo );
 		System.out.println("예금주명 : " + ownerName );
-		System.out.println("현재잔고 : " + balance );
+		System.out.printf("현재잔고 : %,d원",balance);
 	}
 }
