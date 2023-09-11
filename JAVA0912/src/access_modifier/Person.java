@@ -4,5 +4,6 @@ public class Person {
 	// 멤버변수 선언
 	private String name;
 	int age;
+	
 
 }
