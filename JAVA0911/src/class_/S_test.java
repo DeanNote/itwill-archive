@@ -7,12 +7,11 @@ public class S_test {
 		Person bob = new Person();
 		bob.name = "홍길동";
 		bob.age = 20;
-		bob.isHungry = true;
+		bob.isHungry = false;
 		
+		bob.showPersonInfo();
 		bob.eat("라면");
-		System.out.println(bob.isHungry);
 		bob.talk();
-		System.out.println(bob.isHungry);
 	}
 
 }
