@@ -4,7 +4,8 @@ public class S_test {
 
 	public static void main(String[] args) {
 		
-		Animal ani = new Animal();
+		Person bob = new Person();
+		
 	}
 
 }
