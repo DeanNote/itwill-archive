@@ -5,7 +5,14 @@ public class S_test {
 	public static void main(String[] args) {
 		
 		Person bob = new Person();
+		bob.name = "홍길동";
+		bob.age = 20;
+		bob.isHungry = true;
 		
+		bob.eat("라면");
+		System.out.println(bob.isHungry);
+		bob.talk();
+		System.out.println(bob.isHungry);
 	}
 
 }
@@ -38,9 +45,31 @@ public class S_test {
 
  *     
  */
-class showPersonInfo {
-	String name;
-	int age;
-	boolean hungry;
+
+
+class Person {
+
+		String name;
+		int age;
+		boolean isHungry;
+		
+		public void showPersonInfo() {
+			System.out.println("이름 :" + name);
+			System.out.println("나이 :" + age);
+			System.out.println("배고픔 :" + isHungry);
+		}
+		
+		public void eat(String menu) {
+			System.out.println(menu + "먹기!");
+			isHungry = false;
+		}
 	
+		public void talk() {
+			System.out.println("말하기!");
+			isHungry = true;
+
+		}
 }
+
+
+
