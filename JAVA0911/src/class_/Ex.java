@@ -108,7 +108,7 @@ public class Ex {
 // 하나의 java파일 내에 여러 class를 정의 할 수 있다!
 // 단, 파일명과 동일한 클래스외에는 public 키워드를 붙일 수 없다!
 
-public class Student{
+ class Student{
 	
 }
 
