@@ -4,7 +4,7 @@ public class S_test {
 
 	public static void main(String[] args) {
 		
-
+		Animal ani = new Animal();
 	}
 
 }
@@ -37,3 +37,9 @@ public class S_test {
 
  *     
  */
+class showPersonInfo {
+	String name;
+	int age;
+	boolean hungry;
+	
+}
