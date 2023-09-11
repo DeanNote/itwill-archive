@@ -62,11 +62,14 @@ class Person {
 		public void eat(String menu) {
 			System.out.println(menu + "먹기!");
 			isHungry = false;
+			System.out.println("식사 후 배고픔 : " + isHungry);
 		}
 	
 		public void talk() {
 			System.out.println("말하기!");
 			isHungry = true;
+			System.out.println(""
+					+ "말한 후 배고픔 : " + isHungry);
 
 		}
 }
