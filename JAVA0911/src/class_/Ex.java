@@ -99,7 +99,26 @@ public class Ex {
 		car.speedUp();
 		car.speedDown();
 		
+		System.out.println("=============================================");
 		
+		// Student 클래스 인스턴스 생성
+		// 이름 : 홍길동, 번호 : 1, 과정명 : 프로젝트 기반 핀테그 서비스 자바 개발자
+		// 참조변수 : s1
+		// 멤버변수 출력
+		// 메서드 호출 : "자바과목공부!" ,"휴식!" 출력
+		
+		Student s1 = new Student();
+		s1.name = "홍길동";
+		s1.id = 1;
+		s1.className = "프로젝트 기반 핀테그 서비스 자바 개발자";
+		
+		System.out.println("이름 : " + s1.name);
+		System.out.println("번호 : " + s1.id);
+		System.out.println("과정명 : " + s1.className);
+		s1.study("JAVA");
+		s1.rest();
+		
+				
 		
 	}//main 끝
 
@@ -120,9 +139,11 @@ class Student{
 	int id;
 	String className;
 	//메서드 정의
+	
 	public void study(String subjectName) {
 		System.out.println(subjectName + "과목 공부!");
 	}
+	
 	public void rest() {
 		System.out.println("휴식!");
 	}
