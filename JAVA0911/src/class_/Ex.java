@@ -58,90 +58,97 @@ public class Ex {
 		System.out.println("나이 : " + ani2.age + "살");
 		ani2.cry();
 		
-		System.out.println("-------------------------------------------");
-
+		// ---------------------------------------------------------
+		// 위의 두 인스턴스(ani, ani2) 구조
+		// ---------------------------------------------------------
+		// new
+		// Animal 클래스 => 	인스턴스1(ani)		인스턴스2(ani2)
+		// 이름(name)				"멍멍이"			"냐옹이"
+		// 나이(age)					3					2
+		// ---------------------------------------------------------
 		
-		Animal ani3 = new Animal();
-		ani3.name = "호랑이";
-		ani3.age = 3;
+		System.out.println("========================================");
 		
-		System.out.println("이름 : " + ani3.name);
-		System.out.println("나이 : " + ani3.age + "살");
-		ani3.cry();
-
-		/*-----------------------------------------------------------------
-		 * 위의 인스턴스 구조
-		 * ----------------------------------------------------------------
-		 * new
-		 * Animal 클래스 -> 인스턴스1(ani) 인스턴스2(ani2) 인스턴스3(ani3)
-		 * 이름(name)         "멍멍이"		"냐옹이"		"호랑이"
-		 * 나이(age)			3				2				3
-		 * 
-		 */
-		System.out.println("-------------------------------------------");
-
-		/* Car 클래스의 인스턴스 (car) 생성 및 멤버변수 초기화 후 출력
-		 * 제조사 : 현대
-		 * 모델명 : 그랜져
-		 * 배기량 : 3000
-		 */
+		// Car 클래스의 인스턴스(car) 생성 및 멤버변수 초기화 후 출력
+		// 제조사 : 현대
+		// 모델명 : 그랜져
+		// 배기량 : 3000
 		
 		Car car = new Car();
-		// => Heap 공간에 생성된 인스턴스 주소가 참조변수 car에 저장
+		// => Heap 공간에 생성된 인스턴스 주소가 참조변수 car 에 저장
 		car.company = "현대";
-		car.modelName = "그랜저";
+		car.modelName = "그랜져";
 		car.cc = 3000;
-		System.out.println("제조사는 : " + car.company);
-		System.out.println("모델명은 : " + car.modelName);
-		System.out.println("cc는 : " + car.cc);
 		
+		System.out.println("제조사 : " + car.company);
+		System.out.println("모델명 : " + car.modelName);
+		System.out.println("배기량 : " + car.cc + "cc");
 		
 		car.speedUp();
 		car.speedDown();
 		
-		System.out.println("=============================================");
+		System.out.println("==========================================");
 		
 		// Student 클래스 인스턴스 생성
-		// 이름 : 홍길동, 번호 : 1, 과정명 : 프로젝트 기반 핀테그 서비스 자바 개발자
+		// 이름 : 홍길동, 번호 : 1, 과정명 : 프로젝트 기반 핀테크 서비스 자바 개발자
 		// 참조변수 : s1
 		// 멤버변수 출력
-		// 메서드 호출 : "자바과목공부!" ,"휴식!" 출력
-		
+		// 메서드 호출 : "JAVA 과목 공부!", "휴식!" 출력
 		Student s1 = new Student();
 		s1.name = "홍길동";
 		s1.id = 1;
-		s1.className = "프로젝트 기반 핀테그 서비스 자바 개발자";
+		s1.className = "프로젝트 기반 핀테크 서비스 자바 개발자";
 		
 		System.out.println("이름 : " + s1.name);
 		System.out.println("번호 : " + s1.id);
 		System.out.println("과정명 : " + s1.className);
+		
 		s1.study("JAVA");
 		s1.rest();
 		
-				
+		// Student 클래스 인스턴스 생성
+		// 이름 : 본임이름, 번호 : 2, 과정명 : 프로젝트 기반 핀테크 서비스 자바 개발자
+		// 참조변수 : s2
+		// 멤버변수 출력
+		// 메서드 호출 : "JSP 과목 공부!", "휴식!" 출력
+		Student s2 = new Student();
+		s2.name = "강진석";
+		s2.id = 2;
+		s2.className = "프로젝트 기반 핀테크 서비스 자바 개발자";
 		
-	}//main 끝
+		System.out.println("이름 : " + s2.name);
+		System.out.println("번호 : " + s2.id);
+		System.out.println("과정명 : " + s2.className);
+		
+		s1.study("JSP");
+		s1.rest();
+		
+		
+		
 
-}//ex class끝
+	} // main() 메서드 끝
 
-/*
-    하나의 java파일 내에 여러 class를 정의 할 수 있다!
-  	=> 단, 파일명과 동일한 클래스외에는 public 키워드를 붙일 수 없다!
- 	학생( Student ) 클래스 정의
-	- 속성 : 이름(name 문자열)
-	- 기능 : 공부(study())
-			 휴식(rest())
-			 
-			 
-*/
-class Student{
+} // Ex 클래스 끝
+
+// 하나의 java 파일 내에 여러 개의 클래스를 정의할 수 있다!
+// => 단, 파일명과 동일한 이름의 클래스 외에는 public 키워드를 붙일 수 없다!
+// 학생(Student) 클래스 정의
+// 속성 : 이름(name, 문자열), 번호(id, 정수), 과정명(className, 문자열)
+// 기능 : 공부(study()) - 리턴값 없음, 매개변수 - 과목명(subjectName, 문자열)
+//							=> "XXX 과목 공부!" 출력
+//		  휴식(rest()) - 리턴값 없음, 매개변수 없음
+//							=> "휴식!" 출력
+
+class Student {
+	// 멤버변수 선언
 	String name;
 	int id;
 	String className;
-	//메서드 정의
 	
+	// 메서드 정의
 	public void study(String subjectName) {
-		System.out.println(subjectName + "과목 공부!");
+		// 전달받은 파라미터 값을 사용하여 출력
+		System.out.println(subjectName + " 과목 공부!");
 	}
 	
 	public void rest() {
@@ -149,6 +156,6 @@ class Student{
 	}
 }
 
-	
+
 
 

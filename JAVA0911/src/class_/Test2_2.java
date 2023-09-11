@@ -3,7 +3,26 @@ package class_;
 public class Test2_2 {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		Account2 acc = new Account2();
+		acc.accountNo = "111-1111-111";
+		acc.ownerName = "홍길동";
+		acc.balance = 10000;
+		
+		acc.showAccountInfo();
+		
+		System.out.println("------------------------------------------");
+		
+		acc.deposit(5000);
+		
+		System.out.println("------------------------------------------");
+		
+		// 현재잔고보다 적거나 같은 금액을 출력하는 경우(출금 가능)
+		int money = acc.withdraw(5000);
+		System.out.println("출금된 금액 : " + money + "원");
+		
+		// 현재잔고보다 많은 금액을 출금하는 경우(불금 불가)
+		money = acc.withdraw(100000);
+		System.out.println("출금된 금액 : " + money + "원");
 
 	}
 
@@ -40,9 +59,66 @@ public class Test2_2 {
  *    ex) "잔고가 부족하여 출금이 불가능합니다."
  *        "출금할 금액 : XXXX원, 현재잔고 : XXXX원"
  * => 리턴값 있음(출금할 금액에 해당하는 금액 리턴)
- *        
- * 
  */
+
+class Account2 {
+	// 멤버변수 선언
+	String accountNo;   // 계좌번호
+	String ownerName;   // 예금주명
+	int balance;		// 현재잔고
+	
+	// 메서드 정의
+	// 정보 출력
+	public void showAccountInfo() {
+		System.out.println("계좌번호 : " + accountNo);
+		System.out.println("예금주명 : " + ownerName);
+		System.out.println("현재잔고 : " + balance + "원");
+	}
+	
+	// 입금 기능
+	public void deposit(int amount) {
+		// 전달받은 입금금액(amount)를 현재잔고(balance)에 누적 후 출력
+		balance += amount; // balance = balance + amount;
+		System.out.println("입금하신 금액 	  : " + amount + "원");
+		System.out.println("입금 후 현재 잔고 : " + balance + "원");
+	} 
+	
+	// 출금 기능
+	public int withdraw(int amount) {
+		// 입력받은 출금금액(amount)을 현재잔고(balance)에 차감 후
+		// 출금되는 금액(amount) 을 리턴
+		// 단, 현재잔고가 출금금액보다 적은 경우 출금 불가
+		if(balance < amount) { // 현재잔고가 출금금액보다 적은지 판별(출금불가)
+			System.out.println("잔고가 부족하여 출금이 불가능합니다.");
+			System.out.println(
+					"출금할 금액 : " + amount + "원, 현재잔고 : " + balance + "원");
+//			return 0;
+			amount = 0;
+		} else { // 출금이 가능한 경우(현재잔고 >= 출금금액)
+			balance -= amount;
+			System.out.println("출금할 금액	 : " + amount + "원");
+			System.out.println("출금 후 현재잔고 : " + balance + "원");
+//			return amount; // 출금금액 리턴
+		}
+		
+		return amount;
+		
+		// if문 내에서 출금 실패 시 return 문에 의해 메서드를 종료되므로
+		// 출금이 가능한 경우의 코드는 else 문이 없어도 상관없다!
+//		if(balance < amount) { // 현재잔고가 출금금액보다 적은지 판별(출금불가)
+//			System.out.println("잔고가 부족하여 출금이 불가능합니다.");
+//			System.out.println(
+//					"출금할 금액 : " + amount + "원, 현재잔고 : " + balance + "원");
+//			return 0;
+//		}  
+//		balance -= amount;
+//		System.out.println("출금할 금액		 : " + amount + "원");
+//		System.out.println("출금 후 현재잔고 : " + balance + "원");
+//		return amount; // 출금금액 리턴
+		
+	}
+	
+}
 
 
 
