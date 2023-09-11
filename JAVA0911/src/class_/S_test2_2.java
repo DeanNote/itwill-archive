@@ -13,7 +13,8 @@ public class S_test2_2 {
 		b.deposit(500000);
 		b.withdraw(900000);
 		
-				
+		int money = b.withdraw(50000000);
+		System.out.println("출금된 금액 : " + money + "원");
 		
 	}//main 끝
 
@@ -37,7 +38,7 @@ class Account2 {
 		System.out.println("-----------------------------------");
 	}
 
-	public withdraw(int amount) {
+	public int withdraw(int amount) {
 		if(balance<amount) {
 			System.out.println("잔고가 부족하여 출금이 불가능합니다");
 			System.out.printf("출금할 금액 : %,d원 현재잔고 : %,d원\n",amount,balance);
@@ -48,7 +49,8 @@ class Account2 {
 			System.out.printf("출금할 금액 : %,d원\n",amount);
 			System.out.printf("출금 후 현재 잔고 : %,d원\n",balance);
 			System.out.println("-----------------------------------");
-		}
+			return 1;
+		} return 2;
 	}
 
 }
