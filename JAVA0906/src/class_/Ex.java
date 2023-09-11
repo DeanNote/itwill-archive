@@ -58,6 +58,7 @@ public class Ex {
 		System.out.println("나이 : " + ani2.age + "살");
 		ani2.cry();
 
+		
 	}
 
 }
