@@ -78,11 +78,38 @@ public class Ex {
 		 * 나이(age)			3				2				3
 		 * 
 		 */
+		System.out.println("-------------------------------------------");
+
+		/* Car 클래스의 인스턴스 (car) 생성 및 멤버변수 초기화 후 출력
+		 * 제조사 : 현대
+		 * 모델명 : 그랜져
+		 * 배기량 : 3000
+		 */
 		
-	}
+		Car car = new Car();
+		// => Heap 공간에 생성된 인스턴스 주소가 참조변수 car에 저장
+		car.company = "현대";
+		car.modelName = "그랜저";
+		car.cc = 3000;
+		System.out.println("제조사는 : " + car.company);
+		System.out.println("모델명은 : " + car.modelName);
+		System.out.println("cc는 : " + car.cc);
+		
+		
+		car.speedUp();
+		car.speedDown();
+		
+		
+		
+	}//main 끝
 
+}//ex class끝
+
+// 하나의 java파일 내에 여러 class를 정의 할 수 있다!
+// 단, 파일명과 동일한 클래스외에는 public 키워드를 붙일 수 없다!
+
+public class Student{
+	
 }
-
-
 
 
