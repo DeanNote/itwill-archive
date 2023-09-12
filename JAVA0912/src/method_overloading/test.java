@@ -25,6 +25,9 @@ public class test {
 
 class PrintOverloading{
 	
+	public void print() {
+		System.out.println();
+	}
 	public void print(int a) {
 		System.out.println("int 변수 : " + a);
 	}
