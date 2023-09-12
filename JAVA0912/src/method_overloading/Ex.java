@@ -32,6 +32,7 @@ public class Ex {
 class OverloadingMethod{
 	// 오버로딩 기능을 활용하여 두 수를 전달받아 덧셈 결과를 출력하는 메서드 정의
 	// =>동일한 이름의 파라미터 타입만 서로 다른 메서드를 여러 번 정의
+	
 	// 1. 정수 2개를 전달받아 덧셈 수행
 	public void add(int num1, int num2) {
 		System.out.println("add(int, int)호출됨!");
