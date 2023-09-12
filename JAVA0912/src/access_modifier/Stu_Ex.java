@@ -35,8 +35,19 @@ public class Stu_Ex {
 		
 		// 멤버변수 값을 변경하기 위해 참조변수를 통해 멤버 변수에 접근
 		// private 접근제한자 때문에 외부 클래스에저 접근 불가!
-		p.name ="홍길동"; // The field Person.name is not visible
-		p.age = 20;
+//		p.name ="홍길동"; // The field Person.name is not visible
+//		p.age = 20;
+		
+		//=>멤버변수에 저장할 값을 대신 전달받을 Setter 메서드 호출
+		p.setName("홍길동");
+		p.setAge(20);
+		
+		System.out.println("이름 : " + p.getName());
+		System.out.println("나이 : " + p.getAge());
+		
+		//=> Getter. Setter 메서드 자동 생성 단축키
+				//Alt+Shift+S -> R
+		
 		
 	}
 
