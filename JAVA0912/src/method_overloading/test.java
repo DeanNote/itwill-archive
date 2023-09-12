@@ -3,23 +3,56 @@ package method_overloading;
 public class test {
 
 	public static void main(String[] args) {
-	
 
 	PrintOverloading pri = new PrintOverloading();
-	
 	pri.print(1);
 	pri.print(2.0);
 	pri.print("자- 바- 메서드 - 오버로딩 -");
+	System.out.println("--------------------");
 
 	Caclulator cac = new Caclulator();
-	
 	cac.add(1, 2);
 	cac.add(1, 2, 3);
 	cac.add(1, 2, 3, 4);
+	System.out.println("--------------------");
+	
+	cal ca = new cal();
+	ca.ccc("+", 1, 2);
+	ca.ccc("+", 1, 2, 3);
+	ca.ccc("-",50,10,10);
+	ca.ccc("-",50,10,10,10);
 	
 	}//main 끝
 	
 }//test class끝
+
+/*
+ * 연산자에 해당하는 연산 수행하는 cal()메서드 정의
+ */
+
+class cal{
+	public void ccc(String a, int b, int c) {
+		if(a == "+") {
+			System.out.printf("%d+%d=%d\n",b,c,b+c);
+		}else if(a == "-") {
+			System.out.printf("%d-%d=%d\n",b,c,b-c);
+		}
+	}
+	public void ccc(String a, int b, int c, int d) {
+		if(a == "+") {
+			System.out.printf("%d+%d+%d=%d\n",b,c,d,b+c+d);
+		}else if(a == "-") {
+			System.out.printf("%d-%d-%d=%d\n",b,c,d,b-c-d);
+		}
+	}
+	public void ccc(String a, int b, int c, int d, int e) {
+		if(a == "+") {
+			System.out.printf("%d+%d+%d+%d=%d\n",b,c,d,e,b+c+d+e);
+		}else if(a == "-") {
+			System.out.printf("%d-%d-%d-%d=%d\n",b,c,d,e,b-c-d-e);
+		}
+	}
+}
 
 /*
  * 계산기 Caclulator 클래스 정의
@@ -40,13 +73,6 @@ class Caclulator{
 		System.out.println("정수 4개 합 출력 : " + (a+b+c+d));
 	}
 }
-
-
-
-
-
-
-
 
 /*
  * 정수, 실수, 문자열 데이터를 1개를 전달받아 출력하는 print()메서드 오버로딩
