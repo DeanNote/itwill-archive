@@ -43,29 +43,50 @@ class Account{
 	private String ownerName;
 	private int balance;
 	
-	//-------------------------------------------------------------------
-	// 1. String owerName 변수에 대한 Getter/Setter
+//	//-------------------------------------------------------------------
+//	// 1. String owerName 변수에 대한 Getter/Setter
+//	public String getAccountNo() {
+//		return accountNo;
+//	}
+//	public void setAccountNo(String newAccountNo) {
+//		accountNo = newAccountNo;
+//	}
+//	//-------------------------------------------------------------------
+//	// 2. String owerName 변수에 대한 Getter/Setter
+//	public String getOwnerName() {
+//		return ownerName;
+//	}
+//	public void setOwnerName(String newOwnerName) {
+//		ownerName = newOwnerName;
+//	}
+//	//-------------------------------------------------------------------
+//	// 3. int balance 변수에 대한 Getter/Setter
+//
+//	public int getBalance() {
+//		return balance;
+//	}
+//	public void setBalance(int newBalance) {
+//		balance = newBalance;
+//	}
+	
 	public String getAccountNo() {
 		return accountNo;
 	}
-	public void setAccountNo(String newAccountNo) {
-		this.accountNo = newAccountNo;
+	public void setAccountNo(String accountNo) {
+		this.accountNo = accountNo;
 	}
-	//-------------------------------------------------------------------
-	// 2. String owerName 변수에 대한 Getter/Setter
 	public String getOwnerName() {
 		return ownerName;
 	}
-	public void setOwnerName(String newOwnerName) {
-		this.ownerName = newOwnerName;
+	public void setOwnerName(String ownerName) {
+		this.ownerName = ownerName;
 	}
-	//-------------------------------------------------------------------
-	// 3. int balance 변수에 대한 Getter/Setter
-
 	public int getBalance() {
 		return balance;
 	}
-	public void setBalance(int newBalance) {
-		this.balance = newBalance;
+	public void setBalance(int balance) {
+		this.balance = balance;
 	}
+	
+	
 }
