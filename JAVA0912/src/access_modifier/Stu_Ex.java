@@ -6,7 +6,7 @@ public class Stu_Ex {
 		//Person 클래스의 인스턴스(p) 생성
 		Person p = new Person();
 		
-		p.name ="홍길동";
+		p.name2 ="홍길동";
 		int age = 20;
 		
 	}
