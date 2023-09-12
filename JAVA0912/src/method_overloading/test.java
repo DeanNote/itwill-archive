@@ -9,13 +9,44 @@ public class test {
 	
 	pri.print(1);
 	pri.print(2.0);
-	pri.print("자- 바- ");
+	pri.print("자- 바- 메서드 - 오버로딩 -");
 
+	Caclulator cac = new Caclulator();
 	
+	cac.add(1, 2);
+	cac.add(1, 2, 3);
+	cac.add(1, 2, 3, 4);
 	
 	}//main 끝
 	
 }//test class끝
+
+/*
+ * 계산기 Caclulator 클래스 정의
+ * - 정수를 전달받아 덧셈만 수행하는 add() 메서드 정의
+ * 1. 정수 2개를 전달받아 덧셈 결과 출력
+ * 2. 정수 3개를 전달받아 덧셈 결과 출력
+ * 3. 정수 4개를 전달받아 덧셈 결과 출력
+ */
+
+class Caclulator{
+	public void add(int a, int b) {
+		System.out.println("정수 2개 합 출력 : " + (a+b));
+	}
+	public void add(int a, int b, int c) {
+		System.out.println("정수 3개 합 출력 : " + (a+b+c));
+	}
+	public void add(int a, int b, int c, int d) {
+		System.out.println("정수 4개 합 출력 : " + (a+b+c+d));
+	}
+}
+
+
+
+
+
+
+
 
 /*
  * 정수, 실수, 문자열 데이터를 1개를 전달받아 출력하는 print()메서드 오버로딩
