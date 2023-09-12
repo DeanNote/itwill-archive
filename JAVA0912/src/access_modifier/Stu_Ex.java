@@ -19,8 +19,8 @@ public class Stu_Ex {
 		Person p = new Person();
 		
 		// 멤버변수 값을 변경하기 위해 참조변수를 통해 멤버 변수에 접근
-		//private 접근제한자 때문에 외부 클래스에저 접근 불가!
-		p.name ="홍길동"; //private 접근제한자 때문에 name 값 수정 못함
+		// private 접근제한자 때문에 외부 클래스에저 접근 불가!
+		p.name ="홍길동"; // The field Person.name is not visible
 		p.age = 20;
 		
 	}
