@@ -5,7 +5,7 @@ public class test {
 		private String ownerName;
 		private int balance;
 		
-		
+		//-------------------------------------------------------------------
 		public String getAccountNo() {
 			return accountNo;
 		}
