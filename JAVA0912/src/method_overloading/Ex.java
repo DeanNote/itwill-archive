@@ -25,6 +25,18 @@ public class Ex {
 		// 오류발생!
 		// => The method addInt(int, int) in the type NormalMethod is not applicable for the arguments (double, double)
 		nm.addDouble(1.5, 3.14);
+		
+		System.out.println("================================================");
+		
+		//오버로딩이 적용된 메서드를 정의한 OverloadingMethod 인스턴스 생성
+		OverloadingMethod om = new OverloadingMethod();
+		//오버로딩 된 메서드 호출 시 파라미터를 전달하면
+		//오버로딩 메서드 중에서 파라미터가 일치하는 메서드가 자동 호출됨
+		//=> 단, 메서드 호출 시점에서 각 메서드가 구분되어야 오버로딩 성립됨
+		om.add(10, 20);
+		om.add(1.5, 3.14);
+		om.add(10, 20, 30);
+		
 	}
 
 }
@@ -48,6 +60,19 @@ class OverloadingMethod{
 		System.out.println("add(int,int,int)호출됨!");
 		System.out.println(num1+num2+num3);
 	}
+	//주의! 파라미터의 변수명만 다를 경우 오버로딩이 성립되지 않음 ! -> 오류발생!
+	//Duplicate method add(int, int) in type OverloadingMethod
+//	public void add(int a, int b){
+//		System.out.println("add(int, int)호출됨!");
+//		System.out.println(a + b);
+//	}
+	
+	//주의2! 리턴타입만 다를 경우 오버로딩 성립되지 않음! -> 오류발생!
+	//Duplicate method add(int, int) in type OverloadingMethod
+//	public int add(int num1, int num2) {
+//		System.out.println("add(int, int)호출됨!");
+//		return num1+num2;
+//	}
 	
 }
 
