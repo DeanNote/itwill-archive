@@ -27,6 +27,8 @@ public class Person {
 	}
 	
 	//int타입 멤버변수 age에 대한 Setter메서드 정의
-	
+	public void setAge(int newAge) {
+		//외부로 전달받은 age값(로컬변수 newAge)을 멤버변수 age에 저장
+	}
 	
 }
