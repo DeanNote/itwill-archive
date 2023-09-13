@@ -4,11 +4,25 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script type="text/javascript">
-
+// 		document.getElementById
+// 		document.getElementsByClassName
+// 		document.getElementsByTagName
+	function func1(){
+		let nameElement = document.getElementById("name");
+// 		alert(nameElement);
+		nameElement.value = "이민석";
+		
+// 		let nameElement2 = document.getElementById("name2");
+// 		nameElement2.value = "자바스크립트";
+// 			두문장 하나로 합치기
+		document.getElementById("name2").value = "자바스크립트2"
+	}
+	
 </script>
 </head>
 <body>
 	<h1>S_test24.html</h1>
+<!-- 	id선택자는 중복  x -->
 	<input type= "text" id = "name"><br>
 	<input type= "text" id = "name2"><br>
 	<input type = "button" value = "확인" onclick = "func1()">
@@ -18,6 +32,7 @@
 	<h3 id ="header3">Header-3</h3>
 	<h3 id ="header4">Header-4</h3>
 	<hr>
+<!-- 	Class 선택자는 중복 가능 -->
 	<h3 class = " header5">Header = 5_1</h3>
 	<h3 class = " header5">Header = 5_2</h3>
 </body>
