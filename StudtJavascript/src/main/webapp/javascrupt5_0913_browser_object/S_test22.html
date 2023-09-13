@@ -2,15 +2,43 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>document 객체 기초</title>
 <script type="text/javascript">
 	function func1(){
+		//html 문서 제목(title태그 내용)확인
+// 		alert(document.title);
+		document.write(document.title);
+		
 	}
 	function func2(){
+		//html 문서 제목 변경(=브라우저 제목표시줄 내용 변경 = title 속성값 변경)
+		document.title = "변경된 title";
 	}
 	function func3(){
+		//html 문서 색상 정보 확인
+		alert("bgColor : " + document.bgColor + "\nfgColor : " + document.fgColor);
+		//=>bgColor, fgColor 값을 별도로 설정한적이 없으면 nullstring
 	}
 	function func4(){
+		//html 문서 색상 정보 변경
+		//=>변경할 속성값으로"색상명" 또는 색상코드값("#RRGGBB")형태로 지정
+		//1. 색상명 지정 방식(대소문자 무관)
+// 		document.bgColor = "GREEN"; //배경색 변경
+// 		document.fgColor = "blue"; //전경색(앞쪽)(주로 텍스트) 변경
+		
+		// 2. 색상코드값 지정 방식(디테일한 색상 지정 가능)
+		
+		document.bgColor = "#FFFF00"; //배경색 변경
+		document.fgColor = "#ffffff"; //전경색(앞쪽)(주로 텍스트) 변경
+	}
+	function func5(color){
+		if(color == 'CYAN'){
+			document.bgColor = "#00FFFF";
+		} else if(color == 'MAGENTA'){
+			document.bgColor = "#FF00FF";
+		} else if(color == 'GRAY'){
+			document.bgColor = "#778899";
+		}
 	}
 </script>
 </head>
@@ -20,6 +48,14 @@
 	<input type = "button" value = "문서 제목 변경"       onclick = "func2()"><br>
 	<input type = "button" value = "문서 색상 출력"       onclick = "func3()"><br>
 	<input type = "button" value = "문서 색상 변경"       onclick = "func4()"><br>
+	
+	<hr>
+<!-- 	라디오 버튼 선택시 func5()호출 후 색상명 전달 후 호출 -->
+	<input type="radio" name="color"  onclik = "func5('CYAN')">CYAN
+    <input type="radio" name="color"  onclik = "func5('MAGENTA')">MAGENTA
+    <input type="radio" name="color"  onclik = "func5('GRAY')">GRAY
+	
+	
 		
 </body>
 </html>
