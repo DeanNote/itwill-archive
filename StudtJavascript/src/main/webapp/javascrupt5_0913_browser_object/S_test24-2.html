@@ -4,43 +4,22 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script type="text/javascript">
-// 		document.getElementById
-// 		document.getElementsByClassName
-// 		document.getElementsByTagName
 	function func1(){
-		let nameElement = document.getElementById("name");
-// 		alert(nameElement);
-		nameElement.value = "이민석";
+		let nameElement = document.querySelector("#name");
+		nameElement.value = '이순신';
+		 
+		document.querySelector("#header2").style.background = "PINK";
 		
-// 		let nameElement2 = document.getElementById("name2");
-// 		nameElement2.value = "자바스크립트";
-// 			두문장 하나로 합치기
-		document.getElementById("name2").value = "자바스크립트2"
-		
-// 		id선택자 header1 배경색 skyblue로 변경
-		document.getElementById("header1").style.background = "SKYBLUE"
-//==================================================================
-// 		class 선택자를 통해 단일 또는 복수개의 요소에 접근
-		let headers = document.getElementsByClassName("header5");
-// 		alert(headers);
-		//기본문법 : for(객체를 저장할 변수 of 객체명)
-		
-		for(let header5 of headers){ 
-		//headers 객체이 각 요소를 차례대로 꺼내 header5 변수에 저장 -> 반복
-		//header5 변수에 저장된 객체에 접근하여 배경색을 pink 로 변경
-			header5.style.background = "pink";
-			// 해당 요소의 텍스트 색상을 blue로 변경
-			header5.style.color = "blue";
+		let headers =document.querySelectorAll(".header5")
+		for(let header5 of headers){
+			header5.style.background = "YELLOW"
 		}
-		//============================================================
-		//태그 선택자를 통해 클래스 선택자와 마찬가지로 복수개의 요소에 접근 가능
-		// => document.getElementsByTagName()메서드사용
-		let tagh4 = document.getElementsByTagName("h4");
-		for(let h4 of tagh4){ 
-			h4.style.background = "YELLOW";
+		
+		let tags =document.querySelectorAll("h4")
+		for(let h4 of tags){
+			h4.style.background = "GREEN"
 		}
-	}
-	
+	}	
 </script>
 </head>
 <body>
@@ -53,7 +32,7 @@
 	<h3 id ="header1">Header-1</h3>
 	<h3 id ="header2">Header-2</h3>
 	<h4 id ="header3">Header-3</h4>
-	<h4 id ="header4" class = " header5">Header-4</h4>
+	<h4 id ="header4">Header-4</h4>
 	<hr>
 <!-- 	Class 선택자는 중복 가능 -->
 	<h3 class = " header5">Header = 5_1</h3>
