@@ -19,12 +19,12 @@
 		location.reload();
 		//새로고침 결과확인 쉽게 하려고 텍스트 받스에 텍스트 입력 후 버튼 클릭
 	}
-	function func4_cart(){
-		location.href = "S_test20_cart.html"
+	function func4_cart(URL){
+		location.href = "URL"
 	}
-	function func5_order(){
-		location.href="S_test20_order.html"
-	}
+// 	function func5_order(){
+// 		location.href="S_test20_order.html"
+// 	}
 </script>
 </head>
 <body>
@@ -43,10 +43,16 @@
 <!-- 	<input type = "button" value = "장바구니담기" onclick = "location.href='S_test20_cart.html'"> -->
 <!-- 	<input type = "button" value = "즉시구매" onclick = "location.href='S_test20_order.html'"> -->
 	
-	<input type = "button" value = "장바구니담기" onclick = "func4_cart()">
-	<input type = "button" value = "즉시구매" onclick = "func5_order()">
+<!-- 	<input type = "button" value = "장바구니담기" onclick = "func4_cart()"> -->
+<!-- 	<input type = "button" value = "즉시구매" onclick = "func5_order()"> -->
 	
 <!-- 	funtion 함수로 버튼클릭시 호출하는 방법      1. -->
 <!-- 	onclick에 바로 location.href로 호출하는 방법 2. -->
+
+	<input type = "button" value = "장바구니담기" onclick = "func4('S_test20_cart.html')">
+	<input type = "button" value = "즉시구매" onclick = "func4('S_test20_order.html')">
+
+
+
 </body>
 </html>
