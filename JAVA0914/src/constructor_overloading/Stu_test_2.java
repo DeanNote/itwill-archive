@@ -15,7 +15,7 @@ class MyDate2{
 	
 	public MyDate2(int year, int month, int day) {
 		setYear(year);
-		setYear(month);
+		setYear(month);		
 		setYear(day);
 	}
 
