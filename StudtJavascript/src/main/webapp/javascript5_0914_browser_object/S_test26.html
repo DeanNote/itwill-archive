@@ -4,34 +4,32 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script type="text/javascript">
-	/*
-	[대표적인 이벤트 종류]
-	1)click : 마우스 클릭, dblclick: 마우스 더블클릭
-	2)mouseover : 마우스가 대상 위에 위치 
-	  mouseout : 마우스가 대상에서 빠져나감
-	3)focus : 대상이 선택됨
-	4)load : 대상요소가 로딩완료됨 onload : 대상 요소 로딩 해제됨
-	5) keydown : 키보드의 키 누름 . key up : 키보드의 키 뗌 key press: 키보드의 키 누름
-	6) submit : 폼 데이터 전송(submit 버튼 클릭 등), reset
-	*/
-	
-	
-	
 	function clickButton(){
 		alert("버튼2 클릭됨!");
+	}
+	function mouseover() {
+		document.querySelector("#mouseResultArea").innerHTML = "<h3>마우스오버!</h3>";
+	}
+	function mouseout() {
+		document.querySelector("#mouseResultArea").innerHTML = "<h3>마우스아웃!</h3>";
+	}
+	
+	function mouseover() {
+		document.querySelector("#mouseResultArea").innerHTML = "<h3>마우스오버!</h3>";
+	}
+	function mouseout() {
+		document.querySelector("#mouseResultArea").innerHTML = "<h3>마우스아웃!</h3>";
 	}
 </script>
 </head>
 <body>
 	<h1>test26.html</h1>
-	<!-- "클릭"버튼 사용하면 alert()버튼 클릭됨! 출력 -->
 	<input type="button" value ="클릭" onclick = 'alert("버튼클릭됨!")'>
 	<input type="button" value ="클릭" onclick = "clickButton()"> 
 	<hr>
-	
-	<!-- "마우스를 가져다 대세요" 버튼 생성 -->
-	<!-- 마우스 오버시 mouseover() 함수 호출 마우스 아웃 시 mouseout()함수 호출-->
-	<input type="button" value = "마우스를 가져다 대세요"  mouseover = "mouseover()" mouseout = "mouseout()">
+	<input type="button" value="마우스를 가져다 대세요" 
+			onmouseover="mouseover()"  onmouseout="mouseout()">
+	<div id="mouseResultArea"></div>
 	
 </body>
 </html>
