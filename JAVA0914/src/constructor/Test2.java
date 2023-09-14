@@ -11,8 +11,6 @@ public class Test2 {
 		
 	}//main 끝
 	
-	
-	
 }//test2 끝
 
 /*
