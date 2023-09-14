@@ -4,8 +4,8 @@ public class Test2 {
 	public static void main(String[] args) {
 		
 		Account2 a = new Account2();
-		a.accountNo ="122-111-111";
-		a.ownerName ="홍홍홍";
+		a.accountNo ="122-112222-22";
+		a.ownerName ="홍길동";
 		a.balance = 5263;
 		a.showPersonInfo();
 		
