@@ -51,4 +51,5 @@ class Account2{
 		System.out.println("예금주명 : " + ownerName);
 		System.out.println("현재잔고 : " + balance);
 	}
+	
 }
