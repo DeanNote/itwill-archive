@@ -4,7 +4,7 @@ public class Test {
 
 	public static void main(String[] args) {
 		// Person 클래스 인스턴스(p) 생성
-		Person p = new Person();
+		Person33 p = new Person33();
 		
 		// 이름 : 홍길동, 나이 : 20, 배고픔 : false 값 저장
 		p.name = "홍길동";
@@ -51,7 +51,7 @@ public class Test {
  *   => 멤버변수 isHungry 의 값을 true로 변경   
  */
 
-class Person {
+class Person33 {
 	// 멤버변수(인스턴스 변수) 선언
 	String name;
 	int age;

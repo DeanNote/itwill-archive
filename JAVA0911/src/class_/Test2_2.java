@@ -3,7 +3,7 @@ package class_;
 public class Test2_2 {
 
 	public static void main(String[] args) {
-		Account2 acc = new Account2();
+		Account22 acc = new Account22();
 		acc.accountNo = "111-1111-111";
 		acc.ownerName = "홍길동";
 		acc.balance = 10000;
@@ -61,7 +61,7 @@ public class Test2_2 {
  * => 리턴값 있음(출금할 금액에 해당하는 금액 리턴)
  */
 
-class Account2 {
+class Account22 {
 	// 멤버변수 선언
 	String accountNo;   // 계좌번호
 	String ownerName;   // 예금주명

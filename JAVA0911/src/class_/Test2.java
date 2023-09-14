@@ -3,7 +3,7 @@ package class_;
 public class Test2 {
 
 	public static void main(String[] args) {
-		Account acc = new Account();
+		Account100 acc = new Account100();
 		acc.accountNo = "111-1111-111";
 		acc.ownerName = "홍길동";
 		acc.balance = 10000;
@@ -30,7 +30,7 @@ public class Test2 {
  * 
  */
 
-class Account {
+class Account100 {
 	String accountNo;
 	String ownerName;
 	int balance;

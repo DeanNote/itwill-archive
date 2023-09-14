@@ -42,6 +42,7 @@ class Account {
 	
 	
 	//메서드
+	//계좌 정보를 출력하는 showAccountInfo()메서드 정의
 	public void showAccountInfo() {
 		System.out.println("계좌번호 : " + accountNo );
 		System.out.println("예금주명 : " + owerName );

@@ -4,7 +4,7 @@ public class Stu_Ex2 {
 
 	public static void main(String[] args) {
 		
-		Person2 p1 = new Person2();
+		Person22 p1 = new Person22();
 		p1.name = "홍길둥";
 		p1.age = 20;
 		System.out.println("이름 : " + p1.name);
@@ -12,7 +12,7 @@ public class Stu_Ex2 {
 		
 		p1.print();
 		
-		Person2 p2 = new Person2();
+		Person22 p2 = new Person22();
 		p2.name = "이순신";
 		p2.age = 44;
 		p2.print();
@@ -25,7 +25,7 @@ public class Stu_Ex2 {
 
 // 사람(person) 클래스 정의
  
-class Person2{
+class Person22{
 	//멤버변수 선언
 	String name;// 이름
 	int age;// 나이
