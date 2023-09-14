@@ -4,12 +4,29 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script type="text/javascript">
+/*
+ * InnertText vs InnertHTML
+  <텍스트>        <태그>
+ */
 	function funcInnertText(){
-		
+		// id선택자가 "divInnerText" 인 요소 객체 가져와서 변수에 저장
+		let divInnerText = document.querySelector("#divInnerText");
+// 		let divInnerText = document.getElementById("divInnerText"); ==코드
+// 	 	alert(divInnerText);
+		//divInnerText 변수로 접근 가능 한 대상 요소의 (div태그)의 innerText 속성값 출력
+// 		alert(divInnerText.innerText);
+		divInnerText.innerText = "<h3>innerText로 변경한 텍스트</h3>";
 	}
 	
-	function funcInnertHtml(){
-		
+	function funcInnertHTML(){
+		let divInnerHTML = document.querySelector("#divInnerHTML");
+// 		alert(divInnerHTML.innerHTML);
+		divInnerHTML.innerHTML = "<h3>innerHTMl로 변경한 텍스트</h3>";
+		divInnerHTML.innerHTML = '<input type = "button" value = "확인" onclick="func1()">';
+	}
+	
+	function func1(){
+		alert("확인!");	
 	}
 
 </script>
@@ -17,13 +34,16 @@
 <body>
 	<h1>test25.html</h1>
 	<input type = "button" value = "innetText" onclick="funcInnertText()">
-	<input type = "button" value = "innetHtml" onclick="funcInnertHtml()">
+	<input type = "button" value = "innetHtml" onclick="funcInnertHTML()">
+	<hr>
 	<div id = "divInnerText">
-		<h3>기본으로 표시할 텍스트</h3>
+<!-- 		<h3>기본으로 표시할 텍스트</h3> -->
 	</div>
-	<div id = "divInnerHtml">
-		<h3>기본으로 표시할 텍스트</h3>
+	<hr>
+	<div id = "divInnerHTML">
+<!-- 		<h3>기본으로 표시할 텍스트</h3> -->
 	</div>
+	<hr>
 
 </body>
 </html>
