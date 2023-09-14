@@ -31,17 +31,17 @@ public class Ex2 {
 		// => 해결책 : 기본 생성자를 직접 정의하던지
 		//             Person2(String, int) 파라미터 생성자로 인스턴스 생성!
 		
-		Personn p = new Personn("홍길동", 20);
+		Person2 p = new Person2("홍길동", 20);
 		p.showPersonInfo();
 		
 		System.out.println("------------------------");
 		
-		Personn p2 = new Personn("이순신", 44);
+		Person2 p2 = new Person2("이순신", 44);
 		p2.showPersonInfo();
 		
 		System.out.println("------------------------");
 		
-		Personn p3 = new Personn("한국", "강감찬", 30);
+		Person2 p3 = new Person2("한국", "강감찬", 30);
 		p3.showPersonInfo();
 		
 		
@@ -49,7 +49,7 @@ public class Ex2 {
 
 }
 
-class Personn {
+class Person2 {
 	// 멤버변수 선언(= 인스턴스 변수, 필드)
 	String nation;
 	String name;
@@ -58,8 +58,8 @@ class Personn {
 	// 생성자를 정의하지 않으면 기본 생성자가 자동으로 생성됨
 //	public Person2() {} // 기본 생성자
 	
-	public Personn(String newName, int newAge) {
-		System.out.println("Personn(String, int) 생성자 호출됨!");
+	public Person2(String newName, int newAge) {
+		System.out.println("Person2(String, int) 생성자 호출됨!");
 		
 		// 전달받은 파라미터 값을 인스턴스 변수에 저장
 		name = newName;
@@ -71,7 +71,7 @@ class Personn {
 	}
 	
 	// 파라미터 생성자 자동 단축키 : Alt + Shift + S -> O
-	public Personn(String nation, String name, int age) {
+	public Person2(String nation, String name, int age) {
 		this.nation = nation;
 		this.name = name;
 		this.age = age;
