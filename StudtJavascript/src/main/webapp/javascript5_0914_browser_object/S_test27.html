@@ -10,15 +10,22 @@ function a (a){
 a.style.background = "skyblue"
 }
 
-function b (b){
-// document.querySelector("#name").style.background = "white"
-b.style.background = "white"
-}
-
-function changeColor3 (c){
-// document.querySelector("#name").style.background = "white"
-c.style.background = "skyblue"
-}
+	function b (b){
+	// document.querySelector("#name").style.background = "white"
+		b.style.background = "white"
+	}
+	
+	function changeColor3 (c){
+	// document.querySelector("#name").style.background = "white"
+		c.style.background = "skyblue"
+	}
+	
+	function checkId(a){
+	// 	alert(a.value);
+	// 	console.log(a.value);
+		let span = a.value;
+	// 	sapn.innerhtml = 'a.value';
+	}
 </script>
 </head>
 <body>
@@ -30,11 +37,12 @@ c.style.background = "skyblue"
 					onfocus = "changeColor3(this)" onblur = 'this.style.background = "white"'><br>
 					
 	<hr>
-	아이디(keyup) <input type ="text" id = "id1" >
+	<!--  입력받은 아이디를 검증하여 결과를 span  태그 영역에 출력하기 -->
+	아이디(keyup) <input type ="text" id = "id1" onkeyup="checkId(this)">
 	<span id = "checkIdResult1"></span><br>
-	아이디(change) <input type ="text" id = "id2" >
+	아이디(change) <input type ="text" id = "id2" onchange>
 	<span id = "checkIdResult2"></span><br>
-	아이디(blur) <input type ="text" id = "id3" >
+	아이디(blur) <input type ="text" id = "id3" onblur>
 	<span id = "checkIdResult3"></span><br>
 </body>
 </html>
