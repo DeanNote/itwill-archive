@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+
+function a (a){
+// document.querySelector("#name").style.background = "skyblue"
+a.style.background = "skyblue"
+}
+
+function b (b){
+// document.querySelector("#name").style.background = "white"
+b.style.background = "white"
+}
+
+function changeColor3 (c){
+// document.querySelector("#name").style.background = "white"
+c.style.background = "skyblue"
+}
+</script>
+</head>
+<body>
+	<h1>test27.HTML</h1>
+	<!--  이름 입력창에 포커스 위치 (focus) 입력창 색상을 skyblue로 변경 -->
+	<!--  이름 입력창에 포커스 해제 (blur) 입력창 색상을 white로 변경 -->
+	이름 : <input type ="text" id = "name" onfocus = "a(this)" onblur = "b(this)"><br>
+	나이 : <input type ="text" id = "age" 
+					onfocus = "changeColor3(this)" onblur = 'this.style.background = "white"'><br>
+</body>
+</html>
