@@ -31,9 +31,16 @@ public class Stu_Ex {
 		Person p = new Person(); // Person 인스턴스 생성
 		// => new 키워드에 의해 인스턴스가 생성될 때
 		// Person()형태의 생성자를 자동으로 호출하게 된다!
+		p.name = "홍길동";
+		System.out.println("이름 : " + p.name);
+		System.out.println("나이 : " + p.age);
+
+		Person p2 = newPerSon();
 		
 		
-	}//main()메서드 끝
+		
+		
+		
 
 }//Ex 클래스 끝
 
@@ -47,4 +54,13 @@ class Person{
 	//    리턴타입이 없으며, 이름은 클래스 이름과 같다.
 	//    또한, 매개변수가 없으며 중괄호 블록 { } 내에 수행할 코드가 없다.
 //	public Person() {} //기본생성자(Default Constructor)
+//	public Person() {
+//		System.out.println("생성자 Person() 호출됨!");
+//	}
+	public Person() {
+		System.out.println("생성자 Person() 호출됨!");
+		//인스턴스 변수(멤버변수) name에 "홍길동"을 저장 age에 2- 저장
+//		name = "홍길동";
+//		age = 20;
+	}
 }
