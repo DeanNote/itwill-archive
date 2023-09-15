@@ -38,24 +38,60 @@
 // 			 + "height = " + document.imgName1.height + "<br>";
 // ----------------------------------------------------------------------------------------------
 //		3번 방법을 활용해서 div 영역에 텍스트 출력
-		 data.innerHTML = 
-			   "src = " + document.images[0].src + "<br>"
-			 + "width = " + document.images[0].width + "<br>"
-			 + "height = " + document.images[0].height + "<hr>"
-			 + "src = " + document.images[1].src + "<br>"
-			 + "width = " + document.images[1].width + "<br>"
-			 + "height = " + document.images[1].height + "<hr>";
+// 		 data.innerHTML = 
+// 			   "src = " + document.images[0].src + "<br>"
+// 			 + "width = " + document.images[0].width + "<br>"
+// 			 + "height = " + document.images[0].height + "<hr>"
+// 			 + "src = " + document.images[1].src + "<br>"
+// 			 + "width = " + document.images[1].width + "<br>"
+// 			 + "height = " + document.images[1].height + "<hr>";
 
-
-
-     }
+	//div영역에 출력할 데이터를 변수에 저장 후 출력도 가능
+// 	let imagesInfo =   "src = " + document.images[0].src + "<br>"
+// 					 + "width = " + document.images[0].width + "<br>"
+// 					 + "height = " + document.images[0].height + "<hr>"
+// 					 + "src = " + document.images[1].src + "<br>"
+// 					 + "width = " + document.images[1].width + "<br>"
+// 					 + "height = " + document.images[1].height + "<hr>";
+//     	 data.innerHTML = imagesInfo;
+//      }
 	
+    //위의 3번 작업에서 0,1번 배열 접근 과정을 반복문으로 처리할 경우
+    //즉, for문을 사용하여 document.images 배열 요소를 차례대로 접근
+    let imagesInfo = "";//이미지들의 정보를 결합하여 저장할 변수 선언
+    for(let i=0; i<document.images.length; i++){
+    	//각 배열 인덱스 요소 정보를 문자열로 결합한 후 다시 imagesInfo 변수에 결함
+    	//=>배열 인덱스는 for문의 제어변수 i 활용
+    	imageInfo +=  "src = " + document.images[i].src + "<br>"
+				  + "width = " + document.images[i].width + "<br>"
+				  + "height = " + document.images[i].height + "<hr>"
+      }
+       data.innerHTML = imagesInfo;
+    //반복문이 종료되면 모든 이미지의 정보가 imageInfo 변수에 결합되어 있으므로
+    //div영역에 변수값 그대로 출력
+      	
+      	
 	//body영역 로딩 완료 시 익명함수 실행되도록 load 이벤트처리
 	window.onload = function(){
 		//이미지 속성정보 출력버튼 클릭 시 showImageInfo()함수 호출하도록 이벤트 처리
 		document.querySelector("#btn1").onclick = showImageInfo;
-		
+// 		================================================================================
+	//이미지 속성정보 변경 버튼 클릭 이벤트 처리 - 익명 함수로 처리
+		document.querySelector("#btn2").onclick = function(){
+			//이미지정보변경
+			//name속성을 활용하여 img1 이미지에 대해
+			//파일명: 3.jpg 가로크기 :300, 세로크기 :200 으로 변경
+			document.imgName1.src = "3.jpg";
+			document.imgName1.width = "300";
+			document.imgName1.height = "200";
+			//3번방법활용)
+			document.images[1].src = "4.jpg";
+			document.images[1].width = "300";
+			document.images[1].height = "200";
+			
+		}
 	};
+}
 </script>
 </head>
 
