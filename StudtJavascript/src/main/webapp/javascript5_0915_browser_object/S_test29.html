@@ -4,12 +4,56 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script type="text/javascript">
+/*
+ * [문서 내의 각 요소 접근 방법 - 이미지 (img 태그)]
+ * 1.document.getElementXXX() 또는 document.querySelector() 등의 메서드 활용
+     => document.querySelector("#img1")
+   
+     2. 이미지(img) 태그에 지정된 name 속성값으로 접근
+      => document.name속성값.접근할속성명
+      ex) document.imgName1.src
+      
+     3. 이미지 태그 전체(=복수개의 이미지)를 배열 형태로 접근(갯수는 무관)
+      => 이미지 태그를 객체 복수개를 images라는 이름의 배열로 관리하므로
+      	 images 배열의 인덱스를 활용하여 해당 인덱스에 접근가능(단, document.images로 접근)
+      => document.images[인덱스].접근할속성명
+      	ex) document.images[0].src => 첫번째 이미지의 src에 접근
+ */
 	function showImageInfo(){
-		
-	}
+    	 //id선택자 "infoArea"인 div 태그 영역 안에 텍스트 출력
+    	 let data = document.querySelector("#infoArea")
+//     	 data.innerHTML = "<h2>글자 나온나 </h2>";
+		 //div 태그 영역 내에 첫번째 이미지(#img1)의 src 속성값 출력
+// 	     data.innerHTML = document.querySelector("#img1").src
+		 //div 태그 영역 내에 첫번째 이미지의 src,width,height 속성값 모두 출력
+// 		 data.innerHTML = 
+// 			 "src = " + document.querySelector("#img1").src + "<br>"
+// 			 + "width = " + document.querySelector("#img1").width + "<br>"
+// 			 + "height = " + document.querySelector("#img1").height + "<br>";.
+// ----------------------------------------------------------------------------------------------
+//		2번 방법을 활용해서 div 영역에 텍스트 출력
+// 		 data.innerHTML = 
+// 			   "src = " + document.imgName1.src + "<br>"
+// 			 + "width = " + document.imgName1.width + "<br>"
+// 			 + "height = " + document.imgName1.height + "<br>";
+// ----------------------------------------------------------------------------------------------
+//		3번 방법을 활용해서 div 영역에 텍스트 출력
+		 data.innerHTML = 
+			   "src = " + document.images[0].src + "<br>"
+			 + "width = " + document.images[0].width + "<br>"
+			 + "height = " + document.images[0].height + "<hr>"
+			 + "src = " + document.images[1].src + "<br>"
+			 + "width = " + document.images[1].width + "<br>"
+			 + "height = " + document.images[1].height + "<hr>";
+
+
+
+     }
 	
 	//body영역 로딩 완료 시 익명함수 실행되도록 load 이벤트처리
 	window.onload = function(){
+		//이미지 속성정보 출력버튼 클릭 시 showImageInfo()함수 호출하도록 이벤트 처리
+		document.querySelector("#btn1").onclick = showImageInfo;
 		
 	};
 </script>
@@ -17,10 +61,10 @@
 
 <body >
 	<h1>test29.html</h1>
-	<img src = "1.jpg" id = "img1" width = "200" height = "200" title = "강아지">
-	<img src = "2.jpg" id = "img2" width = "200" height = "200" title = "풀때기"><br>
-	<input type = "button" value ="이미지 속성정보 출력">
-	<input type = "button" value ="이미지 속성정보 변경">
+	<img src = "1.jpg" id = "img1" name = "imgName1" width = "200" height = "200" title = "강아지">
+	<img src = "2.jpg" id = "img2" name = "imgName2" width = "200" height = "200" title = "풀때기"><br>
+	<input type = "button" id = "btn1" value ="이미지 속성정보 출력">
+	<input type = "button" id = "btn2" value ="이미지 속성정보 변경">
 	<div id = "infoArea"></div>
 	
 </body>
