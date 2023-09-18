@@ -57,24 +57,74 @@
 		//    자바스크립트 함수를 통해 코드 구현 가능
 		// 1) 입력 항목(value 속성값)이 널스트링("") 인지 판별
 		// 2) 입력 항목의 문자열 길이(length 속성값)가 0인지 판별
+// 		if(document.fr.text1.value == "") { // text1 텍스트박스 입력값이 널스트링인지 판별
+// 			// "첫번째 텍스트 입력 필수!" 경고창 출력 후 text1 입력창에 포커스(커서) 요청
+// 			alert("첫번째 텍스트 입력 필수!");
+// 			document.fr.text1.focus();
+// 		} else if(document.fr.text2.value.length == 0) { // text2 텍스트박스 입력값의 길이가 0인지 판별
+// 			alert("두번째 텍스트 입력 필수!");
+// 			document.fr.text2.focus();
+// 		} else if(document.fr.ta.value == "") { // ta 입력값이 널스트링인지 판별
+// 			alert("세번째 텍스트 입력 필수!");
+// 			document.fr.ta.focus();
+// 		} else {
+// 			// 폼 태그 요소에 대해 submit() 메서드를 호출하여 
+// 			// 모든 항목이 입력되었을 경우 submit 버튼 클릭 없이도 submit 동작을 수행 가능
+// 			document.fr.submit();
+// 		}
+		
+		// ----------------------------------------
+		// 입력값 체크 후 if 문 마지막에 else 문을 통해 submit() 메서드를 호출하지 않고
+		// if문 바깥에서 submit() 메서드를 호출할 경우 각 조건 처리 후 return 문 활용
+		// => 미입력 항목 체크 후 블록문 내에서 현재 함수 실행을 즉시 종료하도록 return 문 지정
 		if(document.fr.text1.value == "") { // text1 텍스트박스 입력값이 널스트링인지 판별
 			// "첫번째 텍스트 입력 필수!" 경고창 출력 후 text1 입력창에 포커스(커서) 요청
 			alert("첫번째 텍스트 입력 필수!");
-			
+			document.fr.text1.focus();
+			return; // 현재 함수(check()) 실행을 종료
 		} else if(document.fr.text2.value.length == 0) { // text2 텍스트박스 입력값의 길이가 0인지 판별
-			
+			alert("두번째 텍스트 입력 필수!");
+			document.fr.text2.focus();
+			return; // 현재 함수(check()) 실행을 종료
 		} else if(document.fr.ta.value == "") { // ta 입력값이 널스트링인지 판별
-			
-		} else {
-			
-		}
+			alert("세번째 텍스트 입력 필수!");
+			document.fr.ta.focus();
+			return; // 현재 함수(check()) 실행을 종료
+		} 
+		
+		// if문의 모든 조건 판별 결과가 false 일 경우 실행되는 코드
+		document.fr.submit();
+		
 	}
 	
+	function checkSubmit() {
+		if(document.fr.text1.value == "") { // text1 텍스트박스 입력값이 널스트링인지 판별
+			// "첫번째 텍스트 입력 필수!" 경고창 출력 후 text1 입력창에 포커스(커서) 요청
+			alert("첫번째 텍스트 입력 필수!");
+			document.fr.text1.focus();
+			return false; // submit 동작 취소
+		} else if(document.fr.text2.value.length == 0) { // text2 텍스트박스 입력값의 길이가 0인지 판별
+			alert("두번째 텍스트 입력 필수!");
+			document.fr.text2.focus();
+			return false; // submit 동작 취소
+		} else if(document.fr.ta.value == "") { // ta 입력값이 널스트링인지 판별
+			alert("세번째 텍스트 입력 필수!");
+			document.fr.ta.focus();
+			return false; // submit 동작 취소
+		} 
+		
+		// if문의 모든 조건 판별 결과가 false 일 경우 실행되는 코드
+		return true; // sumbit 동작 수행
+		
+	}
 </script>
 </head>
 <body>
 	<h1>test30.html - form 태그 이벤트</h1>
-	<form action="test30_2.html" name="fr">
+	<!-- form 태그 내의 onsubmit 이벤트를 활용하면 submit 버튼 클릭 시 수행할 함수 호출 가능 -->
+	<!-- 단, 함수 호출 시 서브밋 동작 여부 결정을 위해 return 함수명() 형식으로 호출 -->
+	<!-- 함수 내에서 true 값 리턴 시 submit 동작하고, false 값 리턴 시 submit 동작 취소 -->
+	<form action="test30_2.html" name="fr" onsubmit="return checkSumbit()">
 		<!-- 
 		form 태그 내의 입력 요소에 required 속성 지정 시
 		해당 항목이 입력되지 않은 상태로 submit 버튼 클릭해도 submit 동작이 수행되지 않는다!
