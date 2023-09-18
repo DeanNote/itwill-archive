@@ -14,6 +14,7 @@ public class S_test2 {
 		 * 평균 :
 		 */
 		
+		
 		int[] arr = {3,2,14,21,100,4,2,1};
 		int max = arr[0];
 		for(int i = 0; i < arr.length; i++) {
