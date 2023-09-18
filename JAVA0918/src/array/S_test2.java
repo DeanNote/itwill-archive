@@ -7,10 +7,7 @@ public class S_test2 {
 		 * 배열의 최대값을 구하는 코드
 		 * numbers = {3,2,14, 21, 100, 4 ,2 ,1{
 		 * int max; int min; int sum ; int avg;
-		 * 
-		 * 출력격과
-		 * 
-		 * 
+		 * 출력결과
 		 * 최대값 :100
 		 * 최소값 : 1
 		 * 합계 :
