@@ -46,7 +46,6 @@ public class S_test2 {
 		
 		
 		
-		
 	}//main 끝
 
 }//test_2.class 끝
