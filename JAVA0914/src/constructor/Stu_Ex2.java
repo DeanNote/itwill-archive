@@ -30,10 +30,10 @@ public class Stu_Ex2 {
 		// 1. 기본 생성자를 정의하던지
 		// 2. Person2(String, int)파라미터 생성자로 인스턴스 생성!
 		
-		Person2 p2 = new Person2("홍길동",20); 
+		Person0914 p2 = new Person0914("홍길동",20); 
 		p2.showPersonInfo();
 		
-		Person2 p3 = new Person2("한국","이이름",22);
+		Person0914 p3 = new Person0914("한국","이이름",22);
 		p3.showPersonInfo();
 
 	}//main 끝
@@ -41,7 +41,7 @@ public class Stu_Ex2 {
 		
 }//ex2 클래스 끝
 
-class Person2 {
+class Person0914 {
 	//멤버 변수 선언(=인스턴스 변수, 필드)
 	String nation;
 	String name;
@@ -51,7 +51,7 @@ class Person2 {
 //	nation = "대한민국";	
 //	}
 	
-	public Person2(String newName,int newAge) {
+	public Person0914(String newName,int newAge) {
 		System.out.println("Person2(String, int) 생성자 호출됨!");
 		
 		//전달받은 파라미터 값을 인스턴스 변수에 저장
@@ -61,7 +61,7 @@ class Person2 {
 		nation = "대한민국";
 	}
 		
-	public Person2(String nation, String name, int age) {
+	public Person0914(String nation, String name, int age) {
 		this.nation = nation;
 		this.name = name;
 		this.age = age;

@@ -41,13 +41,14 @@ public class Test {
  *   생성자 자동 단축키 : Alt + Shift + S -> O
  */
 
-class MyDate {
-	int year;
-	int month;
-	int day;
+class MyDate0914_4 {
+	
+	private int year;
+	private int month;
+	private int day;
 	
 	// 1) 기본 생성자 : 1999년 1월 1일로 초기화
-	public MyDate() {
+	public MyDate0914_4() {
 		System.out.println("MyDate() 생성자 호출됨!");
 		year = 1999;
 		month = 1;
@@ -55,7 +56,7 @@ class MyDate {
 	}
 	
 	// 2-1) 연도(year)를 전달받아 초기화하고, 1월 1일로 초기화
-	public MyDate(int newYear) {
+	public MyDate0914_4(int newYear) {
 		System.out.println("MyDate(int) 생성자 호출됨!");
 		year = newYear;
 		month = 1;
@@ -63,7 +64,7 @@ class MyDate {
 	}
 	
 	// 2-2) 연도(year), 월(month) 을 전달받아 초기화하고, 1일로 초기화
-	public MyDate(int newYear, int newMonth) {
+	public MyDate0914_4(int newYear, int newMonth) {
 		System.out.println("MyDate(int, int) 생성자 호출됨!");
 		year = newYear;
 		month = newMonth;
@@ -72,7 +73,7 @@ class MyDate {
 
 	// 2-3) 연도(year), 월(month), 일(day)를 전달받아 초기화
 	// 자동 생성 단축키 : Alt + Shift + S -> O	
-	public MyDate(int year, int month, int day) {
+	public MyDate0914_4(int year, int month, int day) {
 		System.out.println("MyDate(int, int,int) 생성자 호출됨!");
 		this.year = year;
 		this.month = month;

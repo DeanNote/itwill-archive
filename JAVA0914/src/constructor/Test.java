@@ -4,7 +4,7 @@ public class Test {
 
 	public static void main(String[] args) {
 		// Account 인스턴스 생성		
-		Account acc = new Account();
+		Account0914 acc = new Account0914();
 		
 //		acc.accountNo = "111-1111-111";
 //		acc.ownerName = "홍길동";
@@ -12,7 +12,7 @@ public class Test {
 		
 		acc.showAccountInfo();
 		
-		Account acc2 = new Account();
+		Account0914 acc2 = new Account0914();
 		acc2.showAccountInfo();
 
 	}
@@ -33,7 +33,7 @@ public class Test {
  *   현재잔고 : 10000원
  */
 
-class Account {
+class Account0914 {
 	// 멤버변수
 	String accountNo;
 	String ownerName;
@@ -42,7 +42,7 @@ class Account {
 //	public Account() {} // 기본 생성자
 	
 	// 생성자 정의
-	public Account() {
+	public Account0914() {
 		System.out.println("Account() 생성자 호출됨!");
 		
 		// 인스턴스 생성 시 기본값으로 가져야할 데이터를 멤버변수 저장

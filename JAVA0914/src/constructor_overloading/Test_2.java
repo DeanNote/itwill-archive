@@ -3,7 +3,8 @@ package constructor_overloading;
 public class Test_2 {
 
 	public static void main(String[] args) {
-		
+		MyDate0914_3 d1 = new MyDate0914_3(2020,9,2);
+		System.out.println(d1.isValid());
 
 	}
 
@@ -38,43 +39,83 @@ public class Test_2 {
  *   
  */
 
-class MyDate2 {
+class MyDate0914_3 {
 	
-	int year;
-	int month;
-	int day;
+	private int year;
+	private int month;
+	private int day;
+	
+	boolean isValid;
+	
 	
 	// 생성자
-	public MyDate2(int year, int month, int day) {
+	public MyDate0914_3(int year, int month, int day) {
 		setYear(year);
 		setMonth(month);
 		setDay(day);
 	}
 
-	public int getYear() {
-		return year;
-	}
 
 	public void setYear(int year) {
-		this.year = year;
-	}
-
-	public int getMonth() {
-		return month;
+		if(!(year<=2100 && year>=1900)) {
+			isValid = false;
+		}else {
+			this.year = year;
+		}
 	}
 
 	public void setMonth(int month) {
-		this.month = month;
-	}
-
-	public int getDay() {
-		return day;
+		if(!(month<=12 && month>0)) {
+			isValid = false;
+		}else {
+			this.month = month;
+		}
 	}
 
 	public void setDay(int day) {
-		this.day = day;
+		switch (month) {
+		case 1: case 3: case 5: case 7: case 8: case 10: case 12:
+			if(!(day>=1 && day <= 31)) {
+				isValid = false;
+			}else {
+				this.day = day;
+			}
+			break;
+
+		case 4: case 6: case 9: case 11:
+			if(!(day>=1 && day <= 30)) {
+				isValid = false;
+			}else {
+				this.day = day;
+			}
+			break;
+		
+		case 2:
+			//윤년의 경우 : 4로 나워지는 해는 윤년이지만 그중 100으로 나눠지는 해는 윤년이 아님 그러나 400으로 나눠지는 해는 윤년이다!
+			if ((year % 4 == 0 && year % 100 != 0) || year % 400  == 0) {
+				if(!(day >= 1 && day <= 29)) {
+					isValid = false;
+				} else {
+					this.day = day;
+				}
+			} else {
+				if(!(day>=1 && day<=28)) {
+					isValid = false;
+				} else {
+					this.day = day;
+				}
+			}
+			break;
+			default :  isValid = false;
+		}
 	}
-	
+	public String isValid() {
+		if(isValid) {
+			return "유효한 날짜입니다." + year + "/" + month + "/" + day;
+		}else {
+			return "유효하지 않은 날짜입니다." + year + "/" + month + "/" + day;
+		}
+	}
 	
 }
 

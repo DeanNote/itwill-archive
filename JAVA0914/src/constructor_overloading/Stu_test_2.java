@@ -36,29 +36,29 @@ class MyDate2{
 
 	}
 
-	public void setDay(int day) {
-		
-		switch (key) {
-		case 1:
-		case 2:
-		case 3:
-		case 4:
-		case 5:
-		case 6:
-		case 7:
-		case 8:
-		case 9:
-		case 10:
-		case 11:
-		case 12:
-			
-			break;
-
-		default:
-			break;
-		}
-		this.day = day;
-	}
+//	public void setDay(int day) {
+//		
+//		switch (key) {
+//		case 1:
+//		case 2:
+//		case 3:
+//		case 4:
+//		case 5:
+//		case 6:
+//		case 7:
+//		case 8:
+//		case 9:
+//		case 10:
+//		case 11:
+//		case 12:
+//			
+//			break;
+//
+//		default:
+//			break;
+//		}
+//		this.day = day;
+//	}
 
 	
 }
