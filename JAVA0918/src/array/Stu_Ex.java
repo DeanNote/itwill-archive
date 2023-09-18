@@ -26,6 +26,10 @@ public class Stu_Ex {
 		 *=> 배열에 데이터 초기화(저장)시
 		 *~~
 		 *
+		 *< 반복문을 통하여 배열의 모든 인덱스 접근 기본 공식>
+		 *for(int i = 0; i < 배열명.length; i++){
+		 *		배열명[i] 형태로 접근
+		 *}
 		 *
 		 *
 		 *
@@ -68,14 +72,44 @@ public class Stu_Ex {
 		 *    프로그램 실행 시점에서 오류가 발견됨
 		 */
 		
-		System.out.println(score[5]);
+//		System.out.println(score[5]);
 		//Exception in thread "main" java.lang.ArrayIndexOutOfBoundsException: 
 		//Index 5 out of bounds for length 5 at array.Stu_Ex.main(Stu_Ex.java:71)
 		// => ArrayIndexOutOfBoundsException : index 5 5번 인덱스가 범위를 벗어남
 		// => at array.Stu_Ex.main(Stu_Ex.java:71) Stu.java클래스의 71번 라인이 오류
 		
+		// 배열에 데이터 저장(초기화) => 90 60 80 100 50
+		score[0] = 90;
+		score[1] = 60;
+		score[2] = 80;
+		score[3] = 100;
+		score[4] = 50;
+//		score[10] = 100; //존재하지 않는 인덱스 접근. 실행시 오류 발생!!!
+//		System.out.println(score[0]);//score 배열의 0번 인덱스 데이터 값 출력
+//		System.out.println(score[1]);//score 배열의 1번 인덱스 데이터 값 출력
+//		System.out.println(score[2]);//score 배열의 2번 인덱스 데이터 값 출력
+//		System.out.println(score[3]);//score 배열의 3번 인덱스 데이터 값 출력
+//		System.out.println(score[4]);//score 배열의 4번 인덱스 데이터 값 출력
 		
+		//반복문을 사용해서 배열 인덱스 범위(0~4)까지 반복하면서
+		//출력문을 통해 배열 인덱스에 차례대로 접근하는 데이터 출력
+//		for(int i = 0; i < 5; i++) {
+//			System.out.println(score[i]);
+//		}
+		// => 배열의 모든 인덱스 접근 시 조건식에 배열 크기 직접 지정할 경우
+		//	  배열 크기가 변경되면 조건식 코드도 다시 변경해야 한다!
 		
+		//배열명.length 속성을 사용하여 배열의 크기(길이)를 알아낼 수 있다.
+		
+		System.out.println("배열 score의 크기 : " + score.length);
+		
+		for(int i = 0; i < score.length; i++) {
+			System.out.println(i + "번 인덱스 : " + score[i]);
+		}
+		
+		//배열 선언 시 [] 기호 위치에 따른 차이점
+		int[] arr1,arr2; // arr1, arr2 모두 int[] 타입 변수로 선언됨
+		int arr3,arr4[];// arr3은 int arr4는  int[]타입 변수로 선언됨
 		
 		
 	}
