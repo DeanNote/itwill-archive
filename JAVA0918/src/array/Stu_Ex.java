@@ -60,6 +60,22 @@ public class Stu_Ex {
 		System.out.println(score[2]);//score 배열의 2번 인덱스 데이터 값 출력
 		System.out.println(score[3]);//score 배열의 3번 인덱스 데이터 값 출력
 		System.out.println(score[4]);//score 배열의 4번 인덱스 데이터 값 출력
+		// => 이 때, 배열은 자동으로 기본값으로 초기화 되므로 0 출력됨
+		
+		/*
+		 * 주의! 생성된 배열의 인덱스 범위를 벗어나는 배열 접근 시 오류 발생!
+		 * => 단, 문법적으로 오류가 아니기 때문에 코드 상에서는 알 수 없고,
+		 *    프로그램 실행 시점에서 오류가 발견됨
+		 */
+		
+		System.out.println(score[5]);
+		//Exception in thread "main" java.lang.ArrayIndexOutOfBoundsException: 
+		//Index 5 out of bounds for length 5 at array.Stu_Ex.main(Stu_Ex.java:71)
+		// => ArrayIndexOutOfBoundsException : index 5 5번 인덱스가 범위를 벗어남
+		// => at array.Stu_Ex.main(Stu_Ex.java:71) Stu.java클래스의 71번 라인이 오류
+		
+		
+		
 		
 		
 	}
