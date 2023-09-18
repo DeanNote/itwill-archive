@@ -44,7 +44,6 @@ public class S_test2 {
 		double avg = (double)sum/arr.length;
 		System.out.println("평균 : " + avg);
 		
-		
 	}//main 끝
 
 }//test_2.class 끝
