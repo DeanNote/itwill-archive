@@ -45,6 +45,7 @@ public class S_test2 {
 		System.out.println("평균 : " + avg);
 		
 		
+		
 	}//main 끝
 
 }//test_2.class 끝
