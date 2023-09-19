@@ -53,7 +53,6 @@ public class Stu_test4 {
 		
 			System.out.println("=====================");
 			
-			
 			int[] studentTotal = new int[5];
 			
 			
