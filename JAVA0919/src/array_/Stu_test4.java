@@ -61,6 +61,7 @@ public class Stu_test4 {
 				for(int j = 0; j < score[i].length; j++) {
 					total += score[i][j];
 				}
+				
 				System.out.print(total + " ");
 				studentTotal[i] = total;
 				total = 0;
