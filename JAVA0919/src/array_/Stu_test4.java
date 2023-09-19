@@ -67,7 +67,6 @@ public class Stu_test4 {
 				System.out.print("studentToal["+i+"] : "+studentTotal[i] + " ");
 				System.out.println();
 			}
-						
 	}
 
 }
