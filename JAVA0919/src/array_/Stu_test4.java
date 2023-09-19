@@ -67,7 +67,7 @@ public class Stu_test4 {
 				System.out.print("studentToal["+i+"] : "+studentTotal[i] + " ");
 				System.out.println();
 			}
-			
+			System.out.println("===================================================");
 			System.out.println("<학생별 총점>");
 			for(int i = 0; i<names.length; i++) {
 				System.out.println(names[i] + " : " + studentTotal[i]);
