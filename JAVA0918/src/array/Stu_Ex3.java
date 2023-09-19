@@ -80,7 +80,6 @@ public class Stu_Ex3 {
 		for(int i = 0; i<array2.length; i++) {
 			if(max2<array2[i]) {
 				max2 = array2[i];
-			}else {
 			}
 		}
 		System.out.println("최종 max값 : " + max2);
