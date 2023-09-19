@@ -64,7 +64,7 @@ public class Stu_Ex3 {
 			}
 		}
 		System.out.println("최종 max값 : " + max);
-		
+		System.out.println("---------------------------------");
 		/*
 		 * 주의! 최대값 등의 비교 시 비교 대상을 변수에 직접 저장할 경우
 		 * 조건에 만족하지 않은 데이터가 있을 수 있다!
