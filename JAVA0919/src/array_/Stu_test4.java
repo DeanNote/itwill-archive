@@ -56,6 +56,7 @@ public class Stu_test4 {
 			int[] studentTotal = new int[5];
 			
 			
+			
 			int total = 0;
 			for(int i = 0; i < score.length; i++) {
 				System.out.print(names[i] + " : ");
