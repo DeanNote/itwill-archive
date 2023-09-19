@@ -30,6 +30,46 @@ public class Stu_test4 {
 		avg = (double)sum/count;
 		System.out.println("sum : " + sum);
 		System.out.println("avg : " + avg);
+		System.out.println("=================================================================");
+		
+		String[] names = {"홍길동","이순신","강감찬","조혜진","이민석"};
+		int[][] score = {
+				{80,70,80},
+				{90,90,90},
+				{50,60,77},
+				{100,100,100},
+				{80,80,60}
+		};	
+			System.out.println("    <학생 점수표>");
+			System.out.printf("        %s %s %s\n","국어","영어","수학");
+			for(int i = 0; i < score.length; i++) {
+				System.out.print(names[i] + " ");
+				for(int j = 0; j < score[i].length; j++) {
+//					System.out.print(score[i][j] + " ");
+					System.out.printf(" %3d ",score[i][j]);
+				}
+				System.out.println();
+			}
+		
+			System.out.println("=====================");
+			
+			int[] studentTotal = new int[5];
+			
+			int total = 0;
+			for(int i = 0; i < score.length; i++) {
+				System.out.print(names[i] + " : ");
+				for(int j = 0; j < score[i].length; j++) {
+					total += score[i][j];
+				}
+				System.out.print(total + " ");
+				studentTotal[i] = total;
+				total = 0;
+				System.out.print("studentToal["+i+"] : "+studentTotal[i] + " ");
+				System.out.println();
+			}
+		
+		
+		
 	}
 
 }
