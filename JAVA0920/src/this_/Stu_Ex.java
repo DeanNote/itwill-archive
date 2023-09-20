@@ -20,7 +20,7 @@ public class Stu_Ex {
 		 *  this.인스턴스 변수 또는 this.메서드() 형태로 접근
 		 * 
 		 */
-		
+//		Person p = new Person(); 오류발생!
 		Person p = new Person("홍길동",20);
 		
 		
@@ -33,7 +33,7 @@ class Person{
 	private String name;
 	private int age;
 	
-//	public Person() {}
+//	public Person() {} 기본 생성자 -> 파라미터 생성자를 정의하면 기본생성자 자동으로 만들어 주지 않는다!
 	
 	//이름, 나이를 전달받아 초기화하는 파라미터 생성자 정의
 	//Alt+Shift+S => O
