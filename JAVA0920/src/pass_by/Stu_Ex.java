@@ -57,6 +57,9 @@ class PassByTest{
 		//인스턴스 내의 멤버뱐수(실제 값)을 변경
 		//참조병수명, 멤버변수에 접근가능
 
-class Money {
-	int money = 10000;
+			class Money {
+				int money = 10000;
+			}
+	}
+}
 }

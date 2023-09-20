@@ -20,6 +20,15 @@ public class Stu_Ex {
 		NormalArguments na = new NormalArguments();
 		
 		na.print("동그라미");
+		na.print("동그라미","세모");
+		na.print("동그라미","세모","네모");
+//		na.print("동그라미","세모","네모","오각형");
+		
+		//만약, 배열을 파라미터로 사용하는 경우
+		//데이터 개수에 제한을 받지 않지만, 배열을 미리 생성해야 한다!
+		String[] strArr = {"동그라미","세모","네모","직사각형","팔각형","직각삼각형"}; // 배열 생성
+		na.print(strArr);
+		
 		
 	}//main끝
 
@@ -41,5 +50,14 @@ class NormalArguments{
 	public void print(String name1, String name2, String name3) {
 		System.out.println(name1 + " " + name2 + " " + name3);
 		
+	}
+	
+	//파라미터로 String 타입 배열을 선언하는 경우
+	public void print(String[] names) {
+		//for문으로 배열 내의 모든 데이터를 출력
+		for(int i = 0; i < names.length; i++) {
+			System.out.print(names[i]+" ");
+		}
+		System.out.println();
 	}
 }
