@@ -34,22 +34,31 @@ class MyDate{
 	//Alt+Shift+S => O 기본 생성자 자동완성
 	public MyDate() {
 		//연도 : 1900, 월 :1, 일:1 로 초기화
+		
+		System.out.println("MyDate() 생성자 호출됨!");
+		
 		year = 1900;
 		month = 1;
 		day = 1;
 	}
 	//연도(year)만 전달받고 나머지는 1월 1일로 초기화를 하는 생성자 
 	public MyDate(int year) {
+		System.out.println("MyDate(int) 생성자 호출됨!");
 		this.year = year;
+		month = 1;
+		day = 1;
 		
 	}
 	//연도(year)와 월(month)을 전달받고 나머지는 1일로 초기화를 하는 생성자
 	public MyDate(int year, int month) {
+		System.out.println("MyDate(int, int) 생성자 호출됨!");
 		this.year = year;
 		this.month = month;
+		day = 1;
 	}
 	//연도(year),월(month),일(day)을 전달받아 초기화 하는 생성자
 	public MyDate(int year, int month, int day) {
+		System.out.println("MyDate(int, int, int) 생성자 호출됨!");
 		this.year = year;
 		this.month = month;
 		this.day = day;
