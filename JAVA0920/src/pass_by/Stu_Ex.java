@@ -34,8 +34,13 @@ public class Stu_Ex {
 		pbt.changePrimitiveType(m.money);
 		
 		System.out.println("changePrimitiveType()메서드 호출 후 money =" + m.money);
+		// 호출된 메서드애서 전달받은 데이터(복사한 실제  데이터)를 변경하더라도
+		//원본 데이터에는 아무런 영향이 없다!(=10000 값이 그대로 존재함)
 		
-	}// main 끝
+		System.out.println("---------------------------------------");
+		
+		System.out.println("changeReferenceType() 메서드 호출 전 money" + m.money); 	
+		}// main 끝
 
 }// ex 끝
 class PassByTest{
@@ -45,7 +50,12 @@ class PassByTest{
 		money -= 5000;
 		System.out.println("changePrimitiveType() 메서드의 money =" + money);
 	}
-}
+	
+	public void changeReferenceType(m) {
+		//참조 데이터타입 데이터(주소 값)을 전달받음(복사)
+		//전달받은 주소 값에 해당하는 인스턴스에 접근하여
+		//인스턴스 내의 멤버뱐수(실제 값)을 변경
+		//참조병수명, 멤버변수에 접근가능
 
 class Money {
 	int money = 10000;
