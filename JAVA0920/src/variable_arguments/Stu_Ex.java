@@ -16,7 +16,30 @@ public class Stu_Ex {
 		 * - 주의! 가변 인자는 마지막 파라미터로 단 한번만 지정 가능
 		 */
 		
+		//가변인자를 사용하지 않은 오버로딩 메서드 호출
+		NormalArguments na = new NormalArguments();
 		
+		na.print("동그라미");
+		
+	}//main끝
+
+}//ex끝
+
+class NormalArguments{
+	//가변 인자를 사용하지 않은 메서드 오버로딩
+	// print() 메서드 오버로딩
+	// String 타입 변수 (name)를 통해 이름을 1개~3개 전달받아 출력
+	public void print(String name1) {
+		System.out.println(name1);
+	}
+	
+	public void print(String name1, String name2) {
+		System.out.println(name1 + " " + name2);
+
 	}
 
+	public void print(String name1, String name2, String name3) {
+		System.out.println(name1 + " " + name2 + " " + name3);
+		
+	}
 }
