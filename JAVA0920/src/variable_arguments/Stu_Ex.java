@@ -29,10 +29,63 @@ public class Stu_Ex {
 		String[] strArr = {"동그라미","세모","네모","직사각형","팔각형","직각삼각형"}; // 배열 생성
 		na.print(strArr);
 		
+		System.out.println("======================================================================");
+		
+		VariableArguments va = new VariableArguments();
+		va.print("a");
+		va.print("a","b","c");
+		va.print("a","b","c","d","e");
+		va.print();//0개도 전달됨
+		va.print("줄바꿈 후 출력");
+		//가변 인자를 활용한 갯수 제한 없는 print 메서드
+		
+		System.out.println("======================================================================");
+		va.print2(2, "홍길동","이순신");
 		
 	}//main끝
 
 }//ex끝
+
+class VariableArguments{
+	//가변 인자를 사용한 메서드 오버로딩
+	//=>메서드 정의 시 파라미터로 사용할 변수 데이터 타입 뒤에 ...기호 붙임
+	public void print(String...names) {
+		//String 타입 데이터를 0~무한대로 전달받을 수 있음
+		//전달된 데이터는 자동으로 배열 생성 후 저장됨
+		// => 가변인자를 사용한 변수 names 는 String[] 타입으로 사용됨
+		//	  따라서, 배열 접근 방법을 활용하여 배열 내의 모든 요소에 접근
+		//for문을 사용하여 배열 내의 모든 데이터 출력
+		for(int i = 0; i<names.length; i++) {
+			System.out.print(names[i]+" ");
+		}
+		System.out.println();//줄바꿈
+	}
+	
+	//다른 파라미터와 가변 인자 조합 가능
+	public void print2(int num, String...names) {
+		// => int형 데이터 1개와 문자열 데이터 여러 개를 전달 가능
+		//    ex) print2(2,"홍길동","이순신");
+		System.out.println("입력받은 문자열 개수 : " + num + "개");
+		for(int i =0; i<names.length; i++) {
+			System.out.print(names[i]+" ");
+		}
+		System.out.println();
+	}
+	// 가변인자가 다른 파라미터보다 앞에 올 수 없다!
+//	public void print3(String...names,int num) {
+//		// => 오류발생!
+//		// => The variable argument type String of the method print3 must be the last parameter
+//	}
+	
+	// 가변 인자가 2개 이상 올 수 없다!
+//	public void print4(int...nums, string...names) {
+//		//=>오류발생!
+//		// => The variable argument type int of the method print4 must be the last parameter
+//	}
+	
+	
+	
+}
 
 class NormalArguments{
 	//가변 인자를 사용하지 않은 메서드 오버로딩
