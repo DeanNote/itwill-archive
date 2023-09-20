@@ -23,11 +23,21 @@ public class Stu_Ex {
 		 *  
 		 */
 
+		Money m = new Money();
+		PassByTest pbt = new PassByTest();
 		
+		//1. 메서드 파라미터로 기본 데이터 타입 변수 값을 전달하는 경우
+		System.out.println("changePrimitiveType() 메서드 호출 전 money" + m.money);
 		
-	}
+		//Money 인스턴스의 멤버변수 money 값을 메서드에 전달
+		//=> 이 때, 기본 데이터타입(int)이므로 실제 값을 복사해서 전달
+		pbt.changePrimitiveType(m.money);
+		
+		System.out.println("changePrimitiveType()메서드 호출 후 money =" + m.money);
+		
+	}// main 끝
 
-}
+}// ex 끝
 class PassByTest{
 	public void changePrimitiveType(int money) {
 		//기본 데이터타입 데이터(실제 값)을 전달 받음(복사)
