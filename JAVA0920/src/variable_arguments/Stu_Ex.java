@@ -17,7 +17,7 @@ public class Stu_Ex {
 		 */
 		
 		//가변인자를 사용하지 않은 오버로딩 메서드 호출
-		NormalArguments na = new NormalArguments();
+		NormalArguments1 na = new NormalArguments1();
 		
 		na.print("동그라미");
 		na.print("동그라미","세모");
@@ -31,7 +31,7 @@ public class Stu_Ex {
 		
 		System.out.println("======================================================================");
 		
-		VariableArguments va = new VariableArguments();
+		VariableArguments1 va = new VariableArguments1();
 		va.print("a");
 		va.print("a","b","c");
 		va.print("a","b","c","d","e");
@@ -46,7 +46,7 @@ public class Stu_Ex {
 
 }//ex끝
 
-class VariableArguments{
+class VariableArguments1{
 	//가변 인자를 사용한 메서드 오버로딩
 	//=>메서드 정의 시 파라미터로 사용할 변수 데이터 타입 뒤에 ...기호 붙임
 	public void print(String...names) {
@@ -87,7 +87,7 @@ class VariableArguments{
 	
 }
 
-class NormalArguments{
+class NormalArguments1{
 	//가변 인자를 사용하지 않은 메서드 오버로딩
 	// print() 메서드 오버로딩
 	// String 타입 변수 (name)를 통해 이름을 1개~3개 전달받아 출력

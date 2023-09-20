@@ -23,14 +23,14 @@ public class Stu_test {
  * - Getter/Setter 메서드 정의
  * - showAccountInfo()메서드 정의 -> 계좌번호, 예금주명, 현재잔고 출력
  */
-class Account{
+class Account1{
 	private String accountNo;
 	private String ownerName;
 	private int balance;
 	
 	
 	
-	public Account(String accountNo, String ownerName, int balance) {
+	public Account1(String accountNo, String ownerName, int balance) {
 		super();
 		this.accountNo = accountNo;
 		this.ownerName = ownerName;

@@ -21,7 +21,7 @@ public class Stu_Ex {
 		 * 
 		 */
 //		Person p = new Person(); 오류발생!
-		Person p = new Person("홍길동",20);
+		Person1 p = new Person1("홍길동",20);
 		p.showPersonInfo();
 		
 //		p.name = "이순신";
@@ -36,7 +36,7 @@ public class Stu_Ex {
 
 }//EX끝
 
-class Person{
+class Person1{
 	//멤버변수 선언
 	private String name;
 	private int age;
@@ -45,7 +45,7 @@ class Person{
 	
 	//이름, 나이를 전달받아 초기화하는 파라미터 생성자 정의
 	//Alt+Shift+S => O
-	public Person(String name, int age) {
+	public Person1(String name, int age) {
 		this.name = name;
 		this.age = age;
 	}
