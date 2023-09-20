@@ -29,10 +29,11 @@ public class Stu_Ex {
 
 }
 class PassByTest{
-	public void channgePrimitiveType(int money) {
+	public void changePrimitiveType(int money) {
 		//기본 데이터타입 데이터(실제 값)을 전달 받음(복사)
 		//전달 받은 기본 데이터타입 데이터를 변경
 		money -= 5000;
+		System.out.println("changePrimitiveType() 메서드의 money =" + money);
 	}
 }
 
