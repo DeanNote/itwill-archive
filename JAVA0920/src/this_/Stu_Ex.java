@@ -22,6 +22,14 @@ public class Stu_Ex {
 		 */
 //		Person p = new Person(); 오류발생!
 		Person p = new Person("홍길동",20);
+		p.showPersonInfo();
+		
+//		p.name = "이순신";
+		// => 에러발생! 
+		// => The field Person.name is not visible
+		p.setName("이순신");
+		p.setAge(44);
+		p.showPersonInfo();
 		
 		
 	}//main끝
