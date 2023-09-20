@@ -21,7 +21,7 @@ public class Stu_Ex {
 		 * 
 		 */
 		
-//		Person p = new Person();
+		Person p = new Person("홍길동",20);
 		
 		
 	}//main끝
@@ -32,6 +32,8 @@ class Person{
 	//멤버변수 선언
 	private String name;
 	private int age;
+	
+//	public Person() {}
 	
 	//이름, 나이를 전달받아 초기화하는 파라미터 생성자 정의
 	//Alt+Shift+S => O
