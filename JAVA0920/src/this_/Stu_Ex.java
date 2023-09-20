@@ -40,6 +40,9 @@ class Person{
 		this.age = age;
 	}
 
+	
+	//멤버변수 Getter/Setter메서드정의
+	//Alt+Shift+S => R
 	public String getName() {
 		// 로컬변수와 멤버변수 이름이 중복되지 않으므로
 		// 래퍼런스 this를 생략가능
@@ -49,7 +52,12 @@ class Person{
 	public void setName(String name) {
 		// 메서드 내의 로컬변수와 클래스 내의 멤버변수의 이름이 동일할 경우
 		// 메서드 내에서 변수 지정 시 로컬 변수가 저장됨
-		this.name = name;
+//		name = name; 로컬 변수 name값을 다시 로컬변수 name에 저장하는 코드
+		// 로컬변수와 멤버변수를 구별하기 위해서는 멤버변수 앞에
+		// 레퍼런스this를 사용하여 해당 인스턴스에 접근하는 코드로 사용해야함.
+		// =>외부에서 멤버변수 name에 접근 시 참조변수명 .name 형태로 접근하듯이
+		//   내부에서 멤버변수 name에 접근 시 this.name 형태로 접근
+		this.name = name;// 로컬변수 name값을 멤버변수 name에 저장하는 코드
 	}
 
 	public int getAge() {
@@ -60,8 +68,11 @@ class Person{
 		this.age = age;
 	}
 	
-	//멤버변수 Getter/Setter메서드정의
-	//Alt+Shift+S => R
-	
+	//showPersonInfo()메서드를 정의하여 이름과 나이를 출력
+	public void showPersonInfo() {
+		//클래스 내의 메서드에서 멤버변수에 접근하기 위해 멤버변수 이름 지정
+		System.out.println("이름 : " + name); //this.name
+		System.out.println("나이 : " + age); //this.age
+	}
 	
 }
