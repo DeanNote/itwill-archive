@@ -4,10 +4,12 @@ public class Stu_test {
 
 	public static void main(String[] args) {
 
-		Account a = new Account();
-		a.setAccountNo("443212312312");
+//		Account a = new Account();
+		Account a = new Account("부산 323-23423-3","김가루",500);
+		a.showAccountInfo();
+		a.setAccountNo("기업 979-5655-545");
 		a.setOwnerName("김종국");
-		a.setBalance(9999999);
+		a.setBalance(1000);
 		a.showAccountInfo();
 		
 	}
@@ -26,6 +28,14 @@ class Account{
 	private String ownerName;
 	private int balance;
 	
+	
+	
+	public Account(String accountNo, String ownerName, int balance) {
+		super();
+		this.accountNo = accountNo;
+		this.ownerName = ownerName;
+		this.balance = balance;
+	}
 	
 	public String getAccountNo() {
 		return accountNo;
