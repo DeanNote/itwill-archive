@@ -11,6 +11,7 @@ public class Stu_Ex {
 		 *   => 즉, 인스턴스 마다 this 에 저장된 값이 다름
 		 * 
 		 * 
+		 * 
 		 */
 	}
 
