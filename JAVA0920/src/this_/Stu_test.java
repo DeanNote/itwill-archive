@@ -5,7 +5,10 @@ public class Stu_test {
 	public static void main(String[] args) {
 
 		Account a = new Account();
-		
+		a.setAccountNo("443212312312");
+		a.setOwnerName("김종국");
+		a.setBalance(9999999);
+		a.showAccountInfo();
 		
 	}
 
@@ -44,9 +47,9 @@ class Account{
 	}
 	
 	public void showAccountInfo(){
-		System.out.println("계좌번호" + accountNo);
-		System.out.println("예금주명" + ownerName);
-		System.out.println("현재잔고" + balance);
+		System.out.println("계좌번호 " + accountNo);
+		System.out.println("예금주명 " + ownerName);
+		System.out.println("현재잔고 " + balance);
 	}
 	
 	
