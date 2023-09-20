@@ -10,9 +10,56 @@ public class Stu_Ex {
 		 * - 모든 인스턴스 내에는 this 가 존재하며, 자신의 인스턴스 주소가 저장됨
 		 *   => 즉, 인스턴스 마다 this 에 저장된 값이 다름
 		 * 
-		 * 
+		 * 1. 래퍼런스 this
+		 * - 자신의 인스턴스 내의 멤버에 접근(멤버변수 or 멤버메서드)
+		 * - 주로, 로컬변수와 인스턴스 변수(=멤버변수)의 이름이 같을 때
+		 *   인스턴스 변수를 지정하는 용도로 사용
+		 *   
+		 *  < 레퍼런스 this 사용 기본 문법>
+		 *  자신의 클래스 내의 생성자 또는 메서드 내에서
+		 *  this.인스턴스 변수 또는 this.메서드() 형태로 접근
 		 * 
 		 */
+		
+//		Person p = new Person();
+		
+		
+	}//main끝
+
+}//EX끝
+
+class Person{
+	//멤버변수 선언
+	private String name;
+	private int age;
+	
+	//이름, 나이를 전달받아 초기화하는 파라미터 생성자 정의
+	//Alt+Shift+S => O
+	public Person(String name, int age) {
+		this.name = name;
+		this.age = age;
 	}
 
+	public String getName() {
+		// 로컬변수와 멤버변수 이름이 중복되지 않으므로
+		//래퍼런스 this를 생략가능
+		return name; //return this.name;과 동일함
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public int getAge() {
+		return age;
+	}
+
+	public void setAge(int age) {
+		this.age = age;
+	}
+	
+	//멤버변수 Getter/Setter메서드정의
+	//Alt+Shift+S => R
+	
+	
 }
