@@ -42,11 +42,13 @@ class Person{
 
 	public String getName() {
 		// 로컬변수와 멤버변수 이름이 중복되지 않으므로
-		//래퍼런스 this를 생략가능
+		// 래퍼런스 this를 생략가능
 		return name; //return this.name;과 동일함
 	}
 
 	public void setName(String name) {
+		// 메서드 내의 로컬변수와 클래스 내의 멤버변수의 이름이 동일할 경우
+		// 메서드 내에서 변수 지정 시 로컬 변수가 저장됨
 		this.name = name;
 	}
 
