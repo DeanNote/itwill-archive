@@ -91,6 +91,27 @@
 	//id선택자 "inputBox"의 자식들 중 input태그 type 속성이 "password"인 요소 값 가져오기
 	let passwd = $("#inputBox > input[type=password]").val();
 	console.log(passwd);
+	
+	//id선택자 "id"인 요소의 value 속성값을 "root"fh qusrud
+	$("#id").val("root");
+	
+	//id선택자 "inputBox"의 자식들 중 textarea 태그 속성이 "readonly"인 요소 배경색 "lightgray"로 변경
+	$("#inputBox > textarea[readonly]").css("background","lightgray");
+	//===================================================================================================
+	//id 선택자 "divBox" 요소의 자식 또는 후손(공백)들인 div 태그 글자색 "blue" 로 변경
+	$("#divBox div").css("color","blue");
+	
+	//id 선택자 "divBox" 요소의 자식(>)들이 태그 글자색 "magenta" 로 변경
+	$("#divBox > div").css("color","magenta");
+	//===================================================================================================
+	// id 선택자 "selectBox" 인 셀렉트 박스 태그의 선택된 값을
+	// id 선택자 "selectResult" 요소의 value 속성으로 출력하기
+	// => 주의! 선택항목 이벤트 처리가 아니므로 문서 로딩 시 기본 선택값이 바로 출력됨
+	
+	let selectedItem = $("#selectBox").val();
+	$("#selectResult").val(selectedItem);
+		
+
 	});
 	
 	
@@ -137,7 +158,7 @@
 	<select id="selectBox">
 		<option value="JAVA">JAVA</option>
 		<option value="JSP">JSP</option>
-		<option value="Spring Framework">Spring Framework</option>
+		<option value="Spring Framework" selected="selected">Spring Framework</option>
 	</select>
 	<input type="text" id="selectResult">
 </body>
