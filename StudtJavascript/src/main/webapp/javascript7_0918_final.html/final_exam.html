@@ -188,8 +188,25 @@
 			// 주소검색 창에서 주소 검색 후 검색된 주소를 클릭하면
 			// oncomplete: 뒤의 익명함수가 실행됨 -> callback(콜백)함수라고 함
 	        oncomplete: function(data) {
-	            // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분입니다.
-	            // 예제를 참고하여 다양한 활용법을 확인해 보세요.
+	            // 클릭(선택)된 주소에 대한 정보(객체)가 익명함수 파라미터data에 전달됨
+	            // => data.xxx 형식으로 각 주소 정보에 접근
+	            // 1) 우편번호 가져와서 우편번호 항목에 출력
+	            document.joinForm.postCode.value = data.zonecode;
+				// 2) 기본주소(address) 가져와서 기본주소 항목 (address1)에 출력
+// 	            document.joinForm.address1.value = data.address;
+				let address = data.address;
+				
+				// 만약, 건물명(buildingName)이 존재(널스트링이 아님)할 경우
+				// 기본주소 뒤에 건물명을 결합
+				if(data.buildingName != ""){
+		            address += "(" + data.buildingName + ")";
+				}
+	            document.joinForm.address1.value = address;
+				
+				
+				// 3) 상세주소 항목(address2)에 포커스(커서)요청
+	            document.joinForm.address2.focus();
+				
 	        }
 	    }).open();
 	}
@@ -240,9 +257,9 @@
 						<input type="text" name="postCode" id = "postCode" size="6"  > 
 						<input type = "button" id = "btnSerchAddress" value = "주소검색" onclick = "SerchAddress()">
 						<br>
-						<input type="text" name="address1" id ="address1"  size="20"  > 
+						<input type="text" name="address1" placeholder="기본주소"  id="address1"  size="30"  > 
 						<br>
-						<input type="text" name="address2" id = "address2" size="20"  >
+						<input type="text" name="address2" placeholder="상세주소"  id= "address2" size="30"  >
 					</td>
 				</tr>
 				<tr>
