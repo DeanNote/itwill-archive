@@ -3,7 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<!-- 다음 주소검색 API 사용을 위한 스크립트 추가 -->
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script type="text/javascript">
+
 	function newWindow(){
 		window.open("check_id.html", "", "width = 500, height = 400");
 	}
@@ -30,6 +33,7 @@
 		}
 	}
 	
+	let isSamePasswd = false;
 	function passcheck2(){
 		let passwd = document.joinForm.passwd.value;
 		let passwd2 = document.joinForm.passwd2.value;
@@ -39,13 +43,14 @@
 		} else if(passwd == passwd2) {
 			document.querySelector("#checkPasswd2Result").innerHTML = "비밀번호 일치!";
 			document.querySelector("#checkPasswd2Result").style.color = "BLUE";
+			isSamePasswd = true;
 		}
 	}
 
 	function emailSelected(email){
 		document.joinForm.email2.value = email;
 		if(document.joinForm.email2.value != ''){
-			document.joinForm.email2.style.backgroundColor = "GRAY";
+			document.joinForm.email2.style.backgroundColor = "LIGHTGRAY";
 			document.joinForm.email2.readOnly = true;
 		}else{
 			document.joinForm.email2.style.backgroundColor = "";
@@ -97,8 +102,8 @@
 			joinForm.passwd.focus(); // 포커스를 이동시켜 바로 아이디를 입력할 수 있게
 			return false;
 		}
-		if(joinForm.passwd2.value.length == 0){ 
-			alert("비밀번호확인이 누락됐습니다.");
+		if(!isSamePasswd){ 
+			alert("비밀번호 불일치 확인.");
 			joinForm.passwd2.focus(); // 포커스를 이동시켜 바로 아이디를 입력할 수 있게
 			return false;
 		}
@@ -113,7 +118,7 @@
 			joinForm.email1.focus(); 
 			return false;
 		}
-		if(joinForm.email1.value.length == 0){
+		if(joinForm.email1.value.length == 0 ){
 			alert("이메일이 누락됐습니다.");
 			myform.email1.focus(); 
 			return false;
@@ -178,6 +183,16 @@
 		
 	}//함수 signup 끝
 
+	function SerchAddress(){
+		new daum.Postcode({
+			// 주소검색 창에서 주소 검색 후 검색된 주소를 클릭하면
+			// oncomplete: 뒤의 익명함수가 실행됨 -> callback(콜백)함수라고 함
+	        oncomplete: function(data) {
+	            // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분입니다.
+	            // 예제를 참고하여 다양한 활용법을 확인해 보세요.
+	        }
+	    }).open();
+	}
 
 </script>
 </head>
@@ -201,14 +216,14 @@
 				<tr>
 					<th>비밀번호</th>
 					<td>
-						<input type="password" name="passwd" placeholder="8 ~ 16글자 사이 입력" onkeydown="passcheck()" >
+						<input type="password" name="passwd" placeholder="8 ~ 16글자 사이 입력" onkeyup="passcheck()" >
 						<span id="checkPasswdResult"></span>
 					</td>
 				</tr>
 				<tr>
 					<th>비밀번호확인</th>
 					<td>
-						<input type="password" name="passwd2" onkeydown="passcheck2()" >
+						<input type="password" name="passwd2" onkeyup="passcheck2()" >
 						<span id="checkPasswd2Result"></span>
 					</td>
 				</tr>
@@ -217,6 +232,17 @@
 					<td>
 						<input type="text" name="jumin1" oninput="changejumin1()" maxlength="6"  > 
 						<input type="text" name="jumin2" oninput="changejumin2()" maxlength="7"  >
+					</td>
+				</tr>
+				<tr>
+					<th>주소</th>
+					<td>
+						<input type="text" name="postCode" id = "postCode" size="6"  > 
+						<input type = "button" id = "btnSerchAddress" value = "주소검색" onclick = "SerchAddress()">
+						<br>
+						<input type="text" name="address1" id ="address1"  size="20"  > 
+						<br>
+						<input type="text" name="address2" id = "address2" size="20"  >
 					</td>
 				</tr>
 				<tr>

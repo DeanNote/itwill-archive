@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	function newWindow(){
+		window.open("check_id.html", "check_id", "width=400, height=300, left=500, top=400");
+	}
+
+	
+	function checkbox_allCheck(){
+		
+		for(let item of document.joinForm.hobby){
+			item.checked = document.joinForm.allHobby.checked;
+		}
+
+	}
+	
+
+	function emailSelected(email) {
+	    document.joinForm.email2.value = email;
+	    if (document.joinForm.email2.value !== '') { 
+	        document.joinForm.email2.readOnly = true;
+	    } else { 
+	        document.joinForm.email2.readOnly = false;
+	    }
+	}
+
+	function checkform(){
+		
+		let spanElem = document.querySelector("#checkIdResult1");
+		let id = document.querySelector("#id1").value;
+	
+		if(document.joinForm.id.value.length >= 4 && document.joinForm.id.value.length <=8){
+			spanElem.innerHTML = "사용 가능";
+			spanElem.style.color = "GREEN";
+		}	else {
+			spanElem.innerHTML = "4~8글자만 사용 가능합니다.";
+			spanElem.style.color = "RED";
+		}
+	}		
+	
+	function checkform1(){
+		
+		let spanElem = document.querySelector("#checkPasswdResult1");
+		let id = document.querySelector("#passwd1").value;
+	
+		if(document.joinForm.passwd.value.length >= 8 && document.joinForm.passwd.value.length <=16){
+			spanElem.innerHTML = "사용 가능한 패스워드";
+			spanElem.style.color = "BLUE";
+		}	else {
+			spanElem.innerHTML = "사용 불가능한 패스워드";
+			spanElem.style.color = "RED";
+		}
+	
+	}	
+	
+	function passwdTest(){
+		let spanElem = document.querySelector("#checkPasswd2Result");
+		let p1 = document.getElementById("passwd1").value;
+		let p2 = document.getElementById("passwd2").value;
+		if(p1 != p2){
+			spanElem.innerHTML = "비밀번호 불일치";
+			spanElem.style.color = "RED";
+			return false;
+		} else{
+			spanElem.innerHTML = "비밀번호 일치";
+			spanElem.style.color = "BLUE";
+			return true;
+		}
+	}
+	
+	function checkJumin(){
+		if(document.joinForm.jumin1.value.length == 6)
+		{
+			document.joinForm.jumin2.focus();
+			return;
+		}
+	}
+	
+	function checkJumin1(){
+		if(document.joinForm.jumin2.value.length == 7)
+		{
+			document.joinForm.jumin2.blur();
+			return;
+		}
+	}
+	// --------------------------------------------------------
+		
+	function checkSumbit(){
+		if(document.joinForm.name.value.length == 0) {
+			document.joinForm.name.focus();
+			return false;
+		} else if(document.joinForm.id.value.length == 0){
+			document.joinForm.id.focus();
+			return false;
+		} else if(document.joinForm.passwd.value.length == 0){
+			document.joinForm.passwd.focus();
+			return false;
+		} else if(document.joinForm.passwd2.value.length == 0){
+			document.joinForm.passwd2.focus();
+			return false;
+		} else if(document.joinForm.jumin1.value.length == 0){
+			document.joinForm.jumin1.focus();
+			return false;
+		} else if(document.joinForm.jumin2.value.length == 0){
+			document.joinForm.jumin2.focus();
+			return false;
+		} else if(document.joinForm.email1.value.length == 0){
+			document.joinForm.email1.focus();
+			return false;
+		} else if(document.joinForm.email2.value.length == 0){
+			document.joinForm.email2.focus();
+			return false;		
+		} else if(document.joinForm.job.value.length == 0){
+			document.joinForm.job.focus();
+			return false;
+		} else if(document.joinForm.gender.value.length == 0){
+			document.joinForm.gender.focus();
+			return false;
+		} else if(document.joinForm.hobby.value.length == 0){
+			document.joinForm.hobby.focus();
+			return false;
+		} else if(document.joinForm.allHobby.value.length == 0){
+			document.joinForm.allHobby.focus();
+			return false;
+		} else if(document.joinForm.motivation.value.length == 0){
+			document.joinForm.motivation.focus();
+			return false; 
+		}
+		 
+		return true;
+	}
+
+		
+	
+	
+	
+</script>
+</head>
+<body>	
+	<div align="center">
+		<h1>회원 가입</h1>
+		<form action="join_result_2.html" method="post" name="joinForm" onsubmit="checkSumbit()">
+			<table border="1">
+				<tr>
+					<th>이름</th>
+					<td><input type="text" name="name" ></td>
+				</tr>
+				<tr>
+					<th>아이디</th>
+					<td>
+						<input type="text" name="id" id = id1 placeholder="4 ~ 8글자 사이 입력" onkeyup ="checkform()">
+						<input type="button" value="ID중복확인" onclick="newWindow()">
+						<span id="checkIdResult1"></span>
+					</td>
+				</tr>
+				<tr>
+					<th>비밀번호</th>
+					<td>
+						<input type="password" name="passwd" id=passwd1 placeholder="8 ~ 16글자 사이 입력" onkeyup="checkform1()" >
+						<span id="checkPasswdResult1"></span>
+					</td>
+				</tr>
+				<tr>
+					<th>비밀번호확인</th>
+					<td>
+						<input type="password" name="passwd2" id=passwd2 onkeyup="passwdTest()" >
+						<span id="checkPasswd2Result"></span>
+					</td>
+				</tr>
+				<tr>
+					<th>주민번호</th>
+					<td>
+						<input type="text" name="jumin1" size="6" onkeyup="checkJumin()" > -
+						<input type="text" name="jumin2" size="7" onkeyup="checkJumin1()" >
+					</td>
+				</tr>
+				<tr>
+					<th>E-Mail</th>
+					<td>
+						<input type="text" name="email1" size="8" > @
+						<input type="text" name="email2" size="8" >
+						<select name="emailDomain" onchange="emailSelected(this.value)">
+   							 <option value="">직접입력</option>
+    						 <option value="naver.com">naver.com</option>
+    						 <option value="gmail.com">gmail.com</option>
+    			             <option value="nate.com">nate.com</option>
+</select>
+
+					
+					</td>
+				</tr>
+				<tr>
+					<th>직업</th>
+					<td>
+						<select name="job">
+							<option value="">항목을 선택하세요</option>
+							<option value="개발자">개발자</option>
+							<option value="DB엔지니어">DB엔지니어</option>
+							<option value="서버엔지니어">서버엔지니어</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<th>성별</th>
+					<td>
+						<input type="radio" name="gender" value="남" >남
+						<input type="radio" name="gender" value="여" >여
+					</td>
+				</tr>
+				<tr>
+					<th>취미</th>
+					<td>
+						<input type="checkbox" name="hobby" value="여행" >여행
+						<input type="checkbox" name="hobby" value="독서" >독서
+						<input type="checkbox" name="hobby" value="게임">게임
+						<input type="checkbox" name="allHobby" id="checkAllHobby" value="전체선택" onclick = "checkbox_allCheck()">전체선택
+					</td>
+					
+				</tr>
+					
+				<tr>
+					<th>가입동기</th>
+					<td>
+						<textarea rows="5" cols="40" name="motivation" ></textarea>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2" align="center">
+						<input type="submit" value="가입" onclick="return checkSubmit()>
+						<input type="reset" value="초기화">
+						<input type="button" value="돌아가기">
+					</td>
+				</tr>
+			</table>
+		</form>
+	</div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
