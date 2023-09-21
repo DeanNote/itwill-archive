@@ -7,12 +7,18 @@
 <script src="../js/jquery-3.7.1.js"></script>
 <script type="text/javascript">
 	//jQuery의 document객체의 ready 이벤트 핸들링
-	$(document).ready(function name() {
-	});
+// 	$(document).ready(function name() {
+// 		alert("2번방법")
+// 	});
 
-	$(function name() {
-		alert("3번방법")
+	$(function () {
+// 		alert("3번방법")
+		//문서 전체 요소(*)에 대한 CSS 속성 벼경
+		// => 모든 요소의 글자색("color 속성")에 대한 속성값을 RED 로 변경
+		$("*").css("color","red")
 		
+		//id선택자(#) 중 "idSelector"라는 이름을 갖는 요소의 글자색을 "BLUE" 로 변경
+		$("#idSelector").css("color","blue")
 	});
 	
 	
