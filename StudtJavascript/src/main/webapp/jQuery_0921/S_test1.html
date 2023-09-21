@@ -11,9 +11,27 @@
 
 
 	//자바스크립트에서 window객체의 load이벤트 헨들링
-	window.onload = function(){
-		
-	}
+// 	window.onload = function(){
+// 		console.log("window 객체의 onload이벤트!")
+// 	}
+	
+	//jQuery에서 window객체의 load이벤트 헨들링
+// 	jQuery(window).onload(function(){
+// 		console.log("window 객체의 onload이벤트! - jquery")
+// 	});
+	
+	//--------------------------------------------------------------
+	// jQuery로 document 객체의 ready 이벤트 핸들링
+	//1) 기본문법 -1
+// 	jQuery(document).ready(function name() {
+// 		console.log("document 객체의 ready이벤트 -1")
+// 	});
+	
+	//2) 기본문법 -2
+	$(document).ready(function name() {
+		console.log("document 객체의 ready이벤트 -2")
+	});
+	
 </script>
 </head>
 <body>
