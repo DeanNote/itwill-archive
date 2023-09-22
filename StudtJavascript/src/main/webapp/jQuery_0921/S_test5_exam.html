@@ -17,12 +17,15 @@ $(function() {
 		// 작성된 내용,작성자 항목을 테이블 내의 새로운 행에 출력
 		//=>table 태그 내의 마지막 요소로 새로운 행 추가
 		//=> append()메서드 활용
-		$("table").append(function() {
-			<tr> 
-				<td>+a+</td>
-				<td>+b+</td>
-			</tr>
-		});
+		$("table").append(
+			"<tr>" 
+				+ "<td>" + a + "</td>"
+				+ "<td>" + b + "</td>"
+				+ "<td>today</td>"
+		  + "</tr>"
+		);
+		a ="";
+		b ="";
 		
 	}) 
 	
