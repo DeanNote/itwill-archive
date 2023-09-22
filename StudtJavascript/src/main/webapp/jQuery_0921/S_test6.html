@@ -25,18 +25,24 @@
 		// => 해당 태그에 checked 속성 기술 x -> 항상 "undefined"
 		let prop2 = $("input[type=checkbox]").eq(2).prop("checked");
 		// => 체크 상태에 따라 true or false
+		
+		//4. 체크박스의 checked속성의 체크 여부 판별하기 위한 is()메서드 활용
+		//=> 가상선택자 ":checked"활용하면 체크상태 판별 가능
+		let is1 = $("input[type=checkbox]").eq(1).is(":checked");
+		let is2 = $("input[type=checkbox]").eq(2).is(":checked");
 			
 		
 		//결과확인을 위해 id:result 위치에 내용물 덮어씌우기
 		
-			$("#result").html(
-					"attr1 = " + attr1 + ", prop1 = " + prop1 + "<br>"
-					+ "attr2 = " + attr2 + ", prop2 = " + prop2
-				);
+		$("#result").html(
+			"attr1 = " + attr1 + ", prop1 = " + prop1 + "<br>"
+			+ "attr2 = " + attr2 + ", prop2 = " + prop2+ "<br>"
+			+ "is1 = " + is1 + ", is2 = " + is2
+		);
 			
-		});
-		
 	});
+	
+});
 </script>
 </head>
 <body>
@@ -72,6 +78,10 @@
         	</td>
         </tr>
     </table>
+    <hr>
+    <input type="text" id="id" name="id">
+  	<input type="button" value="입력완료" id="btnOK"><br>
+  	<input type="button" value="입력초기화" id="btnReset"><br>
 </body>
 </html>
 
