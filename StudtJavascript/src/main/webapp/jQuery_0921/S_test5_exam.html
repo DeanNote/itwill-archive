@@ -13,6 +13,10 @@ $(function() {
 		let a = $("#content").val();
 		let b = $("#writer").val();
 		alert(a+b);
+		// 작성된 내용,작성자 항목을 테이블 내의 새로운 행에 출력
+		//=>table 태그 내의 마지막 요소로 새로운 행 추가
+		//=> append
+		
 	}) 
 	
 });
@@ -28,7 +32,6 @@ $(function() {
 	<hr>
 	<table border="1">
 		<tr>
-			<th width="50">번호</th>
 			<th width="200">내용</th>
 			<th width="70">작성자</th>
 			<th width="100">작성일</th>
