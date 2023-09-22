@@ -15,15 +15,18 @@ $(function() {
 		let b = $("#writer").val();
 		alert(a+b);
 		// 작성된 내용,작성자 항목을 테이블 내의 새로운 행에 출력
-		//=>table 태그 내의 마지막 요소로 새로운 행 추가
+		//=> table 태그 내의 마지막 요소로 새로운 행 추가
 		//=> append()메서드 활용
-		$("table").append(
+		
+		//제목 행의 아래쪽에 항상 끼워넣기(제목 행을 제외한 나머지 중 가장 위에 추가)
+		$("table tr:first").after(
 			"<tr>" 
 				+ "<td>" + a + "</td>"
-				+ "<td>" + b + "</td>"
-				+ "<td>today</td>"
+				+ "<td class='td_center'>" + b + "</td>"
+				+ "<td class='td_center'>today</td>"
 		  + "</tr>"
 		);
+		
 	
 		//입력값 초기화
 		$("#content").val("");
@@ -33,6 +36,11 @@ $(function() {
 		
 });
 </script>
+<style type="text/css">
+	.td_center{
+		text-align: center;
+	}
+</style>
 </head>
 <body>
 	<h1>jQuery - test5_exam.html</h1>
