@@ -5,9 +5,9 @@
 <title>Insert title here</title>
 <script src="../js/jquery-3.7.1.js"></script>
 <script type="text/javascript">
-//특정 요소에 대한 조작 이벤트 -2
+//9/22(금) jQurey 특정 요소에 대한 조작 이벤트 -2
 	$(function() {
-		
+		$("#wrap_append").append("<div>append()로 추가한 div태그</div>");
 	});
 </script>
 </head>
@@ -19,6 +19,7 @@
 				<div>div 태그-1</div>
 				<div>div 태그-2</div>
 			</div>
+			<!-- append()메서드에 의해 요소가 추가될 위치 -->
 		</div>
 		<hr>
 		<div  id="wrap_prepend">
@@ -26,6 +27,7 @@
 				<div>div 태그-1</div>
 				<div>div 태그-2</div>
 			</div>
+			<!-- prepend()메서드에 의해 요소가 추가될 위치 -->
 		</div>
 		<hr>
 		<div  id="wrap_after">
@@ -34,7 +36,9 @@
 				<div>div 태그-2</div>
 			</div>
 		</div>
+		<!-- after()메서드에 의해 요소가 추가될 위치 -->
 		<hr>
+		<!-- before()메서드에 의해 요소가 추가될 위치 -->
 		<div  id="wrap_before">
 			<div>
 				<div>div 태그-1</div>
