@@ -7,7 +7,20 @@
 <script type="text/javascript">
 //9/22(금) jQurey 특정 요소에 대한 조작 이벤트 -2
 	$(function() {
-		$("#wrap_append").append("<div>append()로 추가한 div태그</div>");
+// 		$("#wrap_append").append("<div>append()로 추가한 div태그</div>");
+		$("<div>appendTo()로 추가한 div태그</div>").appendTo("#wrap_append");
+		
+// 		$("#wrap_prepend").prepend("<div>prepend()로 추가한 div태그</div>");
+		$("<div>prependTo()로 추가한 div태그</div>").prependTo("#wrap_prepend");
+
+// 		$("#wrap_after").after("<div>after()로 추가한 div태그</div>");
+		$("<div>insertAfter()로 추가한 div태그</div>").insertAfter("#wrap_after");
+		
+// 		$("#wrap_before").before("<div>before()로 추가한 div태그</div>");
+		$("<div>insertbefore()로 추가한 div태그</div>").insertBefore("#wrap_before");
+		
+		$("#ta").val($("#wrap").html());
+		//결과 확인을 위해 textarea 영역("ta")에 div태그("wrap") 내용 전체 출력(태그 포함)
 	});
 </script>
 </head>
