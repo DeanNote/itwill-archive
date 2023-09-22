@@ -79,6 +79,8 @@
 			if(select1){
 				alert("항목선택필수!");
 				$("#selectBox").focus();
+			}else{
+				$("#btnOK2").after($("#selectBox").val()+"@@@");
 			}
 		});
 		
