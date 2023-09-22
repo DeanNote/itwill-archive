@@ -14,35 +14,76 @@
 		//대상에 대해 attr()또는 prop()메서드를 활용하여 해당 요소의 속성에 접근
 
 		$("#btn").click(function() {
-		//1. 체크박스 중 두번째 체크박스의 html속성으로서의"checked"속성값가져오기
-		let attr1 = $("input[type=checkbox]").eq(1).attr("checked");
-		
-		//2  체크박스 중 두번째 체크박스의 javascript속성으로서의"checked"속성값가져오기
-		let prop1 = $("input[type=checkbox]").eq(1).prop("checked");
-		
-		//3. 세번째 체크박스  html. javascript 속성가져오기
-		let attr2 = $("input[type=checkbox]").eq(2).attr("checked");
-		// => 해당 태그에 checked 속성 기술 x -> 항상 "undefined"
-		let prop2 = $("input[type=checkbox]").eq(2).prop("checked");
-		// => 체크 상태에 따라 true or false
-		
-		//4. 체크박스의 checked속성의 체크 여부 판별하기 위한 is()메서드 활용
-		//=> 가상선택자 ":checked"활용하면 체크상태 판별 가능
-		let is1 = $("input[type=checkbox]").eq(1).is(":checked");
-		let is2 = $("input[type=checkbox]").eq(2).is(":checked");
+			//1. 체크박스 중 두번째 체크박스의 html속성으로서의"checked"속성값가져오기
+			let attr1 = $("input[type=checkbox]").eq(1).attr("checked");
 			
-		
-		//결과확인을 위해 id:result 위치에 내용물 덮어씌우기
-		
-		$("#result").html(
-			"attr1 = " + attr1 + ", prop1 = " + prop1 + "<br>"
-			+ "attr2 = " + attr2 + ", prop2 = " + prop2+ "<br>"
-			+ "is1 = " + is1 + ", is2 = " + is2
-		);
+			//2  체크박스 중 두번째 체크박스의 javascript속성으로서의"checked"속성값가져오기
+			let prop1 = $("input[type=checkbox]").eq(1).prop("checked");
 			
-	});
+			//3. 세번째 체크박스  html. javascript 속성가져오기
+			let attr2 = $("input[type=checkbox]").eq(2).attr("checked");
+			// => 해당 태그에 checked 속성 기술 x -> 항상 "undefined"
+			let prop2 = $("input[type=checkbox]").eq(2).prop("checked");
+			// => 체크 상태에 따라 true or false
+			
+			//4. 체크박스의 checked속성의 체크 여부 판별하기 위한 is()메서드 활용
+			//=> 가상선택자 ":checked"활용하면 체크상태 판별 가능
+			let is1 = $("input[type=checkbox]").eq(1).is(":checked");
+			let is2 = $("input[type=checkbox]").eq(2).is(":checked");
+				
+			
+			//결과확인을 위해 id:result 위치에 내용물 덮어씌우기
+		
+			$("#result").html(
+				"attr1 = " + attr1 + ", prop1 = " + prop1 + "<br>"
+				+ "attr2 = " + attr2 + ", prop2 = " + prop2+ "<br>"
+				+ "is1 = " + is1 + ", is2 = " + is2
+			);
+				
+		});
+		
+		$("#btnOK").click(function() {
+			// 텍스트박스(id선택자"id")요소에 읽기전용 속성 부여
+			// =>자바스크립트로 속성제어를 위해 prop() 메서드 활용
+			// 주의! readonly 속성을 자바스크립트로 제어 시 read(대문자O)Only로 명시
+// 			console.log($("#id").prop("readOnly"));
+			$("#id").prop("readOnly", true);
+			//----------------------------------
+			//attr()메서드로 
+// 			$("#id").attr("readonly", "readonly");
+			console.log("prop : " + $("#id").prop("readOnly"));
+			console.log("attr : " + $("#id").attr("readonly"));
+			
+			//결론! 두 메서드의 변경 결과가 비슷해 보이지만
+			// 대상 요소의 상태를 직접 변경할 때는 prop() 메서드를 사용하자!
+			// 만약, 대상 요소 태그에 특정 속성을 추가할때 attr()메서드를 사용하자
+			
+			//attr = html 태그상의 속성값은 문자열로 지정 String or Number or Null
+			//상태를 바꿔야 하면 prop 
+			//id속성을 추가해서 전송해야 할 경우 attr
+		});
+		
+		$("#btnReset").click(function() {
+			$("#id").prop("readOnly", false);
+			
+		});
+		
+		$("#btnOK2").click(function() {
+			//id : selectBox 
+			console.log($("#selectBox > option:first").prop("selected"));
+// 			console.log($("#selectBox > option").eq(0).prop("selected")); 동일의미
+			
+			//만약, "선택하세요" 항목이 출력되었을 경우
+			//"항목선택필수!" 경고창 출력 후 셀렉트 박스에 포커스 요청
+			let select1 = $("#selectBox > option:first").prop("selected");
+			if(select1){
+				alert("항목선택필수!");
+				$("#selectBox").focus();
+			}
+		});
+		
 	
-});
+	});//document.ready 이벤트 끝
 </script>
 </head>
 <body>
@@ -79,9 +120,17 @@
         </tr>
     </table>
     <hr>
-    <input type="text" id="id" name="id">
-  	<input type="button" value="입력완료" id="btnOK"><br>
-  	<input type="button" value="입력초기화" id="btnReset"><br>
+    <input type="text" id="id" name="id"><br>
+  	<input type="button" value="readonly 속성 부여" id="btnOK">
+  	<input type="button" value="readonly 속성 해제" id="btnReset">
+  	<hr>
+  	<select id="selectBox">
+  		<option value="">선택하세요</option>
+  		<option value="자바">자바</option>
+  		<option value="JSP">JSP</option>
+  		<option value="스프링">스프링</option>
+  	</select>
+  	<input type="button" value="선택완료" id="btnOK2">
 </body>
 </html>
 
