@@ -5,12 +5,28 @@
 <title>Insert title here</title>
 <script src="../js/jquery-3.7.1.js"></script>
 <script type="text/javascript">
+//9/25(월) jQuery 이벤트
 	$(function() {
 		
 	});
 </script>
 </head>
 <body>
-
+	<h2>jQuery - test8.html</h2>
+	<div id = "wrap">
+		<form action="test8_result.html">
+			<div id="inputbox">
+				아이디 : <input type="text" name="id" id="id"><br>
+				패스워드 : <input type="password" name="passwd" id="passwd"><br>
+				<select id="selectBox" name="subject">
+					<option value="JAVA">JAVA</option>
+					<option value="JSP">JSP</option>
+					<option value="Spring Framework" selected="selected">Spring Framework</option>
+				</select>
+			</div>
+			<br>
+			<input type="submit" value ="전송">
+		</form>
+	</div>
 </body>
 </html>

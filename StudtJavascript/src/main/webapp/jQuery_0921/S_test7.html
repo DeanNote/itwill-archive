@@ -74,10 +74,10 @@
 		//testarea에 대한 focus(), blur() 이벤트 처리
 		// 포커스 위치할때 textare에 "textarea focus in"메세지 출력
 		// 포커스 아웃할때 textare에 "textarea focus out"메세지 출력
-		$("#resultArea").on("focus", function() {
+		$("#resultArea").on("mouseover", function() {
 			$("#resultArea").val("textarea focus in");
 		});
-		$("#resultArea").on("blur", function() {
+		$("#resultArea").on("mouseout", function() {
 			$("#resultArea").val("textarea focus out");
 		});
 		
@@ -90,7 +90,7 @@
 	<div id = "wrap">
 		<div id="inputbox">
 			아이디 : <input type="text" name="id" id="id"><br>
-			패스워드 : <input type="password" name="passwd" id="passwd"><br>
+			패스워드 : <input type="password" name="passwd" id="passwd" onm><br>
 			<select id="selectBox" name="subject">
 				<option value="JAVA">JAVA</option>
 				<option value="JSP">JSP</option>
