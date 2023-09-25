@@ -64,10 +64,41 @@
 				console.log("일반선택");
 				
 			}
+		});//셀렉트 이벤트끝
+		
+		/*
+		텍스트박스에 대해 입력값 처리 이벤트
+		keup : 키보드를 눌렀대 "뗄 때" 이벤트 수행(값변경과는 무관)
+		blur : 입력창에서 포커스가 해제 될 때 이벤트 수행(값변경과는 무관)
+		change : 입력창에서 포커스가 해제 될 때 이벤트 수행 이전값 기준으로 값 변경되었을 때 이벤트 수행
+		         => 이전값 기준 값이 변경되지 않았을 때 이벤트 동작X
+		*/
+		
+		// id "keyword" 입력창에 keyup 이벤트 핸들링
+// 		$("#keyword").on("keyup", function() {
+// 			console.log("키보드 눌렀다 땜!");
+// 			$("#resultArea").html($("#keyword").val());
+// 		});
+		
+		// id "keyword" 입력창에 blur 이벤트 핸들링
+// 		$("#keyword").on("blur", function() {
+// 			console.log("focusout!");
+// 			$("#resultArea").html($("#keyword").val());
+// 		});
+		
+		// id "keyword" 입력창에 change 이벤트 핸들링
+		$("#keyword").on("change", function() {
+			console.log("focusout 및 내용 변경됨");
+			$("#resultArea").html($("#keyword").val());
 		});
 		
+		$("#img").on("mouseover", function() {
+			$(this).attr("src","../images/2.jpg");
 		
-		
+		});
+		$("#img").on("mouseout", function() {
+			$(this).attr("src","../images/1.jpg");
+		});
 		
 		
 		
@@ -123,6 +154,7 @@
         </tr>
 	</table>
    	<div id="resultArea"></div>
+   	<img alt="" src="../images/1.jpg" width="300",height="200" id="img">
 </body>
 </html>
 
