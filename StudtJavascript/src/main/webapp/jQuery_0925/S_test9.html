@@ -21,8 +21,51 @@
 		// 전체선택 체크박스 (id="allCheck") 체크 상태 변화 감지 이벤트 핸들링
 		// => change
 		$("#allCheck").on("change", function() {
-			alert("바ㄲㄲㄲㄲㄲ");
+			//전체 선택 체크박스의 체크상태 출력(자바스크립트 속성 접근 prop 활용)
+// 			alert($("#allCheck").prop("checked"));
+			//전체 선택 체크시 모든 체크박스를 체크하고 
+			//해제시 모든 체크박스 체크 해제
+			
+// 			if($("#allCheck").prop("checked")){ 동일의미
+			if($("#allCheck").is(":checked")){ //가상선택자와 is 상태가 합쳐서 check되었나? 확인 이런뜻
+// 				$("input[type=checkbox]").prop("cheked",true); //동일의미 1
+// 				$(":checkbox").prop("cheked",true); // 동일의미 2
+				$(":checkbox[name=check]").prop("checked",true);
+			}else {
+// 				$("input[type=checkbox]").prop("cheked",false);
+// 				$(":checkbox").prop("checked",false);
+				$(":checkbox[name=check]").prop("checked",false);
+			} 
+		});//전체선택 끝
+		
+		//셀렉트박스 항목 변경(선택) 이벤트 핸들링 => change 이벤트
+		
+		$("#selectBox").on("change", function() {
+// 			alert($("#selectBox").val());
+
+			//셀렉트박스의 특정항목(전체,vip,일반) 선택여부 판별
+// 			if($("#selectBox").val()=="전체"){
+// 				alert("전체선택");
+// 			}else if ($("#selectBox").val()=="vip") {
+// 				alert("vip선택");
+// 			}else if($("#selectBox").val()=="일반"){
+// 				alert("일반선택");
+// 			}
+// 			if($(this).val()=="전체"){
+// 				alert("전체선택22");
+// 			}
+
+			//셀렉트박스의 value 속성값 비교
+			if($("#selectBox>option").eq(0).is(":checked")){
+				console.log("전체선택")
+			}else if($("#selectBox>option").eq(1).is(":checked")){
+				console.log("vip선택")
+			}else if($("#selectBox>option").eq(2).is(":checked")){
+				console.log("일반선택")
+				
+			}
 		});
+		
 		
 		
 		
