@@ -27,15 +27,27 @@
 			//해제시 모든 체크박스 체크 해제
 			
 // 			if($("#allCheck").prop("checked")){ 동일의미
+// 			if($("#allCheck").is(":checked")){ //가상선택자와 is 상태가 합쳐서 check되었나? 확인 이런뜻
+// // 				$("input[type=checkbox]").prop("cheked",true); //동일의미 1
+// // 				$(":checkbox").prop("cheked",true); // 동일의미 2
+// 				$(":checkbox[name=check]").prop("checked",true);
+// 			}else {
+// // 				$("input[type=checkbox]").prop("cheked",false);
+// // 				$(":checkbox").prop("checked",false);
+// 				$(":checkbox[name=check]").prop("checked",false);
+// 			} 
+			
+			//each 메서드를 활용하여 모든 체크박스 상태 변경
 			if($("#allCheck").is(":checked")){ //가상선택자와 is 상태가 합쳐서 check되었나? 확인 이런뜻
-// 				$("input[type=checkbox]").prop("cheked",true); //동일의미 1
-// 				$(":checkbox").prop("cheked",true); // 동일의미 2
-				$(":checkbox[name=check]").prop("checked",true);
+				$(":checkbox").each(function(index, item) {
+					//파라미터 item 에 체크박스 1개 객체가 전달됨
+					$(item).prop("checked",true);
+				});
 			}else {
-// 				$("input[type=checkbox]").prop("cheked",false);
-// 				$(":checkbox").prop("checked",false);
-				$(":checkbox[name=check]").prop("checked",false);
-			} 
+				$(":checkbox").each(function(index, item) {
+					$(item).prop("checked",false);
+				});
+				} 
 		});//전체선택 끝
 		
 		//셀렉트박스 항목 변경(선택) 이벤트 핸들링 => change 이벤트
