@@ -5,12 +5,101 @@
 <title>Insert title here</title>
 <script src="../js/jquery-3.7.1.js"></script>
 <script type="text/javascript">
+	/*
+	9/25(월) jQuery each() 메서드
+	each() 메서드
+	- 대상에 대한 반복 수행하는 메서드
+	- 지정 가능한 대상 : 선택자, 객체(배열 등)
+	- 기본 문법 : 1) $("선택자").each(function(index, item) {});
+				  2) $.each(객체, function(index, item) {});
+	  => index : 대상의 인덱스,  item : 대상 요소(객체)
+	*/
 	$(function() {
+		//h3 태그 3개에 대한 반복을 수행하면서
+		//resultArea영역에 index와 item값 출력
+		$("h3").each(function(index, item) { //h3태그 갯수만큼 반복
+// 			$("#resultArea").append(index + " : " + item + "<br>");
 		
-	});
+			//대상요소(item) 태그 내의 텍스트 값 가져와서 출력
+// 			$("#resultArea").append(index + " : " + item.text() + "<br>"); 오류발생!
+			$("#resultArea").append(index + " : " + $(item).text() + "<br>");
+// 			$("#resultArea").append(index + " : " + $(this).text() + "<br>");// this도 가능!
+		//------------------------------------------------------------------------------------
+		// table 태그 내에 각 항목 출력
+		// 1) 첫번째 테이블에 현재 객체의 인덱스 출력 
+		//=> table 태그 내의 기존 제목행보다 아래쪽에 출력하므로 append() 사용
+		//=> tr태그 td태그 추가
+		
+			$("table").eq(0).append(
+// 				"<tr>" +
+// 				 "<td>" + index + "</td>" +
+// 				 "</tr>"
+				"<tr><td>" + index + "</td></tr>"
+			);
+		
+		//2) 두번째 테이블에 현재객체의 인덱스와 요소 내의 텍스트값 츌력
+		//	 ex)0, Item - 1
+			$("table").eq(1).append(
+					"<tr><td>" + index + "</td>" +
+					"<td>" + $(this).text() + "</td></tr>"
+			);
+		
+		
+		});//each 끝
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	});//ready 끝
 </script>
 </head>
 <body>
-
+	<h1>jQuery - test10.html</h1>
+	<h3>Item - 1</h3>
+	<h3>Item - 2</h3>
+	<h3>Item - 3</h3>
+	<div id="resultArea"></div>
+	<table border="1">
+		<tr><td>번호</td></tr>
+	</table>
+	<table border="1">
+		<tr>
+			<td>번호</td>
+			<td>항목</td>
+		</tr>
+	</table>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
