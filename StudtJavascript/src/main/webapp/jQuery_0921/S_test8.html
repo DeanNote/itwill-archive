@@ -7,8 +7,36 @@
 <script type="text/javascript">
 //9/25(월) jQuery 이벤트
 	$(function() {
+		//form태그에서  submit 동작이 발생하면 이벤트 핸들링
+		//=>자바스크립트에서의 기본적인 submit 이벤트 처리 방법과 동일
+		//=>$(선택자).submit()또는 $(선택자).on("submit")
 		
-	});
+// 		$("form").submit(function() {}); 동일의미
+		$("form").on("submit", function() {
+			//id. passwd 입력창 및 과목선택창에 대한 미입력 처리
+			//각 항목 미입력 시(셀렉트박스는 "선택하세요" 일 경우 미입력 처리)
+			//=> XXX항목 입력 필수 출력 후 submit 동작 취소(return false;)
+			//=> 해당 요소 포커스 
+			//-> 모든 항목 입력시 submit 동작 수행(return true;)
+			if($("#id").val() == ''){
+				alert("id 입력 필수");
+				$("#id").focus();
+				return false;
+			}else if($("#passwd").val()==''){
+				alert("password 입력 필수");
+				$("#passwd").focus();
+				return false;
+			}else if($("#selectBox").val()==""){
+				alert("과목 입력 필수");
+				$("#selectBox").focus();
+				return false;
+			}
+			return true;
+			
+		});
+		
+		
+	});//ready 끝
 </script>
 </head>
 <body>
@@ -19,9 +47,10 @@
 				아이디 : <input type="text" name="id" id="id"><br>
 				패스워드 : <input type="password" name="passwd" id="passwd"><br>
 				<select id="selectBox" name="subject">
+					<option value="" selected="selected">과목 선택</option>
 					<option value="JAVA">JAVA</option>
 					<option value="JSP">JSP</option>
-					<option value="Spring Framework" selected="selected">Spring Framework</option>
+					<option value="Spring Framework">Spring Framework</option>
 				</select>
 			</div>
 			<br>
