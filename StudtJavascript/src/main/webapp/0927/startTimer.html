@@ -29,14 +29,20 @@
 			setTimeout(stopTimer, 5000); // 5초 뒤 종료 (=자동차 에프터 블로우)
 		});
 		
+		let index = 0;
 		$("#btnStart2").on("click", function() {
 			let imgArr = ["1.jpg", "2.jpg", "3.jpg"];
-			startShow();
-		   	myShow = setInterval(startShow, 2000); 
+		   	myShow = setInterval(function() {
+		   		$("#img").attr("src", "../images/" + imgArr[index]);
+				index++;
+				if(index == imgArr.length){
+					index=0;
+				}
+			}, 2000); 
 		});
 		
 		$("#btnStop2").on("click", function() {
-			stopShow();
+			clearInterval(myShow);
 		});
 		
 		
@@ -53,15 +59,6 @@
 		clearInterval(myTimer);
 	};
 //==================================================================================================	
-	
-	function startShow() {
-		$("#img").attr("src","../images/imgArr[0]")
-	};
-
-	function stopShow() {
-		clearInterval(myShow);
-
-	};
 </script>
 </head>
 <body>
