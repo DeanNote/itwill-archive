@@ -8,6 +8,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+	<h2>test2.html</h2>
+	<!-- HTML주석이다. -->
+	<%-- JSP주석이다. --%>
 </body>
 </html>
