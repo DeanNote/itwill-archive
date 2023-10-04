@@ -18,5 +18,16 @@
 	Date now = new Date();
 	%>
 	<h3>현재 시각 : <%=now %></h3>
+	
+	<hr>
+	
+<!-- 	<h2>test2.html</h2> -->
+	<%
+	Date now2 = new Date();
+	%>
+	<!--<h3>현재 시각 : <%=now2 %></h3>-->
+
+<%-- 	<h3>현재 시각 : <%=now2 %></h3> --%>
+	
 </body>
 </html>
