@@ -1,3 +1,4 @@
+<%@page import="java.util.Date"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -13,6 +14,9 @@
 	<%-- JSP주석이다. --%>
 	<%
 	// JSP 문서 내에서 자바코드가 기술되는 영역
+	/* 자바 주석 사용 가능!*/
+	Date now = new Date();
 	%>
+	<h3>현재 시각 : <%=now %></h3>
 </body>
 </html>
