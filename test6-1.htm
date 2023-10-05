@@ -1,0 +1,142 @@
+﻿<!DOCTYPE html>
+<html>
+ <head>
+  <title>form-2</title>
+ </head>
+ <body>
+  <b>
+  <nav>
+  <a href = "test6.htm">form-1 </a>
+  <a href = "test6-1.htm">form-2 </a>
+  </nav>
+
+ <hr>
+ <h1> html5 추가 폼 요소들 </h1>
+ <hr> 
+
+ <form action="test.jsp" method="post">
+ <hr>
+ <h2>1. input type="time" - 시간(오전/오후 시 분)을 지정하는 폼요소</h2>
+ <label>팀회의 시간<input type="time"></label>
+
+ <hr>
+ <h2>2. input type="date" - 시간(연월일)을 지정하는 폼요소</h2>
+ <label>방문 예정<input type="date"></label><br>
+ <label>실제 방문<input type="date" min="2023-10-05" max="2023-12-31"></label>(min23/10/05~max23/12/31)
+
+ <hr>
+ <h2>1+2 input type="datetime-local" - 시간(연월일 오전/오후 시분)을 지정하는 폼 요소</h2>
+ <label>팀프로젝트<input type="datetime-local"></label>
+
+ <hr>
+ <h2>3. input type="week" - 시간(주)을 지정하는 폼요소</h2> 
+ <label>팀회의 예정 주<input type="week"></label>
+
+ <hr>
+ <h2>4. input type="month" - 시간(월)을 지정하는 폼요소</h2>
+ <label>프로젝트마감<input type="month"></label>
+
+ <hr>
+ <h2>5. input type="tel" - 연락처(전화번호)를 지정하는 폼 요소</h2>
+<p> PC브라우저에선 그냥 textbox<br>모바일 브라우저에서 지원하는 경우 가상키패드가 숫자형식으로 바뀌고 전화걸기 가능.</p>
+ <label>phone<input type="tel"></label>
+
+ <hr>
+ <h2>6. input type="email" - 연락처(이메일)를 지정하는 폼 요소</h2>
+ <p>PC브라우저가 알맞은 형식(@유무,@이후 완성)인지 확인해줌.<br>
+      모바일브라우저에서 지원하는 경우 가상키패드가 @, .com 등이 나타남</p>
+ <label>메일<input type="email"></label>
+
+ <hr>
+ <h2>7. input type="URL" 연락처(웹 주소)를 지정하는 폼 요소</h2>
+ <p>PC브라우저가 알맞은 형식(유무)인지 확인해줌.<br>
+      모바일브라우저에서 지원하는 경우 가상키패드가 , .com 등이 나타남</p>
+ <label>블로그<input type="URL"></label>
+
+ <hr>
+ <h2>8. input type="color" - 색을 지정하는 폼 요소</h2>
+ <label><input type="color"></label>
+ 
+<hr>
+ <h2>9. input type="number" - 숫자값을 지정하는 폼요소</h2>
+ <p>min="n"과 max="n"로 최소/최대값을, step="n"로 증감간격을 지정 가능</p>
+ <label>프로젝트인원은<input type="number"></label><br>
+ <label>프로젝트인원은<input type="number" min="0"></label>
+ (min="0")<br>
+ <label>프로젝트인원은<input type="number" max="20"></label>
+ (max="20")<br>
+ <label>프로젝트인원은<input type="number" step="10"></label>
+ (step="10)<br>
+
+ <hr>
+ <h2>10. input type="range" - 범위내의 값을 지정하는 폼요소</h2>
+ <label><input type="range"></label>
+
+
+
+
+
+
+
+
+
+
+
+
+ <hr><br><br><br>
+ <hr>
+ <h1>html 추가된 속성들</h1>
+ <hr>
+
+ <h2>1. autofocus(autofocus="autofocus") -해당요소가 자동 포커싱 됨</h2>
+ <label><input type="text" autofocus></label>
+
+ <h2>2. autocomplete="on/off" - 자동 완성기능을 켜거나 끔</h2>
+ <label for="id">아이디</label>
+ <input type="text" id="id" autocomplete="off">
+
+ <h2>3. required(required="required") - 필수입력</h2>
+ <label>name<input type="text" required></label>
+
+ <h2>4. placeholder - 입력예시를 보여주거나 설명 등을 추가</h2>
+ <label>ID<input type="text" placeholder="영문숫자조합10자이내"></label><br>
+ <label>tel<input type="tel" placeholder="010-1111-2222"></label>
+
+ <h2>5. readonly(readonly="readonly") - 읽기전용모드 </h2>
+ <label>프로젝트<input type="text" value="A팀" readonly></label>
+
+ <h2>6. disabled(disabled="disabled") - 사용불가모드 </h2>
+ <label>A팀 인원<input type="text" value="10" disabled></label>
+ <hr>
+ <br><br><br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ <hr>
+ <h1>연관된 폼요소들을 그룹화 하기</h1>
+ <fieldset>
+  <legend>fieldset &amp; legend</legend>
+  fieldset태그로 폼요소들을 묶어주고 legend속성으로 해당 그룹의 제목(주체)를 나타냄
+ </fieldset>
+ <br>
+ <input type="submit"><input type="reset">
+ 
+</form>
+</body>
+</html>
+
+
