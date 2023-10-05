@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <title>form-2</title>
+
+ </head>
+ <body>
+  <b>
+  <nav>
+  <a href = "test6.htm">form-1 </a>
+  <a href = "test6-1.htm">form-2 </a>
+  <a href = "formtest_이민석.htm">form-3 </a>
+  </nav>
+<h1>ITWILL 회원가입</h1>
+<input type="text" value="자바(JAVA)개발자 양성" readonly>과정
+<br><br>
+<fieldset>
+<legend>[필수 입력]</legend>
+<form action="test3.jsp" method="post">
+&#9786; 이름 <input type="text"><br>
+&#9786; 아이디 <input type="text" id="id" placeholder="6~10자 영문과 숫자 조합"><br>
+&#9786; 비밀번호 <input type="password" placeholder="8~12자 영문, 숫자, 특수문자"><br><br>
+
+&#9786; 성별<br>
+<input type="radio" name="gender">남<br>
+<input type="radio" name="gender">여<br>
+<input type="radio" name="gender">기타<br><br>
+
+&#9786; 생년월일 <input type ="date"><br>
+&#9786; 전화번호 <input type ="tel" placeholder="(예시)010-1234-5687"><br>
+&#9786; email <input type ="email"><br>
+<hr>
+
+&#9786; 아이티윌부산이 제공하는 정보를 받으시겠습니까?
+<br><br>
+<input type="radio" name="info">받습니다.<br>
+<input type="radio" name="info">받지 않겠습니다.<br>
+<br>
+
+&#9786; 정보나 이벤트 소식을 어떻게 받으시겠습니까?<br>
+<input type="checkbox">이메일
+<input type="checkbox">문자
+<input type="checkbox">카카오톡
+<input type="checkbox">우편
+</fieldset>
+<br><br><br>
+
+<fieldset>
+<legend>[선택 입력]</legend>
+
+&#9786; 자기소개를 해주세요.<br>
+<textarea rows="15" cols="100">간단히 작성하세요</textarea>
+<br>
+&#9786; 블로그 주소 <input type="URL"><br>
+&#9786; 학과를 선택해주세요<br>
+<select>
+	<option>컴퓨터공학과</option>
+	<option selected>산업공학과</option>
+	<option>기계공학과</option>
+	<option>화학공학과</option>
+	<option>전기전자공학과</option>
+	<option>건축공학과</option>
+</select>
+
+	<p> &#9786; 취미, 특기를 선택해주세요<br>
+	<select size="4">
+	<optgroup label = "취미">
+	<option>등산</option>
+	<option>여행</option>
+	<option selected>요리</option>
+	<option>게임</option>
+	</optgroup>
+	
+	<optgroup label = "특기">
+	<option>운동</option>
+	<option>바둑</option>
+	<option>음악</option>
+	<option>무용</option>
+	</optgroup>
+	</select></p>
+
+</form>
+</fieldset>
+
+	<button type= "submit">
+	<img src = "img/png/key.png" width="10">	
+	가입
+	</button>
+	
+	<button type = "reset">
+	<img src = "img/png/key.png" width="10">	
+	취소
+	</button>
+
+</body>
+</html>
