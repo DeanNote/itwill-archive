@@ -83,7 +83,7 @@ int sec = c.get(Calendar.SECOND); // 로컬변수(초)
 		<h3>오후입니다!</h3>
 	<%} %>
 </body>
-</html>
+</html> 
 
 
 
