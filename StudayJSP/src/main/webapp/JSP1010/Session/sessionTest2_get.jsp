@@ -8,6 +8,7 @@
 </head>
 <body>
 	<h1>sessionTest2_get.jsp</h1>
+	<h3>세션 아이디 : <%=session.getId() %></h3>
 	<h3>세션값 1 : <%=session.getAttribute("sessionValue1") %></h3>
 	<h3>세션값 2 : <%=session.getAttribute("sessionValue2") %></h3>
 	<hr>
