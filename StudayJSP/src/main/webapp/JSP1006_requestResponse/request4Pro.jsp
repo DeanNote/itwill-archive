@@ -10,7 +10,10 @@
 	<h1>request4Pro.jsp - 로그인 처리</h1>
 	<%
 	// request4Form.jsp 페이지로부터 전달받은 아이디, 패스워드 가져와서 변수에 저장 및 출력
-	
+// 	request.setCharacterEncoding("UTF-8"); // 한글 파라미터가 없으므로 불필요
+	String id = request.getParameter("id");
+	String passwd = request.getParameter("passwd");
+// 	out.print("id : " + id + ", passwd : " + passwd);
 	
 	/*
 	[ 자바 코드를 사용하여 아이디, 패스워드 판별 ]
@@ -22,9 +25,43 @@
 	String dbId = "admin";
 	String dbPasswd = "1234";
 	
+	if(id.equals(dbId) && passwd.equals(dbPasswd)) { // 일치할 경우
+		response.sendRedirect("request4Pro_responseResult1.jsp");
+	} else { // 일치하지 않을 경우
+		response.sendRedirect("request4Pro_responseResult2.jsp");
+	}
+
+	// 자바의 if문과 자바스크립트의 페이지 이동(location.href) 결합하여 동일한 작업 수행
+// 	if(id.equals(dbId) && passwd.equals(dbPasswd)) { // 일치할 경우
+		%>
+		<script type="text/javascript">
+// 			alert("로그인 성공!");
+// 			location.href = "request4Pro_responseResult1.jsp";
+		</script>
+		<%
+// 	} else { // 일치하지 않을 경우
+		%>
+		<script type="text/javascript">
+// 			alert("로그인 실패!");
+// 			location.href = "request4Pro_responseResult2.jsp";
+		</script>
+		<%
+// 	}
 	%>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
