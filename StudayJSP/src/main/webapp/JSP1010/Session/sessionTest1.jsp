@@ -1,3 +1,4 @@
+<%@page import="java.util.Date"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -27,6 +28,22 @@
 	  2) 세션 유지 시간과 관계없이 invalidate() 메서드 호출 시 세션 초기화
 	  3) 웹브라우저가 종료되면 세션 초기화
 	--%>
+	<h1>sessionTest1.jsp</h1>
+	
+	<%-- 세션 유지시간(= 타이머 = maxInactiveInterval) 값 확인 --%>
+	<h3>현재 세션 유지시간 : <%=session.getMaxInactiveInterval() %> 초</h3>
+	
+	<%-- 세션 유지시간(= 타이머)을 10초로 변경 --%>
+	<%session.setMaxInactiveInterval(10); %>
+	<h3>변경 후 세션 유지시간 : <%=session.getMaxInactiveInterval() %> 초</h3>
+	
+	<h3>
+		새 세션 여부 : <%=session.isNew() %><br>
+		세션 아이디 : <%=session.getId() %><br>
+		<%-- 날짜 및 시각 관련 정보가 long 타입일 때 java.util.Date 객체 활용 가능 --%>
+		세션 생성 시각 : <%=new Date(session.getCreationTime()) %><br>
+		세션 마지막 접근 시각 : <%=new Date(session.getLastAccessedTime()) %><br>
+	</h3>
 </body>
 </html>
 
