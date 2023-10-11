@@ -45,7 +45,7 @@
 	//    새로운 request 객체가 생성되므로, 기존 request 객체에 저장된 정보는 제거됨
 	//    따라서, 리다이렉트 된 페이지에서 기존 request 객체의 속성에 접근 시 null 값 출력됨
 	//    또한, 새로운 요청 주소로 웹브라우저 주소표시줄의 주소(URL)가 변경됨
-// 	response.sendRedirect("attributeScopeTest2.jsp");
+	response.sendRedirect("attributeScopeTest2.jsp");
 	// pageContext 객체의 속성값은 현재 페이지를 벗어났으므로 null 값이 출력됨
 	// request 객체의 속성값은 새로운 요청이 발생했으므로 null 값이 출력됨
 	// session 객체의 속성값은 세션이 유지되므로 저장된 속성값이 유지(출력)됨
@@ -56,7 +56,7 @@
 	//    하나의 요청/응답으로 처리되어 기존 request 객체가 그대로 유지됨(새로 생성 X)
 	//    따라서, 디스패치 방식으로 포워딩 된 페이지에서 기존 request 객체의 속성에 접근 가능
 	//    또한, 새로운 요청이 아니므로 브라우저 주소표시줄의 주소(URL)가 그대로 유지됨
-	pageContext.forward("attributeScopeTest2.jsp");
+// 	pageContext.forward("attributeScopeTest2.jsp");
 	// pageContext 객체의 속성값은 현재 페이지를 벗어났으므로 null 값이 출력됨
 	// request 객체의 속성값은 이전 요칭이 그대로 유지되므로 저장된 속성값이 유지(출력)됨
 	// session 객체의 속성값은 세션이 유지되므로 저장된 속성값이 유지(출력)됨

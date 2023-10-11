@@ -28,8 +28,6 @@
 	===============================================================================
 	서버 종료 후 새로 실행(재시작)하여 attributeScopeTest2.jsp 페이지 접근 시
 	(http://localhost:8080/StudyJSP/jsp06_attribute_scope/attributeScopeTest2.jsp)
-	=> session 객체의 속성값은 웹브라우저 종료로 인해 세션 객체가 제거되었으므로 null 값이 출력됨
-	   만약, 서버 재시작 시 웹브라우저를 종료하지 않았을 경우 세션 객체는 유지됨
 	=> application 객체의 속성값은 서버 종료로 인해 제거되었으므로 null 값이 출력됨
 	--%>
 	
