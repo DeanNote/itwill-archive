@@ -14,9 +14,9 @@
 	
 	*/
 	pageContext.setAttribute("pageScope", "pageContext value");
-	request.setAttribute("pageScope", "request value");
-	session.setAttribute("pageScope", "session value");
-	application.setAttribute("pageScope", "application value");
+	request.setAttribute("requestScope", "request value");
+	session.setAttribute("sessionScope", "session value");
+	application.setAttribute("applicationScope", "application value");
 	%>
 </body>
 </html>
