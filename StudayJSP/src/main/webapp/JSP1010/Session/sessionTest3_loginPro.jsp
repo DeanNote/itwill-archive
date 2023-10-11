@@ -14,8 +14,8 @@ String dbPasswd2 = "hong123";
 
 // 아이디가 "admin" 이고, 패스워드가 "1234" 이면 로그인 성공, 아니면 로그인 실패
 // => 로그인 성공 시 "로그인 성공!" 출력, 로그인 실패 시 "로그인 실패!" 출력
-// => 임시로 추가 아이디 h
-if(id.equals(dbId) && passwd.equals(dbPasswd)||id.equals(dbId2) && passwd.equals(dbPasswd2)) { // 로그인 성공
+// => 임시로 추가 아이디 "hong", 패스워드 "hong123" 비교도 함께 수행(OR 연산)
+if(id.equals(dbId) && passwd.equals(dbPasswd) || id.equals(dbId2) && passwd.equals(dbPasswd2)) { // 로그인 성공
 // 	out.print("<h3>로그인 성공!</h3>");
 
 	// 세션 객체에 로그인 성공한 아이디를 "sId" 라는 속성명으로 저장하기
