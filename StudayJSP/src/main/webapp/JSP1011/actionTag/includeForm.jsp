@@ -9,6 +9,8 @@
 <body>
 	<h1>includeForm.jsp</h1>
 	<hr>
-	<jsp:include page="includePro.jsp"></jsp:include>
+	<% pageContext.include("includePro.jsp"); %>
+	
+<%-- 	<jsp:include page="includePro.jsp"></jsp:include> --%>
 </body>
 </html>
