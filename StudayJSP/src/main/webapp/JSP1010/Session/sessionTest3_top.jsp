@@ -4,6 +4,17 @@
 //세션 아이디 변수 id에 저장
 String id = (String)session.getAttribute("sId");
 %>
+<script type="text/javascript">
+	//확인창(confirm  다이얼로그)을 통해 로그아웃 여부를 확인할
+	//confirmLogout() 함수 정의
+	function confirmLogout(){
+		let isLogout = confirm("로그아웃 하시겠습니까?"); //true false리턴
+		//true면 로그아웃 페이지로 이동
+		if(isLogout){
+			location.href = "sessionTest3_logout.jsp"
+		}
+	}
+</script>
 <div align="right">
 	<h4>
 		<a href="sessionTest3_main.jsp">HOME</a> |
@@ -17,7 +28,8 @@ String id = (String)session.getAttribute("sId");
 			<a href="sessionTest3_joinForm.jsp">회원가입</a> | 
 		<%}else{%>
 			<%=id %>님 |
-			<a href="sessionTest3_loginout.jsp">로그아웃</a> 
+			<%-- 로그아웃 클릭시 자바스크립트로 호출 --%>
+			<a href="javascript:confirmLogout()">로그아웃</a> 
 			<%-- 단, 세션 아이디가 "admin"이면 [관리자페이지]링크 표시--%>
 			<%if(id.equals("admin")) {%>
 				| <a href="sessionTest3_admin.jsp">관리자 페이지</a> 
