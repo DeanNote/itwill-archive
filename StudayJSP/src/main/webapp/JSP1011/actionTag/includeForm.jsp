@@ -12,7 +12,7 @@
 <%-- 	<% pageContext.include("includePro.jsp"); %> --%>
 <%-- 	<jsp:include page="includePro.jsp"></jsp:include> --%>
 	<jsp:include page="includePro.jsp">
-		<jsp:param value="ParameterValue" name="paramValue"/>
+		<jsp:param value="Parameter Value" name="paramValue"/>
 	</jsp:include>
 
 </body>
