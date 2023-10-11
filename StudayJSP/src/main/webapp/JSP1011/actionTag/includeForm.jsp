@@ -9,8 +9,11 @@
 <body>
 	<h1>includeForm.jsp</h1>
 	<hr>
-	<% pageContext.include("includePro.jsp"); %>
-	
+<%-- 	<% pageContext.include("includePro.jsp"); %> --%>
 <%-- 	<jsp:include page="includePro.jsp"></jsp:include> --%>
+	<jsp:include page="includePro.jsp">
+		<jsp:param value="ParameterValue" name="paramValue"/>
+	</jsp:include>
+
 </body>
 </html>
