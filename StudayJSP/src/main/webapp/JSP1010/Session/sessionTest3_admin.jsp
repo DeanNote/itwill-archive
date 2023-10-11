@@ -7,6 +7,18 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+<header>
+		<%-- sessionTest3_top.jsp 페이지를 현재 위치에 포함시키기 --%>
+		<%-- pageContext 객체의 include() 메서드 호출 --%>
+		<%pageContext.include("sessionTest3_top.jsp"); %>
+	</header>
+	<hr>
+	<main>
+		<h1>관리자 페이지</h1>
+	</main>
+	<hr>
+	<footer>
+		회사설명......
+	</footer>
 </body>
 </html>
