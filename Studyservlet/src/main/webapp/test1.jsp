@@ -19,11 +19,11 @@
 	 <h3><a href="myServlet">myServlet 서블릿 주소 요청(GET)</a></h3>
 	 
 	 <!-- form 태그를 사용하여 get, post 각각 myServlet 주소 요청 -->
-	 <form method ="GET">
-	 <input type="submit" value="전송">
+	 <form action="myServlet" method ="GET">
+	 	<input type="submit" value="myServlet 서블릿 주소 요청(GET)">
 	 </form>
-	 <form method ="POST">
-	 <input type="submit" value="전송">
+	 <form action="myServlet" method ="POST">
+	 	<input type="submit" value="myServlet 서블릿 주소 요청(POST)">
 	 </form>
 </body>
 </html>

@@ -9,4 +9,21 @@
     <welcome-file>default.jsp</welcome-file>
     <welcome-file>default.htm</welcome-file>
   </welcome-file-list>
+  
+  <servlet>
+  	<!-- 서블릿이름(sevlet-name)은 <servlet-mapping>태그에서 지정할 이름과동일해야함 -->
+  	<servlet-name>TestServlet</servlet-name>
+  		<!-- 매핑에 사용할 서블릿 이름(아무거나) -->
+  
+  	<servlet-class>test.TestMyServlet</servlet-class>
+  		<!-- 매핑에 사용될 클래스 명 (패키지명 포함, .java 제외) -->
+  	
+  </servlet>
+  
+  <!-- 2. 서블릿 클래스와 서블릿 주소에 대한 매핑 -->
+  <servlet-mapping>
+  		<servlet-name>TestServlet</servlet-name> <!-- 서블릿 이름은 <servlet>태그에서 지정한 이름과 동일해야함 -->
+  		<url-pattern>/myServlet</url-pattern>
+  		
+  </servlet-mapping>
 </web-app>
