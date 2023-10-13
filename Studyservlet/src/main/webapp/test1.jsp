@@ -25,5 +25,8 @@
 	 <form action="myServlet" method ="POST">
 	 	<input type="submit" value="myServlet 서블릿 주소 요청(POST)">
 	 </form>
+	 <form action="myServlet_fail" method ="POST">
+	 	<input type="submit" value="myServlet_fail 서블릿 주소 요청(실패)">
+	 </form>
 </body>
 </html>
