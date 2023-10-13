@@ -62,6 +62,7 @@ public class LoginProServlet extends HttpServlet {
 			out.print("alert('로그인 실패');");
 			out.print("history.back();");
 			out.print("</script>");
+			
 		}
 		
 	}

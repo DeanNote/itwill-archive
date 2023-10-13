@@ -17,6 +17,7 @@ public class joinFormServlet extends HttpServlet {
 		request.getParameter("name");
 		
 		
+		
 	
 	}
 
