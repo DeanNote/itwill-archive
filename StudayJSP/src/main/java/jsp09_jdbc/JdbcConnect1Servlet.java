@@ -12,6 +12,5 @@ public class JdbcConnect1Servlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("JdbcConnect1Servlet");
 	}
-
 		
 }
