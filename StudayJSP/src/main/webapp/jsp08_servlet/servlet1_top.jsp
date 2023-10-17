@@ -9,9 +9,9 @@ String id = (String)session.getAttribute("sId");
 	 function confirmLogout() {
 		 let isLogout = confirm("로그아웃하시겠습니까?"); // true/false 리턴
 		 
-		 // isLogout 변수값이 true 일 경우 로그아웃("servlet1_logout.jsp") 페이지로 이동
+		 // isLogout 변수값이 true 일 경우 로그아웃("Logout.jsp") 페이지로 이동
 		 if(isLogout) {
-			 location.href = "servlet1_logout.jsp";
+			 location.href = "Logout";
 		 }
 	 }
 </script>
