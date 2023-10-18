@@ -28,7 +28,7 @@
 	<%-- form 태그를 통해 데이터 전송 시 name 속성 필수! --%>
 	<%-- 전송 시 name 속성으로 된 파라미터에 value 속성값이 연결되어 전달됨 --%>
 <!-- 	<form action="requestPro1.jsp" method="get"> -->
-	<form action="requestPro1.jsp" method="post">
+	<form action="request1Pro.jsp" method="post">
 		<table border="1">
 			<tr>
 				<th>이름</th>

@@ -54,18 +54,46 @@ public class LoginProServlet extends HttpServlet {
 			response.sendRedirect("servlet1_main.jsp");
 			// => http://localhost:8080/StudyJSP/jsp08_servlet/servlet1_main.jsp 페이지로 리다이렉트
 		} else { // 로그인 실패
-			System.out.println("로그인 실패!");
+//			System.out.println("로그인 실패!");
+
+			/*
+			 * 자바스크립트 사용하여 "로그인 실패!" 출력 후 이전페이지로 돌아가기
+			 * => 현재 JSP 파일이 아닌 자바 클래스(서블릿)에서 웹브라우저로
+			 *    HTML 태그 등을 내보내기(출력) 위한 작업 수행
+			 *    (= 자바 클래스 내에서 출력스트림을 활용하여 HTML 태그를 응답데이터로 출력해야함)
+			 * => 응답 객체인 response 객체 활용하여 응답 데이터 생성해야함
+			 * 
+			 * 1) 출력할 HTML 형식에 대한 문서 타입(contentType) 설정
+			 *    => 응답 데이터의 형식(타입)으로 HTML 태그가 사용됨을 클라이언트에게 알려줌
+			 *    => response 객체의 setContentType() 메서드를 호출하여 문서 타입 지정
+			 *       (JSP 파일 최상단 page 디렉티브 내의 contentType=XXX 항목 활용)
+			 *       
+			 * 2) 자바 코드를 사용하여 HTML 태그(자바스크립트 포함) 출력(전송)하려면
+			 *    java.io.PrintWriter 객체 필요(= 출력 스트림으로 사용할 객체)
+			 *    => response 객체의 getWriter() 메서드를 호출하여 얻을 수 있다!
+			 *    
+			 * 3) PrintWriter 객체(out)의 print() 또는 println() 메서드를 호출하여
+			 *    출력할(전송할) HTML 태그 등의 코드를 문자열 형태로 전달
+			 */
+			// 1) 출력할 HTML 형식에 대한 문서 타입(contentType) 설정
 			response.setContentType("text/html; charset=UTF-8");
+			
+			// 2) java.io.PrintWriter 객체 리턴받기
 			PrintWriter out = response.getWriter();
 			
-			out.print("<script>");
-			out.print("alert('로그인 실패');");
-			out.print("history.back();");
-			out.print("</script>");
-			
+			// PrintWriter 객체(out)의 print() or println() 메서드로 출력할 HTML 태그 문자열 전달
+			// => JSP 의 out 객체와 동일하게 사용
+			out.println("<script>");
+			out.println("alert('로그인 실패!');");
+			out.println("history.back();");
+			out.println("</script>");
+			// 이 코드들이 실행되는 시점에 바로 클라이언트로 응답하는 것은 아니고
+			// 응답객체(response)에 응답 데이터를 저장하면
+			// doPost() 메서드가 종료된 후 자동으로 클라이언트에 응답 데이터가 전송됨
 		}
 		
-	}
+	} // doPost() 메서드 끝
+	// => 이후, 클라이언트 측으로 응답 메세지가 전송됨
 
 }
 
