@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/JdbcConnect3_SELECT")
 public class JdbcConnect3Select extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("/JdbcConnect3_INSERT");
+		System.out.println("/JdbcConnect3_SELECT");
 		
 		
 		
