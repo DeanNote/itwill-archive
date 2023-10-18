@@ -27,6 +27,7 @@ public class JdbcConnect3Delete extends HttpServlet {
 			
 			pstmt = con.prepareStatement(sql);
 					pstmt.setInt(1, idx); 
+					
 			pstmt.setString(2, name);
 			
 		} catch (ClassNotFoundException e) {
