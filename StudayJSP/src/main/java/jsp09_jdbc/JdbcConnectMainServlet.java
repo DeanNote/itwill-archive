@@ -21,7 +21,7 @@ public class JdbcConnectMainServlet extends HttpServlet {
 		//1) 리다이렉트 주소표시줄에 경로 표시
 //		response.sendRedirect("jsp09_jdbc/jdbc_main.jsp");
 		
-		//2) 디스피치 포워딩시 주소표시줄에 경로 표시 없음
+		//2) 디스패치 포워딩시 주소표시줄에 경로 표시 없음
 		RequestDispatcher dispatcher = request.getRequestDispatcher("jsp09_jdbc/jdbc_main.jsp");
 		dispatcher.forward(request, response);
 		
