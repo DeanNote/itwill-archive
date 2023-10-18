@@ -58,6 +58,9 @@ public class JdbcConnect2Servlet extends HttpServlet {
 			e.printStackTrace();
 		}
 		
+		
+		
+		
 	}
 
 }
