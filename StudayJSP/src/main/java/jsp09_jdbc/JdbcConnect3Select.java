@@ -51,9 +51,30 @@ public class JdbcConnect3Select extends HttpServlet {
 			// -> SELECT 구문 실행을 위해 PreparedStatement 객체의 excuteQuery 메서드 호출
 			// -> 조회 결과(테이블)가 java.sql.ResultSet 타입 객체로 리턴됨
 			rs = pstmt.executeQuery();
-			rs.next(); 
-			System.out.println("컬럼인덱스로 접근 : " + rs.getInt(1)+", " +rs.getString(2));
-			System.out.println("컬럼명으로 접근 : " + rs.getInt("idx")+", " +rs.getString("name"));
+//			rs.next(); 
+////			System.out.println("컬럼인덱스로 접근 : " + rs.getInt(1)+", " +rs.getString(3));
+//			System.out.println("컬럼명으로 접근 : " + rs.getInt("idx")+", " +rs.getString("name"));
+//			rs.next();
+//			System.out.println("컬럼명으로 접근 : " + rs.getInt("idx")+", " +rs.getString("name"));
+//			rs.next();
+//			System.out.println("컬럼명으로 접근 : " + rs.getInt("idx")+", " +rs.getString("name"));
+//			rs.next();
+//			System.out.println("컬럼명으로 접근 : " + rs.getInt("idx")+", " +rs.getString("name"));
+//			if(rs.next()) {
+//				System.out.println("다음 레코드 존재함!");
+//				System.out.println("레코드 접근 : " + rs.getInt("idx")+", " +rs.getString("name"));
+//			}else {
+//				System.out.println("다음 레코드 존재하지 않음!");
+//			}
+			
+			while(rs.next()) {
+				System.out.println("다음 레코드 존재함!");
+				int idx = rs.getInt("idx");
+				String name = rs.getString("name");
+				System.out.println("번호 : " + idx +", 이름 : " + name);
+				
+			}
+			
 			// 주의! 3단계 과정에서 SQL 구문을 메서드 파라미터로 전달한 것과 상관없이
 			// 4단계 메서드 호출 시 SQL 구문을 다시 전달할 경우
 			// setXXX() 메서드를 활용한 데이터 치환이 수행되지 않은 문장이 실행되므로 오류!
