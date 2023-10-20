@@ -10,9 +10,8 @@
 	<div align="center">
 		<h1>dbcp_main.jsp</h1>
 		<hr>
-		
-		<h3><a href="DbcpInsertForm">dbcp 연동 DbcpInsertForm</a></h3>
-		<h3><a href="DbcpSelect">dbcp DbcpSelect</a></h3>
+		<h3><a href="DbcpInsertForm">INSERT</a></h3>
+		<h3><a href="DbcpSelect">SELECT</a></h3>
 	</div>
 </body>
 </html>
