@@ -5,6 +5,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -19,15 +20,15 @@ public class DaoSelectServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("DaoSelectServlet");
 		
-		//학생 목록 조회 요청을 위한 StudentDAO - select() 메서드 호출
+		//학생 목록 조회 요청을 위한 StudentDAO - selectStudentList() 메서드 호출
 		// => 파리미터 x 리턴 void
 		StudentDAO dao = new StudentDAO();
 		// => 파리미터 x 리턴 StudentDTO(student)
-		StudentDTO student = dao.select();
-		System.out.println("번호 : " + student.getIdx());
-		System.out.println("이름 : " + student.getName());
-		
-		
+		List<StudentDTO> studentList = dao.selectStudentList();
+		for(int i = 0; i<studentList.size(); i++){
+			StudentDTO student = studentList.get(i);//1개 레코드 (StudentDTO 객체) 꺼내기
+			System.out.println("번호 : " + student.getIdx() + "이름 : " + student.getName());
+		}
 		
 	}
 
