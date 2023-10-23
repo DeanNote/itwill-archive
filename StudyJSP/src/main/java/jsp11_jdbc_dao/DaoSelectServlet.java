@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
+import javax.servlet.DispatcherType;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -37,8 +38,14 @@ public class DaoSelectServlet extends HttpServlet {
 		// 뷰페이지(select.jsp)로 포워딩 시 
 		// 전체 레코드가 저장된 List 객체를 함께 전달해야한다!
 		request.setAttribute("studentList", studentList);
+		// 학생 목록 정보를 표시하기 위해 jsp11_jdbc_dao/select.jsp 페이지로 포워딩
 		
+		//1. request 객체의ㅡ getRequestDispatcher() 메서드 호출
+		RequestDispatcher dispatcher = request.getRequestDispatcher("jsp11_jdbc_dao/select.jsp");
 		
+		//2. RequestDispatcher 객체의 forward() 메서드를 호출하여 포워딩 수행
+		// => 파라미터 : request, response객체
+		dispatcher.forward(request, response);
 	}
 
 }
