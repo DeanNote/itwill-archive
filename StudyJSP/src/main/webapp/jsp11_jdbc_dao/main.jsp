@@ -12,6 +12,23 @@
 		<hr>
 		<h3><a href="DaoInsertForm">INSERT</a></h3>
 		<h3><a href="DaoSelect">SELECT</a></h3>
+		<hr>
+		
 	</div>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
