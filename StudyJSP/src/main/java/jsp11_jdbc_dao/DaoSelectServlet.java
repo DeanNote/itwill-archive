@@ -22,7 +22,10 @@ public class DaoSelectServlet extends HttpServlet {
 		//학생 목록 조회 요청을 위한 StudentDAO - select() 메서드 호출
 		// => 파리미터 x 리턴 void
 		StudentDAO dao = new StudentDAO();
-		dao.select();
+		// => 파리미터 x 리턴 StudentDTO(student)
+		StudentDTO student = dao.select();
+		System.out.println("번호 : " + student.getIdx());
+		System.out.println("이름 : " + student.getName());
 		
 		
 		
