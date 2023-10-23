@@ -10,7 +10,7 @@
 	<main>
 		<div align="center">
 			<h1>학생정보 등록</h1>
-			<form action="DbcpInsertPro" method="post">
+			<form action="DaoInsertPro" method="post">
 				<input type="text" placeholder="번호" name="idx"><br>
 				<input type="text" placeholder="이름" name="name"><br>
 				<input type="submit" value="등록">

@@ -17,7 +17,7 @@ import javax.servlet.http.HttpServletResponse;
 public class DbcpSelectServlet extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("DbcpSelectServlet");
+		System.out.println("DbcpSelect");
 		
 		// 데이터베이스 활용에 사용될 변수 선언
 		Connection con = null;

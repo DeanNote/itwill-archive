@@ -1,4 +1,4 @@
-package Jdbc11_jdbc_dao;
+package jsp11_jdbc_dao;
 
 import java.io.IOException;
 
@@ -9,13 +9,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/DaoInsertForm")
-public class DaoInsertFormServlet extends HttpServlet {
+@WebServlet("/DaoMain")
+public class DaoMainServlet extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("DaoInsertForm");
+		System.out.println("DaoMainServlet");
 		
-		RequestDispatcher dispatcher = request.getRequestDispatcher("jsp11_jdbc_dao/insert_form.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("jsp11_jdbc_dao/main.jsp");
 		dispatcher.forward(request, response);
 	}
 
