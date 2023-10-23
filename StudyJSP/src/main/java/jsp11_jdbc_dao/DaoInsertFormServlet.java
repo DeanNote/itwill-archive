@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 public class DaoInsertFormServlet extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("DaoInsertForm");
+		System.out.println("DaoInsertFormServlet");
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher("jsp11_jdbc_dao/insert_form.jsp");
 		dispatcher.forward(request, response);
