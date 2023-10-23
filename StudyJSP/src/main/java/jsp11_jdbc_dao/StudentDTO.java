@@ -12,6 +12,7 @@ public class StudentDTO {
 	private String name;
 	
 	// 필요에 따라 기본 생성자 및 파라미터 생성자 정의 가능
+	 
 	
 	// 2. Getter/Setter 정의
 	public int getIdx() {
