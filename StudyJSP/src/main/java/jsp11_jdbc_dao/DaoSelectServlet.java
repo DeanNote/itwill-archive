@@ -36,8 +36,7 @@ public class DaoSelectServlet extends HttpServlet {
 		//============================================================================================================
 		// 뷰페이지(select.jsp)로 포워딩 시 
 		// 전체 레코드가 저장된 List 객체를 함께 전달해야한다!
-		
-		
+		request.setAttribute("studentList", studentList);
 		
 		
 	}
