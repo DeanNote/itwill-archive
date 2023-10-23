@@ -1,4 +1,4 @@
-package jsp10_dbcp;
+package Jdbc11_jdbc_dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

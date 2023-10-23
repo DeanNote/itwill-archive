@@ -1,4 +1,4 @@
-package jsp10_dbcp;
+package jsp10_jdbc_dbcp;
 
 import java.io.IOException;
 
@@ -9,13 +9,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/DbcpMain")
-public class DbcpMainServlet extends HttpServlet {
+@WebServlet("/DbcpInsertForm")
+public class DbcpInsertFormServlet extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("DbcpMainServlet");
+		System.out.println("DbcpInsertFormServlet");
 		
-		RequestDispatcher dispatcher = request.getRequestDispatcher("jsp10_dbcp/dbcp_main.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("jsp10_dbcp/insert_form.jsp");
 		dispatcher.forward(request, response);
 	}
 
