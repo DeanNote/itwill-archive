@@ -25,10 +25,16 @@ public class DaoSelectServlet extends HttpServlet {
 		StudentDAO dao = new StudentDAO();
 		// => 파리미터 x 리턴 StudentDTO(student)
 		List<StudentDTO> studentList = dao.selectStudentList();
-		for(int i = 0; i<studentList.size(); i++){
-			StudentDTO student = studentList.get(i);//1개 레코드 (StudentDTO 객체) 꺼내기
+//		for(int i = 0; i<studentList.size(); i++){
+//			StudentDTO student = studentList.get(i);//1개 레코드 (StudentDTO 객체) 꺼내기
+//			System.out.println("번호 : " + student.getIdx() + "이름 : " + student.getName());
+//		}
+		
+		for(StudentDTO student : studentList) {
 			System.out.println("번호 : " + student.getIdx() + "이름 : " + student.getName());
 		}
+		
+		
 		
 	}
 
