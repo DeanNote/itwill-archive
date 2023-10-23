@@ -30,9 +30,13 @@ public class DaoSelectServlet extends HttpServlet {
 //			System.out.println("번호 : " + student.getIdx() + "이름 : " + student.getName());
 //		}
 		
-		for(StudentDTO student : studentList) {
-			System.out.println("번호 : " + student.getIdx() + "이름 : " + student.getName());
-		}
+//		for(StudentDTO student : studentList) {
+//			System.out.println("번호 : " + student.getIdx() + "이름 : " + student.getName());
+//		}
+		//============================================================================================================
+		// 뷰페이지(select.jsp)로 포워딩 시 
+		// 전체 레코드가 저장된 List 객체를 함께 전달해야한다!
+		
 		
 		
 		
