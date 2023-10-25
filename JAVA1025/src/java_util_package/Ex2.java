@@ -22,7 +22,6 @@ public class Ex2 {
 			int rNum = r.nextInt(10000); // 0 ~ 9999 사이의 난수 발생
 //			System.out.println(rNum);
 			
-			dsf
 			/*
 			 * 4자리보다 작은 자릿수를 갖는 정수를 4자리로 만드는 방법
 			 * (부족한 앞자리 숫자를 0으로 채우기 = 0으로 패딩(padding))
@@ -33,6 +32,8 @@ public class Ex2 {
 			 */
 			String strNum = String.format("%04d", rNum);
 			System.out.println(strNum);
+			//tt
+			
 			
 		}
 		
