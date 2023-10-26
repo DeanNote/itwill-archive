@@ -18,6 +18,7 @@
 	student.setIdx(1);
 	student.setName("홍길동");
 	session.setAttribute("student", student);
+	
 	%>
 	<div align="center">
 		<h1>test1.jsp</h1>
