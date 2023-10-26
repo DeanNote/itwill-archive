@@ -24,7 +24,6 @@
 		<form action="test3_result.jsp">
 			<input type="text" placeholder="이름" name="name"><br>
 			<input type="text" placeholder="나이" name="age"><br>
-			<input type="text" placeholder="주민번호" name="jumin"><br>
 			<input type="submit" value="확인">
 		</form>
 	</div>
