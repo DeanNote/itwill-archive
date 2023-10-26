@@ -8,17 +8,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<%
-	// session 객체를 사용하여 "testValue" 라는 속성명으로 "Session Value" 문자열 저장
-	session.setAttribute("testValue", "Session Value");
-	
-	// jsp11_jdbc_dao.StudentDTO 객체 생성 후 
-	// session 객체에 "student" 라는 속성명으로 StudentDTO 객체 저장
-	StudentDTO student = new StudentDTO();
-	student.setIdx(1);
-	student.setName("홍길동");
-	session.setAttribute("student", student);
-	%>
 	<div align="center">
 		<h1>test3.jsp</h1>
 		<form action="test3_result.jsp">
