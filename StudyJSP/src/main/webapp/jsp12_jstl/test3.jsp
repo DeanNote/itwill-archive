@@ -20,8 +20,8 @@
 	session.setAttribute("student", student);
 	%>
 	<div align="center">
-		<h1>test1.jsp</h1>
-		<form action="test1_result.jsp">
+		<h1>test3.jsp</h1>
+		<form action="test3_result.jsp">
 			<input type="text" placeholder="이름" name="name"><br>
 			<input type="text" placeholder="나이" name="age"><br>
 			<input type="text" placeholder="주민번호" name="jumin"><br>
