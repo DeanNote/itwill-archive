@@ -1,12 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
+<%
+request.setAttribute("idx", 3);
+request.setAttribute("name", "홍길동");
 
-</body>
-</html>
+String[] names = {"홍길동", "이순신", "강감찬"};
+request.setAttribute("namse", names);
+
+response.sendRedirect("test4_result.jsp");
+%>
