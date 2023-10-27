@@ -1,3 +1,5 @@
+<%@page import="jsp11_jdbc_dao.StudentDTO"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -74,11 +76,24 @@
 		 out.print(name + " ");
 	 }
 	 %>
+	 <hr>
 	 <c:forEach var="name" items="${names }" varStatus="status">
-	 	${name }
+	 	${name } - status.index : ${status.index }, status.count : ${status.count }<br>
 	 </c:forEach>
+	 <hr>
 	 
-	
+	 <%
+	 //request 객체에 저장된 List 객체 꺼내서 List<StudentDTO> 타입 변수에 저장
+	 List<StudentDTO> studentList = (List<StudentDTO>)request.getAttribute("studentList");
+	 
+	 for(StudentDTO List : studentList){
+		 out.print(List.getIdx() + ", " + List.getName() + "<br>");
+	 }
+	 %>
+	<c:forEach var="student" items="${studentList }" >
+ 		번호 : ${student.idx }, 이름 : ${student.name }<br>
+ 	</c:forEach>
+ 	
 	
 	
 	
