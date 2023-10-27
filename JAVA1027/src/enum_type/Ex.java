@@ -40,10 +40,42 @@ public class Ex {
 		 *    	case 열거타입상수2 : 수행할 작업들...;
 		 *      ...
 		 *    	case 열거타입상수n : 수행할 작업들...;
-		 *  
+		 *  	}
 		 * 
 		 */
 		
-	}
+	}//main end
 
+}// Ex end
+
+// 요일 정보를 관리하는 클래스 정의
+// 열거타입을 사용하지 않고, 상수만 사용하는 경우
+class Week{
+	//요일 정보를 상수로 관리
+	// => 외부에서 실제 데이터를 정확하게 알지 못해도 상수명(변수명)
+	//    만으로 값을 사용 가능
+	// => 클래스명만으로 사용이 가능하여 접근이 쉬움.
+	//    또한, 값 변경이 불가능하여 안전함.
+	public static final int WEEK_MONDAY    = 0;
+	public static final int WEEK_TUSEDAY   = 1;
+	public static final int WEEK_WEDENSDAY = 2;
+	public static final int WEEK_THURSDAY  = 3;
+	public static final int WEEK_FRIDAY    = 4;
+	public static final int WEEK_SATURDAY  = 5;
+	public static final int WEEK_SUNDAY    = 6;
+	
+	int myWeek;
+	
+	
 }
+
+
+
+
+
+
+
+
+
+
+
