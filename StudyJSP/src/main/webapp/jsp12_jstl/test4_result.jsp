@@ -20,11 +20,17 @@
 		이름 : ${name }
 	</h3>
 	<hr>
-		
+	<%
+	for(int i=1; i<=10; i++){
+		out.print(i);
+	}
+	%>
+	<hr>		
 	<%--
-	[ JSTL - 반복문 ]
-	
+	[ JSTL - 반복문(<c:forEach></c:forEach> 태그) ]
+	- 일반 for문과 향상된 for문을 모두사용 가능
 	--%>
+	
 </body>
 </html>
 
