@@ -95,6 +95,8 @@ class Week{
 		//따라서, 조건문 등을 사용하여 전달받은 파라미터값에 대한 검증이 추가적으로 필요
 		if(myWeek >= WEEK_MONDAY && myWeek <= WEEK_SUNDAY) {
 			this.myWeek = myWeek;
+		}else {
+			System.out.println("요일 입력 에러!");
 		}
 		
 	}
