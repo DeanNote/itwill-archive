@@ -64,7 +64,7 @@ class Week{
 	public static final int WEEK_SATURDAY  = 5;
 	public static final int WEEK_SUNDAY    = 6;
 	
-	int myWeek;
+	private int myWeek;
 	
 	
 }
