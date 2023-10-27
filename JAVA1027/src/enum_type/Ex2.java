@@ -27,7 +27,22 @@ public class Ex2 {
 			
 		}
 		
+		System.out.println("--------------------------------------------------");
 		
+		// ordinal() : 상수의 순서번호를 정수로 리턴
+		System.out.println("오늘의 ordinal값 : " + today.ordinal());
+		
+		if(today.ordinal()<4) {
+			System.out.println("아직 금요일이 아니다!");
+		}else if(today.ordinal()==4) {
+			System.out.println("금요일!");
+		}else {
+			System.out.println("휴일!");
+		}
+		
+		//name(): 상수명을 문자열로 리턴
+		System.out.println(today.name());
+		System.out.println(today.toString());
 		
 	}//main end
 
