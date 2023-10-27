@@ -57,7 +57,7 @@ public class Ex {
 		week.setMyWeek(10); // 10이라는 정수값을 갖는 요일은 없으나,
 		// int 타입 파라미터이므로 컴파일 시점에서는 아무런 문제가 발생하지 않는다!
 		// 그러나, 해당 데이터를 사용하기 위한 시점에서는 문제가 발생할 수 있다!
-		
+		// => 따라서, 별도로 해당 범위 내의 데이터인지 판별하는 추가적인 작업을 수행해야 함
 		
 		
 		
@@ -88,7 +88,15 @@ class Week{
 	}
 
 	public void setMyWeek(int myWeek) {
-		this.myWeek = myWeek;
+//		this.myWeek = myWeek;
+		
+		//요일에 대한 정상 범위 판별 없이 저장작업을 수행하는 경우
+		//실제 저장된 요일을 꺼내서 사용하는 시점에서는 문제가 발생할 수 있다!
+		//따라서, 조건문 등을 사용하여 전달받은 파라미터값에 대한 검증이 추가적으로 필요
+		if(myWeek >= WEEK_MONDAY && myWeek <= WEEK_SUNDAY) {
+			this.myWeek = myWeek;
+		}
+		
 	}
 	
 	
