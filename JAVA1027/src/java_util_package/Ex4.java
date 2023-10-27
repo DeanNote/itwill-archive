@@ -45,7 +45,7 @@ public class Ex4 {
 		1. Calendar -> Date로 변환 시
 		*/
 		Date date = cal.getTime();
-		
+		System.out.println(date);
 		
 		
 		
