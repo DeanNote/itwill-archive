@@ -47,9 +47,22 @@ public class Ex4 {
 		Date date = cal.getTime();
 		System.out.println(date);
 		
+		//2. Date -> Calendar로 변환 시 
+		Calendar cal2 = Calendar.getInstance();
+		cal2.setTime(date);
+		System.out.println(cal2.getTime());
 		
+		System.out.println("==========================");
 		
+		// set() 메서드를 사용하여 날짜 및 시각 정보 설정
+		cal2.set(1999, 11, 31);// 연, 월, 일 직접 전달
+		System.out.println(cal2.getTime());
 		
+		cal2.set(Calendar.YEAR, 2010);
+		cal2.set(Calendar.MONTH, 5);
+		
+		Date date2 = cal2.getTime();
+		System.out.println(date2);
 		
 		
 		
