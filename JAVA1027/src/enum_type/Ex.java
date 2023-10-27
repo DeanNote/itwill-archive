@@ -58,13 +58,32 @@ public class Ex {
 		// int 타입 파라미터이므로 컴파일 시점에서는 아무런 문제가 발생하지 않는다!
 		// 그러나, 해당 데이터를 사용하기 위한 시점에서는 문제가 발생할 수 있다!
 		// => 따라서, 별도로 해당 범위 내의 데이터인지 판별하는 추가적인 작업을 수행해야 함
-		
+		System.out.println("=============================================");
 		
 		
 	}//main end
 
 }// Ex end
+// 열거타입 정의
+enum EnumWeek{
+	//열거형 정의 시 중괄호 내부에는 값을 갖는 상수 이름만 나열함
+	//(별도의 값을 지정하지 않음)
+	MONDAY,TUSEDAY,WEDENSDAY,THURSDAY,FRIDAY,SATURDAY, SUNDAY
+}
 
+class WeekWithEnum{
+	EnumWeek myWeek;
+
+	public EnumWeek getMyWeek() {
+		return myWeek;
+	}
+
+	public void setMyWeek(EnumWeek myWeek) {
+		this.myWeek = myWeek;
+	}
+	
+	
+}
 // 요일 정보를 관리하는 클래스 정의
 // 열거타입을 사용하지 않고, 상수만 사용하는 경우
 class Week{
