@@ -1,5 +1,7 @@
 package enum_type;
 
+import java.nio.file.spi.FileSystemProvider;
+
 public class Ex {
 
 	public static void main(String[] args) {
@@ -59,6 +61,39 @@ public class Ex {
 		// 그러나, 해당 데이터를 사용하기 위한 시점에서는 문제가 발생할 수 있다!
 		// => 따라서, 별도로 해당 범위 내의 데이터인지 판별하는 추가적인 작업을 수행해야 함
 		System.out.println("=============================================");
+		
+		EnumWeek today = EnumWeek.FRIDAY;
+		System.out.println(today);
+		// 열거타입을 활용하는 클래스 사용
+		WeekWithEnum we = new WeekWithEnum();
+		we.setMyWeek(today);
+		System.out.println("오늘의 요일 : " + we.getMyWeek());
+		
+		we.setMyWeek(EnumWeek.FRIDAY);
+		System.out.println("오늘의 요일 : " + we.getMyWeek());
+
+		//열거타입 사용 시 장점
+		// -> 정의 시 지정된 상수 외의 다른 값은 절대 전달 불가능!
+//		we.setMyWeek(5); Error!
+//		we.setMyWeek("Friday"); Error!
+//		we.setMyWeek(FRIDAY; Error!
+		// => 반드시 열거타입명. 상수명으로 지정된 값만 전달 해야 한다!
+		we.setMyWeek(EnumWeek.FRIDAY);
+
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		
 		
 	}//main end
