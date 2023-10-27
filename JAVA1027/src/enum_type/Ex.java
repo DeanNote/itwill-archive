@@ -44,6 +44,23 @@ public class Ex {
 		 * 
 		 */
 		
+		Week week = new Week();
+		week.setMyWeek(Week.WEEK_FRIDAY);
+		
+		if(week.getMyWeek() ==Week.WEEK_FRIDAY) {
+			System.out.println("오늘은 금요일 입니다!");
+		}
+		
+		// 요일 정보를 상수로 관리하는 경우의 문제점
+		// => 상수 데이터들이 정수일 경우 해당 정수를 전달받는 메서드(setter) 호출 시
+		//    상수 범위 값이 아닌 다른 값을 전달해도 컴파일에러(문법적오류)가 발생하지 않음
+		week.setMyWeek(10); // 10이라는 정수값을 갖는 요일은 없으나,
+		// int 타입 파라미터이므로 컴파일 시점에서는 아무런 문제가 발생하지 않는다!
+		// 그러나, 해당 데이터를 사용하기 위한 시점에서는 문제가 발생할 수 있다!
+		
+		
+		
+		
 	}//main end
 
 }// Ex end
