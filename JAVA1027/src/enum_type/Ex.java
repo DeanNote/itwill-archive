@@ -65,6 +65,15 @@ class Week{
 	public static final int WEEK_SUNDAY    = 6;
 	
 	private int myWeek;
+
+	public int getMyWeek() {
+		return myWeek;
+	}
+
+	public void setMyWeek(int myWeek) {
+		this.myWeek = myWeek;
+	}
+	
 	
 	
 }
