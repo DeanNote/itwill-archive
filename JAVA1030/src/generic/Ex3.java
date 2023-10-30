@@ -16,6 +16,8 @@ interface Interface<Q>{}
 // 부모 타입에 제네릭 타입이 지정되어 있는 경우
 // 서브클래스에서 상속받을 때 부모의 타입 파라미터를 서브클래스 타입파라미터로 명시해야 한다!
 
-class SubClass<P> extends Class1<P>{
+class SubClass<P, Q, R> extends Class1<P> implements Interface<Q>{
 	P var1;
+	Q var2;
+	R var3;
 }
