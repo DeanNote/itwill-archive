@@ -47,7 +47,7 @@ public class Ex {
 		// => 리턴타입이 boolean 이므로 요소 추가 성공 여부 리턴(중복 시 추가 x)
 		set.add(1); // int형 -> Integer -> Object 로 변환되어 저장됨
 	    set.add("TWO"); // String -> Object 로 변환
-	    set.add(3.14); // double -> Double -> Object로 변환ㄴ
+	    set.add(3.14); // double -> Double -> Object로 변환
 	    System.out.println("set 객체가 비어있는가? : " + set.isEmpty());
 	    System.out.println("set 객체의 저장된 요소 개수 : " + set.size());
 	    
