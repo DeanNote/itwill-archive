@@ -35,6 +35,24 @@ public class Ex {
 //		HashSet set = new HashSet();
 		Set set = new HashSet();
 		
+		// Set 계열 메서드 사용
+		// 1. boolean isEmpty(): 컬렉션 객체가 비어있는지 여부 리턴
+		System.out.println("set 객체가 비어있는가? : " + set.isEmpty());
+		
+		// 2. int size() : 컬렉션 객체에 저장된 요소(데이터, 객체) 개수 리턴
+		System.out.println("set 객체의 저장된 요소 개수 : " + set.size());
+		
+		// 3. boolean add(Object o) : 컬렉션 객체에 요소(o, 데이터)를 추가
+		// => 파라미터가 Object 이므로 모든 타입 데이터 추가 가능(기본형, 객체)
+		// => 리턴타입이 boolean 이므로 요소 추가 성공 여부 리턴(중복 시 추가 x)
+		set.add(1); // int형 -> Integer -> Object 로 변환되어 저장됨
+	    set.add("TWO"); // String -> Object 로 변환
+	    set.add(3.14); // double -> Double -> Object로 변환ㄴ
+	    System.out.println("set 객체가 비어있는가? : " + set.isEmpty());
+	    System.out.println("set 객체의 저장된 요소 개수 : " + set.size());
+	    
+		System.out.println("set 객체의 모든 요소 출력 : " + set);
+		
 	
 	
 	
