@@ -14,7 +14,8 @@ CREATE TABLE member(
  job varchar(10) NOT NULL,
  gender varchar(1) NOT NULL,
  hobby varchar(50) NOT NULL,
- motivation varchar(500) NOT NULL 
+ motivation varchar(500) NOT NULL,
+ reg_date DATETIME NOT NULL
  );
 
  */
