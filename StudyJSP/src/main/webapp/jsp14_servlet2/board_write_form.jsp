@@ -7,7 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>board_write_form.jsp</h1>
-	
+	<h1>board_write_form.jsp - 글쓰기 폼</h1>
 </body>
 </html>
