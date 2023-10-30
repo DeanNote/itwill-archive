@@ -15,6 +15,7 @@ public class Ex {
 		noc.setData(1);
 		noc.setData(3.14);
 		noc.setData("홍길동");
+		
 		noc.data = 10;
 		noc.data = 3.14;
 		noc.data = "홍길동";
