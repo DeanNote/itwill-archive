@@ -36,7 +36,8 @@ class GenericClass2<T>{
 //		if(o instanceof T) { // instanceof 연산자에 제네릭 타입 파라미터 사용 불가
 			// Cannot perform instanceof check against type parameter T.
 			// Use its erasure Object instead since further generic type information will be erased at runtime
-			// => 컴파일 시점에서 T 데이터 확인 불가능!
+			// => 컴파일 시점에서 T 데이터 확인 불가능하므로
+			// 형변환도 불가능!
 //		}
 	}
 	
