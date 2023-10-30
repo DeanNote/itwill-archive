@@ -11,8 +11,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import jsp11_jdbc_dao.DaoInsertFormServlet;
-
 // 컨텍스트 루트 뒤의 서블릿 주소가 "xxxx.st" 로 끝나는 주소일 경우 모두 매핑을 수행하기 위해
 // 일치할 필요가 없는 주소 부분을 * 기호로 대체하고, 마지막 끝나는 주소를 패턴 형식(.st)으로
 // 지정하여 복수개의 서블릿 주소를 하나의 서블릿 클래스에서 처리하도록 매핑
@@ -133,34 +131,36 @@ public class StudentServlet extends HttpServlet {
 			StudentDAO dao = new StudentDAO();
 			int insertCount = dao.insert(student);
 			
-				if(insertCount > 0) { // 성공 시
-					// 가입 결과 확인(= 학생 목록 조회) 위해 "StudentList.st" 서블릿 요청(리다이렉트)
-					response.sendRedirect("StudentList.st");
-				} else {
-					// 자바스크립트를 사용하여 "학생 정보 등록 실패!" 출력 후 이전페이지로 돌아가기
-					response.setContentType("text/html; charset=UTF-8");
-					PrintWriter out = response.getWriter();
-					out.println("<script>");
-					out.println("alert('학생 정보 등록 실패!');");
-					out.println("history.back();");
-					out.println("</script>");
-				}
+			if(insertCount > 0) { // 성공 시
+				// 가입 결과 확인(= 학생 목록 조회) 위해 "StudentList.st" 서블릿 요청(리다이렉트)
+				response.sendRedirect("StudentList.st");
+			} else {
+				// 자바스크립트를 사용하여 "학생 정보 등록 실패!" 출력 후 이전페이지로 돌아가기
+				response.setContentType("text/html; charset=UTF-8");
+				PrintWriter out = response.getWriter();
+				out.println("<script>");
+				out.println("alert('학생 정보 등록 실패!');");
+				out.println("history.back();");
+				out.println("</script>");
+			}
 		} else if(command.equals("/jsp14_servlet2/StudentList.st")) {
 			System.out.println("학생목록 출력 폼!");
+			
 			// 학생 목록 조회를 위해 StudentDAO - selectStudentList() 메서드 호출
+			// => 파라미터 : 없음   리턴타입 : List<StudentDTO>(studentList)
 			StudentDAO dao = new StudentDAO();
 			List<StudentDTO> studentList = dao.selectStudentList();
-			System.out.println(studentList);
+//			System.out.println(studentList);
 			
+			// 뷰페이지로 학생 목록 조회 결과 객체(List<StudentDTO>)를 전달하기 위해
+			// request 객체의 setAttribute() 메서드를 통해 객체 저장(속성명 : studentList)
 			request.setAttribute("studentList", studentList);
 			
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/jsp14_servlet2/student_list.jsp");
+			// 뷰페이지(student_list.jsp)로 포워딩
+			// => URL 유지 및 request 객체 유지를 위해 Dispatch 방식 포워딩
+			RequestDispatcher dispatcher = 
+					request.getRequestDispatcher("/jsp14_servlet2/student_list.jsp");
 			dispatcher.forward(request, response);
-			
-			
-			
-			
-			
 			
 		}
 		

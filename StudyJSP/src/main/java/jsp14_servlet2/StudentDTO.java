@@ -11,16 +11,14 @@ public class StudentDTO {
 	private int idx;
 	private String name;
 	
-	
 	// 필요에 따라 기본 생성자 및 파라미터 생성자 정의 가능
-	public StudentDTO () {}
+	public StudentDTO() {}
 	
 	public StudentDTO(int idx, String name) {
 		super();
 		this.idx = idx;
 		this.name = name;
 	}
-	 
 	
 	// 2. Getter/Setter 정의
 	public int getIdx() {
@@ -36,11 +34,23 @@ public class StudentDTO {
 		this.name = name;
 	}
 
+	// toString() 메서드 오버라이딩을 통해 멤버변수 값 전체를 문자열로 결합하여 리턴
+	// => Alt + Shift + S -> S
 	@Override
 	public String toString() {
 		return "StudentDTO [idx=" + idx + ", name=" + name + "]";
 	}
-
-	
 	
 }
+
+
+
+
+
+
+
+
+
+
+
+
