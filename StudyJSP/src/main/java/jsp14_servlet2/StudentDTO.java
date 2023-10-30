@@ -40,6 +40,7 @@ public class StudentDTO {
 	public String toString() {
 		return "StudentDTO [idx=" + idx + ", name=" + name + "]";
 	}
+
 	
 	
 }
