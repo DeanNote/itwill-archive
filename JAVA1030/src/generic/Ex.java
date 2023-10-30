@@ -87,27 +87,35 @@ public class Ex {
 		Person person = gc4.getMember();
 		System.out.println(person); // toString() 생략됨
 		
-		//---------------------------------------------------------
+		// --------------------------------------------------------
 		// 5. 제네릭 타입을 지정하지 않을 경우
 		GenericClass gc5 = new GenericClass();
+		// => 타입 T 가 모두 Object 타입으로 대체됨
+		//    즉, 다시 모든 데이터를 다룰 수 있게 됨
 		gc5.setMember(1);
 		gc5.setMember(3.14);
 		gc5.setMember("홍길동");
-		gc5.setMember(new Person("이순신",22));
+		gc5.setMember(new Person("이순신", 44));
 		// => Object 타입 미지정과 지정의 기능상의 차이는 없으나
 		//    제네릭 타입 자체를 생략할 경우 경고메세지가 표시되므로 제네릭 사용 추천
-		
 		GenericClass<Object> gc6 = new GenericClass<Object>();
-		//===========================================================
-		// Collection API 예시
+		
+		// =============================================================
+		// 실제 제네릭을 적용하 정의된 Collection API 예시
 		List<String> list = new ArrayList<String>();
 		// => 컬렉션 요소로 사용되는 데이터가 String 타입으로 고정됨
-
-		Set<Integer> set =new HashSet<Integer>();
-		// => 컬렉션 요소로 사용되는 데이터가 Integer 타입으로 고정됨
 		
+		Set<Integer> set = new HashSet<Integer>();
+		// => 컬렉션 요소로 사용되는 데이터가 Integer 타입으로 고정됨
+	
 		Map<Integer, String> map = new HashMap<Integer, String>();
 		// => 컬렉션 요소 중 키는 Integer, 값은 String 타입으로 고정됨
+		
+		
+		
+		
+		
+		
 		
 		
 		
