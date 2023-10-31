@@ -75,56 +75,38 @@ public class Ex3 {
 		List subList = list.subList(1, 3); // 1 ~ 3-1 까지 추출
 		System.out.println("추출된 부분 리스트 : " + subList);
 		
-		System.out.println("-----------------------------------------------");
+		System.out.println("========================================");
 		
+		// Collections 클래스를 활용(static 메서드 제공)
 		List list2 = new ArrayList();
-		list2.addAll(list);
+		list2.addAll(list); // list 의 모든 요소를 list2 에 추가
 		list2.add(20);
 		list2.add(8);
 		list2.add(85);
 		list2.add(50);
 		System.out.println("정렬 전 : " + list2);
 		
+		// Collections.sort(List) : List 객체 정렬(같은 타입 요소만 가능)
 		Collections.sort(list2);
 		System.out.println("정렬 후 : " + list2);
 		
+		// Collections.shuffle(List) : List 객체 무작위 섞기(타입 무관)
+		// => 실행할 때마다 셔플 결과는 달리짐
+		list2.add("888"); // 다른 데이터타입도 셔플 가능함
 		Collections.shuffle(list2);
-		System.out.println("무작위 : " + list2);
+		System.out.println("셔플 후 : " + list2);
 		
-		System.out.println("-----------------------------------------------");
+		System.out.println("=============================================");
 		
-//		String[] names = {"홍", "이", "강"};
+		// Arrays 클래스의 static 메서드인 asList() 메서드를 사용하면
+		// 배열 -> List 객체로 쉽게 변환 가능
+//		String[] names = {"홍길동", "이순신", "강감찬"};
 //		List namesList = Arrays.asList(names);
+		
+		// asList() 메서드 파라미터로 가변인자가 사용되므로
+		// 데이터를 직접 여러개 전달 가능하며, 배열로 자동으로 변환되어 전달됨
 		List namesList = Arrays.asList("홍길동", "이순신", "강감찬");
 		System.out.println(namesList);
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
 		
 	}
 

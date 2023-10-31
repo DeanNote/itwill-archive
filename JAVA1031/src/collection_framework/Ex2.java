@@ -27,13 +27,13 @@ public class Ex2 {
 		set.add(1);
 		set.add(100);
 		set.add(10);
-		
-		// Set 계열은 인덱스가 없으므로 일반 for문은 사용 불가능 => 향상된 for문
-		// 1) 제네릭 타입이 지정되지 않은 Set 객체는 Object 타입으로 저장되므로
-		//    데이터를 저장할 변수도 Object 타입 선언 필요
-		for(Object o : set) {
-			System.out.println(o);
-		}
+//		
+//		// Set 계열은 인덱스가 없으므로 일반 for문은 사용 불가능 => 향상된 for문
+//		// 1) 제네릭 타입이 지정되지 않은 Set 객체는 Object 타입으로 저장되므로
+//		//    데이터를 저장할 변수도 Object 타입 선언 필요
+//		for(Object o : set) {
+//			System.out.println(o);
+//		}
 		
 		Set<Integer> set2 = new HashSet<Integer>();
 		set2.add(1);
@@ -42,13 +42,13 @@ public class Ex2 {
 		set2.add(4);
 		set2.add(5);
 		set2.add(6);
-		
-		// 2) 제네릭 타입을 Integer 타입으로 지정한 Set 객체는
-		//    모든 데이터가 Integer 타입으로 저장되므로 변수도 int(Integer) 필요
-		for(int num : set2) { // Integer 타입 지정 가능
-			System.out.println(num);
-		}
-		
+//		
+//		// 2) 제네릭 타입을 Integer 타입으로 지정한 Set 객체는
+//		//    모든 데이터가 Integer 타입으로 저장되므로 변수도 int(Integer) 필요
+//		for(int num : set2) { // Integer 타입 지정 가능
+//			System.out.println(num);
+//		}
+//		
 		/*
 		 * < Iterator(반복자) 사용 기본 문법 >
 		 * 1. 컬렉션 객체(Set 또는 List) 의 iterator() 메서드를 호출하여
