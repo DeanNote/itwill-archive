@@ -12,6 +12,10 @@ public class Ex3 {
 			
 		 */
 		List<Integer> list = new ArrayList<Integer>();
+		list.add(1);
+		list.add(2);
+		list.add(3);
+//		list.add(3.14); // 제네릭 타입 고정!
 	}
 
 }
