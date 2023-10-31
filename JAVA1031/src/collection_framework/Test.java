@@ -124,16 +124,14 @@ public class Test {
 		
 		System.out.println(count);
 		
+		// 결과는 switch ~ case 문 사용
 		switch(count) {
-		case 1:
-		case 2: System.out.println("꽝!"); break;
-		case 3: System.out.println("4등!"); break;
-		case 4: System.out.println("3등!"); break;
-		case 5: System.out.println("2등!"); break;
-		case 6: System.out.println("1등!"); break;
-		
-		default : System.out.println("꽝!");
-	}
+			case 6 : System.out.println("1등!"); break;
+			case 5 : System.out.println("2등!"); break;
+			case 4 : System.out.println("3등!"); break;
+			case 3 : System.out.println("4등!"); break;
+			default : System.out.println("꽝!");
+		}
 		
 		
 		
