@@ -1,6 +1,8 @@
 package collection_framework;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 public class Ex3 {
@@ -74,6 +76,52 @@ public class Ex3 {
 		System.out.println("추출된 부분 리스트 : " + subList);
 		
 		System.out.println("-----------------------------------------------");
+		
+		List list2 = new ArrayList();
+		list2.addAll(list);
+		list2.add(20);
+		list2.add(8);
+		list2.add(85);
+		list2.add(50);
+		System.out.println("정렬 전 : " + list2);
+		
+		Collections.sort(list2);
+		System.out.println("정렬 후 : " + list2);
+		
+		Collections.shuffle(list2);
+		System.out.println("무작위 : " + list2);
+		
+		System.out.println("-----------------------------------------------");
+		
+//		String[] names = {"홍", "이", "강"};
+//		List namesList = Arrays.asList(names);
+		List namesList = Arrays.asList("홍길동", "이순신", "강감찬");
+		System.out.println(namesList);
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		
 		
 		
