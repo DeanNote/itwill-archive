@@ -32,16 +32,17 @@ public class MemberFrontController extends HttpServlet {
 			System.out.println("command : " +command );
 			
 			if(command.equals("/MemberLoginForm.me")) {
-				RequestDispatcher dispatcher = request.getRequestDispatcher("/member/member_login_form.jsp");
-				dispatcher.forward(request, response);
-				System.out.println("로그인 폼 클릭");
+				forward =  new ActionForward();
+				forward.setPath("member/member_login_form.jsp");
+				forward.setRedirect(false);
 	
 			} else if(command.equals("/MemberJoinPro.me")) {
-				System.out.println("회원가입 클릭");
-				response.sendRedirect("./");				
+				forward =  new ActionForward();
+				forward.setPath("./");
+				forward.setRedirect(true);			
 	
 			} else if(command.equals("/MemberJoinForm.me")) {
-				forward = new ActionForward();
+				forward =  new ActionForward();
 				forward.setPath("member/member_join_form.jsp");
 				forward.setRedirect(false);
 			}
