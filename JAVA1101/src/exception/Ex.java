@@ -27,7 +27,7 @@ public class Ex {
 		 * 		// => 예외 발생하면 코드 아래쪽 나머지 코드는 실행되지 못함
 		 * } catch(예외클래스명1 변수명) {
 		 * 		// 예외클래스명1에 해당하는 예외 발생 시 처리할 코드들...
-		 * } catch(예외클래스명n 병수명) {
+		 * } catch(예외클래스명n 변수명) {
 		 * 		// 예외클래스명n에 해당하는 예외 발생 시 처리할 코드들...
 		 * } finally {
 		 * 		// 예외 발생 여부와 관계없이 무조건 실행할 문장들..
@@ -84,7 +84,7 @@ public class Ex {
 			// 예외가 복수개 일 때 각각의 예외를 별도로 처리해도 되지만
 			// 예외도 클래스이므로 업캐스팅이 가능하므로
 			// 상위 예외 타입으로 묶어서 처리 가능
-			// ex) NullPointerException + NullPointerException 
+			// ex) NullPointerException + ArithmeticException 
 			//     = RuntimeExceptoin 또는 Exception 클래스 처리 가능
 			
 			System.out.println("try 블록 끝!");
@@ -99,11 +99,24 @@ public class Ex {
 			// ArrayIndexOutOfBoundsException 예외가 발생했을 경우 처리할 코드를 기술
 			System.out.println(
 					"배열 인덱스가 잘못 지정되었습니다! - " + e.getMessage());
+//		} catch(Exception e) {
+//			// 위쪽의 catch 블록에서 지정되지 않은 나머지 예외들은
+//			// Exception 이 기술된 catch 블록에서 모두 처리 가능함
+//			// => 단, 각 예외에 따른 처리 방법을 구분할 수 없음.
+//			System.out.println("나머지 모든 예외 처리 - " + e.getMessage());
+		} catch(NullPointerException e) {
+			// => Unreachable catch block for NullPointerException. 
+			//    It is already handled by the catch block for Exception
+			// 주의! Exception 예외 처리 catch 블록이 존재할 경우
+			// 해당 예외 아래쪽의 catch 블록은 실행되지 못함
+			// => if문과 마찬가지로 순차적으로 처리되므로
+			//    하위클래스 타입부터 상위클래스 타입순으로 예외 처리 필수!
+			System.out.println("null 값을 참조할 수 없음! - " + e.getMessage());
 		} catch(Exception e) {
 			// 위쪽의 catch 블록에서 지정되지 않은 나머지 예외들은
 			// Exception 이 기술된 catch 블록에서 모두 처리 가능함
-			// => 단, 각 예외에 따른 처리 방법을 구분할 수 없음.
-			System.out.println("나머지 모든 예외 처리 - " + e.getMessage());
+			// => 단, 각 예외에 따른 처리 방법을 구분할 수 없음
+			System.out.println("나머지 모든 예외 처리! - " + e.getMessage());
 		}
 		
 		// try ~ catch 블록 밖의 코드는 예외 발생 여부와 관계없이 실행됨
