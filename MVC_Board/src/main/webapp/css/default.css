@@ -1,3 +1,6 @@
 @charset "UTF-8";
-
-#id
+/* ------------------- top.jsp -------------------------*/
+#member_area {
+	text-align: right;
+	margin-bottom: 20px;
+}
