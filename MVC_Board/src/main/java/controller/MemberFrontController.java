@@ -9,6 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import action.Action;
+import action.MemberJoinProAction;
+import action.MemberLoginProAction;
 import vo.ActionForward;
 
 @WebServlet("*.me")
@@ -26,7 +29,9 @@ public class MemberFrontController extends HttpServlet {
 			System.out.println("MemberFrontController");
 			
 			//공통으로 사용할 변수
-			ActionForward forward =  null;
+			ActionForward forward =  null;//포워딩 정보 관리
+			Action action = null;
+			
 			
 			String command = request.getServletPath();
 			System.out.println("command : " +command );
@@ -37,19 +42,21 @@ public class MemberFrontController extends HttpServlet {
 				forward.setRedirect(false);
 	
 			} else if(command.equals("/MemberJoinPro.me")) {
-				// 회원가입 처리작업
-				
-				
-				// 홈으로 가는 작업
-				forward =  new ActionForward();
-				forward.setPath("./");
-				forward.setRedirect(true);			
+				// 회원가입 처리작업 위한 비지니스 로직 수행
+				action = new MemberJoinProAction();
+				forward = action.execute(request, response);
 	
 			} else if(command.equals("/MemberJoinForm.me")) {
 				forward =  new ActionForward();
 				forward.setPath("member/member_join_form.jsp");
 				forward.setRedirect(false);
-			}
+				
+			} else if(command.equals("/MemberLoginPro.me")) {
+				// 회원 로그인 처리작업 위한 비지니스 로직 수행
+				action = new MemberLoginProAction();
+				forward = action.execute(request, response);
+	
+			} 
 			
 			//---------------------------------------------------------------------------------------------------
 			// 공통 포워딩 작업처리(Dispatch & Redirect)
