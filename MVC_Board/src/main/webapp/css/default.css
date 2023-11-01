@@ -18,3 +18,11 @@ article h1, h3{
 	text-align: center;
 	text-decoration: none;
 }
+
+article table{
+	margin: auto;
+}
+
+.td_center{
+	text-align: center;
+}
