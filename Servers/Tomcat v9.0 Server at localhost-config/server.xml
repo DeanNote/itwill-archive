@@ -152,7 +152,7 @@
              Note: The pattern used is equivalent to using pattern="common" -->
         <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs" pattern="%h %l %u %t &quot;%r&quot; %s %b" prefix="localhost_access_log" suffix=".txt"/>
 
-      <Context docBase="Studyservlet" path="/Studyservlet" reloadable="true" source="org.eclipse.jst.jee.server:Studyservlet"/><Context docBase="StudyJSP" path="/StudyJSP" reloadable="true" source="org.eclipse.jst.jee.server:StudyJSP"/><Context docBase="StudyHTML" path="/StudyHTML" reloadable="true" source="org.eclipse.jst.jee.server:StudyHTML"/><Context docBase="StudyJavascript" path="/StudyJavascript" reloadable="true" source="org.eclipse.jst.jee.server:StudyJavascript"/></Host>
+      <Context docBase="Studyservlet" path="/Studyservlet" reloadable="true" source="org.eclipse.jst.jee.server:Studyservlet"/><Context docBase="StudyJSP" path="/StudyJSP" reloadable="true" source="org.eclipse.jst.jee.server:StudyJSP"/><Context docBase="StudyHTML" path="/StudyHTML" reloadable="true" source="org.eclipse.jst.jee.server:StudyHTML"/><Context docBase="StudyJavascript" path="/StudyJavascript" reloadable="true" source="org.eclipse.jst.jee.server:StudyJavascript"/><Context docBase="MVC_Board" path="/MVC_Board" reloadable="true" source="org.eclipse.jst.jee.server:MVC_Board"/></Host>
     </Engine>
   </Service>
 </Server>
