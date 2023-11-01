@@ -15,10 +15,11 @@
 	</header>
 	<article>
 		<h1>MVC 게시판</h1>
-	
+		<h3><a href="BoardWriteForm.bo">글쓰기</a></h3>
+		<h3><a href="BoardList.bo">글목록</a></h3>
 	</article>
 	<footer>
-	
+		<jsp:include page="./inc/bottom.jsp"></jsp:include>
 	</footer>
 	
 </body>

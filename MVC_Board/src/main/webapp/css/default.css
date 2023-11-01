@@ -4,6 +4,13 @@
 	text-align: right;
 	margin-bottom: 20px;
 }
+/* ------------------- bottom.jsp -------------------------*/
+
+#footer_area {
+	height : 70 px;
+	text-align: center;
+	margin-top: 50px;
+}
 
 /* ------------------- 공통 -------------------------*/
 
