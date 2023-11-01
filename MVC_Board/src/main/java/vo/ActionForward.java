@@ -3,7 +3,7 @@ package vo;
 public class ActionForward {
 	private String path;
 	private boolean isRedirect;
-	
+
 	public String getPath() {
 		return path;
 	}

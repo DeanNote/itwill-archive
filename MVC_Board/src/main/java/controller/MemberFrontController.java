@@ -37,6 +37,10 @@ public class MemberFrontController extends HttpServlet {
 				forward.setRedirect(false);
 	
 			} else if(command.equals("/MemberJoinPro.me")) {
+				// 회원가입 처리작업
+				
+				
+				// 홈으로 가는 작업
 				forward =  new ActionForward();
 				forward.setPath("./");
 				forward.setRedirect(true);			
