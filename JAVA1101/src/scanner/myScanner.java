@@ -1,4 +1,4 @@
-package collection_framework;
+package scanner;
 
 import java.util.Scanner;
 
