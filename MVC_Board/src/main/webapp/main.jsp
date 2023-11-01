@@ -12,7 +12,13 @@
 	<header>
 		<jsp:include page="./inc/top.jsp"></jsp:include>
 	</header>
-	<h1>main.jsp</h1>
+	<article>
+		<h1>MVC 게시판</h1>
+	
+	</article>
+	<footer>
+	
+	</footer>
 	
 </body>
 </html>
