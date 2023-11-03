@@ -19,9 +19,12 @@ public class MemberJoinProService {
 		// => 트랜잭션 관리를 DAO 대신 서비스 객체가 수행해야 하므로 Service 객체가 Connection 객체를 관리해야함.
 		Connection con = JdbcUtil.getConnection();
 		
-		// 3. MemberDAO
-		MemberDAO dao = new MemberDAO();
+		// 3. MemberDAO(공통)
+//		MemberDAO dao = new MemberDAO();
+		MemberDAO dao = MemberDAO.getInstance();
 		
+		// 4. MemberDAO 객체의 setConnection() 메서드를 호출하여 Connection  객체 전달(공통)
+		dao.setConnection(con);
 		
 		//작업 요청 처리 결과 리턴
 		return isJoinSuccess;
