@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import svc.MemberJoinProService;
 import vo.ActionForward;
 import vo.MemberBean;
 
@@ -27,17 +28,17 @@ public class MemberJoinProAction implements Action{
 		
 		
 		
-		MemberBean mb = new MemberBean();
-		mb.setName(request.getParameter("name"));
-		mb.setId(request.getParameter("id"));
-		mb.setPasswd(request.getParameter("passwd"));
+		MemberBean member = new MemberBean();
+		member.setName(request.getParameter("name"));
+		member.setId(request.getParameter("id"));
+		member.setPasswd(request.getParameter("passwd"));
 		
-		mb.setJumin(request.getParameter("jumin1") 
+		member.setJumin(request.getParameter("jumin1") 
 				+ "-" + 
 				request.getParameter("jumin2")
 				);
 		
-		mb.setAddress(
+		member.setAddress(
 				request.getParameter("postCode")
 				+ "/" +
 				request.getParameter("address1")
@@ -45,22 +46,28 @@ public class MemberJoinProAction implements Action{
 				request.getParameter("address2")
 				);
 		
-		mb.setEmail(
+		member.setEmail(
 				request.getParameter("email1")
 				+ "@" +
 				request.getParameter("email2")
 				);
 		
-		mb.setHobby(request.getParameter("job"));
-		mb.setGender(request.getParameter("gender"));
+		member.setHobby(request.getParameter("job"));
+		member.setGender(request.getParameter("gender"));
 		
-		String[] arrHobby = request.getParameterValues("hobby");
-		for(String hobby : arrHobby) {
-			mb.setHobby(hobby);
+		member.setHobby("");
+		if(request.getParameterValues("hobby") != null) {
+			for(String hobby : request.getParameterValues("hobby")) {
+				member.setHobby(member.getHobby() + hobby + "/");
 			}
+		}
 		
-		mb.setMotivation(request.getParameter("motivation"));
-		
+		member.setMotivation(request.getParameter("motivation"));
+		System.out.println(member);
+		//------------------------------------------------------------
+		// 회원 가입 비즈니스 로직(DB 작업) 요청 수행(XXXService 클래스 활용)
+		MemberJoinProService service = new MemberJoinProService();
+		service.registMember(member);
 		
 		//포워딩 정보가 저장된 ActionForward객체 리턴
 		return forward;
