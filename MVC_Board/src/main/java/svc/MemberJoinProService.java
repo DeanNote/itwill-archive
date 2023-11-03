@@ -26,6 +26,9 @@ public class MemberJoinProService {
 		// 4. MemberDAO 객체의 setConnection() 메서드를 호출하여 Connection  객체 전달(공통)
 		dao.setConnection(con);
 		
+		// 5. MemberDAO 객체의 xxx() 메서드 호출하여 xxx작업 수행 요청 및 결과 리턴 받기
+		
+		
 		//작업 요청 처리 결과 리턴
 		return isJoinSuccess;
 	}
