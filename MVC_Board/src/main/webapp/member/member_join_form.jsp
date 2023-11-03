@@ -5,7 +5,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/css/default.css">    
+<!-- 외부 CSS 파일(css/default.css) 연결하기 -->
+<link href="${pageContext.request.contextPath }/css/default.css" rel="stylesheet" type="text/css">
+<!-- 다음 주소검색 API 사용을 위한 라이브러리 추가 -->
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script type="text/javascript">
 	window.onload = function() {
@@ -105,18 +107,13 @@
 		// 7. 취미의 "전체선택" 체크박스 체크 시 취미 항목 모두 체크, 
 		//    "전체선택" 해제 시 취미 항목 모두 체크 해제하기
 		document.querySelector("#checkAllHobby").onclick = function() {
-// 			document.joinForm.hobby[0].checked = document.querySelector("#checkAllHobby").checked;
-// 			document.joinForm.hobby[1].checked = document.querySelector("#checkAllHobby").checked;
-// 			document.joinForm.hobby[2].checked = document.querySelector("#checkAllHobby").checked;
-		
 			for(let i = 0; i < document.joinForm.hobby.length; i++) {
 				document.joinForm.hobby[i].checked = document.querySelector("#checkAllHobby").checked;
 			}
 		};
 		
 		// 8. 가입(submit) 클릭 시 이벤트 처리를 통해
-	    // 이름, 아이디, 비밀번호, 비밀번호확인, 주민번호, Email, 직업, 성별, 취미, 가입동기 항목을
-	    // 모두 입력했는지 체크하고 모든 항목이 입력되었을 경우에만 submit 동작이 수행되도록 처리
+	    // 비밀번호 2개가 일치하는지 체크하고 모든 항목이 입력되었을 경우에만 submit 동작이 수행되도록 처리
 		document.joinForm.onsubmit = function() {
 			if(!isSamePasswd) { // 일치 여부 저장 변수 isSamePasswd 값 활용
 				alert("패스워드 불일치!");
@@ -126,7 +123,8 @@
 // 				// 취미는 모든 체크박스 체크상태가 false 일 때 체크 요청 메세지 출력
 // 				alert("취미 선택 필수!");
 // 				return false; // submit 동작 취소
-			}			
+			}
+			
 			return true; // submit 동작 수행(생략 가능)
 		};
 		
@@ -166,7 +164,10 @@
 </head>
 <body>
 	<header>
-		<jsp:include page="../inc/top.jsp"></jsp:include>
+		<!-- inc/top.jsp 페이지 삽입 -->
+		<!-- JSP 파일 삽입 대상은 현재 파일을 기준으로 상대주소 지정 -->
+		<!-- webapp 디렉토리를 가리키려면 최상위(루트) 경로 활용 -->
+		<jsp:include page="/inc/top.jsp"></jsp:include>
 	</header>
 	<article>
 		<h1>회원 가입</h1>
@@ -179,7 +180,7 @@
 				<tr>
 					<th>아이디</th>
 					<td>
-						<input type="text" name="id" placeholder="8 ~ 16글자 사이 입력" required>
+						<input type="text" name="id" placeholder="8 ~ 16글자" required>
 						<input type="button" value="ID중복확인" id="btnCheckId" onclick="checkId()">
 						<span id="checkIdResult"></span>
 					</td>
@@ -187,7 +188,7 @@
 				<tr>
 					<th>비밀번호</th>
 					<td>
-						<input type="password" name="passwd" placeholder="8 ~ 16글자 사이 입력" required> 
+						<input type="password" name="passwd" placeholder="8 ~ 16글자" required>
 						<span id="checkPasswdResult"></span>
 					</td>
 				</tr>
@@ -273,5 +274,19 @@
 			</table>
 		</form>
 	</article>
+	<footer>
+	
+	</footer>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+

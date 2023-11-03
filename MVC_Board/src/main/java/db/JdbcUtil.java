@@ -55,6 +55,10 @@ public class JdbcUtil {
 			// => Connection 객체(con)의 setAutoCommit() 메서드를 호출하여 설정 변경 가능
 			//    (true : Auto Commit 설정(기본값), false : Auto Commit 해제)
 			con.setAutoCommit(false); // 자동 커밋 기능 해제
+			// => 이제부터 DB 에서 조작을 수행하는 DML 등이 즉시 반영되지 않음
+			//    반드시 커밋 작업을 수행해야 이전 작업들이 모두 반영되고
+			//    롤백 작업을 통해 이전 상태로 되돌리는 작업도 가능해진다!
+			//    (commit, rollback 작업을 수행할 메서드 정의 필요)
 			
 			// 6. 현재 커넥션 정보 확인(옵션)
 			// => DataSource 객체를 BasicDataSource 타입으로 다운캐스팅하여 메서드 호출
@@ -73,26 +77,27 @@ public class JdbcUtil {
 		// 커넥션풀로부터 리턴받은 데이터베이스 연결 객체가 저장된 Connection 객체 리턴
 		return con;
 	}
+	
 	// -------------------------------------------------------------------------------------
-	// 데이터 베이스 작업에 대한 Commit, Rollback 기능을 수행할 메서드 정의
-	// => 파라미터 : Connection 객체(con)
+	// 데이터베이스 작업에 대한 Commit, Rollback 기능을 수행할 메서드 정의
+	// => 파라미터 : Connection 객체(con)   리턴타입 : void
 	public static void commit(Connection con) {
 		try {
-			//Connection 객체의 commit()메서드 호출하여 Commit 작업 수행
+			// Connection 객체의 commit() 메서드 호출하여 Commit 작업 수행
 			con.commit();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 	}
+	
 	public static void rollback(Connection con) {
 		try {
-			//Connection 객체의 commit()메서드 호출하여 Commit 작업 수행
+			// Connection 객체의 rollback() 메서드 호출하여 Rollback 작업 수행
 			con.rollback();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 	}
-	
 	
 	// -------------------------------------------------------------------------------------
 	// 데이터베이스 자원 반환(close())을 공통으로 수행할 close() 메서드 정의

@@ -1,28 +1,33 @@
 @charset "UTF-8";
-/* ------------------- top.jsp -------------------------*/
+/* ---- top.jsp ---- */
 #member_area {
 	text-align: right;
 	margin-bottom: 20px;
 }
-/* ------------------- bottom.jsp -------------------------*/
 
+/* ---- bottom.jsp ---- */
 #footer_area {
-	height : 70 px;
 	text-align: center;
-	margin-top: 50px;
+	margin-top: 20px;
 }
 
-/* ------------------- 공통 -------------------------*/
-
-article h1, h3{
+/* ---- 공통 ---- */
+article h1, h3 {
 	text-align: center;
 	text-decoration: none;
 }
 
-article table{
+article table {
 	margin: auto;
 }
 
-.td_center{
-	text-align: center;
+.td_center {
+	text-align: center;	
 }
+
+
+
+
+
+
+

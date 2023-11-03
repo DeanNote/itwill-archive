@@ -9,28 +9,33 @@ import javax.servlet.http.HttpServletResponse;
 
 @WebServlet("*.bo")
 public class BoardFrontController extends HttpServlet {
+	
+	protected void doProcess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		System.out.println("BoardFrontController");
+		
+		// 서블릿 주소 추출하기
+		String command = request.getServletPath();
+		System.out.println("command : " + command);
+		
+	}
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doProcess(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// POST 방식 요청일 때 한글 파라미터 인코딩 설정
 		request.setCharacterEncoding("UTF-8");
 		doProcess(request, response);
 	}
-	
-	protected void doProcess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("BoardFrontController");
-		String command = request.getServletPath();
-		System.out.println("command : " +command);
-		if(command.equals("/BoardWriteForm.bo")) {
-//			RequestDispatcher dispatcher = request.getRequestDispatcher("/jsp14_servlet2/board_write_form.jsp");
-//			dispatcher.forward(request, response);
-			System.out.println("글 쓰기!");
-		} else if(command.equals("/BoardList.bo")) {
-//			RequestDispatcher dispatcher = request.getRequestDispatcher("/jsp14_servlet2/board_list.jsp");
-//			dispatcher.forward(request, response);
-			System.out.println("글 목록!");
-		}
 
 }
-}
+
+
+
+
+
+
+
+
+
