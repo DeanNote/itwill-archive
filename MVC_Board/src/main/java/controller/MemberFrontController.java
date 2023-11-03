@@ -41,15 +41,15 @@ public class MemberFrontController extends HttpServlet {
 				forward.setPath("member/member_login_form.jsp");
 				forward.setRedirect(false);
 	
-			} else if(command.equals("/MemberJoinPro.me")) {
-				// 회원가입 처리작업 위한 비지니스 로직 수행
-				action = new MemberJoinProAction();
-				forward = action.execute(request, response);
-	
 			} else if(command.equals("/MemberJoinForm.me")) {
 				forward =  new ActionForward();
 				forward.setPath("member/member_join_form.jsp");
 				forward.setRedirect(false);
+
+			} else if(command.equals("/MemberJoinPro.me")) {
+				// 회원가입 처리작업 위한 비지니스 로직 수행
+				action = new MemberJoinProAction();
+				forward = action.execute(request, response);
 				
 			} else if(command.equals("/MemberLoginPro.me")) {
 				// 회원 로그인 처리작업 위한 비지니스 로직 수행
