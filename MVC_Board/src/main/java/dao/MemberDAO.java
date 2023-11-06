@@ -184,9 +184,29 @@ public class MemberDAO {
 		
 		return member;
 	}
-	public int updateMemberStatus(String id, int withdraw) {
-		// TODO Auto-generated method stub
-		return 0;
+	
+	//회원상태 수정 - UPDATE
+	public int updateMemberStatus(String id, int status) {
+		int updateCount = 0;
+		
+		//DB 작업에 필요한 변수 선언
+		PreparedStatement pstmt = null;
+		
+		try {
+			//3단계. SQL구문 작성 및 전달
+			//=>아이디가 일치하는 레코드의 status 컬럼값을 변경 - UPDATE
+			String sql = "UPDATE member SET status = ? WHERE id = ?;";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, status);
+			pstmt.setString(2, id);
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		
+		
+		return updateCount;
 	}
 	
 
