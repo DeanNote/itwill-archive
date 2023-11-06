@@ -1,8 +1,9 @@
+<%@page import="vo.MemberBean"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%-- JSTL 에서 split() 등의 함수 사용을 위해 functions 라이브러리 추가(${fn:xxx()} 형식으로 활용) --%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-    
 <!DOCTYPE html>
 <html>
 <head>
@@ -32,6 +33,27 @@
 			
 		};
 		
+		// 4. 비밀번호확인 입력란에 커서 벗어날 때 비밀번호와 같은지 체크하기
+// 		document.joinForm.passwd2.onblur = function() {
+// 			let passwd = document.joinForm.passwd.value;
+// 			let passwd2 = document.joinForm.passwd2.value;
+			
+// 			// 비밀번호와 비밀번호확인 입력 내용이 같으면 "비밀번호 일치"(파란색) 표시,
+//    			// 아니면, "비밀번호 불일치"(빨간색) 표시
+// 		    if(passwd == passwd2) { // 일치
+// 		     	document.querySelector("#checkPasswd2Result").innerText = "비밀번호 일치";
+// 		     	document.querySelector("#checkPasswd2Result").style.color = "blue";
+// 		     	// 일치 여부를 저장하는 변수 isSamePasswd 값을 true 로 변경
+// 		     	isSamePasswd = true;
+// 		    } else { // 불일치
+// 		     	document.querySelector("#checkPasswd2Result").innerText = "비밀번호 불일치";
+// 		     	document.querySelector("#checkPasswd2Result").style.color = "red";
+// 		     	// 일치 여부를 저장하는 변수 isSamePasswd 값을 true 로 변경
+// 		     	isSamePasswd = false;
+// 		    }
+			
+// 		};
+		
 		// 6. 이메일 도메인 선택 셀렉트 박스 항목 변경 시 = change
 		//    선택된 셀렉트 박스 값을 이메일 두번째 항목(@ 기호 뒤)에 표시하기
 		document.joinForm.emailDomain.onchange = function() {
@@ -60,7 +82,7 @@
 		
 		// 8. 가입(submit) 클릭 시 이벤트 처리를 통해
 	    // 비밀번호 2개가 일치하는지 체크하고 모든 항목이 입력되었을 경우에만 submit 동작이 수행되도록 처리
-		document.joinForm.onsubmit = function() {
+// 		document.joinForm.onsubmit = function() {
 // 			if(!isSamePasswd) { // 일치 여부 저장 변수 isSamePasswd 값 활용
 // 				alert("패스워드 불일치!");
 // 				document.joinForm.passwd2.focus();
@@ -69,10 +91,10 @@
 // 				// 취미는 모든 체크박스 체크상태가 false 일 때 체크 요청 메세지 출력
 // 				alert("취미 선택 필수!");
 // 				return false; // submit 동작 취소
-			}
-			
-			return true; // submit 동작 수행(생략 가능)
-		};
+// 			}
+// 			
+// 			return true; // submit 동작 수행(생략 가능)
+// 		};
 		
 		// =====================================================================
 		// 주소 검색 API 활용 기능 추가
@@ -121,25 +143,29 @@
 			<table border="1">
 				<tr>
 					<th>이름</th>
-					<td><input type="text" name="name" value="${member.name }" ></td>
+					<%-- 회원 상세정보 페이지와 달리 수정 폼이므로 value 속성으로 값 출력 --%>
+					<td><input type="text" name="name" value="${member.name }" required></td>
 				</tr>
 				<tr>
 					<th>아이디</th>
 					<td>
-						<input type="text" name="id" value="${member.name }" readonly="readonly" >(변경불가)
+						<%-- 아이디 편집 불가(readonly 필수! disabled 는 파라미터 전송에서 제외됨) --%>
+<%-- 						<input type="text" name="id" value="${member.id }" readonly>(변경불가) --%>
+						<%-- 만약, 아이디 파라미터 전송도 불필요할 경우 데이터만 표시 --%>
+						${member.id }(변경불가)
 					</td>
 				</tr>
 				<tr>
 					<th>새 비밀번호</th>
 					<td>
-						<input type="password" name="passwd" placeholder="8 ~ 16글자(변경시에만입력)" >
+						<input type="password" name="passwd" placeholder="8 ~ 16글자(변경시에만 입력)">
 						<span id="checkPasswdResult"></span>
 					</td>
 				</tr>
 				<tr>
 					<th>새 비밀번호확인</th>
 					<td>
-						<input type="password" name="passwd2" placeholder="(변경시에만입력)" >
+						<input type="password" name="passwd2" placeholder="(변경시에만 입력)">
 						<span id="checkPasswd2Result"></span>
 					</td>
 				</tr>
@@ -150,21 +176,37 @@
 				<tr>
 					<th>주소</th>
 					<td>
-					<c:set var="arrAddress" value="${fn:split(member.address, '/') }"/>
-						<input type="text" name="postCode" id="postCode" size="6" value = "${arrAddress[0]}">
+						<%--
+						==================================================================
+						[ 자바 코드를 통해 전달받은 주소에 대한 문자열 편집 ]
+						JSTL - functions 라이브러리의 split() 함수 활용하여 주소 분리
+						1. JSTL 의 functions 라이브러리 등록 필요(prefix : fn)
+						2. split() 함수를 사용하여 "/" 기준으로 문자열 분리 후 변수에 저장
+						   => ${fn:split(원본문자열, '구분자')} 로 분리 후
+						      <c:set> 태그 활용하여 분리된 데이터가 저장된 배열 변수에 저장
+						   => 주의! 원본 문자열을 EL 을 통해 전달 시 ${} 중복 사용 X
+						   => String[] arrAddress = address.split("/"); 와 동일한 작업 수행
+						3. 분리된 데이터가 저장된 배열을 활용하여 각 데이터 출력
+						   => EL 에서의 배열 사용은 일반 배열과 동일하게 접근
+						   => ${배열명[인덱스]}
+						==================================================================
+						--%>
+						<c:set var="arrAddress" value="${fn:split(member.address, '/') }" />
+						<input type="text" name="postCode" id="postCode" value="${arrAddress[0] }" size="6" required>
 						<input type="button" id="btnSearchAddress" value="주소검색">
 						<br>
-						<input type="text" name="address1" id="address1" size="25" placeholder="기본주소" value = "${arrAddress[1]}">
+						<input type="text" name="address1" id="address1" value="${arrAddress[1] }" size="25" placeholder="기본주소" required>
 						<br>
-						<input type="text" name="address2" id="address2" size="25" placeholder="상세주소" value = "${arrAddress[2]}">
+						<input type="text" name="address2" id="address2" value="${arrAddress[2] }" size="25" placeholder="상세주소" required>
 					</td>
 				</tr>
 				<tr>
 					<th>E-Mail</th>
 					<td>
-					<c:set var="arrEmail" value="${fn:split(member.email, '@') }"/>
-						<input type="text" name="email1" size="8" value = "${arrEmail[0]}"> @
-						<input type="text" name="email2" size="8" value = "${arrEmail[1]}">
+						<%-- 이메일 주소 분리("@" 기준)하여 표시 --%>
+						<c:set var="arrEmail" value="${fn:split(member.email, '@') }" />
+						<input type="text" name="email1" value="${arrEmail[0] }" size="8" required> @
+						<input type="text" name="email2" value="${arrEmail[1] }" size="8" required>
 						<select name="emailDomain">
 							<option value="">직접입력</option>
 							<option value="naver.com">naver.com</option>
@@ -176,30 +218,32 @@
 				<tr>
 					<th>직업</th>
 					<td>
-						<select name="job" >
+						<select name="job">
 							<option value="">항목을 선택하세요</option>
-							<option value="개발자"  <c:if test="${member.job eq '개발자'}">selected</c:if>>개발자</option>
+							<%-- 직업과 일치하는 셀렉트박스 항목 선택(selected) --%>
+							<option value="개발자" <c:if test="${member.job eq '개발자'}">selected</c:if>>개발자</option>
 							<option value="DB엔지니어" <c:if test="${member.job eq 'DB엔지니어'}">selected</c:if>>DB엔지니어</option>
-							<option value="서버엔지니어"<c:if test="${member.job eq '서버엔지니어'}">selected</c:if>>서버엔지니어</option>
+							<option value="서버엔지니어" <c:if test="${member.job eq '서버엔지니어'}">selected</c:if>>서버엔지니어</option>
 						</select>
 					</td>
 				</tr>
 				<tr>
 					<th>성별</th>
 					<td>
-						<input type="radio" name="gender" value="남"  <c:if test="${member.gender eq '남'}">checked</c:if>>남
-						<input type="radio" name="gender" value="여"  <c:if test="${member.gender eq '여'}">checked</c:if>>여
+						<%-- 성별과 일치하는 라디오버튼 항목 선택(checked) --%>
+						<input type="radio" name="gender" value="남" <c:if test="${member.gender eq '남'}">checked</c:if> required>남
+						<input type="radio" name="gender" value="여" <c:if test="${member.gender eq '여'}">checked</c:if> required>여
 					</td>
 				</tr>
 				<tr>
 					<th>취미</th>
 					<td>
-<%-- 						<c:set var="arrHobby" value="${fn:split(member.hobby, '/') }"/> --%>
-						<input type="checkbox" name="hobby" value="여행" <c:if test="${fn:contains(member.hobby,'여행')}">checked</c:if> >여행
-						<input type="checkbox" name="hobby" value="독서" <c:if test="${fn:contains(member.hobby,'독서')}">checked</c:if>>독서
-						<input type="checkbox" name="hobby" value="게임" <c:if test="${fn:contains(member.hobby,'게임')}">checked</c:if>>게임
+						<%-- 취미 항목은 분리없이 해당 항목이 포함되어 있는지 여부로 확인 가능 --%>
+						<%-- ${fn:contains()} 메서드 활용 가능 --%>
+						<input type="checkbox" name="hobby" value="여행" <c:if test="${fn:contains(member.hobby, '여행')}">checked</c:if>>여행
+						<input type="checkbox" name="hobby" value="독서" <c:if test="${fn:contains(member.hobby, '독서')}">checked</c:if>>독서
+						<input type="checkbox" name="hobby" value="게임" <c:if test="${fn:contains(member.hobby, '게임')}">checked</c:if>>게임
 						<input type="checkbox" id="checkAllHobby" value="전체선택">전체선택
-						
 					</td>
 				</tr>
 				<tr>
