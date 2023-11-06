@@ -77,7 +77,8 @@ public class MemberDAO {
 			pstmt.setString(8, member.getGender());
 			pstmt.setString(9, member.getHobby());
 			pstmt.setString(10, member.getMotivation());
-			pstmt.setInt(11, MemberStatus.ACTIVE);
+//			pstmt.setInt(11, 1); // 회원 상태(기본값 1 로 처리 = 정상 회원)
+			pstmt.setInt(11, MemberStatus.ACTIVE); // MemberStatus 클래스 상수 활용 가능
 			
 			// 4단계. SQL 구문 실행 및 결과 처리
 			// => INSERT 구문이므로 PreparedStatement 객체의 executeUpdate() 메서드 호출
@@ -186,20 +187,22 @@ public class MemberDAO {
 		return member;
 	}
 	
-	//회원상태 수정 - UPDATE
+	// 회원 상태 수정 - UPDATE
 	public int updateMemberStatus(String id, int status) {
 		int updateCount = 0;
 		
-		//DB 작업에 필요한 변수 선언
+		// DB 작업에 필요한 변수 선언
 		PreparedStatement pstmt = null;
 		
 		try {
-			//3단계. SQL구문 작성 및 전달
-			//=>아이디가 일치하는 레코드의 status 컬럼값을 변경 - UPDATE
-			String sql = "UPDATE member SET status = ? WHERE id = ?;";
+			// 3단계. SQL 구문 작성 및 전달
+			// 아이디가 일치하는 레코드의 status 컬럼값을 변경 - UPDATE
+			// => status 컬럼값은 전달받은 status 변수값 활용
+			String sql = "UPDATE member SET status = ? WHERE id = ?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, status);
 			pstmt.setString(2, id);
+			
 			// 4단계. SQL 구문 실행 및 결과 처리
 			updateCount = pstmt.executeUpdate();
 		} catch (SQLException e) {
@@ -210,26 +213,55 @@ public class MemberDAO {
 			JdbcUtil.close(pstmt);
 		}
 		
-		
-		
 		return updateCount;
 	}
+	
+	// 회원 정보 수정
 	public int updateMember(MemberBean member) {
 		int updateCount = 0;
-		//DB 작업에 필요한 변수 선언
+		
+		// DB 작업에 필요한 변수 선언
 		PreparedStatement pstmt = null;
+		
 		try {
-			//3단계 DB작업
-			//단, 패스워드는 입력되었을 경우에만 변경 처리
-			String sql ="";
+			// 3단계. SQL 구문 작성 및 전달
+			// 아이디 일치하는 레코드의 이름, 주소, 이메일, 직업, 성별, 취미, 가입동기 수정 - UPDATE
+			// 단, 패스워드는 입력되었을 경우에만 변경 처리
+			String sql = "";
+//			if(member.getPasswd().equals("")) { // 패스워드 없을 경우(변경하지 않을 경우)
+//				sql = "UPDATE member "
+//						+ "SET name = ?, address = ?, email = ?, job = ?, gender = ?, hobby = ?, motivation = ? "
+//						+ "WHERE id = ?";
+//			} else { // 패스워드 있을 경우(변경할 경우)
+//				sql = "UPDATE member "
+//						+ "SET name = ?, address = ?, email = ?, job = ?, gender = ?, hobby = ?, motivation = ? "
+//						+ ", passwd = ? "
+//						+ "WHERE id = ?";
+//			}
+			
+			// ------------------------------------------------------------------------
+			// 공통 문장은 그대로 두고, 문자열 결합 형태로 패스워드만 추가하는 방법
 			sql = "UPDATE member "
-					+ "SET name=?, address=?, email=?, job=?, gender=?, hobby=?, motivation=?";
-			if(!member.getPasswd().equals("")) {// 패스워드 변경시 
+					+ "SET name = ?, address = ?, email = ?, job = ?, gender = ?, hobby = ?, motivation = ? ";
+			
+			// 패스워드 있을 경우(변경할 경우) 패스워드 변경 SET 절을 문자열 결합 추가
+			if(!member.getPasswd().equals("")) { 
 				sql += ", passwd = ?";
-			}
+			} 
 			
-			sql += "WHERE id=?";
+			sql += "WHERE id = ?";
+			// ------------------------------------------------------------------------
+			// 공통 문장은 그대로 두고 추가할 SET 절을 WHERE 앞에 추가(치환)
+//			sql = "UPDATE member "
+//					+ "SET name = ?, address = ?, email = ?, job = ?, gender = ?, hobby = ?, motivation = ? "
+//					+ "WHERE id = ?";
+//			if(!member.getPasswd().equals("")) { 
+//				sql.replace("WHERE", ", passwd = ? WHERE");
+//			} 
 			
+//			String sql = "UPDATE member "
+//					+ "SET name = ?, address = ?, email = ?, job = ?, gender = ?, hobby = ?, motivation = ? "
+//					+ "WHERE id = ?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, member.getName());
 			pstmt.setString(2, member.getAddress());
@@ -239,21 +271,25 @@ public class MemberDAO {
 			pstmt.setString(6, member.getHobby());
 			pstmt.setString(7, member.getMotivation());
 			
-			//패스워드 유무에 따라 만능문자 인덱스 번호 달라짐에 따른 조건 변경 필요
-			if(member.getPasswd().equals("")) {// 패스워드 변경 x
+			// 패스워드 유무에 따라 만능문자 인덱스도 달라지므로 조건 변경 필요
+			if(member.getPasswd().equals("")) { // 패스워드 없을 경우(변경하지 않을 경우)
+				// 기존 문장 그대로 8번 인덱스에 아이디 치환
 				pstmt.setString(8, member.getId());
-			}else {// 패스워드 변경 o
+			} else { // 패스워드 있을 경우(변경할 경우)
+				// 기존 문장에서 8번 인덱스에 패스워드가 추가되고 아이디는 9번 인덱스로 변경
 				pstmt.setString(8, member.getPasswd());
 				pstmt.setString(9, member.getId());
 			}
 			
 			System.out.println(pstmt);
 			
+			// 4단계. SQL 구문 실행 및 결과 처리
 			updateCount = pstmt.executeUpdate();
 		} catch (SQLException e) {
 			System.out.println("SQL 구문 오류 발생 - updateMember()");
 			e.printStackTrace();
 		} finally {
+			// DB 자원 반환
 			JdbcUtil.close(pstmt);
 		}
 		
