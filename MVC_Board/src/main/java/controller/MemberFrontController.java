@@ -14,6 +14,7 @@ import action.MemberInfoAction;
 import action.MemberJoinProAction;
 import action.MemberLoginProAction;
 import action.MemberLogoutAction;
+import action.MemberWithdrawProAction;
 import vo.ActionForward;
 
 @WebServlet("*.me")
@@ -75,6 +76,15 @@ public class MemberFrontController extends HttpServlet {
 		} else if(command.equals("/MemberInfo.me")) {
 			// 회원 상세정보 조회를 위한 비즈니스 로직 수행 필요
 			action = new MemberInfoAction();
+			forward = action.execute(request, response);
+		} else if(command.equals("/MemberWithdrawForm.me")) {
+			// 회원탈퇴 폼(member/member_withdraw_form.jsp) 페이지 포워딩 => Dispatch
+			forward = new ActionForward();
+			forward.setPath("member/member_withdraw_form.jsp");
+			forward.setRedirect(false);
+		} else if(command.equals("/MemberWithdrawPro.me")) {
+			// 회원탈퇴를 위한 비즈니스 로직 수행 필요
+			action = new MemberWithdrawProAction();
 			forward = action.execute(request, response);
 		}
 		

@@ -17,6 +17,7 @@ import java.sql.Date;
 취미(hobby) - 문자(50자), NN
 가입동기(motivation) - 문자(500자), NN
 가입일(reg_date) - 날짜(DATETIME), NN
+회원상태(status) - 정수, NM(1:정상, 2:휴먼, 3:탈퇴)
 -----------------------------------------
 CREATE DATABASE mvc_board5;
 USE mvc_board5;
@@ -33,6 +34,7 @@ CREATE TABLE member (
  	hobby VARCHAR(50) NOT NULL,
  	motivation VARCHAR(500) NOT NULL,
  	reg_date DATETIME NOT NULL  => java.sql.Date 클래스 활용
+ 	status INT NOT NULL
 );
 */
 // member 테이블에 대응하는 MemberBean 클래스 정의(= DTO 클래스 역할)
@@ -53,7 +55,7 @@ public class MemberBean {
 	private String hobby;
 	private String motivation;
 	private Date reg_date; // java.sql.Date
-	
+	private int status;
 	public int getIdx() {
 		return idx;
 	}
@@ -126,12 +128,22 @@ public class MemberBean {
 	public void setReg_date(Date reg_date) {
 		this.reg_date = reg_date;
 	}
+	public int getStatus() {
+		return status;
+	}
+	public void setStatus(int status) {
+		this.status = status;
+	}
 	@Override
 	public String toString() {
 		return "MemberBean [idx=" + idx + ", name=" + name + ", id=" + id + ", passwd=" + passwd + ", jumin=" + jumin
 				+ ", address=" + address + ", email=" + email + ", job=" + job + ", gender=" + gender + ", hobby="
-				+ hobby + ", motivation=" + motivation + ", reg_date=" + reg_date + "]";
+				+ hobby + ", motivation=" + motivation + ", reg_date=" + reg_date + ", status=" + status
+				+ ", toString()=" + super.toString() + "]";
 	}
+	
+	
+
 	
 	
 }

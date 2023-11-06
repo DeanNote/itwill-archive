@@ -63,7 +63,7 @@ public class MemberDAO {
 			// member 테이블에 모든 데이터 추가 - INSERT
 			// => 번호(idx) 컬럼은 자동 증가(AUTO_INCREMENT) 컬럼이므로 null 값 전달
 			// => 등록일(reg_date) 컬럼은 DB 서버의 현재 날짜 및 시각 활용(now() 함수 호출)
-			String sql = "INSERT INTO member VALUES (null, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, now())";
+			String sql = "INSERT INTO member VALUES (null, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, now(), ?)";
 			// PreparedStatement 객체의 setXXX() 메서드 호출하여 파라미터(?) 데이터 교체
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, member.getName());
@@ -76,6 +76,7 @@ public class MemberDAO {
 			pstmt.setString(8, member.getGender());
 			pstmt.setString(9, member.getHobby());
 			pstmt.setString(10, member.getMotivation());
+			pstmt.setInt(11, 1);
 			
 			// 4단계. SQL 구문 실행 및 결과 처리
 			// => INSERT 구문이므로 PreparedStatement 객체의 executeUpdate() 메서드 호출
@@ -142,14 +143,44 @@ public class MemberDAO {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		
-		// 3단계. SQL 구문 작성 및 전달
-		// 전달받은 아이디와 일치하는 레코드 검색 - SELECT
-		
-		
-		// 4단계. SQL 구문 실행 및 결과 처리
-		// 조회 결과가 존재할 경우 MemberBean 객체에 각 컬럼 데이터 저장
-		
-		
+		try {
+			// 3단계. SQL 구문 작성 및 전달
+			// 전달받은 아이디와 일치하는 레코드 검색 - SELECT
+			String sql = "SELECT * FROM member WHERE id = ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, id);
+			
+			// 4단계. SQL 구문 실행 및 결과 처리
+			// 조회 결과가 존재할 경우 MemberBean 객체에 각 컬럼 데이터 저장
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) { // 조회 결과가 존재할 경우
+				// MemberBean 객체 생성
+				member = new MemberBean();
+				// ResultSet 객체의 getXXX() 메서드를 호출하여 조회된 컬럼에 접근 후
+				// 해당 컬럼 데이터를 MemberBean 객체의 setXXX() 메서드 호출하여 저장
+				member.setIdx(rs.getInt(1));
+				member.setName(rs.getString(2));
+				member.setId(rs.getString(3));
+				member.setPasswd(rs.getString(4));
+				member.setJumin(rs.getString(5));
+				member.setAddress(rs.getString(6));
+				member.setEmail(rs.getString(7));
+				member.setJob(rs.getString(8));
+				member.setGender(rs.getString(9));
+				member.setHobby(rs.getString(10));
+				member.setMotivation(rs.getString(11));
+				member.setReg_date(rs.getDate(12)); // 시간 포함 시 rs.getTimestamp() 메서드 사용
+//				System.out.println(member);
+			}
+		} catch (SQLException e) {
+			System.out.println("SQL 구문 오류 발생 - selectMember()");
+			e.printStackTrace();
+		} finally {
+			// DB 자원 반환
+			JdbcUtil.close(rs);
+			JdbcUtil.close(pstmt);
+		}
 		
 		return member;
 	}

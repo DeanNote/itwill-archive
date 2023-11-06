@@ -43,6 +43,20 @@ public class MemberInfoAction implements Action {
 			//    (member 테이블의 1개 레코드 정보를 관리하는 타입 : MemberBean)
 			MemberInfoService service = new MemberInfoService();
 			MemberBean member = service.getMember(id);
+//			System.out.println(member);
+			
+			// ------------------------------------------------------------------------
+			// 주민번호(xxxxxx-yyyyyyy) 중 뒷자리 첫번째 숫자를 제외한 나머지 * 처리
+			// ex) 991111-1234567 -> 991111-1******
+			// => String 클래스 중 substring() 메서드 활용
+			// => substring() 메서드를 주민번호 뒷자리 첫번째 숫자(7번 인덱스)까지 추출
+//			System.out.println(member.getJumin().substring(0, 8)); // 0 ~ 8-1 까지 추출
+			// 추출된 문자열 뒤의 6자리를 * 기호로 문자열 결합
+//			System.out.println(member.getJumin().substring(0, 8) + "******");
+			
+			// 가공 처리된 주민번호를 MemberBean 객체에 저장
+			member.setJumin(member.getJumin().substring(0, 8) + "******");
+			// ------------------------------------------------------------------------
 			
 			// 회원 상세정보 조회 결과를 뷰페이지로 전달하기 위해 
 			// MemberBean 객체를 request 객체에 저장(속성명 : member)
