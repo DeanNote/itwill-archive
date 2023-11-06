@@ -222,16 +222,13 @@ public class MemberDAO {
 			//3단계 DB작업
 			//단, 패스워드는 입력되었을 경우에만 변경 처리
 			String sql ="";
-			if(member.getPasswd().equals("")) {// 패스워드 변경 x
-				sql = "UPDATE member "
-					+ "SET name=?, address=?, email=?, job=?, gender=?, hobby=?, motivation=? "
-					+ "WHERE id=?";
-			}else {// 패스워드 변경 o
-				sql = "UPDATE member "
-						+ "SET name=?, address=?, email=?, job=?, gender=?, hobby=?, motivation=?, "
-						+ "passwd=?"
-						+ "WHERE id=?";
+			sql = "UPDATE member "
+					+ "SET name=?, address=?, email=?, job=?, gender=?, hobby=?, motivation=?";
+			if(!member.getPasswd().equals("")) {// 패스워드 변경시 
+				sql += ", passwd = ?";
 			}
+			
+			sql += "WHERE id=?";
 			
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, member.getName());
@@ -244,12 +241,13 @@ public class MemberDAO {
 			
 			//패스워드 유무에 따라 만능문자 인덱스 번호 달라짐에 따른 조건 변경 필요
 			if(member.getPasswd().equals("")) {// 패스워드 변경 x
+				pstmt.setString(8, member.getId());
+			}else {// 패스워드 변경 o
 				pstmt.setString(8, member.getPasswd());
 				pstmt.setString(9, member.getId());
-			}else {// 패스워드 변경 o
-				pstmt.setString(8, member.getId());
 			}
 			
+			System.out.println(pstmt);
 			
 			updateCount = pstmt.executeUpdate();
 		} catch (SQLException e) {
