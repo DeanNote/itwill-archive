@@ -16,11 +16,16 @@ public class MemberModifyProAction implements Action {
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) {
 		System.out.println("MemberModifyProAction");
+		
 		ActionForward forward = null;
 		
+
+		// 세션에 저장된 세션 아이디(속성명 : sId") 가져와서 변수에 저장
 		HttpSession session = request.getSession();
 		String id = (String)session.getAttribute("sId");
 		
+		// 세션 아이디가 존재하지 않을 경우(null)
+		// 자바스크립트 사용하여 "잘못된 접근입니다!" 출력 후 메인페이지로 이동
 		if(id == null) {
 			try {
 				response.setContentType("text/html; charset=UTF-8");
@@ -32,29 +37,26 @@ public class MemberModifyProAction implements Action {
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
+			
+			// 세션 아이디 없음 처리 정보 설정 후 메서드 수행 종료 후 복귀하려면 null 값 리턴
 			return null;
 		}
 		
 		// 세션 아이디가 있을 경우
+		// 회원가입 폼에서 입력받은 폼 파라미터 가져오기
 		MemberBean member = new MemberBean();
 		member.setName(request.getParameter("name"));
+		
+		// 파라미터로 전달받은 아이디가 아닌 세션 아이디를 MemberBean 객체에 저장
+//		member.setId(request.getParameter("id"));
 		member.setId(id);
-		// 보안을 위해 세션아이디 줌
+		
 		member.setPasswd(request.getParameter("passwd"));
-		member.setAddress(request.getParameter("address"));
-		member.setEmail(request.getParameter("email"));
-//		member.setJob(request.getParameter("job"));
 		// 복수개의 파라미터가 존재하는 데이터는 문자열 결합 필요
-		member.setJumin(request.getParameter("jumin1") + "-" + request.getParameter("jumin2"));
 		member.setAddress(request.getParameter("postCode") + "/" + request.getParameter("address1") + "/" + request.getParameter("address2"));
 		member.setEmail(request.getParameter("email1") + "@" + request.getParameter("email2"));
 		
-		// 단, 취미(hobby)는 동일한 이름의 파라미터가 복수개 존재하므로 배열 관리 필요
-		// => request.getParameter() 대신 request.getParameterValues() 메서드 사용 필요
-		// 단, 반복문 수행 전 MemberBean 객체의 hobby 멤버변수값을 널스트링("")으로 초기화
 		member.setHobby("");
-		
-		
 		String[] hobbies = request.getParameterValues("hobby");
 		if(hobbies != null) {
 			for(String hobby : hobbies) {
@@ -68,33 +70,47 @@ public class MemberModifyProAction implements Action {
 		
 //		System.out.println(member); // toString() 생략
 		
-		//MemberModifyProService - modifyMember() 메서드 호출하여 회원 정보 수정 요청
-		// => 파라미터 : MemberBean 객체 리턴타입 : boolean(isModifySuccess)
+		// MemberModifyProService - modifyMember() 메서드 호출하여 회원 정보 수정 요청
+		// => 파라미터 : MemberBean 객체   리턴타입 : boolean(isModifySuccess)
 		MemberModifyProService service = new MemberModifyProService();
 		boolean isModifySuccess = service.modifyMember(member);
-		//회원 정보 수정 요청 결과 판별
-		//실패시 자바스크리브 사용 실패 메세지 출력 후 이전페이지 돌아가기
-		//성공 시 MemberInfo.me 서블릿 요청
+		
+		// 회원 정보 수정 요청 처리 결과 판별
+		// => 실패 시 자바스크립트 사용 "회원 정보 수정 실패!" 출력 후 이전페이지 돌아가기
+		// => 성공 시 MemberInfo.me 서블릿 요청
 		if(!isModifySuccess) {
 			try {
-				// 자바스크립트를 사용하여 "정보수정실패!" 출력 및 이전페이지로 돌아가기
 				response.setContentType("text/html; charset=UTF-8");
 				PrintWriter out = response.getWriter();
 				out.println("<script>");
-				out.println("alert('정보수정실패!');");
+				out.println("alert('회원 정보 수정 실패!');");
 				out.println("history.back();");
 				out.println("</script>");
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-		}else {
+		} else { // 로그인 성공 시
+			// MemberInfo.me 서블릿 요청(리다이렉트)
 			forward = new ActionForward();
 			forward.setPath("MemberInfo.me");
 			forward.setRedirect(true);
-			
 		}
 		
 		return forward;
 	}
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
