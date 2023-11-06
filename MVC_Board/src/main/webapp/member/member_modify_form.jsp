@@ -32,28 +32,6 @@
 			
 		};
 		
-		// 4. 비밀번호확인 입력란에 키를 누를때마다 비밀번호와 같은지 체크하기
-		document.joinForm.passwd2.onkeyup = function() {
-			let passwd = document.joinForm.passwd.value;
-			let passwd2 = document.joinForm.passwd2.value;
-			
-			// 비밀번호와 비밀번호확인 입력 내용이 같으면 "비밀번호 일치"(파란색) 표시,
-   			// 아니면, "비밀번호 불일치"(빨간색) 표시
-		    if(passwd == passwd2) { // 일치
-		     	document.querySelector("#checkPasswd2Result").innerText = "비밀번호 일치";
-		     	document.querySelector("#checkPasswd2Result").style.color = "blue";
-		     	// 일치 여부를 저장하는 변수 isSamePasswd 값을 true 로 변경
-		     	isSamePasswd = true;
-		    } else { // 불일치
-		     	document.querySelector("#checkPasswd2Result").innerText = "비밀번호 불일치";
-		     	document.querySelector("#checkPasswd2Result").style.color = "red";
-		     	// 일치 여부를 저장하는 변수 isSamePasswd 값을 true 로 변경
-		     	isSamePasswd = false;
-		    }
-			
-		};
-		
-		
 		// 6. 이메일 도메인 선택 셀렉트 박스 항목 변경 시 = change
 		//    선택된 셀렉트 박스 값을 이메일 두번째 항목(@ 기호 뒤)에 표시하기
 		document.joinForm.emailDomain.onchange = function() {
@@ -83,10 +61,10 @@
 		// 8. 가입(submit) 클릭 시 이벤트 처리를 통해
 	    // 비밀번호 2개가 일치하는지 체크하고 모든 항목이 입력되었을 경우에만 submit 동작이 수행되도록 처리
 		document.joinForm.onsubmit = function() {
-			if(!isSamePasswd) { // 일치 여부 저장 변수 isSamePasswd 값 활용
-				alert("패스워드 불일치!");
-				document.joinForm.passwd2.focus();
-				return false; // submit 동작 취소
+// 			if(!isSamePasswd) { // 일치 여부 저장 변수 isSamePasswd 값 활용
+// 				alert("패스워드 불일치!");
+// 				document.joinForm.passwd2.focus();
+// 				return false; // submit 동작 취소
 // 			} else if(!document.joinForm.hobby[0].checked && !document.joinForm.hobby[1].checked && !document.joinForm.hobby[2].checked) {
 // 				// 취미는 모든 체크박스 체크상태가 false 일 때 체크 요청 메세지 출력
 // 				alert("취미 선택 필수!");
