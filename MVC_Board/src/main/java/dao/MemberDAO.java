@@ -184,6 +184,10 @@ public class MemberDAO {
 		
 		return member;
 	}
+	public int updateMemberStatus(String id, int withdraw) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 	
 
 }
