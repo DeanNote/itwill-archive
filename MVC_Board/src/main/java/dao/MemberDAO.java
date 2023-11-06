@@ -7,6 +7,7 @@ import java.sql.SQLException;
 
 import db.JdbcUtil;
 import vo.MemberBean;
+import vo.MemberStatus;
 
 // 실제 비즈니스 로직을 수행하는 MemberDAO 클래스 정의
 // => 각 Service 클래스 인스턴스에서 MemberDAO 인스턴스에 접근 시 고유 데이터가 불필요하므로
@@ -76,7 +77,7 @@ public class MemberDAO {
 			pstmt.setString(8, member.getGender());
 			pstmt.setString(9, member.getHobby());
 			pstmt.setString(10, member.getMotivation());
-			pstmt.setInt(11, 1);
+			pstmt.setInt(11, MemberStatus.ACTIVE);
 			
 			// 4단계. SQL 구문 실행 및 결과 처리
 			// => INSERT 구문이므로 PreparedStatement 객체의 executeUpdate() 메서드 호출
@@ -199,12 +200,64 @@ public class MemberDAO {
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, status);
 			pstmt.setString(2, id);
-			
+			// 4단계. SQL 구문 실행 및 결과 처리
+			updateCount = pstmt.executeUpdate();
 		} catch (SQLException e) {
+			System.out.println("SQL 구문 오류 발생 - updateMemberStatus()");
 			e.printStackTrace();
+		} finally {
+			// DB 자원 반환
+			JdbcUtil.close(pstmt);
 		}
 		
 		
+		
+		return updateCount;
+	}
+	public int updateMember(MemberBean member) {
+		int updateCount = 0;
+		//DB 작업에 필요한 변수 선언
+		PreparedStatement pstmt = null;
+		try {
+			//3단계 DB작업
+			//단, 패스워드는 입력되었을 경우에만 변경 처리
+			String sql ="";
+			if(member.getPasswd().equals("")) {// 패스워드 변경 x
+				sql = "UPDATE member "
+					+ "SET name=?, address=?, email=?, job=?, gender=?, hobby=?, motivation=? "
+					+ "WHERE id=?";
+			}else {// 패스워드 변경 o
+				sql = "UPDATE member "
+						+ "SET name=?, address=?, email=?, job=?, gender=?, hobby=?, motivation=?, "
+						+ "passwd=?"
+						+ "WHERE id=?";
+			}
+			
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, member.getName());
+			pstmt.setString(2, member.getAddress());
+			pstmt.setString(3, member.getEmail());
+			pstmt.setString(4, member.getJob());
+			pstmt.setString(5, member.getGender());
+			pstmt.setString(6, member.getHobby());
+			pstmt.setString(7, member.getMotivation());
+			
+			//패스워드 유무에 따라 만능문자 인덱스 번호 달라짐에 따른 조건 변경 필요
+			if(member.getPasswd().equals("")) {// 패스워드 변경 x
+				pstmt.setString(8, member.getPasswd());
+				pstmt.setString(9, member.getId());
+			}else {// 패스워드 변경 o
+				pstmt.setString(8, member.getId());
+			}
+			
+			
+			updateCount = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			System.out.println("SQL 구문 오류 발생 - updateMember()");
+			e.printStackTrace();
+		} finally {
+			JdbcUtil.close(pstmt);
+		}
 		
 		return updateCount;
 	}

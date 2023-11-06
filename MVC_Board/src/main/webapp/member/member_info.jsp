@@ -57,7 +57,7 @@
 			</tr>
 			<tr>
 				<td colspan="2" align="center">
-					<input type="button" value="정보수정">
+					<input type="button" value="정보수정" onclick="location.href = 'MemberModifyForm.me'">
 					<input type="button" value="회원탈퇴" onclick="location.href = 'MemberWithdrawForm.me'">
 					<input type="button" value="돌아가기">
 				</td>

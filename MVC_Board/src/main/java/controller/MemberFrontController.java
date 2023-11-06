@@ -14,6 +14,8 @@ import action.MemberInfoAction;
 import action.MemberJoinProAction;
 import action.MemberLoginProAction;
 import action.MemberLogoutAction;
+import action.MemberModifyFormAction;
+import action.MemberModifyProAction;
 import action.MemberWithdrawProAction;
 import vo.ActionForward;
 
@@ -86,7 +88,16 @@ public class MemberFrontController extends HttpServlet {
 			// 회원탈퇴를 위한 비즈니스 로직 수행 필요
 			action = new MemberWithdrawProAction();
 			forward = action.execute(request, response);
+		}else if(command.equals("/MemberModifyForm.me")) {
+			// 회원 정보 수정 폼 출력을 위한 비지니스 로직 수행 필요
+			action = new MemberModifyFormAction();
+			forward = action.execute(request, response);
+		}else if(command.equals("/MemberModifyPro.me")) {
+			// 회원 정보 수정을 위한 비지니스 로직 수행 필요
+			action = new MemberModifyProAction();
+			forward = action.execute(request, response);
 		}
+		
 		
 		// -----------------------------------------------------------------
 		// ActionForward 객체의 포워딩 정보를 활용하여 공통 포워딩 작업 처리
