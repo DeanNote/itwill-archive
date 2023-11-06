@@ -10,8 +10,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import action.Action;
+import action.MemberInfoAction;
 import action.MemberJoinProAction;
 import action.MemberLoginProAction;
+import action.MemberLogoutAction;
 import vo.ActionForward;
 
 @WebServlet("*.me")
@@ -30,7 +32,7 @@ public class MemberFrontController extends HttpServlet {
 		
 		// 추출된 서블릿 주소(command)를 판별하여 각 주소에 따른 액션(작업) 요청
 		if(command.equals("/MemberJoinForm.me")) {
-			System.out.println("회원 가입 폼!");
+//			System.out.println("회원 가입 폼!");
 			
 			// 회원가입 폼 출력하는 뷰페이지(member/member_join_form.jsp) 로 포워딩
 			// => 비즈니스 로직(= DB 작업 등) 불필요하므로 뷰페이지로 바로 이동
@@ -65,6 +67,14 @@ public class MemberFrontController extends HttpServlet {
 		} else if(command.equals("/MemberLoginPro.me")) {
 			// 회원 로그인 처리를 위한 비즈니스 로직 수행 필요
 			action = new MemberLoginProAction();
+			forward = action.execute(request, response);
+		} else if(command.equals("/MemberLogout.me")) {
+			// 회원 로그아웃 처리를 위한 비즈니스 로직 수행 필요
+			action = new MemberLogoutAction();
+			forward = action.execute(request, response);
+		} else if(command.equals("/MemberInfo.me")) {
+			// 회원 상세정보 조회를 위한 비즈니스 로직 수행 필요
+			action = new MemberInfoAction();
 			forward = action.execute(request, response);
 		}
 		

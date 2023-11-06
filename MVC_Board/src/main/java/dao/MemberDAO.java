@@ -2,6 +2,7 @@ package dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import db.JdbcUtil;
@@ -92,6 +93,65 @@ public class MemberDAO {
 		
 		// INSERT 작업 결과 리턴
 		return insertCount; // MemberJoinProService 로 리턴ㅅ
+	}
+	
+	// 로그인 판별 수행 - SELECT
+	public boolean selectCorrectUser(MemberBean member) {
+		boolean isCorrectUser = false;
+		
+		// DB 작업에 필요한 변수 선언
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			// 3단계. SQL 구문 작성 및 전달
+			// 전달받은 아이디와 패스워드가 일치하는 레코드 검색 - SELECT
+			String sql = "SELECT * FROM member WHERE id = ? AND passwd = ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, member.getId());
+			pstmt.setString(2, member.getPasswd());
+			
+			// 4단계. SQL 구문 실행 및 결과 처리
+			rs = pstmt.executeQuery();
+			
+			// 조회 결과가 있을 경우 로그인 성공(isCorrectUsert 를 true 로 변경) 처리
+			if(rs.next()) {
+				isCorrectUser = true;
+			}
+			
+			// => 단, rs.next() 결과값과 isCorrectUser 에 저장할 값이 동일하므로
+			//    if 문 없이 rs.next() 메서드 리턴값을 바로 isCorrectUser 변수에 저장 가능
+//			isCorrectUser = rs.next();
+		} catch (SQLException e) {
+			System.out.println("SQL 구문 오류 발생 - selectCorrectUser()");
+			e.printStackTrace();
+		} finally {
+			// DB 자원 반환
+			JdbcUtil.close(rs);
+			JdbcUtil.close(pstmt);
+		}
+		
+		return isCorrectUser; // MemberLoginProService 로 리턴
+	}
+	
+	// 회원 상세정보 조회 - SELECT
+	public MemberBean selectMember(String id) {
+		MemberBean member = null;
+		
+		// DB 작업에 필요한 변수 선언
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		// 3단계. SQL 구문 작성 및 전달
+		// 전달받은 아이디와 일치하는 레코드 검색 - SELECT
+		
+		
+		// 4단계. SQL 구문 실행 및 결과 처리
+		// 조회 결과가 존재할 경우 MemberBean 객체에 각 컬럼 데이터 저장
+		
+		
+		
+		return member;
 	}
 	
 

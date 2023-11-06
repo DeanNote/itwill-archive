@@ -11,7 +11,12 @@
 	margin-top: 20px;
 }
 
-/* ---- 공통 ---- */
+/* --------------------------- 공통 -------------------------- */
+/* 모든 하이퍼링크 밑줄 제거 */
+a {
+	text-decoration: none;
+}
+
 article h1, h3 {
 	text-align: center;
 	text-decoration: none;

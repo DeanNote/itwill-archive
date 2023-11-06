@@ -28,7 +28,7 @@ public class MemberJoinProService {
 		//    또한, Commit 과 Rollback 작업을 수행할 메서드 정의도 필요
 		Connection con = JdbcUtil.getConnection();
 		
-		// 3. MemberDAO (공통)
+		// 3. MemberDAO 클래스로부터 MemberDAO 객체 가져오기(공통)
 //		MemberDAO dao = new MemberDAO(); // 생성자 호출 불가
 		// => 싱글톤 디자인 패턴으로 구현되어 있는 객체를 getInstance() 메서드로 리턴받기
 		MemberDAO dao = MemberDAO.getInstance();
@@ -59,7 +59,10 @@ public class MemberJoinProService {
 			JdbcUtil.rollback(con);
 		}
 		
-		// 작업 요청 처리 결과 리턴
+		// 7. 작업 완료 후 Connection 객체 반환(공통)
+		JdbcUtil.close(con);
+		
+		// 8. 작업 요청 처리 결과 리턴
 		return isJoinSuccess; // MemberJoinProAction 으로 리턴
 	}
 
