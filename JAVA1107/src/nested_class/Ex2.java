@@ -15,7 +15,10 @@ class Outer2{
 		
 		// 로컬 내부클래스 정의
 		class LocalInner{
+			String name = "LocalInnerClass";
 			
+//			static int staticmember; 오류 발생! 사용 불가능!
+//			public static void staticmethod() {} 오류 발생! 사용 불가능!
 		}
 		
 	}
