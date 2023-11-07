@@ -26,6 +26,7 @@ public class Ex {
 		System.out.println(stc.innerStaticNum);
 		
 		
+		
 	}
 
 }
