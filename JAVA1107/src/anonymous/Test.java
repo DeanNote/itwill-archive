@@ -22,6 +22,10 @@ public class Test {
 				System.out.println("테스트를 합니다!");
 			}
 		});
+		
+		new Worker() {
+			
+		}.start();
 
 	}
 
