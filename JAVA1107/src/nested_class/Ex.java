@@ -20,7 +20,7 @@ public class Ex {
 		Outer.Inner inner = outer.new Inner();
 		inner.innerMethod();
 		System.out.println(inner.innerNum);
-		
+		//-------------------------------------------------------
 		Outer.StaticInner stc = new Outer.StaticInner();
 		stc.innerStaticMethod();
 		System.out.println(stc.innerStaticNum);
