@@ -1,8 +1,5 @@
 package anonymous;
 
-import anonymous.Button.OnClickListener;
-import anonymous.CheckBox.OnSelectListener;
-
 public class Test3 {
 
 	public static void main(String[] args) {
@@ -11,17 +8,20 @@ public class Test3 {
 		 * - select() 메서드가 호출되면 "배경을 변경합니다!" 가 출력
 		 */
 		// CheckBox 객체 생성
+		CheckBox checkBox = new CheckBox();
+		
 		// setOnSelectListener 호출, 이 때 매개변수로 익명 구현 객체를 사용
-		// select() 메서드 호출
-		CheckBox box = new CheckBox();
-		box.setOnSelectListener(new OnSelectListener() {
+		checkBox.setOnSelectListener(new CheckBox.OnSelectListener() {
 			@Override
 			public void onSelect() {
 				System.out.println("배경을 변경합니다!");
 			}
-		});
+		});	
+				
+		// select() 메서드 호출
+		checkBox.select();
 		
-		box.select();
+	
 
 	}
 
@@ -34,20 +34,19 @@ public class Test3 {
 // - setOnSelectListener 메서드를 정의. 이 때 매개변수로 인터페이스 타입 지정
 // - select() 메서드를 정의해서 인스턴스 변수의 오버라이딩 된 onSelect()
 //   메서드가 호출되도록 함
-class CheckBox{
-	static interface OnSelectListener{
+class CheckBox {
+	static interface OnSelectListener {
 		void onSelect();
 	}
+	
 	OnSelectListener listener;
 	
 	public void setOnSelectListener(OnSelectListener listener) {
-		//매개 변수의 다형성
 		this.listener = listener;
 	}
 	
 	public void select() {
 		listener.onSelect();
-		
 	}
 	
 }
