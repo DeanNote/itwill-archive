@@ -6,8 +6,8 @@
 <head>
 <meta charset="UTF-8">
 <title>MVC 게시판</title>
+<!-- 외부 CSS 파일(css/default.css) 연결하기 -->
 <link href="${pageContext.request.contextPath }/css/default.css" rel="stylesheet" type="text/css">
-<!-- 외부 CSS 가져오기 -->
 <style type="text/css">
 	#articleForm {
 		width: 500px;

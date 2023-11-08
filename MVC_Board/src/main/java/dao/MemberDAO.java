@@ -255,8 +255,12 @@ public class MemberDAO {
 			sql = "UPDATE member "
 					+ "SET name = ?, address = ?, email = ?, job = ?, gender = ?, hobby = ?, motivation = ? "
 					+ "WHERE id = ?";
-			if(!member.getPasswd().equals("")) { 
+			
+			if(!member.getPasswd().equals("")) {
+				// replace() 메서드를 통해 WHERE 절 앞에 패스워드 항목 추가
+				// => 치환된 문자열을 다시 sql 변수에 저장
 				sql = sql.replace("WHERE", ", passwd = ? WHERE");
+				
 			} 
 			
 //			String sql = "UPDATE member "

@@ -30,7 +30,10 @@ article table {
 	text-align: center;	
 }
 
-
+#commandCell {
+	text-align: center;	
+	margin-top: 10px;
+}
 
 
 

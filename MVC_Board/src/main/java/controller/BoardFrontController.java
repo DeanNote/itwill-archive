@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import action.Action;
+import action.BoardListAction;
+import action.BoardWriteProAction;
 import vo.ActionForward;
 
 @WebServlet("*.bo")
@@ -17,25 +19,29 @@ public class BoardFrontController extends HttpServlet {
 	
 	protected void doProcess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("BoardFrontController");
-		//공통변수 설정
-		ActionForward forward = null;
-		Action action = null;
 		
+		// 공통 변수 선언
+		Action action = null;
+		ActionForward forward = null;
 		
 		// 서블릿 주소 추출하기
 		String command = request.getServletPath();
 		System.out.println("command : " + command);
 		
+		// URL 매핑
 		if(command.equals("/BoardWriteForm.bo")) {
+			// 뷰페이지로 바로 이동
 			forward = new ActionForward();
 			forward.setPath("board/board_write_form.jsp");
-			forward.setRedirect(false);
-			
-			
-		}else if(command.equals("/BoardList.bo")) {
-			forward = new ActionForward();
-			forward.setPath("board/.jsp");
-			forward.setRedirect(false);
+			forward.setRedirect(false); // Dispatch
+		} else if(command.equals("/BoardWritePro.bo")) {
+			// 비즈니스 로직 처리
+			action = new BoardWriteProAction();
+			forward = action.execute(request, response);
+		} else if(command.equals("/BoardList.bo")) {
+			// 비즈니스 로직 처리
+			action = new BoardListAction();
+			forward = action.execute(request, response);
 		}
 		
 		// -----------------------------------------------------------------
@@ -55,12 +61,8 @@ public class BoardFrontController extends HttpServlet {
 				dispatcher.forward(request, response);
 			}
 		}
-		// 만약, ActionForward 객체가 null 일 경우 아무 동작도 수행하지 않음(포워딩 X)
-		// => 주의! 응답 정보가 전송되지 않는 것이 아니라 포워딩 동작을 수행하지 않는 것이다! 
 		
-		
-		
-	}//doProcess End
+	}
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doProcess(request, response);
