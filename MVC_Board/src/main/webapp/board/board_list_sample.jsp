@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>MVC 게시판</title>
+<link href="${pageContext.request.contextPath }/css/default.css" rel="stylesheet" type="text/css">
 <style type="text/css">
 	#listForm {
 		width: 1024px;
