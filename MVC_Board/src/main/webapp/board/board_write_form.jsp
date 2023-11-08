@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>MVC 게시판</title>
+<link href="${pageContext.request.contextPath }/css/default.css" rel="stylesheet" type="text/css">
 <style type="text/css">
 	#writeForm {
 		width: 500px;
@@ -26,6 +27,10 @@
 	.write_td_right {
 		width: 300px;
 		background: skyblue;
+	}
+	
+	#commandCell{
+		text-align: center;
 	}
 </style>
 </head>
@@ -56,11 +61,11 @@
 				<tr>
 					<td class="write_td_left"><label for="board_content">내용</label></td>
 					<td class="write_td_right">
-						<textarea id="board_content" name="board_content" required="required"></textarea>
+						<textarea id="board_content" name="board_content" rows="15" cols="40" required="required"></textarea>
 					</td>
 				</tr>
 			</table>
-			<section id="btnArea">
+			<section id="commandCell">
 				<input type="submit" value="등록">&nbsp;&nbsp;
 				<input type="reset" value="다시쓰기">&nbsp;&nbsp;
 				<input type="button" value="취소" onclick="history.back()">
