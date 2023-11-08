@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import db.JdbcUtil;
 import vo.BoardBean;
@@ -86,6 +88,58 @@ public class BoardDAO {
 		}
 		
 		return insertCount;
+	}
+
+	// 글목록 조회
+	public List<BoardBean> selectBoardList() {
+		List<BoardBean> boardList = null;
+		
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			// board 테이블의 모든 레코드 조회
+			String sql = "SELECT * FROM board";
+			pstmt = con.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			
+			// 전체 레코드를 저장할 List<BoardBean> 타입 객체 생성
+			// => 주의! while 문 밖에서 생성 필수! (BoardBean 객체를 누적해야하므로)
+			boardList = new ArrayList<BoardBean>();
+			
+			// 조회된 레코드 차례대로 반복 접근
+			while(rs.next()) {
+				// 1개 레코드(1개 게시물 정보)를 저장할 BoardBean 객체 생성
+				// => 새 객체 생성을 통해 새 레코드 저장(반복 필요하므로 while 문 안에서 생성)
+				BoardBean board = new BoardBean();
+				// BoardBean 객체에 조회 결과(1개 레코드) 저장
+				board.setBoard_num(rs.getInt("board_num")); // 글번호
+				board.setBoard_name(rs.getString("board_name")); // 작성자
+				board.setBoard_subject(rs.getString("board_subject")); // 작성자
+				board.setBoard_content(rs.getString("board_content")); // 작성자
+				board.setBoard_re_ref(rs.getInt("board_re_ref")); // 참조글번호
+				board.setBoard_re_lev(rs.getInt("board_re_lev")); // 들여쓰기레벨
+				board.setBoard_re_seq(rs.getInt("board_re_seq")); // 순서번호
+				board.setBoard_readcount(rs.getInt("board_readcount")); // 조회수
+				board.setBoard_date(rs.getTimestamp("board_date")); // 작성일
+				board.setWriter_ip(rs.getString("writer_ip")); // 작성자 IP주소
+				
+//				System.out.println(board);
+				
+				// 1개 레코드가 저장된 BoardBean 객체를 전체 레코드 저장하는 List 객체에 추가
+				boardList.add(board);
+			}
+		} catch (SQLException e) {
+			System.out.println("SQL 구문 오류 발생 - selectBoardList()");
+			e.printStackTrace();
+		} finally {
+			// DB 자원 반환
+			JdbcUtil.close(rs);
+			JdbcUtil.close(pstmt);
+		}
+		
+		// 전체 레코드(게시물 목록)가 저장된 List 객체 리턴
+		return boardList;
 	}
 	
 	

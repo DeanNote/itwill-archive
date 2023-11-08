@@ -25,6 +25,7 @@ public class BoardListAction implements Action {
 		List<BoardBean> boardList = service.getBoardList();
 		System.out.println(boardList);
 		
+		// 11/8 일 여기까지 했음 => List 객체 뷰페이지로 전송 필요
 		
 		
 		
