@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>MVC 게시판</title>
+<link href="${pageContext.request.contextPath }/css/default.css" rel="stylesheet" type="text/css">
 <!-- 외부 CSS 가져오기 -->
 <style type="text/css">
 	#articleForm {
@@ -82,7 +83,7 @@
 			
 		</section>
 	</article>
-	<section id="commandList">
+	<section id="commandCell">
 		<input type="button" value="답변" onclick="location.href=''">
 		<input type="button" value="수정" onclick="location.href=''">
 		<input type="button" value="삭제" onclick="location.href=''">
