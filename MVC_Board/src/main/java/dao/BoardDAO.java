@@ -91,7 +91,7 @@ public class BoardDAO {
 	}
 
 	// 글목록 조회
-	public List<BoardBean> selectBoardList() {
+	public List<BoardBean> selectBoardList(int startRow, int listLimit) {
 		List<BoardBean> boardList = null;
 		
 		PreparedStatement pstmt = null;
@@ -99,8 +99,17 @@ public class BoardDAO {
 		
 		try {
 			// board 테이블의 모든 레코드 조회
-			String sql = "SELECT * FROM board";
+			// => 정렬 기준(ORDER BY 절 사용) : 참조글번호(board_re_ref) 기준 내림차순,
+			//                                  순서번호(board_re_seq) 기준 오름차순
+			
+			String sql = "SELECT * FROM board "
+							+ "ORDER BY board_re_ref DESC, board_re_seq ASC "
+							+ "LIMIT ?, ?";
 			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, startRow);
+			pstmt.setInt(2, listLimit);
+			
+			
 			rs = pstmt.executeQuery();
 			
 			// 전체 레코드를 저장할 List<BoardBean> 타입 객체 생성
@@ -140,6 +149,74 @@ public class BoardDAO {
 		
 		// 전체 레코드(게시물 목록)가 저장된 List 객체 리턴
 		return boardList;
+	}
+
+	//전체 게시물 수 조회
+	public int selectBoardListCount() {
+		int listCount = 0;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			String sql = "SELECT COUNT(*) FROM board";
+			pstmt = con.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				listCount = rs.getInt(1);
+			}
+			
+		} catch (SQLException e) {
+			System.out.println("sql구문오류 - selectBoardListCount");
+			e.printStackTrace();
+		} finally {
+			// DB 자원 반환
+			JdbcUtil.close(rs);
+			JdbcUtil.close(pstmt);
+		}
+		
+		return listCount;
+	}
+	
+	//게시물 상세정보 조회
+	public BoardBean selectBoard(int board_num) {
+		BoardBean boardBean = null;
+		//DB작업에 필요한 변수 선언
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			//3단계 sql구문 작성 및 전달
+			String sql = "SELECT * FROM board WHERE board_num = ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, board_num);
+			//4단계 sql구문 실행 및 결과 처리
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				boardBean = new BoardBean();
+				boardBean.setBoard_num(rs.getInt("board_num")); // 글번호
+				boardBean.setBoard_name(rs.getString("board_name")); // 작성자
+				boardBean.setBoard_subject(rs.getString("board_subject")); // 작성자
+				boardBean.setBoard_content(rs.getString("board_content")); // 작성자
+				boardBean.setBoard_re_ref(rs.getInt("board_re_ref")); // 참조글번호
+				boardBean.setBoard_re_lev(rs.getInt("board_re_lev")); // 들여쓰기레벨
+				boardBean.setBoard_re_seq(rs.getInt("board_re_seq")); // 순서번호
+				boardBean.setBoard_readcount(rs.getInt("board_readcount")); // 조회수
+				boardBean.setBoard_date(rs.getTimestamp("board_date")); // 작성일
+				boardBean.setWriter_ip(rs.getString("writer_ip")); // 작성자 IP주소
+			}
+			
+		} catch (SQLException e) {
+			System.out.println("sql구문오류 - 상세정보 조회 실패 selectBoard");
+			e.printStackTrace();
+		} finally {
+			// DB 자원 반환
+			JdbcUtil.close(rs);
+			JdbcUtil.close(pstmt);
+		}
+		
+		return boardBean;
 	}
 	
 	

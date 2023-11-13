@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import action.Action;
+import action.BoardDetailAction;
 import action.BoardListAction;
 import action.BoardWriteProAction;
 import vo.ActionForward;
@@ -41,6 +42,10 @@ public class BoardFrontController extends HttpServlet {
 		} else if(command.equals("/BoardList.bo")) {
 			// 비즈니스 로직 처리
 			action = new BoardListAction();
+			forward = action.execute(request, response);
+		} else if(command.equals("/BoardDetail.bo")) {
+			// 비즈니스 로직 처리
+			action = new BoardDetailAction();
 			forward = action.execute(request, response);
 		}
 		

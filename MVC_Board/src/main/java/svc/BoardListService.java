@@ -11,7 +11,7 @@ public class BoardListService {
 
 	// 글목록 조회 요청
 	// => 파라미터 : 없음   리턴타입 : java.util.List<BoardBean>(boardList)
-	public List<BoardBean> getBoardList() {
+	public List<BoardBean> getBoardList(int startRow, int listLimit) {
 		List<BoardBean> boardList = null;
 		
 		Connection con = JdbcUtil.getConnection();
@@ -20,11 +20,26 @@ public class BoardListService {
 		
 		// MemberDAO - selectBoardList() 메서드 호출하여 글목록 조회 작업 요청
 		// => 파라미터 : 없음   리턴타입 : java.util.List<BoardBean>(boardList)
-		boardList = dao.selectBoardList();
+		boardList = dao.selectBoardList(startRow, listLimit);
 		
 		JdbcUtil.close(con);
 		
 		return boardList;
+	}
+
+	// 전체 게시물 수 조회 요청
+	public int getBoardListCount() {
+		int listCount = 1;
+		
+		Connection con = JdbcUtil.getConnection();
+		BoardDAO dao = BoardDAO.getInstance();
+		dao.setConnection(con);
+		
+		listCount = dao.selectBoardListCount();
+		
+		JdbcUtil.close(con);
+		
+		return listCount;
 	}
 
 }

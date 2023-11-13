@@ -23,7 +23,6 @@ public class MemberInfoService {
 		JdbcUtil.close(con);
 		
 		return member;
-		
 	}
 
 }
