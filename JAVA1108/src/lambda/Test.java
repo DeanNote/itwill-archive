@@ -1,35 +1,55 @@
 package lambda;
 
+import java.util.Scanner;
+
 public class Test {
 
 	public static void main(String[] args) {
 		/*
-		 * 문자열을 입력받아 두 문자열을 연결하여 출력하는 프로글매 정의
+		 * 문자열을 입력받아 두 문자열을 연결하여 출력하는 프로그램 정의
 		 * 람다식을 사용하여 구현
-		 * ex) hello 와 World를 매개변수값으로 전달하면 
-		 * 	  "Hello, World"가 출력
-		 * 
+		 * ex) Hello 와 World 를 매개변수값으로 전달하면
+		 *     "Hello,World" 가 출력
 		 */
-		Word word = new AddWord();
-		System.out.println(word.getWord("자", "바"));
-		Word word2 = (x, y) -> {return x + ", "+ y;};
-		System.out.println(word2.getWord("Hello", "World!"));
+		
+		// 객체 지향 프로그래밍 방식
+		Scanner scan = new Scanner(System.in);
+		System.out.print("첫 번째 문자열을 입력하세요 : ");
+		String s1 = scan.nextLine();
+		
+		System.out.print("두 번째 문자열을 입력하세요 : ");
+		String s2 = scan.nextLine();
+		
+		StringConcatImpl concat1 = new StringConcatImpl();
+		concat1.makeString(s1, s2);
+		
+		
+		// 람다식으로 인터페이스 구현
+		StringConcat concat2 = (s, v) ->  System.out.println(s + "," + v);
+		concat2.makeString(s1, s2);
 		
 	}
 
 }
 
 @FunctionalInterface
-interface Word{
-	String getWord(String word1, String word2);
+interface StringConcat {
+	public void makeString(String s1, String s2);
 }
 
-class AddWord implements Word{
-
+class StringConcatImpl implements StringConcat {
 	@Override
-	public String getWord(String word1, String word2) {
-		String result = word1 + ", " + word2;
-		return result;
+	public void makeString(String s1, String s2) {
+		System.out.println(s1 + "," + s2);		
 	}
-	
 }
+
+
+
+
+
+
+
+
+
+
