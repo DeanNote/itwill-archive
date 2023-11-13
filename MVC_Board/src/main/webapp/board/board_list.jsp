@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>  
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -55,6 +57,12 @@
 	a {
 		text-decoration: none;
 	}
+	
+	/* 제목 열 좌측 정렬 및 여백 설정*/
+	#subject{
+		text-align: left;
+		padding-left: 20px;
+	}
 </style>
 </head>
 <body>
@@ -77,6 +85,16 @@
 				<td width="150px">날짜</td>
 				<td width="100px">조회수</td>
 			</tr>
+<!-- 			JSTL과 EL을 활용한 글목록 표시 작업 반복 -->
+			<c:forEach var="board" items="${boardList }">
+				<tr>
+					<td>${board.board_num }</td>
+					<td id="subject">${board.board_subject }</td>
+					<td>${board.board_name }</td>
+					<td>${board.board_date }</td>
+					<td>${board.board_readcount }</td>
+				</tr>
+			</c:forEach>
 		</table>
 	</section>
 </body>

@@ -26,7 +26,8 @@ public class BoardListAction implements Action {
 		System.out.println(boardList);
 		
 		// 11/8 일 여기까지 했음 => List 객체 뷰페이지로 전송 필요
-		
+		// 글목록(List 객체)을 request 객체에 저장
+		request.setAttribute("boardList", boardList);
 		
 		
 		// ActionForward 객체를 사용하여 "board/board_list.jsp" 포워딩 정보 설정
