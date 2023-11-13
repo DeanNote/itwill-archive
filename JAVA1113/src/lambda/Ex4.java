@@ -34,6 +34,21 @@ public class Ex4 {
 		// 내림차순 정렬 후 : [world, this, java, is]
 		System.out.println(Arrays.toString(str));
 		
+		/*
+		 - 결국 정렬을 위해 필요했던 '기능'은 Comparator 가 아니라
+		   사실 compare()라는 점이다!
+		 - compare()만 있으면 되지만, 자바 언어의 특성으로 인해
+		   익명의 내부클래스를 만들고 객체화해서 전달하고 있다.
+		 - 이런 번거로움을 해결하는 방법이 람다식!
+		 */
+		System.out.println("------------------------");
+		//위의 코드를 람다식으로 표현
+		Arrays.sort(str,(o1,o2)->{return o1.compareTo(o2)*-1;});
+		Arrays.sort(str,(o1,o2)->o1.compareTo(o2)*-1);
+		System.out.println(Arrays.toString(str));
+		
+		
+		
 	}
 
 }
