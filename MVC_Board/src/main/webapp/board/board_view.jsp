@@ -56,6 +56,14 @@
 		text-align: center;
 	}
 </style>
+<script type="text/javascript">
+function confirmDelete() {
+	if(confirm("삭제하시겠습니까?")){
+    	location.href="BoardDelete.bo?board_num=${param.board_num}&pageNum=${param.pageNum }"
+	}
+	
+}
+</script>
 </head>
 <body>
 	<header>
@@ -84,10 +92,11 @@
 		</section>
 	</article>
 	<section id="commandCell">
-		<input type="button" value="답변" onclick="location.href=''">
-		<input type="button" value="수정" onclick="location.href=''">
-		<input type="button" value="삭제" onclick="location.href=''">
-		<input type="button" value="목록" onclick="location.href=''">
+		<input type="button" value="답변" onclick="location.href='BoardReplyForm.bo?board_num=${param.board_num}&pageNum=${param.pageNum }'">
+		<input type="button" value="수정" onclick="location.href='BoardModifyForm.bo?board_num=${param.board_num}&pageNum=${param.pageNum }'">
+<%-- 		<input type="button" value="삭제" onclick="location.href='BoardDeleteForm.bo?board_num=${param.board_num}&pageNum=${param.pageNum }'"> --%>
+		<input type="button" value="삭제" onclick="confirmDelete()">
+		<input type="button" value="목록" onclick="location.href='BoardList.bo?pageNum=${param.pageNum}'">
 	</section>
 </body>
 </html>
