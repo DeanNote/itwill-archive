@@ -57,12 +57,13 @@
 	}
 </style>
 <script type="text/javascript">
-function confirmDelete() {
-	if(confirm("삭제하시겠습니까?")){
-    	location.href="BoardDelete.bo?board_num=${param.board_num}&pageNum=${param.pageNum }"
+	// 삭제 버튼 클릭 시 확인창을 통해 "삭제하시겠습니까?" 출력 후
+	// 확인 버튼 클릭 시 "BoardDelete.bo" 서블릿 요청(파라미터 : 글번호, 페이지번호)
+	function confirmDelete() {
+		if(confirm("삭제하시겠습니까?")) {
+			location.href = "BoardDelete.bo?board_num=${board.board_num}&pageNum=${param.pageNum}";
+		}
 	}
-	
-}
 </script>
 </head>
 <body>
@@ -92,11 +93,26 @@ function confirmDelete() {
 		</section>
 	</article>
 	<section id="commandCell">
-		<input type="button" value="답변" onclick="location.href='BoardReplyForm.bo?board_num=${param.board_num}&pageNum=${param.pageNum }'">
-		<input type="button" value="수정" onclick="location.href='BoardModifyForm.bo?board_num=${param.board_num}&pageNum=${param.pageNum }'">
-<%-- 		<input type="button" value="삭제" onclick="location.href='BoardDeleteForm.bo?board_num=${param.board_num}&pageNum=${param.pageNum }'"> --%>
-		<input type="button" value="삭제" onclick="confirmDelete()">
-		<input type="button" value="삭제" onclick="confirmDelete(${param.board_Num},${param.pageNum})">
+		<%-- 답변 버튼은 세션 아이디가 있을 경우에만 표시(생략) --%>
+<%-- 		<c:if test="${not empty sessionScope.sId }"> --%>
+<%-- 			<input type="button" value="답변" onclick="location.href='BoardReplyForm.bo?board_num=${board.board_num}&pageNum=${param.pageNum}'"> --%>
+<%-- 		</c:if> --%>
+		
+		<%-- 답변과 목록 버튼은 항상 표시 --%>
+		<%-- 수정, 삭제 버튼은 세션 아이디가 있고, 작성자 아이디와 세션 아이디가 같을 경우에만 표시 --%>
+		<%-- 답변, 수정, 삭제는 BoardXXXForm.bo 서블릿 요청(파라미터 : 글번호, 페이지번호) --%>
+		<%-- 답변 : BoardReplyForm.bo, 수정 : BoardModifyForm.bo, 삭제 : BoardDeleteForm.bo --%>
+		<input type="button" value="답변" onclick="location.href='BoardReplyForm.bo?board_num=${board.board_num}&pageNum=${param.pageNum}'">
+		<c:if test="${not empty sessionScope.sId and (board.board_name eq sessionScope.sId)}">
+			<input type="button" value="수정" onclick="location.href='BoardModifyForm.bo?board_num=${board.board_num}&pageNum=${param.pageNum}'">
+	<%-- 		<input type="button" value="삭제" onclick="location.href='BoardDeleteForm.bo?board_num=${board.board_num}&pageNum=${param.pageNum}'"> --%>
+			<%-- 삭제 시 패스워드 확인이 불필요하여 뷰페이지가 필요없으므로 --%>
+			<%-- 자바스크립트를 통해 삭제 확인 후 바로 비즈니스 로직 요청 --%>
+	<%-- 		<input type="button" value="삭제" onclick="confirmDelete(${board.board_num}, ${param.pageNum})"> --%>
+			<input type="button" value="삭제" onclick="confirmDelete()">
+		</c:if>
+		
+		<%-- 목록은 BoardList.bo 서블릿 요청(파라미터 : 페이지번호) --%>
 		<input type="button" value="목록" onclick="location.href='BoardList.bo?pageNum=${param.pageNum}'">
 	</section>
 </body>
