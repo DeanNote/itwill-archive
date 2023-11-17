@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import action.Action;
+import action.BoardDeleteAction;
 import action.BoardDetailAction;
 import action.BoardListAction;
 import action.BoardWriteProAction;
@@ -47,7 +48,14 @@ public class BoardFrontController extends HttpServlet {
 			// 비즈니스 로직 처리
 			action = new BoardDetailAction();
 			forward = action.execute(request, response);
+		} else if(command.equals("/BoardDelete.bo")) {
+			// 비즈니스 로직 처리
+			action = new BoardDeleteAction();
+			forward = action.execute(request, response);
 		}
+		
+		
+		
 		
 		// -----------------------------------------------------------------
 		// ActionForward 객체의 포워딩 정보를 활용하여 공통 포워딩 작업 처리
