@@ -247,18 +247,54 @@ public class BoardDAO {
 		return updateCount;
 	}
 
-	public boolean isBoardWriter(int board_num, String id) {
+	// 글 작성자 확인
+//	public boolean isBoardWriter(int board_num, String id) {
+//		boolean isBoardWriter = false;
+//		
+//		PreparedStatement pstmt = null;
+//		ResultSet rs = null;
+//		
+//		try {
+//			// 글번호와 작성자(아이디)가 일치하는 레코드 조회
+//			String sql = "SELECT * FROM board WHERE board_num = ? AND board_name = ?";
+//			pstmt = con.prepareStatement(sql);
+//			pstmt.setInt(1, board_num);
+//			pstmt.setString(2, id);
+//			rs = pstmt.executeQuery();
+//			
+//			// 조회 결과가 있을 경우 isBoardWriter 변수값을 true 로 변경
+//			if(rs.next()) {
+//				isBoardWriter = true;
+//			}
+//		} catch (SQLException e) {
+//			System.out.println("SQL 구문 오류 발생 - isBoardWriter()");
+//			e.printStackTrace();
+//		} finally {
+//			// DB 자원 반환
+//			JdbcUtil.close(rs);
+//			JdbcUtil.close(pstmt);
+//		}
+//		
+//		return isBoardWriter;
+//	}
+	
+	// 글 작성자 확인(단, 파라미터 타입을 BoardBean 타입으로 변경)
+	// => 파라미터 : BoardBean 객체   리턴타입 : boolean(isBoardWriter)
+	public boolean isBoardWriter(BoardBean board) {
 		boolean isBoardWriter = false;
 		
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		
 		try {
+			// 글번호와 작성자(아이디)가 일치하는 레코드 조회
 			String sql = "SELECT * FROM board WHERE board_num = ? AND board_name = ?";
 			pstmt = con.prepareStatement(sql);
-			pstmt.setInt(1, board_num);
-			pstmt.setString(2, id);
+			pstmt.setInt(1, board.getBoard_num());
+			pstmt.setString(2, board.getBoard_name());
 			rs = pstmt.executeQuery();
+			
+			// 조회 결과가 있을 경우 isBoardWriter 변수값을 true 로 변경
 			if(rs.next()) {
 				isBoardWriter = true;
 			}
@@ -270,14 +306,59 @@ public class BoardDAO {
 			JdbcUtil.close(rs);
 			JdbcUtil.close(pstmt);
 		}
+		
 		return isBoardWriter;
+	}
+
+	// 글 삭제
+	public int deleteBoard(int board_num) {
+		int deleteCount = 0;
 		
+		PreparedStatement pstmt = null;
 		
+		try {
+			// 글번호가 일치하는 레코드 삭제 - DELETE 
+			String sql = "DELETE FROM board WHERE board_num = ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, board_num);
+			deleteCount = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			System.out.println("SQL 구문 오류 발생 - deleteBoard()");
+			e.printStackTrace();
+		} finally {
+			// DB 자원 반환
+			JdbcUtil.close(pstmt);
+		}
 		
+		return deleteCount;
+	}
+
+	// 글 수정
+	public int updateBoard(BoardBean board) {
+		int updateCount = 0;
 		
+		PreparedStatement pstmt = null;
 		
+		try {
+			// 글번호가 일치하는 레코드의 제목, 내용 수정 - UPDATE
+			String sql = "UPDATE board "
+						+ "SET board_subject = ?, board_content = ? "
+						+ "WHERE board_num = ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, board.getBoard_subject());
+			pstmt.setString(2, board.getBoard_content());
+			pstmt.setInt(3, board.getBoard_num());
+			
+			updateCount = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			System.out.println("SQL 구문 오류 발생 - updateBoard()");
+			e.printStackTrace();
+		} finally {
+			// DB 자원 반환
+			JdbcUtil.close(pstmt);
+		}
 		
-		
+		return updateCount;
 	}
 	
 	
