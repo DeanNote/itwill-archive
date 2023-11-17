@@ -48,11 +48,12 @@ public class BoardModifyProAction implements Action {
 //		System.out.println(board_num + ", " + board_subject + ", " + board_content);
 		
 		// 폼 파라미터 데이터(글번호, 제목, 내용, 세션 아이디)를 BoardBean 객체에 저장
+		// => 세션아이디는 board_name 에 저장
 		BoardBean board = new BoardBean();
-		board.setBoard_name(id);
 		board.setBoard_num(Integer.parseInt(request.getParameter("board_num")));
 		board.setBoard_subject(request.getParameter("board_subject"));
 		board.setBoard_content(request.getParameter("board_content"));
+		board.setBoard_name(id);
 //		System.out.println(board);
 		
 		// BoardModifyProService - isBoardWriter() 메서드 호출하여 작성자 확인 작업 요청
@@ -62,10 +63,10 @@ public class BoardModifyProAction implements Action {
 		
 		// 확인 결과 판별
 		// 게시물 작성자가 일치하지 않으면 
-		// 자바스크립트 사용하여 "삭제 권한이 없습니다!" 출력 후 이전페이지로 돌아가기
+		// 자바스크립트 사용하여 "수정 권한이 없습니다!" 출력 후 이전페이지로 돌아가기
 		// => 단, 현재 상세 페이지에서 수정 버튼을 권한이 없을 경우 제거했으므로
 		//    사용자가 일치하지 않는지 판별 여부는 생략해도 무관함
-		//    (다만, 강제로 POST 방식 요청 데이터를 생성하여 요청도 가능하므로 가급적 추가)ㅅ
+		//    (다만, 강제로 POST 방식 요청 데이터를 생성하여 요청도 가능하므로 가급적 추가)
 		if(!isBoardWriter) {
 			try {
 				response.setContentType("text/html; charset=UTF-8");

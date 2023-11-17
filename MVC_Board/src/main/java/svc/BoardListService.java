@@ -18,7 +18,7 @@ public class BoardListService {
 		BoardDAO dao = BoardDAO.getInstance();
 		dao.setConnection(con);
 		
-		// MemberDAO - selectBoardList() 메서드 호출하여 글목록 조회 작업 요청
+		// BoardDAO - selectBoardList() 메서드 호출하여 글목록 조회 작업 요청
 		// => 파라미터 : 없음   리턴타입 : java.util.List<BoardBean>(boardList)
 		boardList = dao.selectBoardList(startRow, listLimit);
 		
@@ -35,7 +35,7 @@ public class BoardListService {
 		BoardDAO dao = BoardDAO.getInstance();
 		dao.setConnection(con);
 		
-		// MemberDAO - selectBoardListCount() 메서드 호출하여 글목록 조회 작업 요청
+		// BoardDAO - selectBoardListCount() 메서드 호출하여 글목록 조회 작업 요청
 		// => 파라미터 : 없음   리턴타입 : int(listCount)
 		listCount = dao.selectBoardListCount();
 		
