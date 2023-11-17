@@ -246,6 +246,39 @@ public class BoardDAO {
 		
 		return updateCount;
 	}
+
+	public boolean isBoardWriter(int board_num, String id) {
+		boolean isBoardWriter = false;
+		
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			String sql = "SELECT * FROM board WHERE board_num = ? AND board_name = ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, board_num);
+			pstmt.setString(2, id);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				isBoardWriter = true;
+			}
+		} catch (SQLException e) {
+			System.out.println("SQL 구문 오류 발생 - isBoardWriter()");
+			e.printStackTrace();
+		} finally {
+			// DB 자원 반환
+			JdbcUtil.close(rs);
+			JdbcUtil.close(pstmt);
+		}
+		return isBoardWriter;
+		
+		
+		
+		
+		
+		
+		
+	}
 	
 	
 }
