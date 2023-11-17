@@ -13,6 +13,8 @@ import action.Action;
 import action.BoardDeleteAction;
 import action.BoardDetailAction;
 import action.BoardListAction;
+import action.BoardModifyFormAction;
+import action.BoardModifyProAction;
 import action.BoardWriteProAction;
 import vo.ActionForward;
 
@@ -52,10 +54,15 @@ public class BoardFrontController extends HttpServlet {
 			// 비즈니스 로직 처리
 			action = new BoardDeleteAction();
 			forward = action.execute(request, response);
+		} else if(command.equals("/BoardModifyForm.bo")) {
+			// 비즈니스 로직 처리
+			action = new BoardModifyFormAction();
+			forward = action.execute(request, response);
+		} else if(command.equals("/BoardModifyPro.bo")) {
+			// 비즈니스 로직 처리
+			action = new BoardModifyProAction();
+			forward = action.execute(request, response);
 		}
-		
-		
-		
 		
 		// -----------------------------------------------------------------
 		// ActionForward 객체의 포워딩 정보를 활용하여 공통 포워딩 작업 처리
