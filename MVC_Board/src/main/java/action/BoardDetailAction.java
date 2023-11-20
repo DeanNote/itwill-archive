@@ -39,8 +39,13 @@ public class BoardDetailAction implements Action {
 		// 아니면 기존의 게시물 번호"xx/" 뒤에 새 게시물 번호 추가 "yy/"
 		HttpSession session = request.getSession();
 		System.out.println("저장 전 : "+session.getAttribute("readedBoardList"));
+		// 기존 세션값 판별
+		if(session.getAttribute("readedBoardList") == null) {
+			session.setAttribute("readedBoardList", board.getBoard_num() + "/");
+		}else {
+		}
 		
-		session.setAttribute("readedBoardList", board.getBoard_num() + "/");
+		
 		
 		
 		System.out.println("저장 후 : "+session.getAttribute("readedBoardList"));
