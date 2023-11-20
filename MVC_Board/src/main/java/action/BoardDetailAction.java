@@ -55,16 +55,10 @@ public class BoardDetailAction implements Action {
 			// 또는, 번호 앞에 "/" 기호 붙여서 "/xx/" 번호가 포함되는지 검사(contains)
 			if(readBoardList.split("/").length == 1 && readBoardList.equals(newReadBoardNum) 
 					|| !readBoardList.contains("/" + newReadBoardNum)) {
+				// 새로운 글 번호를 세션값 뒤에 문자열 결합하여 세션에 저장
 				readBoardList += newReadBoardNum;
 				isIncreaseReadcount = true; // 조회수 증가 작업 수행하도록 표시
 			}
-			
-			// 주의! "38/" 게시물 조회 후 "8/" 게시물 조회 시 "38/" 에 포함되므로
-			// 검색할 글번호 앞에 "/" 기호를 붙여 "/8/" 형태로 조회하도록 문자열 결합 추가
-			// ------------------
-			// 새로운 글 번호를 세션값 뒤에 문자열 결합하여 세션에 저장
-//			readBoardList += newReadBoardNum;
-//			isIncreaseReadcount = true; // 조회수 증가 작업 수행하도록 표시
 		}
 		
 		// 조회수 증가 여부 변수값에 따라 조회 과정에서 조회수 증가 여부가 달라짐 
