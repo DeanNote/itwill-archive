@@ -22,9 +22,9 @@ public class Ex2 {
 		 */
 		
 		// 멀티쓰레딩 클래스 인스턴스 생성
-		MyThread mt1 = new MyThread("★A작업★", 1000);
-		MyThread mt2 = new MyThread("○B작업○", 500);
-		MyThread mt3 = new MyThread("→C작업←", 1000);
+		MyThread mt1 = new MyThread("★A작업★", 1000000);
+		MyThread mt2 = new MyThread("○B작업○", 500000);
+		MyThread mt3 = new MyThread("→C작업←", 1000000);
 		
 //		Thread t = new MyThread("→C작업←", 1000000); // 업캐스팅
 		

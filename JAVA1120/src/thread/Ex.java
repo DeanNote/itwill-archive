@@ -24,9 +24,9 @@ public class Ex {
 		 * 
 		 */
 		
-		NoThread nt1 = new NoThread("★A작업★", 1000);
-		NoThread nt2 = new NoThread("○B작업○", 500);
-		NoThread nt3 = new NoThread("→C작업←", 1000);
+		NoThread nt1 = new NoThread("★A작업★", 1000000);
+		NoThread nt2 = new NoThread("○B작업○", 500000);
+		NoThread nt3 = new NoThread("→C작업←", 1000000);
 		
 		nt1.run(); // A작업이 100만번 실행이 끝나면
 		nt2.run(); // B작업이 시작되고, B 작업이 50만번 끝나면
