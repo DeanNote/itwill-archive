@@ -65,8 +65,8 @@ public class BoardWriteProAction implements Action {
 				response.setContentType("text/html; charset=UTF-8");
 				PrintWriter out = response.getWriter();
 				out.println("<script>");
-				out.println("alert('잘못된 접근입니다!');");
-				out.println("location.href = './';");
+				out.println("alert('글쓰기 실패입니다!');");
+				out.println("history.back();");
 				out.println("</script>");
 			} catch (IOException e) {
 				e.printStackTrace();
