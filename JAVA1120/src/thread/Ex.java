@@ -24,13 +24,15 @@ public class Ex {
 		 * 
 		 */
 		
-		NoThread nt1 = new NoThread("★A작업★", 1000000);
-		NoThread nt2 = new NoThread("○B작업○", 500000);
-		NoThread nt3 = new NoThread("→C작업←", 1000000);
+		NoThread nt1 = new NoThread("★A작업★", 1000);
+		NoThread nt2 = new NoThread("○B작업○", 500);
+		NoThread nt3 = new NoThread("→C작업←", 1000);
 		
-		nt1.run();
-		nt2.run();
-		nt3.run();
+		nt1.run(); // A작업이 100만번 실행이 끝나면
+		nt2.run(); // B작업이 시작되고, B 작업이 50만번 끝나면
+		nt3.run(); // C작업이 실행됨
+		// => 일반적인 프로그램은 싱글쓰레드(Single Thread) 이며
+		//    앞의 코드가 실행이 끝나면 다음 코드가 실행된다.
 
 	}
 
