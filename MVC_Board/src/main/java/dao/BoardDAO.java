@@ -201,8 +201,8 @@ public class BoardDAO {
 				// BoardBean 객체에 조회 결과(1개 레코드) 저장
 				board.setBoard_num(rs.getInt("board_num")); // 글번호
 				board.setBoard_name(rs.getString("board_name")); // 작성자
-				board.setBoard_subject(rs.getString("board_subject")); // 작성자
-				board.setBoard_content(rs.getString("board_content")); // 작성자
+				board.setBoard_subject(rs.getString("board_subject")); // 제목
+				board.setBoard_content(rs.getString("board_content")); // 내용
 				board.setBoard_re_ref(rs.getInt("board_re_ref")); // 참조글번호
 				board.setBoard_re_lev(rs.getInt("board_re_lev")); // 들여쓰기레벨
 				board.setBoard_re_seq(rs.getInt("board_re_seq")); // 순서번호
