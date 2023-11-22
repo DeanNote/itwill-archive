@@ -51,9 +51,9 @@
 			<%-- 직접 입력받지 않은 글번호, 페이지번호를 폼 파라미터로 함께 전달하기 위해 --%>
 			<%-- input type="hidden" 속성을 활용하여 폼 데이터로 추가 가능 --%>
 			<%-- name 속성에 파라미터 이름, value 속성에 파라미터 값 지정 --%>
-			<input type="hidden" name="board_num" value="${board.board_num}">
+			<input type="hidden" name="board_num" value="${board.board_num}"> <%-- 원본글번호 --%>
 			<input type="hidden" name="pageNum" value="${param.pageNum}">
-			<%-- 답글 작성에 필요한 추가 정보(참조글번호, 들여쓰기레벨, 순서번호)도 전달 --%>
+			<%-- 답글 작성에 필요한 원본글에 대한 추가 정보(참조글번호, 들여쓰기레벨, 순서번호)도 전달 --%>
 			<input type="hidden" name="board_re_ref" value="${board.board_re_ref}">
 			<input type="hidden" name="board_re_lev" value="${board.board_re_lev}">
 			<input type="hidden" name="board_re_seq" value="${board.board_re_seq}">
