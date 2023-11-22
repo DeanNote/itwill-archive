@@ -96,6 +96,12 @@
 				<tr>
 					<td>${board.board_num}</td>
 					<td id="subject">
+						<c:if test="${board.board_re_lev > 0 }">
+							<c:forEach begin="1" end="${board.board_re_lev}">
+								&nbsp;&nbsp;			
+							</c:forEach>
+							<img src = "images/re.gif">
+						</c:if>
 						<%-- 제목 클릭 시 하이퍼링크 설정(BoardDetail.bo) --%>
 						<%-- 파라미터 : 글번호(board_num), 페이지번호(pageNum) --%>
 						<a href="BoardDetail.bo?board_num=${board.board_num}&pageNum=${pageNum}">${board.board_subject}</a>
