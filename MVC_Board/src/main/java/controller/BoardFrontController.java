@@ -74,7 +74,6 @@ public class BoardFrontController extends HttpServlet {
 			forward = action.execute(request, response);
 		}
 		
-		
 		// -----------------------------------------------------------------
 		// ActionForward 객체의 포워딩 정보를 활용하여 공통 포워딩 작업 처리
 		// 1. ActionForward 객체가 null 이 아닐 경우 판별
