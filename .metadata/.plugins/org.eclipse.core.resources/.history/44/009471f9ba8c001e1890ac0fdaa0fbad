@@ -1,0 +1,69 @@
+package com.itwillbs.test2.controller;
+
+import javax.servlet.http.HttpServletRequest;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+
+import com.itwillbs.test2.vo.TestVo;
+
+@Controller
+public class Test3Controller_Redirect3 {
+	
+	@GetMapping("redirect")
+	public String redirect(Model model) {
+		String name ="hong(model)";
+		int age = 20;
+		
+		model.addAttribute("name", name);
+		model.addAttribute("age", age);
+		
+		return "redirect:/redirectServlet"; // 다만 리다이렉트 방식일땐 모든 데이터가 문자열로 넘어가야함 객체는 안됨X
+	}
+	
+	
+	//================================================================================
+	/*
+	[ 리다이렉트 방식 포워딩을 매핑하는 메서드 내에서 파라미터 데이터 접근하는 방법 ]
+	1) HttpServletRequest 객체 활용한 기존 방법(스프링에서 사용  x)
+	   => 컨트롤러 매핑 메서드 정의 시 HttpServletRequest 객체 타입 파라미터 선언 후 
+	      request.getParameter() 메서드로 파라미터 데이터 가져오기
+	   => 주의! 파라미터 데이터는 getAttribute() 메서드 호출 불가!
+	*/
+//	@GetMapping("redirectServlet")
+//	public String redirectServlet(HttpServletRequest request) {
+//		//getAttribute() 메서드 사용시 null 값 출력됨!
+//		System.out.println(request.getAttribute("name")); //null
+//		//--------------------------------------------------------------
+//		//URL 파라미터로 전달받은 name,age 값 출력해보기
+//		String name = request.getParameter("name");
+//		int age = Integer.parseInt(request.getParameter("age"));
+//		System.out.println(name + age);
+//		return "test2/redirect";
+//	}
+	
+	//==============================================================================
+	// 2) 전달받은 파라미터 명과 동일한 이름의 파라미터를 매핑 메서드 선언부에 명시하면
+	//    이름이 일치하는 파라미터 데이터를 자동으로 해당 변수에 저장
+	
+	
+	@GetMapping("redirectServlet")
+	public String redirectServlet(String name2, int age) {
+		// name 파라미터 값이 String 타입 name 변수에 저장되고
+		// age 파라미터값이 int 타입 age 변수에 저장됨(자동으로 정수형 형변환까지 처리됨)
+		// => 주의! 메서드 파라미터 명과 전달되는 데이터의 파라미터 명이 일치하지 않으면
+		//	  매핑이 불가능하므로 선언된 파라미터 변수에 데이터 전달 불가!
+		//    따라서, String 타입의 변수일 경우  null값이 저장됨
+		//    또한, String 타입이 아닌 다른 타입일 경우 자동으로 형변환되는 과정에서
+		System.out.println("이름2"+name2 +"나이2"+ age);
+		
+		return "test2/redirect";
+	}
+	
+	
+	
+	
+	
+	
+}

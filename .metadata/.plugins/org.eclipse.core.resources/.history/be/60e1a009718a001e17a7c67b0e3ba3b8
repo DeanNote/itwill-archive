@@ -1,0 +1,20 @@
+package com.itwillbs.test2.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+
+@Controller
+public class Test3Controller_Redirect2 {
+	
+	@GetMapping("redirectServlet")
+	public String redirectServlet() {
+		return "test2/redirect";
+	}
+	
+	//[ 리다이렉트 방식 포워딩 시 데이터 전송 ]
+	@GetMapping("redirect")
+	public String redirect() {
+		return "redirect:/redirectServlet";
+	}
+	
+}
