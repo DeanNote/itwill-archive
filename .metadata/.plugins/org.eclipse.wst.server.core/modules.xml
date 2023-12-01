@@ -3,4 +3,5 @@
   <module moduleId="org.eclipse.jst.jee.server:test2" serverId="Tomcat v9.0 Server at localhost"/>
   <module moduleId="org.eclipse.jst.jee.server:movie_ex" serverId="Tomcat v9.0 Server at localhost"/>
   <module moduleId="org.eclipse.jst.jee.server:Springtest1" serverId="Tomcat v9.0 Server at localhost"/>
+  <module moduleId="org.eclipse.jst.jee.server:SpringTest3_MyBatis" serverId="Tomcat v9.0 Server at localhost"/>
 </modules>

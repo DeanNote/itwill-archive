@@ -77,6 +77,14 @@
 		    <version>2.1.2</version>
 		</dependency>
 		
+		<!-- 5. SQL 로그 사용할 logjdbc -->
+		<!-- https://mvnrepository.com/artifact/org.bgee.log4jdbc-log4j2/log4jdbc-log4j2-jdbc4.1 -->
+		<dependency>
+		    <groupId>org.bgee.log4jdbc-log4j2</groupId>
+		    <artifactId>log4jdbc-log4j2-jdbc4.1</artifactId>
+		    <version>1.16</version>
+		</dependency>
+		
 		
 				
 		<!-- AspectJ -->
