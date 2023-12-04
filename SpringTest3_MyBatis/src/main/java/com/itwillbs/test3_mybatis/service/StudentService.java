@@ -1,5 +1,8 @@
 package com.itwillbs.test3_mybatis.service;
 
+import java.util.List;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -34,6 +37,30 @@ public class StudentService {
 		// StudentMapper - insertStudent() 메서드를 호출하여 학생정보 등록 요청
 		// => 파라미터 : StudentVO 객체   리턴타입 : int
 		return mapper.insertStudent(student);
+	}
+
+	// 학생 상세정보 조회 요청
+	public StudentVO getStudentInfo(int idx) {
+		// StudentMapper - selectStudent() 메서드 호출하여 학생 상세정보 조회 요청
+		return mapper.selectStudent(idx);
+	}
+
+	// 학생 목록 조회 요청
+	public List<StudentVO> getStudentList() {
+		// StudentMapper - selectStudentList() 메서드 호출하여 학생 목록 조회 요청
+		return mapper.selectStudentList();
+	}
+
+	// 학생 정보 수정 요청
+	public int modifyStudent(int idx, String name, String email, int grade) {
+		// StudentMapper - updateStudent() 메서드 호출하여 학생 정보 수정 요청
+		return mapper.updateStudent(idx, name, email, grade);
+	}
+
+	// 학생 정보 삭제 요청
+	public int removeStudent(Map<String, String> map) {
+		// StudentMapper - deleteStudent() 메서드 호출하여 학생 정보 삭제 요청
+		return mapper.deleteStudent(map);
 	}
 	
 }

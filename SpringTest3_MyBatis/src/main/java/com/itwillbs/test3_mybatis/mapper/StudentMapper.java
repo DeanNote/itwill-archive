@@ -1,6 +1,10 @@
 package com.itwillbs.test3_mybatis.mapper;
 
+import java.util.List;
+import java.util.Map;
+
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import com.itwillbs.test3_mybatis.vo.StudentVO;
 
@@ -25,6 +29,31 @@ public interface StudentMapper {
 	// => 자동으로 StudentMapper.xml 파일의 <insert id="insertStudent"> 태그와 연결되어
 	//    해당 태그 내의 SQL 구문을 자동으로 실행함
 	// => 이 때, XML 에서 단일 파라미터일 경우 전달된 파라미터에 직접 접근 가능함
+
+	// 학생 상세정보 조회 추상메서드 정의
+	StudentVO selectStudent(int idx);
+
+	// 학생 목록 조회
+	List<StudentVO> selectStudentList();
+
+	// 학생 정보 수정
+	// 주의! Mapper XML 에서 파라미터 2개 이상을 접근하기 위해서는
+	// 추상메서드 정의 시 각 파라미터마다 @Param 어노테이션을 통해
+	// 각 파라미터의 이름을 별도로 지정해줘야 한다!
+	// => @Param("파라미터명") 데이터타입 변수명
+	int updateStudent(
+			@Param("idx") int idx, 
+			@Param("name") String name, 
+			@Param("email") String email, 
+			@Param("grade") int grade);
+
+	// 학생 정보 삭제
+	int deleteStudent(Map<String, String> map);
+	
+	// 2개 이상의 파라미터가 객체일 경우 지정된 이름을 사용하여 해당 객체에 접근 필요
+	int updateStudent2(@Param("student") StudentVO student, @Param("map") Map<String, String> map);
+	// #{student.xxx}
+	// #{map.xxx}
 
 }
 
