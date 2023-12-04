@@ -11,7 +11,7 @@
 	</appender>
 	
 	<!-- Application Loggers -->
-	<logger name="com.itwllbs.test3_mybatis">
+	<logger name="com.itwillbs.test3_mybatis">
 		<level value="info" />
 	</logger>
 	

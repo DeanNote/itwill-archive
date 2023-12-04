@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <aop-reference-model>
+<aop-project name="SpringTest3_MyBatis"/>
 <aop-project name="Springtest1"/>
-<aop-project name="test2"/>
-<aop-project name="movie_ex"/>
+<aop-project name="SpringTest2"/>
 </aop-reference-model>
