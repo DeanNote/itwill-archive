@@ -19,6 +19,10 @@ public class Ex2 {
 		 *   => String 클래스는 char[] 배열로 관리되므로 writer 계열에서 처리 가능
 		 * - FileOutputStream 
 		 *   => 파일에 바이트 단위 자료를 출력하기 위해 사용하는 스트림
+		 * - 데코레이션 패턴을 활용하기 위해 BufferedOutputStream 객체 사용 가능
+		 *   => 바이트 단위로 출력하는 스트림에 버퍼링 기능을 제공
+		 * - BufferedWriter 는 문자 단위로 출력하는 스트림에 버퍼링 기능 제공
+		 *   => OutputStreamWriter 보다 BufferedWriter 의 처리속도가 빠르다!
 		 */
 		
 //		try(OutputStreamWriter writer = new OutputStreamWriter(System.out)) {
@@ -78,18 +82,20 @@ public class Ex2 {
 		
 		System.out.println("출력이 완료되었습니다!");
 		
-		// ==========================================================================
+		// ==========================================================
 		// 파일에 바이트 배열로 출력하기
 		try {
 			FileOutputStream fos = new FileOutputStream("C://temp/data2.txt", true);
 			byte[] bArr = new byte[26];
-			byte data = 65;
-			for(int i = 0; i<bArr.length; i++) {
+			byte data = 65; // 'A' 의 아스키 값
+			for(int i = 0; i < bArr.length; i++) {
 				bArr[i] = data;
 				data++;
 			}
-//			fos.write(bArr); 
-			fos.write(bArr,2,10); 
+//			fos.write(bArr);
+			// => 배열을 한꺼번에 출력
+			fos.write(bArr, 2, 10);
+			// => 배열의 세 번째 위치부터 10개 바이트 출력
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -97,46 +103,45 @@ public class Ex2 {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
+		
 		System.out.println("출력이 완료되었습니다!");
 		
-		// ==========================================================================
+		// ==============================================================
 		// BufferedOutputStream 활용
 		
 		// FileOutputStream
 //		FileOutputStream fos = new FileOutputStream("C://temp/data3.txt");
 		
-		//BufferedOutputStream의 버퍼 크기를 5로 한다.
+		// BufferedOutputStream의 버퍼 크기를 5로 한다.
 //		BufferedOutputStream bos = new BufferedOutputStream(fos, 5);
 		
-		try(BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream("C://temp/data3.txt"), 5)){
-			for(int i = '1'; i<= '9'; i++) {
+		try(BufferedOutputStream bos = 
+				new BufferedOutputStream(new FileOutputStream("C://temp/data3.txt"), 5)) {
+			// 파일 data3.txt에 1부터 9까지 출력한다.
+			for(int i = '1'; i <= '9'; i++) {
 				bos.write(i);
 			}
-		}catch(IOException e) {
+		} catch(IOException e) {
 			e.printStackTrace();
 		}
+		
 		System.out.println("출력이 완료되었습니다!");
 		
-		// ==========================================================================
+		// ==================================================================
 		// BufferedWriter 활용
-		try(BufferedWriter bw = new BufferedWriter(new FileWriter("C://temp/data4.txt"), 5)){
-			for(int i = '1'; i<= '9'; i++) {
+		try(BufferedWriter bw = 
+				new BufferedWriter(new FileWriter("C://temp/data4.txt"), 5)) {
+			// 파일 data4.txt에 1부터 9까지 출력한다.
+			for(int i = '1'; i <= '9'; i++) {
 				bw.write(i);
 			}
-		}catch(IOException e) {
+		} catch(IOException e) {
 			e.printStackTrace();
 		}
+		
 		System.out.println("출력이 완료되었습니다!");
 		
 		
-		
-		
-		
-		
-		
-		
-
 	}
 
 }
