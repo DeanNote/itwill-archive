@@ -52,13 +52,14 @@
 				type: "get",
 				url: "test1_result.jsp",
 				data: {
-					"id", "passwd"
+					id: $("#id").val(), 
+					passwd: $("#passwd").val()
 				},
 				success: function(response){
-					
+					$("#resultArea").html(response);
 				},
 				error function(e){
-					
+					$("#resultArea").html("에러 : " + e);
 				}
 			});
 			
@@ -74,6 +75,9 @@
 			<input type="password" placeholder="패스워드" name="passwd" id="passwd"><br>
 			<input type="button" value="로그인" id="btnLogin">
 		</form>
+		<hr>
+		<h1>응답 처리 결과</h1>
+		<div id = "resultArea"></div>
 	</div>
 </body>
 </html>
