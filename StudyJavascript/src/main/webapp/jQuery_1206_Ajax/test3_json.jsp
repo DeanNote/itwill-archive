@@ -68,12 +68,14 @@
 					$("#resultArea").html("AJAX 요청 실패!");
 				}
 			}); // ajax 요청 끝
-			//==============================================================
+			
+			// ========================================================
+			// test3_json_data2.json 요청
 			$.ajax({
-// 				type "GET" 생략
-				url : "test3_json_data2.json",
-				dataType : "JSON",
-				success : function(data){
+				type: "GET",
+				url: "test3_json_data2.json",
+				dataType: "json",
+				success: function(data) {
 					// 테이블에 해당 데이터 출력하기 위해 테이블 생성
 					$("#resultArea2").html("<table border='1'><tr><th>아이디</th><th>이름</th><th>나이</th><th>주소</th></tr></table>");
 					// 생성된 테이블 내의 마지막 요소로 1개 행 삽입하여 데이터 출력
@@ -82,19 +84,19 @@
 						+ "<td>" + data.id + "</td>"
 						+ "<td>" + data.name + "</td>"
 						+ "<td>" + data.age + "</td>"
+						// JSON 객체 내에 또 다른 객체가 포함되어 있을 경우
+						// 객체명1.객체명2.속성명 형태로 접근
+// 						+ "<td>" + data.address + "</td>" // [object Object] 출력됨
 						+ "<td>" + data.address.address1 + " " + data.address.address2 + "</td>"
 						+ "</tr>"
 					);
 				},
-				error : function(){
+				error : function() {
 					$("#resultArea2").html("AJAX 요청 실패!");
 				}
 			});
 			
-			
-			
 		}); // 버튼 클릭 이벤트 끝
-		
 	}); // document.ready 이벤트 끝
 </script>
 </head>
