@@ -49,7 +49,17 @@
 //------------------------------------------------------
 			//AJAX 를 사용하여 test1_result.jsp 페이지로 요청 전송하기
 			$.ajax({
-				
+				type: "get",
+				url: "test1_result.jsp",
+				data: {
+					"id", "passwd"
+				},
+				success: function(response){
+					
+				},
+				error function(e){
+					
+				}
 			});
 			
 		});
