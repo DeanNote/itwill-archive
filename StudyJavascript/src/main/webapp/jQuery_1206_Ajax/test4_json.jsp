@@ -59,12 +59,22 @@
 				url: "test4_json_data2.json",
 				dataType: "json",
 				success: function(data) {
-					
-				},
+					$("#resultArea2").html("<table border='1'><tr><th>아이디</th><th>이름</th><th>나이</th></tr></table>");
+					// 생성된 테이블 내의 마지막 요소로 1개 행 삽입하여 데이터 출력
+					for(var member of data){
+						$("#resultArea2 > table").append(
+							"<tr>"
+							+ "<td>" + member.id + "</td>"
+							+ "<td>" + member.name + "</td>"
+							+ "<td>" + member.age + "</td>"
+							+ "</tr>"
+						);
+					} // for 종료
+				}, // success 종료
 				error : function() {
 					$("#resultArea2").html("AJAX 요청 실패!");
-				}
-			});
+				} // error 종료
+			});//ajax 종료
 			
 		}); // 버튼 클릭 이벤트 끝
 	}); // document.ready 이벤트 끝
