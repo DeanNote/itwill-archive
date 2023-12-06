@@ -242,7 +242,9 @@
 					// => 자바에서 출력된 데이터지만, 웹 페이지에서는 단순 문자로 취급(boolean 타입 아님!)
 					// 리턴받은 결과값에 대해 판별 수행
 					// => "true" 일 경우 checkIdResult 영역에 "이미 사용중인 아이디" 출력(빨간색) 
-					// => "false" 일 경우 checkIdResult 영역에 "사용 가능한 아이디" 출력(파란색) 
+					// => "false" 일 경우 checkIdResult 영역에 "사용 가능한 아이디" 출력(파란색)
+					// => 주의! 리턴받은 값을 문자열로만 판별해야할 경우
+					//    문자열 앞 뒤의 공백 제거를 위해 trim() 메서드 사용 권장
 					if(result.trim() == "true") { // 문자열 비교 필수!
 						$("#checkIdResult").text("이미 사용중인 아이디").css("color", "red");
 					} else if(result.trim() == "false") {
