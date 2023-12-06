@@ -37,15 +37,16 @@
 // 						);
 // 					}
 		
-					// 3) for of
-					for (var value of data) {
+					// 3) 향상된 for문(for...of)을 통해 반복문 사용
+					for(let name of data) {
 						$("#resultArea > table").append(
- 							"<tr>"
- 							// 배열명[인덱스] 로 각 요소에 접근
- 							+ "<td>" + value + "</td>"
- 							+ "</tr>"
- 						);
+							"<tr>"
+							// 전달받은 변수 그대로 데이터 접근
+							+ "<td>" + name + "</td>"
+							+ "</tr>"
+						);
 					}
+					
 				},
 				error : function() {
 					$("#resultArea").html("AJAX 요청 실패!");
@@ -59,9 +60,14 @@
 				url: "test4_json_data2.json",
 				dataType: "json",
 				success: function(data) {
-					$("#resultArea2").html("<table border='1'><tr><th>아이디</th><th>이름</th><th>나이</th></tr></table>");
-					// 생성된 테이블 내의 마지막 요소로 1개 행 삽입하여 데이터 출력
-					for(var member of data){
+					// 테이블에 해당 데이터 출력하기 위해 테이블 생성
+					$("#resultArea2").html(
+						"<table border='1'><tr><th>아이디</th><th>이름</th><th>나이</th></tr></table>"
+					);
+					
+					// 배열 내에 객체 형태로 JSON 데이터가 존재할 경우
+					// => 배열 반복하면서 각 배열 요소(객체) 내의 속성에 접근
+					for(let member of data) {
 						$("#resultArea2 > table").append(
 							"<tr>"
 							+ "<td>" + member.id + "</td>"
@@ -69,12 +75,13 @@
 							+ "<td>" + member.age + "</td>"
 							+ "</tr>"
 						);
-					} // for 종료
-				}, // success 종료
+					}
+					
+				},
 				error : function() {
 					$("#resultArea2").html("AJAX 요청 실패!");
-				} // error 종료
-			});//ajax 종료
+				}
+			});
 			
 		}); // 버튼 클릭 이벤트 끝
 	}); // document.ready 이벤트 끝
