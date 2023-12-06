@@ -45,20 +45,30 @@
 				return;
 			}
 			
-// 			$("form").submit();
-//------------------------------------------------------
-			//AJAX 를 사용하여 test1_result.jsp 페이지로 요청 전송하기
+// 			$("form").submit(); // 폼에 대한 submit 동작 수행
+			// -----------------------------------
+			// AJAX 를 사용하여 test1_result.jsp 페이지로 요청 전송하기
+			// => 이때, 파라미터로 아이디와 패스워드를 함께 전달(GET 방식)
 			$.ajax({
-				type: "get",
-				url: "test1_result.jsp",
-				data: {
-					id: $("#id").val(), 
-					passwd: $("#passwd").val()
+				type: "get", // 요청 방식을 GET 방식으로 지정
+				url: "test1_result.jsp", // AJAX 로 서버에 요청할 요청 주소(URL)
+// 				data: "xxx", // 전송할 데이터가 단일 항목일 경우 데이터 직접 지정
+				data: { // 전송할 데이터가 복수개일 경우 중괄호로 묶기
+					// 폼 데이터 또는 자바스크립트 변수 등을 가져와서 파라미터로 표현(전송)하는 경우
+					// 파라미터명 : 데이터 형식으로 지정
+					// -------- 값을 직접 지정 시 ---------
+// 					id : "hong",
+// 					passwd : "1234"
+					// -------- 입력폼에서 값을 가져와서 전달 시 ---------
+					id : $("#id").val(), // id 선택자의 value 속성값을 id 파라미터로 저장
+					passwd : $("#passwd").val() // passwd 선택자의 value 속성값을 passwd 파라미터로 저장
 				},
-				success: function(response){
+				success: function(response) { // 요청 처리 성공 시 자동으로 호출되는 콜백(Callback) 함수
+					// 익명 함수 파라미터로 응답데이터가 전달됨(처리하는 페이지에서 응답한 결과물)
+					// id 선택자 "resultArea" 영역에 응답데이터(response) 출력하기
 					$("#resultArea").html(response);
 				},
-				error function(e){
+				error: function(e) { // 요청 처리 실패(= 에러 발생) 시 자동으로 호출되는 콜백 함수
 					$("#resultArea").html("에러 : " + e);
 				}
 			});
@@ -77,7 +87,7 @@
 		</form>
 		<hr>
 		<h1>응답 처리 결과</h1>
-		<div id = "resultArea"></div>
+		<div id="resultArea"><!-- AJAX 요청에 대한 응답 처리 결과를 출력할 위치 --></div>
 	</div>
 </body>
 </html>
