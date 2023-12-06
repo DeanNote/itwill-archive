@@ -11,55 +11,67 @@
 		$("#btnOk").on("click", function() {
 			$.ajax({
 				type: "GET", // 생략 가능
-				url: "test3_json_data.txt", // 일반 파일도 요청 가능
+				url: "test4_json_data.json", 
 				dataType: "json", // 응답 데이터를 JSON 객체로 취급 
 				success: function(data) {
-					$("#resultArea").html("<table border='1'><tr><th>아이디</th><th>이름</th><th>나이</th></tr></table>");
-					$("#resultArea > table").append(
-						"<tr>"
-						+ "<td>" + data.id + "</td>"
-						+ "<td>" + data.name + "</td>"
-						+ "<td>" + data.age + "</td>"
-						+ "</tr>"
-					);
+					// 테이블에 해당 데이터 출력하기 위해 테이블 생성
+					$("#resultArea").html("<table border='1'><tr><th>이름</th></tr></table>");
 					
+					// 응답된 JSON 데이터가 배열 형식일 경우
+					// 일반 자바스크립트 배열 접근 방법과 동일(반복문 또는 직접 출력)
+					// 1) 배열 직접 출력
+// 					$("#resultArea > table").append(
+// 						"<tr>"
+// 						+ "<td>" + data + "</td>"
+// 						+ "</tr>"
+// 					);
+				
+					// 2) 일반 for문을 통해 반복으로 배열 인덱스 접근
+					//    (배열명.length 활용)
+// 					for(let i = 0; i < data.length; i++) {
+// 						$("#resultArea > table").append(
+// 							"<tr>"
+// 							// 배열명[인덱스] 로 각 요소에 접근
+// 							+ "<td>" + data[i] + "</td>"
+// 							+ "</tr>"
+// 						);
+// 					}
+		
+					// 3) for of
+					for (var value of data) {
+						$("#resultArea > table").append(
+ 							"<tr>"
+ 							// 배열명[인덱스] 로 각 요소에 접근
+ 							+ "<td>" + value + "</td>"
+ 							+ "</tr>"
+ 						);
+					}
 				},
 				error : function() {
 					$("#resultArea").html("AJAX 요청 실패!");
 				}
 			}); // ajax 요청 끝
-			//==============================================================
+			
+			// ========================================================
+			// test4_json_data2.json 요청
 			$.ajax({
-// 				type "GET" 생략
-				url : "test3_json_data2.json",
-				dataType : "JSON",
-				success : function(data){
-					// 테이블에 해당 데이터 출력하기 위해 테이블 생성
-					$("#resultArea2").html("<table border='1'><tr><th>아이디</th><th>이름</th><th>나이</th><th>주소</th></tr></table>");
-					// 생성된 테이블 내의 마지막 요소로 1개 행 삽입하여 데이터 출력
-					$("#resultArea2 > table").append(
-						"<tr>"
-						+ "<td>" + data.id + "</td>"
-						+ "<td>" + data.name + "</td>"
-						+ "<td>" + data.age + "</td>"
-						+ "<td>" + data.address.address1 + " " + data.address.address2 + "</td>"
-						+ "</tr>"
-					);
+				type: "GET",
+				url: "test4_json_data2.json",
+				dataType: "json",
+				success: function(data) {
+					
 				},
-				error : function(){
+				error : function() {
 					$("#resultArea2").html("AJAX 요청 실패!");
 				}
 			});
 			
-			
-			
 		}); // 버튼 클릭 이벤트 끝
-		
 	}); // document.ready 이벤트 끝
 </script>
 </head>
 <body>
-	<h1>AJAX - test3_json.jsp</h1>
+	<h1>AJAX - test4_json.jsp</h1>
 	<input type="button" value="JSON 데이터 파싱" id="btnOk">
 	<hr>
 	<div id="resultArea"></div>
