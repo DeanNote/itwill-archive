@@ -10,7 +10,16 @@
 	$(function() {
 		$("#btnOk").on("click", function() {
 			$.ajax({
-				
+// 				type : "GET" // 생략가능
+				url: "test3_json_data.txt",
+// 				data : 전송할 파라미터 없음 -> 생략
+				data : "text", // 응답 데이터를 단순 텍스트로 취급
+				succes: function(data){
+					alert("AJAX 요청 성공!" + data);
+				},
+				error: function(){
+					alert("AJAX 요청 실패!");
+				}
 			});
 		});
 	});
