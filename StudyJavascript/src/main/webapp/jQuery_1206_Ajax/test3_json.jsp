@@ -82,7 +82,7 @@
 						+ "<td>" + data.id + "</td>"
 						+ "<td>" + data.name + "</td>"
 						+ "<td>" + data.age + "</td>"
-						+ "<td>" + data.address + "</td>"
+						+ "<td>" + data.address.address1 + " " + data.address.address2 + "</td>"
 						+ "</tr>"
 					);
 				},
