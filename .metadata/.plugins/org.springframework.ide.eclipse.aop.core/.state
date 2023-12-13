@@ -2,5 +2,7 @@
 <aop-reference-model>
 <aop-project name="SpringTest3_MyBatis"/>
 <aop-project name="Springtest1"/>
+<aop-project name="Spring_MVC_Board"/>
 <aop-project name="SpringTest2"/>
+<aop-project name="Movie_Project"/>
 </aop-reference-model>
