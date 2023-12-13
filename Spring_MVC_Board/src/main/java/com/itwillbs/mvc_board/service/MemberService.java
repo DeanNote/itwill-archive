@@ -19,6 +19,10 @@ public class MemberService {
 		return mapper.insertMember(member);
 	}
 
+	public MemberVO getMember(MemberVO member) {
+		return mapper.selectMember(member);
+	}
+
 }
 
 

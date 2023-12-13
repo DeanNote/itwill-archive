@@ -17,7 +17,7 @@
 	</header>
 	<article>
 		<h1>로그인</h1>
-		<form action="MemberLoginPro.me" method="post">
+		<form action="MemberLoginPro" method="post">
 			<table>
 				<tr>
 					<td>
@@ -31,7 +31,7 @@
 				</tr>
 				<tr>
 					<td>
-						<input type="checkbox" name="rememberLogin">로그인 상태 유지<br>
+						<input type="checkbox" name="rememberId">아이디 저장<br>
 					</td>
 				</tr>
 				<tr>

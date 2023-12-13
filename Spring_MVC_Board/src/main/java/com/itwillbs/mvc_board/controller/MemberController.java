@@ -2,6 +2,8 @@ package com.itwillbs.mvc_board.controller;
 
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -73,6 +75,38 @@ public class MemberController {
 		
 	}
 	
+	@GetMapping("MemberJoinSuccess")
+	public String MemberJoinSuccess() {
+		
+		return "member/member_join_success";
+	}
+	@GetMapping("MemberLoginForm")
+	public String MemberLoginForm() {
+		
+		return "member/member_login_form";
+	}
+	@PostMapping("MemberLoginPro")
+	public String MemberLoginPro(MemberVO member, HttpSession session, Model model) {
+		System.out.println(member);
+		
+		// 1. DB에 있는 정보 가져오기
+		 MemberVO dbMember = service.getMember(member);
+		 System.out.println(dbMember);
+		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+		if(dbMember == null || !passwordEncoder.matches(member.getPasswd(), dbMember.getPasswd())) {
+			model.addAttribute("msg","로그인 실패!");
+			return "fail_back";
+		}else {
+			session.setAttribute("sId", member.getId());
+			return "redirect:/";
+		}
+	}
+	
+	@GetMapping("MemberLogout")
+	public String MemberLogout(HttpSession session) {
+		session.invalidate();
+		return "redirect:/";
+	}
 	
 }
 

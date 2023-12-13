@@ -10,4 +10,6 @@ public interface MemberMapper {
 	// 회원 가입
 	int insertMember(MemberVO member);
 
+	MemberVO selectMember(MemberVO member);
+
 }
