@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.itwillbs.mvc_board.service.MemberService;
 import com.itwillbs.mvc_board.vo.MemberVO;
@@ -75,6 +76,19 @@ public class MemberController {
 		
 	}
 	
+	@ResponseBody
+	@GetMapping("MemberCheckDupId")
+	public String MemberCheckDupId(MemberVO member) {
+//		System.out.println(member.getId());
+		MemberVO dbMember = service.getMember(member);
+		if(dbMember == null) { // 사용가능ID
+			return "false"; // 중복 아니라는 의미로 false 값 전달
+		}else {//중복ID
+			return "true";
+		}
+	}
+	
+	
 	@GetMapping("MemberJoinSuccess")
 	public String MemberJoinSuccess() {
 		
@@ -107,7 +121,42 @@ public class MemberController {
 		session.invalidate();
 		return "redirect:/";
 	}
+	//===========================================================================
+	// [회원 상세정보 조회]
 	
+	@GetMapping("MemberInfo")
+	public String MemberInfo(MemberVO member, HttpSession session, Model model) {
+		String sId = (String) session.getAttribute("sId");
+		if(sId == null) {
+			model.addAttribute("msg", "잘못된 접근입니다");
+			return "fail_back";
+		}
+		
+		member.setId(sId);
+		MemberVO dbMember = service.getMember(member);
+		
+		model.addAttribute("member", dbMember);
+		
+		
+		return "member/member_info";
+	}
+	
+	
+	@GetMapping("MemberModifyForm")
+	public String MemberModifyForm(MemberVO member, HttpSession session, Model model) {
+		String sId = (String)session.getAttribute("sId");
+//		System.out.println("세션에 저장된 아이디 : " + sId);
+		member.setId(sId);
+		MemberVO dbMember = service.getMember(member);
+		
+		model.addAttribute("member", dbMember);
+		return "member/member_modify_form";
+	}
+	
+	@PostMapping("MemberModifyPro")
+	public String MemberModifyPro() {
+		return "";
+	}
 }
 
 

@@ -138,7 +138,7 @@
 	</header>
 	<article>
 		<h1>회원 정보 수정</h1>
-		<form action="MemberModifyPro.me" method="post" name="joinForm">
+		<form action="MemberModifyPro" method="post" name="joinForm">
 			<table border="1">
 				<tr>
 					<th>이름</th>
@@ -190,13 +190,12 @@
 						   => ${배열명[인덱스]}
 						==================================================================
 						--%>
-						<c:set var="arrAddress" value="${fn:split(member.address, '/') }" />
-						<input type="text" name="postCode" id="postCode" value="${arrAddress[0] }" size="6" required>
+						<input type="text" name="postCode" id="postCode" value="${member.post_code}" size="6" required>
 						<input type="button" id="btnSearchAddress" value="주소검색">
 						<br>
-						<input type="text" name="address1" id="address1" value="${arrAddress[1] }" size="25" placeholder="기본주소" required>
+						<input type="text" name="address1" id="address1" value="${member.address1}" size="25" placeholder="기본주소" required>
 						<br>
-						<input type="text" name="address2" id="address2" value="${arrAddress[2] }" size="25" placeholder="상세주소" required>
+						<input type="text" name="address2" id="address2" value="${member.address2}" size="25" placeholder="상세주소" required>
 					</td>
 				</tr>
 				<tr>
