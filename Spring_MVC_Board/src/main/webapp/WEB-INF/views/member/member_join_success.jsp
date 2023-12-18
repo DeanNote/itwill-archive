@@ -3,26 +3,32 @@
 <!DOCTYPE html>
 <html>
 <head>
-<script>
-	alert("회원가입을 축하합니다.")
-</script>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<!-- 외부 CSS 파일(css/default.css) 연결하기 -->
 <link href="${pageContext.request.contextPath }/resources/css/default.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 	<header>
-		<!-- 기본메뉴 표시 영역(top.jsp 페이지 삽입) -->
-		<%-- 주의! JSP 파일은 WEB-INF/views 디렉토리 내에 위치 --%>
+		<!-- inc/top.jsp 페이지 삽입 -->
 		<jsp:include page="../inc/top.jsp"></jsp:include>
 	</header>
 	<article>
-		<!-- 본문 표시 영역 -->
-		<h1>회원가입성공</h1>
+		<h1>회원 가입 성공</h1>
+		<h3>가입을 축하드립니다. 3000 포인트가 적립되었습니다.</h3>
 	</article>
 	<footer>
-		<!-- 회사소개 표시 영역(bottom.jsp 페이지 삽입) -->
-		<jsp:include page="../inc/bottom.jsp"></jsp:include>
+	
 	</footer>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
