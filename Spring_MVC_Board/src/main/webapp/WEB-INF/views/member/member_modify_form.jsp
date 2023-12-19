@@ -157,7 +157,16 @@
 				<tr>
 					<th>기존 비밀번호</th>
 					<td>
-						<input type="password" name="passwd" placeholder="8 ~ 16글자" required>
+						<%-- 만약, 현재 세션 아이디가 관리자이면서, 수정할 아이디가 관리자가 아닐 경우 --%>
+						<%-- 회원정보수정 폼에서 기존 패스워드 입력창 제거(생략) => (입력불필요) 출력 --%>
+						<c:choose>
+							<c:when test="${sessionScope.sId eq 'admin' and member.id ne 'admin'}">
+								(입력불필요)
+							</c:when>
+							<c:otherwise>
+								<input type="password" name="passwd" placeholder="8 ~ 16글자" required>
+							</c:otherwise>
+						</c:choose>
 						<span id="checkPasswdResult"></span>
 					</td>
 				</tr>
