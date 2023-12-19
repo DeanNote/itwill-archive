@@ -101,7 +101,7 @@
 		    <scope>provided</scope>
 		</dependency>
 			
-		<!-- 암호화에 사용될 BCryptPasswordEncoder 클래스가 포함된 Spring-Security-Web 라이브러리 -->
+		<!--7. 암호화에 사용될 BCryptPasswordEncoder 클래스가 포함된 Spring-Security-Web 라이브러리 -->
 		<!-- 주의! JDK 11(class file version 55) 기준 5.x.x 버전까지만 사용 가능 -->	
 		<!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-web -->
 		<dependency>
@@ -110,6 +110,30 @@
 		    <version>5.8.8</version>
 		</dependency>
 						
+		<!-- 8. 파일처리 -->
+		<!-- https://mvnrepository.com/artifact/commons-io/commons-io -->
+		<dependency>
+		    <groupId>commons-io</groupId>
+		    <artifactId>commons-io</artifactId>
+		    <version>2.15.1</version>
+		</dependency>
+		
+		<!-- https://mvnrepository.com/artifact/commons-fileupload/commons-fileupload -->
+		<dependency>
+		    <groupId>commons-fileupload</groupId>
+		    <artifactId>commons-fileupload</artifactId>
+		    <version>1.5</version>
+		</dependency>
+		
+		<!-- 9. 난수 생성-->
+		<!-- https://mvnrepository.com/artifact/org.apache.commons/commons-lang3 -->
+		<dependency>
+		    <groupId>org.apache.commons</groupId>
+		    <artifactId>commons-lang3</artifactId>
+		    <version>3.14.0</version>
+		</dependency>
+		
+		
 		
 		<!-- AspectJ -->
 		<dependency>

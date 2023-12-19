@@ -243,21 +243,24 @@ public class MemberController {
 			model.addAttribute("msg", "잘못된 접근입니다");
 			return "fail_back";
 		}
-
-
-		// MemberService - getMember() 메서드 호출하여 회원 정보 조회 요청(패스워드 비교용)
-		// => 파라미터 : MemberVO 객체 리턴타입 : MemberVO(dbMember)
-		MemberVO dbMember = service.getMember(member);
-
-		// BCryptPasswordEncoder 클래스를 활용하여 입력받은 기존 패스워드와 DB 패스워드 비교
-		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+		
+		System.out.println("전달받은 Member : " + member);
 		
 		// 만약, 현재 세션이 관리자가 아니거나
 		// 관리자이면서 id 파라미터가 없을 경우(null 또는 널스트링)
 		// MemberVO 객체의 id 값을 세션 아이디로 교체(덮어쓰기)
 		if(!sId.equals("admin") || (sId.equals("admin") && (member.getId() == null || member.getId().equals("")))) {
 			member.setId(sId);
-			
+		} 
+
+		// MemberService - getMember() 메서드 호출하여 회원 정보 조회 요청(패스워드 비교용)
+		// => 파라미터 : MemberVO 객체 리턴타입 : MemberVO(dbMember)
+		MemberVO dbMember = service.getMember(member);
+		
+		// BCryptPasswordEncoder 클래스를 활용하여 입력받은 기존 패스워드와 DB 패스워드 비교
+		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+		
+		if(!sId.equals("admin") || (sId.equals("admin") && (member.getId() == null || member.getId().equals("")))) {
 			// 이 때, 동일한 조건에서 패스워드 검증도 추가로 수행
 			// => 관리자가 다른 회원의 정보를 수정할 경우에는 패스워드 검증 수행 생략됨
 			if (!passwordEncoder.matches(member.getPasswd(), dbMember.getPasswd())) {
@@ -278,11 +281,12 @@ public class MemberController {
 		// 회원 정보 수정 요청 결과 판별
 		// => 실패 시 "fail_back" 페이지 포워딩 처리("회원정보 수정 실패!")
 		// => 성공 시 "MemberInfo" 서블릿 리다이렉트
-		if (updateCount > 0) { // 성공 시
+		if(updateCount > 0) { // 성공 시
+			// 관리자가 다른 회원 정보 수정 시 MemberInfo 서블릿 주소에 아이디 파라미터 결합
 			if(!sId.equals("admin") || (sId.equals("admin") && (member.getId() == null || member.getId().equals("")))) {
-				return "";
-			}else {
 				return "redirect:/MemberInfo";
+			} else {
+				return "redirect:/MemberInfo?id=" + member.getId();
 			}
 		} else { // 실패 시
 			model.addAttribute("msg", "회원정보 수정 실패!");

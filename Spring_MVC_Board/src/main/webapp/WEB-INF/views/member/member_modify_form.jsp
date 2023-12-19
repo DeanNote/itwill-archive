@@ -149,9 +149,7 @@
 					<th>아이디</th>
 					<td>
 						<%-- 아이디 편집 불가(readonly 필수! disabled 는 파라미터 전송에서 제외됨) --%>
-<%-- 						<input type="text" name="id" value="${member.id }" readonly>(변경불가) --%>
-						<%-- 만약, 아이디 파라미터 전송도 불필요할 경우 데이터만 표시 --%>
-						${member.id }(변경불가)
+						<input type="text" name="id" value="${member.id }" readonly>(변경불가)
 					</td>
 				</tr>
 				<tr>
