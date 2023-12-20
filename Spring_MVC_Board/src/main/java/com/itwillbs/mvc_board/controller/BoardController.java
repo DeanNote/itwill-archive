@@ -9,6 +9,7 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
+import java.util.List;
 import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
@@ -19,10 +20,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.itwillbs.mvc_board.service.BoardService;
 import com.itwillbs.mvc_board.vo.BoardVO;
+import com.itwillbs.mvc_board.vo.PageInfo;
 
 @Controller
 public class BoardController {
@@ -240,6 +243,52 @@ public class BoardController {
 			return "fail_back";
 		}
 		
+	}
+	
+	// "BoardList" 서블릿 요청에 대한 글 목록 조회 비즈니스 로직 처리
+	// => 파라미터 : 검색타입(searchType) => 기본값 널스트링("") 설정
+	//               검색어(searchKeyword) => 기본값 널스트링("") 설정
+	//               페이지번호(pageNum) => 기본값 1 설정
+	@GetMapping("BoardList")
+	public String list(
+			@RequestParam(defaultValue = "") String searchType,
+			@RequestParam(defaultValue = "") String searchKeyword,
+			@RequestParam(defaultValue = "1") int pageNum,
+			Model model) {
+//		System.out.println("검색타입 : " + searchType);
+//		System.out.println("검색어 : " + searchKeyword);
+//		System.out.println("페이지번호 : " + pageNum);
+		// ----------------------------------------------------------------
+		// 페이징 처리를 위해 조회 목록 갯수 조절 시 사용될 변수 선언
+		int listLimit = 10;
+		int startRow = (pageNum - 1) * listLimit;
+		// --------------------------------------------------------------------
+		// BoardService - getBoardList() 메서드 호출하여 게시물 목록 조회 요청
+		// => 파라미터 : 검색타입, 검색어, 시작행번호, 게시물 목록갯수
+		// => 리턴타입 : List<BoardVO>(boardList)
+		List<BoardVO> boardList = service.getBoardList(searchType, searchKeyword, startRow, listLimit);
+		// --------------------------------------------------------------------
+		// 페이징 처리를 위한 계산 작업
+		// BoardService - getBoardListCount() 메서드 호출하여 전체 게시물 목록 갯수 조회 요청
+		// => 파라미터 : 검색타입, 검색어
+		// => 리턴타입 : int(listCount)
+		int listCount = service.getBoardListCount(searchType, searchKeyword);
+		int pageListLimit = 3; // 임시) 페이지 당 페이지 번호 갯수를 3개로 지정
+		int maxPage = listCount / listLimit + (listCount % listLimit > 0 ? 1 : 0);
+		int startPage = (pageNum - 1) / pageListLimit * pageListLimit + 1;
+		int endPage = startPage + pageListLimit - 1;
+		if(endPage > maxPage) {
+			endPage = maxPage;
+		}
+		
+		// 계산된 페이징 처리 관련 값을 PageInfo 객체에 저장
+		PageInfo pageInfo = new PageInfo(listCount, pageListLimit, maxPage, startPage, endPage);
+		// ----------------------------------------------------------------------------
+		// 게시물 목록과 페이징 정보 저장
+		model.addAttribute("boardList", boardList);
+		model.addAttribute("pageInfo", pageInfo);
+		
+		return "board/board_list";
 	}
 	
 	
