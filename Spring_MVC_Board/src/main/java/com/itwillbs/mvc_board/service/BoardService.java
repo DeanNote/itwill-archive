@@ -1,29 +1,20 @@
 package com.itwillbs.mvc_board.service;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.itwillbs.mvc_board.mapper.BoardMapper;
-
+import com.itwillbs.mvc_board.vo.BoardVO;
 
 @Service
-public class BoradService {
+public class BoardService {
 	@Autowired
 	private BoardMapper mapper;
 
+	// 게시물 등록 요청
+	public int registBoard(BoardVO board) {
+		return mapper.insertBoard(board);
+	}
+	
+	
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
