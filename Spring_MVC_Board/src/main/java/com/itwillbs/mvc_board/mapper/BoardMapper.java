@@ -20,6 +20,12 @@ public interface BoardMapper {
 
 	int selectBoardListCount(@Param("searchType") String searchType, @Param("searchKeyword") String searchKeyword);
 
+	BoardVO selectBoard(int board_num);
+
+	void updateReadcount(BoardVO board);
+
+	int deleteBoard(BoardVO board);
+
 }
 
 

@@ -50,19 +50,21 @@
 			<table>
 				<tr>
 					<td class="td_left"><label for="board_name">글쓴이</label></td>
-					<td class="td_right"></td>
+					<td class="td_right"><input type="text" value="${board.board_name }" readonly="readonly"></td>
 				</tr>
 				<tr>
 					<td class="td_left"><label for="board_pass">비밀번호</label></td>
-					<td class="td_right"></td>
+					<td class="td_right"><input type="text" value="" placeholder="변경시에만 입력"></td>
 				</tr>
 				<tr>
 					<td class="td_left"><label for="board_subject">제목</label></td>
-					<td class="td_right"></td>
+					<td class="td_right"><input type="text" value="${board.board_subject }"></td>
 				</tr>
 				<tr>
 					<td class="td_left"><label for="board_content">내용</label></td>
-					<td class="td_right"></td>
+					<textarea id="board_content" name="board_content" rows="15" cols="40" required="required"></textarea>
+					
+					<td class="td_right"><input type="text" value="${board.board_content }"></td>
 				</tr>
 			</table>
 			<section id="commandCell">
