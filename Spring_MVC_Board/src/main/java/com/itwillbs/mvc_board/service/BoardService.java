@@ -48,6 +48,16 @@ public class BoardService {
 	public int removeBoard(BoardVO board) {
 		return mapper.deleteBoard(board);
 	}
+
+	// 게시물 수정 - 파일 삭제 요청
+	public int removeBoardFile(BoardVO board) {
+		return mapper.updateBoardFile(board);
+	}
+
+	// 게시물 수정 요청
+	public int modifyBoard(BoardVO board) {
+		return mapper.updateBoard(board);
+	}
 	
 	
 }
