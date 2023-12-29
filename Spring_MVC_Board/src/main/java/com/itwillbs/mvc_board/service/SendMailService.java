@@ -29,7 +29,20 @@ public class SendMailService {
 		// ----------------------------------------------------
 		// SendMailClient - sendMail() 메서드 호출하여 메일 발송 요청
 		// => 파라미터 : 이메일, 제목, 본문
-		mailClient.sendMail(member.getEmail(), subject, content);
+		// => 단, 메일 발송과 인증 코드 등록 작업을 별도로 동작시키기 위해
+		//    메일 발송 메서드 호출 기능을 자바의 쓰레드(Thread)를 활용하여 호출
+		// => 메일 발송이 완료되지 않더라도 생성된 인증코드를 리턴할 수 있게 됨
+//		mailClient.sendMail(member.getEmail(), subject, content);
+		// => 익명 객체를 활용하여 1회용 쓰레드 생성
+		//    new Thread(new Runnable() { public void run() { 멀티쓰레드코드... }}).start();
+		
+		// 익명 객체 사용할때 java 1.6이면 오류남 java11로 바꿔줘야됨! 원래는 다 final 처리 해줘야 함
+		new Thread(new Runnable() {
+			@Override
+			public void run() {
+				mailClient.sendMail(member.getEmail(), subject, content);
+			}
+		});
 		
 		// 발송된 인증코드 리턴
 		return auth_code;

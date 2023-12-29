@@ -116,6 +116,20 @@
 		WHERE id = #{id}
 	</update>
 	
+	<!-- 회원 메일 인증상태 변경 - UPDATE -->
+	<!-- member 테이블의 id 에 해당하는 레코드의 메일인증상태(mail_auth_status) 컬럼값 "Y" 로 변경 -->
+	<update id="updateMailAuthStatus">
+		UPDATE member
+		SET mail_auth_status = 'Y'
+		WHERE id = #{id}
+	</update>
+	
+	<!-- 회원 메일 인증정보 삭제 - DELETE -->
+	<!-- mail_auth_info 테이블의 id 에 해당하는 레코드 삭제 -->
+	<delete id="deleteMailAuthInfo">
+		DELETE FROM mail_auth_info		
+		WHERE id = #{id}
+	</delete>
 	
 	<!-- =============== 관리자 =============== -->
 	<!-- 회원 목록 조회 - SELECT -->
@@ -124,17 +138,6 @@
 		FROM member
 		WHERE id != 'admin' -- 관리자 계정을 제외한 나머지 조회
 	</select>
-	
-	<update id="updateMailAuthStatus">
-		UPDATE member
-		SET mail_auth_status = 'Y'
-		WHERE id = #{id}
-	</update>
-	
-	<delete id="deleteMailAuthInfo">
-		DELETE FROM mail_auth_info
-		WHERE id = #{id}
-	</delete>
 </mapper>
 
 

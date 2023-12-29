@@ -30,14 +30,14 @@ public interface MemberMapper {
 	void insertMailAuthInfo(@Param("id") String id, @Param("auth_code") String auth_code);
 	// 기존 인증정보 갱신
 	void updateMailAuthInfo(@Param("id") String id, @Param("auth_code") String auth_code);
+	// 회원 메일 인증상태 변경
+	void updateMailAuthStatus(String id);
+	// 기존 인증정보 삭제
+	void deleteMailAuthInfo(String id);
 	// ====================================================
 	// 관리자
 	// 회원 목록 조회 요청
 	List<MemberVO> selectMemberList();
-
-	void updateMailAuthStatus(String id);
-
-	void deleteMailAuthInfo(String id);
 
 
 
