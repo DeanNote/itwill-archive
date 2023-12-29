@@ -124,6 +124,17 @@
 		FROM member
 		WHERE id != 'admin' -- 관리자 계정을 제외한 나머지 조회
 	</select>
+	
+	<update id="updateMailAuthStatus">
+		UPDATE member
+		SET mail_auth_status = 'Y'
+		WHERE id = #{id}
+	</update>
+	
+	<delete id="deleteMailAuthInfo">
+		DELETE FROM mail_auth_info
+		WHERE id = #{id}
+	</delete>
 </mapper>
 
 

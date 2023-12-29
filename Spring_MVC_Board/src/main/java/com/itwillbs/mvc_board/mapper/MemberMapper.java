@@ -35,6 +35,10 @@ public interface MemberMapper {
 	// 회원 목록 조회 요청
 	List<MemberVO> selectMemberList();
 
+	void updateMailAuthStatus(String id);
+
+	void deleteMailAuthInfo(String id);
+
 
 
 }

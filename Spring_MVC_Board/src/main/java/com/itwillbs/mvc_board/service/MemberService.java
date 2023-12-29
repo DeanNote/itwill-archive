@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.itwillbs.mvc_board.mapper.MemberMapper;
 import com.itwillbs.mvc_board.vo.MailAuthInfoVO;
@@ -70,10 +71,29 @@ public class MemberService {
 		
 	}
 
-	// 메일 인증 수행 요청
+	// 메일 인증 수행 요청 => 트랜잭션 수행 처리
+	@Transactional
 	public boolean requestEmailAuth(MailAuthInfoVO authInfo) {
-		// TODO Auto-generated method stub
-		return false;
+		boolean isAuthSuccess = false;
+
+		//MemberService - selectMailAuthInfo() 메서드 호출(재사용)
+		MailAuthInfoVO currentAuthInfo = mapper.selectMailAuthInfo(authInfo.getId());
+		System.out.println("전달받은 인증정보 : " + authInfo);
+		System.out.println("조회된 기존 인증정보 : " + currentAuthInfo);
+		
+		
+		// 조회된 인증정보가 존재할 경우 판별
+		if(currentAuthInfo != null){
+			if(authInfo.getAuth_code().equals(currentAuthInfo.getAuth_code())) {
+				mapper.updateMailAuthStatus(authInfo.getId());
+				mapper.deleteMailAuthInfo(authInfo.getId());
+				
+				
+				// 인증 수행 결과를 true로 변경
+				return true;
+			}
+		}
+		return isAuthSuccess;
 	}
 
 
