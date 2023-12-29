@@ -481,7 +481,7 @@ public class BoardController {
 			HttpSession session, Model model) {
 		// 세션 아이디에 따른 차단 처리
 		String sId = (String)session.getAttribute("sId");
-		if(sId == null) {
+		if(sId == null && board.getBoard_name() == null) {
 			model.addAttribute("msg", "로그인이 필요합니다");
 			// targetURL 속성명으로 로그인 폼 페이지 서블릿 주소 저장
 			model.addAttribute("targetURL", "MemberLoginForm");
@@ -583,6 +583,123 @@ public class BoardController {
 		} else {
 			// "글 수정 실패!" 처리
 			model.addAttribute("msg", "글 수정 실패!");
+			return "fail_back";
+		}
+		
+	}
+	
+	// "BoardReplyForm" 서블릿 요청에 대한 답글 작성 폼 출력
+	// => 기존 게시물 상세정보 조회 후 답글 작성 폼(board/board_reply_form.jsp) 포워딩
+	//    (BoardService - getBoard() 메서드 재사용)
+	// => 글 수정 폼과 파일 관련 처리를 제외하면 동일(파일 표시 작업 불필요)
+	@GetMapping("BoardReplyForm")
+	public String replyForm(BoardVO board, HttpSession session, Model model) {
+		// 글 삭제와 권한 판별 동일
+		// 세션 아이디 없을 경우 처리
+		String sId = (String)session.getAttribute("sId");
+		if(sId == null) {
+			model.addAttribute("msg", "로그인이 필요합니다");
+			model.addAttribute("targetURL", "MemberLoginForm");
+			return "forward";
+		}
+		
+		// BoardService - getBoard() 메서드 재사용하여 게시물 1개 정보 조회
+		// => 조회수가 증가되지 않도록 두번째 파라미터값 false 전달
+		// => 별도의 새로운 BoardVO 타입 변수 선언 없이 기존 BoardVO 타입 변수(board) 재사용
+		board = service.getBoard(board.getBoard_num(), false);
+		
+		model.addAttribute("board", board);
+		
+		return "board/board_reply_form";
+	}
+	
+	// "BoardReplyPro" 서블릿 요청에 대한 답글 쓰기 비즈니스 로직 처리
+	@PostMapping("BoardReplyPro")
+	public String replyPro(BoardVO board, HttpSession session, Model model, HttpServletRequest request) {
+		if(session.getAttribute("sId") == null) {
+			model.addAttribute("msg", "로그인이 필요합니다");
+			// targetURL 속성명으로 로그인 폼 페이지 서블릿 주소 저장
+			model.addAttribute("targetURL", "MemberLoginForm");
+			return "forward";
+		}
+		// ---------------------------------------------------------------------------
+		// 작성자 IP 주소 가져오기
+		board.setWriter_ip(request.getRemoteAddr());
+		System.out.println(board.getWriter_ip()); // 0:0:0:0:0:0:0:1
+		// -------------------------------------------------------------------------------------
+		String uploadDir = "/resources/upload"; // 가상의 경로(이클립스 프로젝트 상에 생성한 경로)
+		String saveDir = session.getServletContext().getRealPath(uploadDir); // 또는 
+		String subDir = "";
+		LocalDate now = LocalDate.now();
+		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+		subDir = now.format(dtf);
+		saveDir += File.separator + subDir; // File.separator 대신 / 또는 \ 지정도 가능
+
+		try {
+			Path path = Paths.get(saveDir); // 파라미터로 업로드 경로 전달
+			Files.createDirectories(path); // 파라미터로 Path 객체 전달
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		// -------------------
+		// BoardVO 객체에 전달(저장)된 실제 파일 정보가 관리되는 MultipartFile 타입 객체 꺼내기
+		MultipartFile mFile1 = board.getFile1();
+		MultipartFile mFile2 = board.getFile2();
+		MultipartFile mFile3 = board.getFile3();
+		
+		// --------------------------
+		// [ 파일명 중복방지 대책 ]
+		board.setBoard_file1("");
+		board.setBoard_file2("");
+		board.setBoard_file3("");
+		board.setBoard_file("");
+		
+		String fileName1 = UUID.randomUUID().toString().substring(0, 8) + "_" + mFile1.getOriginalFilename();
+		String fileName2 = UUID.randomUUID().toString().substring(0, 8) + "_" + mFile2.getOriginalFilename();
+		String fileName3 = UUID.randomUUID().toString().substring(0, 8) + "_" + mFile3.getOriginalFilename();
+		
+		if(!mFile1.getOriginalFilename().equals("")) {
+			board.setBoard_file1(subDir + "/" + fileName1);
+		}
+		
+		if(!mFile2.getOriginalFilename().equals("")) {
+			board.setBoard_file2(subDir + "/" + fileName2);
+		}
+		
+		if(!mFile3.getOriginalFilename().equals("")) {
+			board.setBoard_file3(subDir + "/" + fileName3);
+		}
+		
+		// ----------------------------------------------------------------------
+		// BoardService - registReplyBoard() 메서드 호출하여 게시물 등록 작업 요청
+		// => 파라미터 : BoardVO 객체   리턴타입 : int(insertCount)
+		int insertCount = service.registReplyBoard(board);
+		
+		// 게시물 등록 작업 요청 결과 판별
+		if(insertCount > 0) {
+			try {
+				if(!mFile1.getOriginalFilename().equals("")) {
+					mFile1.transferTo(new File(saveDir, fileName1));
+				}
+				
+				if(!mFile2.getOriginalFilename().equals("")) {
+					mFile2.transferTo(new File(saveDir, fileName2));
+				}
+				
+				if(!mFile3.getOriginalFilename().equals("")) {
+					mFile3.transferTo(new File(saveDir, fileName3));
+				}
+			} catch (IllegalStateException e) {
+				e.printStackTrace();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			
+			// 글목록(BoardList) 서블릿 리다이렉트
+			return "redirect:/BoardList";
+		} else {
+			// "답글 쓰기 실패!" 메세지 처리(fail_back)
+			model.addAttribute("msg", "답글 쓰기 실패!");
 			return "fail_back";
 		}
 		

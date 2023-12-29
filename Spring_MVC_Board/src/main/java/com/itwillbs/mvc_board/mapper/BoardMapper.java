@@ -30,6 +30,10 @@ public interface BoardMapper {
 
 	int updateBoard(BoardVO board);
 
+	void updateBoardReSeq(BoardVO board);
+
+	int insertReplyBoard(BoardVO board);
+
 }
 
 
