@@ -1,6 +1,7 @@
 package com.itwillbs.mvc_board.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -73,6 +74,22 @@ public class BoardService {
 		// 답글 등록 작업을 위해 insertReplyBoard() 메서드 호출
 		// => 파라미터 : BoardVO 객체   리턴타입 : int
 		return mapper.insertReplyBoard(board);
+	}
+
+	public int registTinyReplyBoard(Map<String, String> map) {
+		return mapper.insertTinyReplyBoard(map);
+	}
+
+	public List<Map<String, String>> getTinyReplyBoardList(int board_num) {
+		return mapper.selectTinyReplyBoardList(board_num);
+	}
+
+	public Map<String, String> getTinyReplyWriter(Map<String, String> map) {
+		return mapper.selectTinyReplyWriter(map);
+	}
+
+	public int removeTinyReplyboard(Map<String, String> map) {
+		return mapper.deleteTinyReplyboard(map);
 	}
 	
 	

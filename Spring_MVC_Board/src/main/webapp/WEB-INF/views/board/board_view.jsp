@@ -10,10 +10,11 @@
 <title>MVC 게시판</title>
 <!-- 외부 CSS 파일(css/default.css) 연결하기 -->
 <link href="${pageContext.request.contextPath }/resources/css/default.css" rel="stylesheet" type="text/css">
+<script src="${pageContext.request.contextPath }/resources/js/jquery-3.7.1.js"></script>
 <style type="text/css">
 	#articleForm {
 		width: 500px;
-		height: 550px;
+		height: 600px;
 		border: 1px solid red;
 		margin: auto;
 	}
@@ -56,6 +57,48 @@
 		width: 500px;
 		text-align: center;
 	}
+	#replyArea{
+		width: 500px;
+		height: 150px;
+		margin: auto;
+		margin-top: 20px;
+		margin-bottom: 50px;
+	}
+	#replyTextarea{
+		width: 400px;
+		height: 50px;
+		resize: none;
+		vertical-align: middle;
+	}
+	#replySubmit{
+		width: 85px;
+		height: 55px;
+		vertical-align: middle; /* 수직 정렬 */
+	}
+	#replyListArea{
+		font-size: 12px;
+		margin-top: 20px;
+	}
+	
+	#replyListArea table, tr, td{
+		border:none;
+	}
+	.replyContent{
+		width: 300px;
+		text-align: left;
+	}
+	.replyContent img{
+		width: 10px;
+		height: 10px;
+	}
+	.replyWriter{
+		width: 80px;
+	}
+	.replyDate{
+		width: 100px;
+	}
+	
+	
 </style>
 <script type="text/javascript">
 	// 삭제 버튼 클릭 시 확인창을 통해 "삭제하시겠습니까?" 출력 후
@@ -64,6 +107,34 @@
 		if(confirm("삭제하시겠습니까?")) {
 			location.href = "BoardDelete?board_num=${board.board_num}&pageNum=${param.pageNum}";
 		}
+	}
+	
+	function reReplyWriteForm(reply_num, reply_re_ref, reply_re_lev, reply_re_seq){
+	}
+	function confirmReplyDelete(reply_num){
+		if(confirm("댓글을 삭제하시겠습니까?")) {
+			$.ajax({
+				type: "GET",
+				url:"BoardTinyReplyDelete",
+				data:{"reply_num": reply_num},
+				dataType:"text",
+				success:function(result){
+					if(result == "true"){
+						$("#replyTr_"+ reply_num).remove();
+					}else if(result == "false"){
+						alert("댓글 삭제 실패!");
+					}else if(result == "invalidSession"){
+						alert("권한이 없습니다.!");
+						return;
+					}
+				},
+				error:function(){
+					alert("요청 실패!");
+				}
+				
+			}); // ajax End
+			
+		}// if End
 	}
 </script>
 </head>
@@ -145,8 +216,52 @@
 			<input type="button" value="삭제" onclick="confirmDelete()">
 		</c:if>
 		
-		<%-- 목록은 BoardList.bo 서블릿 요청(파라미터 : 페이지번호) --%>
+		<%-- 목록은 BoardList 서블릿 요청(파라미터 : 페이지번호) --%>
 		<input type="button" value="목록" onclick="location.href='BoardList?pageNum=${param.pageNum}'">
+	</section>
+	<section id="replyArea">
+		<form action="BoardTinyReplyWrite" method="post">
+			<input type="hidden" name="board_num" value="${board.board_num}">
+			<input type="hidden" name="pageNum" value="${param.pageNum}">
+			<input type="hidden" name="reply_name" value="${sessionScope.sId}">
+			<c:choose>
+				<c:when test="${empty sessionScope.sId}">
+					<textarea id = "replyTextarea" name = "reply_content" disabled="disabled" placeholder="로그인한 사용자만 사용가능합니다"></textarea>
+					<input type="submit" value="댓글쓰기" id="replySubmit" disabled="disabled">
+				</c:when>
+				<c:otherwise>
+					<textarea id = "replyTextarea" name = "reply_content" required="required"></textarea>
+					<input type="submit" value="댓글쓰기" id="replySubmit">
+				</c:otherwise>
+			</c:choose>
+		</form>
+		<div id="replyListArea">
+			<table>
+				<tr> 
+					<td>댓글내용</td>				
+					<td>작성자</td>				
+					<td>작성일자</td>				
+				</tr>
+				<c:forEach var="data" items="${tinyReplyBoardList}">
+				<tr id ="replyTr_${data.reply_num}"> 
+					<td class="replyContent">
+						${data.reply_content}
+						<c:if test="${not empty sessionScope.sId }">
+							<a href="javascript:reReplyWriteForm(${data.reply_num},${data.reply_re_ref},${data.reply_re_lev},${data.reply_re_seq})"><img src="${pageContext.request.contextPath }/resources/images/reply-icon.png"></a>
+							<c:if test="${sessionScope.sId eq data.reply_name or sessionScope.sId.equals('admin')}">
+								<a href="javascript:confirmReplyDelete(${data.reply_num})"><img src="${pageContext.request.contextPath }/resources/images/delete-icon.png"></a>
+							</c:if>
+						</c:if>
+					</td>				
+					<td class="replyWriter">${data.reply_name}</td>				
+					<td class="replyDate">
+						<fmt:parseDate var="parsedDate" value="${data.reply_date}" pattern="yyyy-MM-dd'T'HH:mm" type="both" />
+						<fmt:formatDate value="${parsedDate}" pattern="MM-dd HH:mm"/> 
+					</td>	
+				</tr>
+				</c:forEach>
+			</table>
+		</div>
 	</section>
 </body>
 </html>

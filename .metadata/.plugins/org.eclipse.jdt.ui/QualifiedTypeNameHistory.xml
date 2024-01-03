@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="org.apache.ibatis.annotations.Mapper"/>
-    <fullyQualifiedTypeName name="com.itwillbs.mvc_board.vo.MemberVO"/>
     <fullyQualifiedTypeName name="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"/>
     <fullyQualifiedTypeName name="org.springframework.stereotype.Controller"/>
     <fullyQualifiedTypeName name="com.itwillbs.mvc_board.mapper.BoardMapper"/>
@@ -54,10 +52,12 @@
     <fullyQualifiedTypeName name="javax.mail.Address"/>
     <fullyQualifiedTypeName name="javax.mail.Message.RecipientType"/>
     <fullyQualifiedTypeName name="javax.mail.Transport"/>
-    <fullyQualifiedTypeName name="lombok.Data"/>
     <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RequestParam"/>
     <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.GetMapping"/>
     <fullyQualifiedTypeName name="com.itwillbs.mvc_board.vo.MailAuthInfoVO"/>
     <fullyQualifiedTypeName name="org.springframework.stereotype.Service"/>
     <fullyQualifiedTypeName name="org.springframework.transaction.annotation.Transactional"/>
+    <fullyQualifiedTypeName name="java.lang.Thread"/>
+    <fullyQualifiedTypeName name="java.lang.Runnable"/>
+    <fullyQualifiedTypeName name="lombok.Data"/>
 </qualifiedTypeNameHistroy>

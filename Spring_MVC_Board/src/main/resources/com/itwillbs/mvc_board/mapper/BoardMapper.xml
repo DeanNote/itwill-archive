@@ -238,6 +238,45 @@
 			, #{writer_ip}
 		)
 	</insert>
+	
+	<insert id="insertTinyReplyBoard">
+		<selectKey keyProperty="reply_num" resultType="int" order="BEFORE">
+			SELECT IFNULL(MAX(reply_num),0)
+			FROM tiny_reply_board
+		</selectKey>
+		 INSERT INTO tiny_reply_board
+		 VALUES(
+		 	#{reply_num} + 1
+		 	,#{board_num}
+		 	,#{reply_name}
+		 	,#{reply_content}
+		 	,#{reply_num} + 1
+		 	,0
+		 	,0
+		 	,now()
+		 )
+	
+	</insert>
+	
+	<select id="selectTinyReplyBoardList" resultType="map">
+		SELECT *
+		FROM tiny_reply_board
+		WHERE board_num = #{board_num}
+		ORDER BY
+		reply_re_ref ASC
+		,reply_re_seq ASC
+	</select>
+	
+	<select id="selectTinyReplyWriter" resultType="map">
+		SELECT reply_name
+		FROM tiny_reply_board
+		WHERE reply_num = #{reply_num}
+	</select>
+	
+	<delete id="deleteTinyReplyboard">
+		DELETE FROM tiny_reply_board
+		WHERE reply_num = #{reply_num}
+	</delete>
 </mapper>
 
 

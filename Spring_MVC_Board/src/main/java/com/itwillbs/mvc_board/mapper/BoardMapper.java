@@ -1,6 +1,7 @@
 package com.itwillbs.mvc_board.mapper;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
@@ -33,6 +34,14 @@ public interface BoardMapper {
 	void updateBoardReSeq(BoardVO board);
 
 	int insertReplyBoard(BoardVO board);
+
+	int insertTinyReplyBoard(Map<String, String> map);
+
+	List<Map<String, String>> selectTinyReplyBoardList(int board_num);
+
+	Map<String, String> selectTinyReplyWriter(Map<String, String> map);
+
+	int deleteTinyReplyboard(Map<String, String> map);
 
 }
 

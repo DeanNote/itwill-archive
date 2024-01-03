@@ -11,6 +11,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
@@ -313,6 +314,13 @@ public class BoardController {
 		
 		// Model 객체에 BoardVO 객체 저장
 		model.addAttribute("board", board);
+		// --------------------------------------------------------------------------
+		// 현재 게시물에 포함되어 있는 댓글 목록 조회(댓글은 페이징 처리 생략)
+		// BoardService - getTinyReplyBoardList() 메서드 호출하여 댓글 목록 조회 요청
+		// => 파라미터 : 글번호   리턴타입 : List<Map<String, Object>>(tinyReplyBoardList)
+		List<Map<String, String>> tinyReplyBoardList = service.getTinyReplyBoardList(board_num);
+		model.addAttribute("tinyReplyBoardList", tinyReplyBoardList);
+		// Model 객체에 댓글 목록 객체(List) 추가
 		
 		// board/board_view.jsp 페이지 포워딩
 		return "board/board_view";
@@ -704,6 +712,63 @@ public class BoardController {
 		}
 		
 	}
+	
+	// -----------------------------------------------------
+	// [ 댓글 기능 ]
+	// "BoardTinyReplyWrite" 서블릿 요청에 대한 댓글 작성 비즈니스 로직 처리
+	// => 폼 파라미터 데이터를 TinyReplyBoardVO 객체 대신 Map 타입 객체로 처리
+	//    (주의! 파라미터 매핑용으로 Map 타입 선언 시 @RequestParam 어노테이션 필수!)
+	//    (만약, 어노테이션 생략 시 파라미터 데이터가 저장되어 있지 않은 단순 Map 객체가 주입됨)
+	@PostMapping("BoardTinyReplyWrite")
+	public String writeTinyReply(@RequestParam Map<String, String> map, HttpSession session, Model model) {
+//		System.out.println(map);
+		
+		if(session.getAttribute("sId") == null) {
+			model.addAttribute("msg", "잘못된 접근입니다!");
+			return "fail_back";
+		}
+		
+		// BoardService - registTinyReplyBoard() 메서드 호출하여 댓글 등록 작업 요청
+		// => 파라미터 : Map 객체   리턴타입 : int(insertCount)
+		int insertCount = service.registTinyReplyBoard(map);
+		
+		// 댓글 등록 요청 결과 판별
+		// => 성공 시 글 상세정보(BoardDetail) 서블릿 리다이렉트(파라미터 : 글번호, 페이지번호)
+		// => 실패 시 "댓글 작성 실패!" 메세지 처리(fail_back)
+		if(insertCount > 0) {
+			return "redirect:/BoardDetail?board_num=" + map.get("board_num") + "&pageNum=" + map.get("pageNum");
+		} else {
+			model.addAttribute("msg", "댓글 작성 실패!");
+			return "fail_back";
+		}
+		
+	}//mapping end
+	
+	@ResponseBody
+	@GetMapping("BoardTinyReplyDelete")
+	public String BoardTinyReplyDelete(@RequestParam Map<String, String> map, HttpSession session) {
+		if(session.getAttribute("sId") == null) {
+			return "invalidSession";
+		}
+		Map<String, String> dbmap = service.getTinyReplyWriter(map);
+		
+		if(dbmap.get("reply_name").equals(session.getAttribute("sId")) || session.getAttribute("sId").equals("admin")) {
+			int deleteCount = service.removeTinyReplyboard(map);
+
+			if(deleteCount>0) {
+				return "true";
+			}else {
+				return "false";
+			}
+
+		}else {
+			return "invalidSession";
+		}
+		
+		
+		
+	}// mapping End
+	
 	
 }
 
