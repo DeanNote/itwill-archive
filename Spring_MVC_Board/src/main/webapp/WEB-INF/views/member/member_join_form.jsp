@@ -14,7 +14,9 @@
 </style>
 <!-- 다음 주소검색 API 사용을 위한 라이브러리 추가 -->
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-<script src="${pageContext.request.contextPath }/resources/js/jquery-3.7.1.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/jquery-3.7.1.js"></script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
+<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.6.js"></script>
 <script type="text/javascript">
 	$(function() {
 		let isDuplicateId = false; // 아이디 중복 여부 저장할 변수
@@ -360,6 +362,7 @@
 						<input type="submit" value="가입">
 						<input type="reset" value="초기화">
 						<input type="button" value="돌아가기">
+						<input type="button" value="본인인증" onclick="cert()">
 					</td>
 				</tr>
 			</table>
