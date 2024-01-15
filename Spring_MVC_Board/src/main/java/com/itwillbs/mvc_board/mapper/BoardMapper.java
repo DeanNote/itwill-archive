@@ -37,11 +37,15 @@ public interface BoardMapper {
 
 	int insertTinyReplyBoard(Map<String, String> map);
 
-	List<Map<String, String>> selectTinyReplyBoardList(int board_num);
+	List<Map<String, Object>> selectTinyReplyBoardList(int board_num);
 
 	Map<String, String> selectTinyReplyWriter(Map<String, String> map);
 
-	int deleteTinyReplyboard(Map<String, String> map);
+	int deleteTinyReplyBoard(Map<String, String> map);
+
+	void updateTinyReplyBoardSeq(Map<String, String> map);
+
+	int insertTinyReReplyBoard(Map<String, String> map);
 
 }
 

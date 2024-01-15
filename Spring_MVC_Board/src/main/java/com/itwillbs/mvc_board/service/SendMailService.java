@@ -35,14 +35,12 @@ public class SendMailService {
 //		mailClient.sendMail(member.getEmail(), subject, content);
 		// => 익명 객체를 활용하여 1회용 쓰레드 생성
 		//    new Thread(new Runnable() { public void run() { 멀티쓰레드코드... }}).start();
-		
-		// 익명 객체 사용할때 java 1.6이면 오류남 java11로 바꿔줘야됨! 원래는 다 final 처리 해줘야 함
 		new Thread(new Runnable() {
 			@Override
 			public void run() {
 				mailClient.sendMail(member.getEmail(), subject, content);
 			}
-		});
+		}).start();
 		
 		// 발송된 인증코드 리턴
 		return auth_code;

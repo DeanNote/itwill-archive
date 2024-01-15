@@ -10,6 +10,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
@@ -17,6 +18,8 @@ import java.util.UUID;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -248,19 +251,71 @@ public class BoardController {
 		
 	}
 	
+	// ======================================================================
+	// [ 글 목록 조회 ]
 	// "BoardList" 서블릿 요청에 대한 글 목록 조회 비즈니스 로직 처리
 	// => 파라미터 : 검색타입(searchType) => 기본값 널스트링("") 설정
 	//               검색어(searchKeyword) => 기본값 널스트링("") 설정
 	//               페이지번호(pageNum) => 기본값 1 설정
+//	@GetMapping("BoardList")
+//	public String list(
+//			@RequestParam(defaultValue = "") String searchType,
+//			@RequestParam(defaultValue = "") String searchKeyword,
+//			@RequestParam(defaultValue = "1") int pageNum,
+//			Model model) {
+////		System.out.println("검색타입 : " + searchType);
+////		System.out.println("검색어 : " + searchKeyword);
+////		System.out.println("페이지번호 : " + pageNum);
+//		// ----------------------------------------------------------------
+//		// 페이징 처리를 위해 조회 목록 갯수 조절 시 사용될 변수 선언
+//		int listLimit = 10;
+//		int startRow = (pageNum - 1) * listLimit;
+//		// --------------------------------------------------------------------
+//		// BoardService - getBoardList() 메서드 호출하여 게시물 목록 조회 요청
+//		// => 파라미터 : 검색타입, 검색어, 시작행번호, 게시물 목록갯수
+//		// => 리턴타입 : List<BoardVO>(boardList)
+//		List<BoardVO> boardList = service.getBoardList(searchType, searchKeyword, startRow, listLimit);
+//		// --------------------------------------------------------------------
+//		// 페이징 처리를 위한 계산 작업
+//		// BoardService - getBoardListCount() 메서드 호출하여 전체 게시물 목록 갯수 조회 요청
+//		// => 파라미터 : 검색타입, 검색어
+//		// => 리턴타입 : int(listCount)
+//		int listCount = service.getBoardListCount(searchType, searchKeyword);
+//		int pageListLimit = 3; // 임시) 페이지 당 페이지 번호 갯수를 3개로 지정
+//		int maxPage = listCount / listLimit + (listCount % listLimit > 0 ? 1 : 0);
+//		int startPage = (pageNum - 1) / pageListLimit * pageListLimit + 1;
+//		int endPage = startPage + pageListLimit - 1;
+//		if(endPage > maxPage) {
+//			endPage = maxPage;
+//		}
+//		
+//		// 계산된 페이징 처리 관련 값을 PageInfo 객체에 저장
+//		PageInfo pageInfo = new PageInfo(listCount, pageListLimit, maxPage, startPage, endPage);
+//		// ----------------------------------------------------------------------------
+//		// 게시물 목록과 페이징 정보 저장
+//		model.addAttribute("boardList", boardList);
+//		model.addAttribute("pageInfo", pageInfo);
+//		
+//		return "board/board_list";
+//	}
+	
+	// -------------
+	// AJAX 요청을 통한 글목록 조회 처리 형식으로 변경
+	// => 기본 글목록 서블릿(BoardList) 요청 시 무조건 board_list.jsp 페이지로 포워딩
+	// => 해당 뷰페이지에서 AJAX 로 BoardListJson 서블릿을 별도로 요청
 	@GetMapping("BoardList")
-	public String list(
+	public String list() {
+		return "board/board_list";
+	}
+	
+	@ResponseBody
+	@GetMapping("BoardListJson")
+	public String listJson(
 			@RequestParam(defaultValue = "") String searchType,
 			@RequestParam(defaultValue = "") String searchKeyword,
 			@RequestParam(defaultValue = "1") int pageNum,
 			Model model) {
-//		System.out.println("검색타입 : " + searchType);
-//		System.out.println("검색어 : " + searchKeyword);
-//		System.out.println("페이지번호 : " + pageNum);
+		
 		// ----------------------------------------------------------------
 		// 페이징 처리를 위해 조회 목록 갯수 조절 시 사용될 변수 선언
 		int listLimit = 10;
@@ -270,29 +325,41 @@ public class BoardController {
 		// => 파라미터 : 검색타입, 검색어, 시작행번호, 게시물 목록갯수
 		// => 리턴타입 : List<BoardVO>(boardList)
 		List<BoardVO> boardList = service.getBoardList(searchType, searchKeyword, startRow, listLimit);
-		// --------------------------------------------------------------------
-		// 페이징 처리를 위한 계산 작업
-		// BoardService - getBoardListCount() 메서드 호출하여 전체 게시물 목록 갯수 조회 요청
-		// => 파라미터 : 검색타입, 검색어
-		// => 리턴타입 : int(listCount)
+//		// --------------------------------------------------------------------
+//		// 페이징 처리를 위한 계산 작업
+//		// BoardService - getBoardListCount() 메서드 호출하여 전체 게시물 목록 갯수 조회 요청
+//		// => 파라미터 : 검색타입, 검색어
+//		// => 리턴타입 : int(listCount)
 		int listCount = service.getBoardListCount(searchType, searchKeyword);
-		int pageListLimit = 3; // 임시) 페이지 당 페이지 번호 갯수를 3개로 지정
 		int maxPage = listCount / listLimit + (listCount % listLimit > 0 ? 1 : 0);
-		int startPage = (pageNum - 1) / pageListLimit * pageListLimit + 1;
-		int endPage = startPage + pageListLimit - 1;
-		if(endPage > maxPage) {
-			endPage = maxPage;
-		}
+		// --------------------------------------------------------------------
+		// 게시물 목록 조회 결과를 Map 객체에 추가(키 : "boardList")
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("boardList", boardList);
+//		System.out.println(map);
 		
-		// 계산된 페이징 처리 관련 값을 PageInfo 객체에 저장
-		PageInfo pageInfo = new PageInfo(listCount, pageListLimit, maxPage, startPage, endPage);
-		// ----------------------------------------------------------------------------
-		// 게시물 목록과 페이징 정보 저장
-		model.addAttribute("boardList", boardList);
-		model.addAttribute("pageInfo", pageInfo);
+		// 페이징 처리 결과 중 마지막 페이지 번호(maxPage)도 Map 객체에 추가(키 : "maxPage")
+		map.put("maxPage", maxPage);
+		// --------------------------------------------------------------------
+		// [ 자바 데이터(객체 포함)를 JSON 형식의 객체로 변환 ]
+		// - org.json 패키지의 JSONObject 클래스를 활용하여 JSON 객체를 관리하고
+		//   JSONArray 클래스를 활용하여 복수개의 JSON 객체 또는 데이터를 관리
+		//    => 파라미터로 컬렉션 객체에 해당하는 객체 전달 시 해당 객체를 JSON 객체로 변환
+		// 1. JSONXXX 객체 생성하여 JSON 객체로 변환
+		// ------------ JSON 객체({}) 여러개를 하나의 묶음([])으로 관리할 경우 --------------
+		// List 객체 or 배열 1개를 JSONArray 객체 생성자 파라미터로 전달
+//		JSONArray jsonArray = new JSONArray(boardList);
+		// ------------ 만약, 1개의 객체를 JSON 객체로 관리할 경우 --------------
+		// Map 객체 or VO 객체 1개를 JSONObject 객체 생성자 파라미터로 전달
+		JSONObject jsonObject = new JSONObject(map);
+//		JSONObject jsonObject = new JSONObject(boardList.get(0));
+//		System.out.println(jsonObject);
 		
-		return "board/board_list";
+		// 2. 생성된 JSON 객체를 응답 데이터로 출력 
+		//    => toString() 메서드를 통해 문자열로 변환 필요
+		return jsonObject.toString();
 	}
+	
 	
 	// =======================================================================
 	// "BoardDetail" 서블릿 요청에 대한 글 상세정보 조회 비즈니스 로직 요청
@@ -315,12 +382,16 @@ public class BoardController {
 		// Model 객체에 BoardVO 객체 저장
 		model.addAttribute("board", board);
 		// --------------------------------------------------------------------------
+		// [ 댓글 기능 추가 ]
 		// 현재 게시물에 포함되어 있는 댓글 목록 조회(댓글은 페이징 처리 생략)
 		// BoardService - getTinyReplyBoardList() 메서드 호출하여 댓글 목록 조회 요청
 		// => 파라미터 : 글번호   리턴타입 : List<Map<String, Object>>(tinyReplyBoardList)
-		List<Map<String, String>> tinyReplyBoardList = service.getTinyReplyBoardList(board_num);
-		model.addAttribute("tinyReplyBoardList", tinyReplyBoardList);
+		List<Map<String, Object>> tinyReplyBoardList = service.getTinyReplyBoardList(board_num);
+//		System.out.println(tinyReplyBoardList);
+		
 		// Model 객체에 댓글 목록 객체(List) 추가
+		model.addAttribute("tinyReplyBoardList", tinyReplyBoardList);
+		// --------------------------------------------------------------------------
 		
 		// board/board_view.jsp 페이지 포워딩
 		return "board/board_view";
@@ -742,33 +813,65 @@ public class BoardController {
 			return "fail_back";
 		}
 		
-	}//mapping end
+	}
 	
+	// "BoardTinyReplyDelete" 서블릿 요청에 대한 댓글 삭제 작업 처리
 	@ResponseBody
 	@GetMapping("BoardTinyReplyDelete")
-	public String BoardTinyReplyDelete(@RequestParam Map<String, String> map, HttpSession session) {
+	public String deleteTinyReply(@RequestParam Map<String, String> map, HttpSession session) {
+		// 세션 아이디가 없을 경우 "invalidSession" 문자열 리턴
+		String sId = (String)session.getAttribute("sId");
+		if(sId == null) {
+			return "invalidSession";
+		}
+		
+		// BoardService - getTinyReplyWriter() 메서드 호출하여 댓글 작성자 조회
+		// => 파라미터 : Map 객체   리턴타입 : Map(map)
+		map = service.getTinyReplyWriter(map);
+//		System.out.println(map);
+		
+		// 댓글 작성자가 세션 아이디와 동일하거나 세션 아이디가 관리자일 경우에만
+		// BoardService - removeTinyReplyBoard() 메서드 호출하여 댓글 삭제 작업 요청
+		// (아니면 "invalidSession" 리턴)
+		// => 파라미터 : Map 객체   리턴타입 : int(deleteCount)
+		if(sId.equals(map.get("reply_name")) || sId.equals("admin")) {
+			int deleteCount = service.removeTinyReplyBoard(map);
+			
+			// 삭제 요청 결과 판별
+			// => 성공 시 "true", 실패 시 "false" 리턴
+			if(deleteCount > 0) {
+				return "true";
+			} else {
+				return "false";
+			}
+		} else {
+			return "invalidSession";
+		}
+		
+	}
+	
+	// "BoardTinyReReplyWrite" 서블릿 요청에 대한 대댓글 작성 비즈니스 로직 처리
+	// => AJAX 요청에 대한 응답 처리를 위해 @ResponseBody 적용
+	@ResponseBody
+	@PostMapping("BoardTinyReReplyWrite")
+	public String writeTinyReReply(@RequestParam Map<String, String> map, HttpSession session) {
 		if(session.getAttribute("sId") == null) {
 			return "invalidSession";
 		}
-		Map<String, String> dbmap = service.getTinyReplyWriter(map);
 		
-		if(dbmap.get("reply_name").equals(session.getAttribute("sId")) || session.getAttribute("sId").equals("admin")) {
-			int deleteCount = service.removeTinyReplyboard(map);
-
-			if(deleteCount>0) {
-				return "true";
-			}else {
-				return "false";
-			}
-
-		}else {
-			return "invalidSession";
+		// BoardService - registTinyReReplyBoard() 메서드 호출하여 대댓글 등록 요청
+		// => 파라미터 : Map 객체   리턴타입 : int(insertCount)
+		int insertCount = service.registTinyReReplyBoard(map);
+		
+		// 등록 요청 처리 결과 판별
+		// => 성공 시 "true", 실패 시 "false" 리턴
+		if(insertCount > 0) {
+			return "true";
+		} else {
+			return "false"; 
 		}
 		
-		
-		
-	}// mapping End
-	
+	}
 	
 }
 
