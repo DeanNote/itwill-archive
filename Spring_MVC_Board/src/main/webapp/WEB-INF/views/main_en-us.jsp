@@ -12,23 +12,6 @@
 <link href="${pageContext.request.contextPath }/resources/css/default.css" rel="stylesheet" type="text/css">
 <script src="${pageContext.request.contextPath }/resources/js/jquery-3.7.1.js"></script>
 <script>
-// 	$(function() {
-// 		$("#test").change(function() {
-// 			alert($(this).val());
-// 		});
-		
-// 		$("#test2").change(function() {
-// 			$("#test").change();
-// 		});
-		
-// 		$("#test").blur(function() {
-// 			console.log("blur");
-// 		});
-// 	});
-	
-// 	function func(value) {
-// 		alert(value);
-// 	}
 </script>
 </head>
 <body>
@@ -39,16 +22,16 @@
 	</header>
 	<article>
 		<!-- 본문 표시 영역 -->
-		<h1>MVC notice board</h1>
-		<h3><a href="BoardWriteForm">writing</a></h3>
-		<h3><a href="BoardList">Post  list</a></h3>
+		<h1>MVC Board</h1>
+		<h3><a href="BoardWriteForm">Write</a></h3>
+		<h3><a href="BoardList">Show List</a></h3>
 	</article>
 	<footer>
 		<!-- 회사소개 표시 영역(bottom.jsp 페이지 삽입) -->
 		<jsp:include page="./inc/bottom.jsp"></jsp:include>
-		<select name="lang" onchange="location.href='${pageContext.request.contextPath }?lang=' + this.value">
-			<option value="ko-kr" <c:if test="${param.lang eq 'ko-kr'}">selected</c:if>>Korean</option>
-			<option value="en-us" <c:if test="${param.lang eq 'en-us'}">selected</c:if>>English</option>
+		<select name="lang" onchange="location.href='${pageContext.request.contextPath}?lang=' + this.value">
+			<option value="ko-kr" <c:if test="${param.lang eq 'ko-kr'}">selected</c:if>>한국어</option>
+			<option value="en-us" <c:if test="${param.lang eq 'en-us'}">selected</c:if>>영어</option>
 		</select>
 	</footer>
 </body>

@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.itwillbs.mvc_board.service.BankService;
 import com.itwillbs.mvc_board.service.MemberService;
 import com.itwillbs.mvc_board.service.SendMailService;
 import com.itwillbs.mvc_board.vo.MailAuthInfoVO;
@@ -25,6 +26,9 @@ public class MemberController {
 	@Autowired
 	private MemberService service;
 
+	@Autowired
+	private BankService bankService;
+	
 	// SendMailService 객체 자동 주입
 	@Autowired
 	private SendMailService mailService;
@@ -216,6 +220,19 @@ public class MemberController {
 			
 			// 세션 객체에 로그인 성공한 아이디를 "sId" 속성으로 추가
 			session.setAttribute("sId", member.getId());
+			// --------------------------------------------------------------------
+			// BankService - getBankUserInfo() 메서드 호출하여 엑세스 토큰 조회 요청
+			// => 파라미터 : 아이디   리턴타입 : Map<String, String>
+			Map<String, String> token = bankService.getBankUserInfo(member.getId());
+//			System.out.println(token);
+			
+			// 조회된 엑세스 토큰을 "access_token", 사용자번호를 "user_seq_no" 로 세션에 추가
+			// => 단, Map 객체(token) 이 null 이 아닐 경우에만 수행
+			if(token != null) {
+				session.setAttribute("access_token", token.get("access_token"));
+				session.setAttribute("user_seq_no", token.get("user_seq_no"));
+			}
+			// --------------------------------------------------------------------
 
 			// 메인페이지로 리다이렉트
 			return "redirect:/";

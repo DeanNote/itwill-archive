@@ -12,23 +12,6 @@
 <link href="${pageContext.request.contextPath }/resources/css/default.css" rel="stylesheet" type="text/css">
 <script src="${pageContext.request.contextPath }/resources/js/jquery-3.7.1.js"></script>
 <script>
-// 	$(function() {
-// 		$("#test").change(function() {
-// 			alert($(this).val());
-// 		});
-		
-// 		$("#test2").change(function() {
-// 			$("#test").change();
-// 		});
-		
-// 		$("#test").blur(function() {
-// 			console.log("blur");
-// 		});
-// 	});
-	
-// 	function func(value) {
-// 		alert(value);
-// 	}
 </script>
 </head>
 <body>
@@ -47,12 +30,10 @@
 	<footer>
 		<!-- 회사소개 표시 영역(bottom.jsp 페이지 삽입) -->
 		<jsp:include page="./inc/bottom.jsp"></jsp:include>
-		<select name="lang" onchange="location.href='${pageContext.request.contextPath }?lang=' + this.value">
+		<select name="lang" onchange="location.href='${pageContext.request.contextPath}?lang=' + this.value">
 			<option value="ko-kr" <c:if test="${param.lang eq 'ko-kr'}">selected</c:if>>한국어</option>
 			<option value="en-us" <c:if test="${param.lang eq 'en-us'}">selected</c:if>>영어</option>
 		</select>
-		
-		
 	</footer>
 </body>
 </html>
