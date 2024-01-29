@@ -47,6 +47,12 @@
 		FROM bank_user_info
 		WHERE id = #{id}
 	</select>
+	
+	<select id="selectAdminAccessToken" resultType="string">
+		SELECT access_token
+		FROM bank_user_info
+		WHERE id = 'admin'
+	</select>
 </mapper>
 
 

@@ -1,8 +1,10 @@
 package com.itwillbs.mvc_board.service;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.itwillbs.mvc_board.handler.BankApiClient;
@@ -24,7 +26,7 @@ public class BankService {
 		// => 리턴타입 : ResponseTokenVO
 		return bankApiClient.requestAccessToken(authResponse);
 	}
-
+	
 	// 엑세스 토큰 저장 요청
 //	public void registAccessToken(String id, ResponseTokenVO responseToken) {
 //		// BankMapper - insertAccessToken() 메서드 호출하여 엑세스 토큰 저장 요청
@@ -68,6 +70,35 @@ public class BankService {
 	public Map<String, Object> requestAccountDetail(Map<String, String> map) {
 		// BankApiClient - requestAccountDetail()
 		return bankApiClient.requestAccountDetail(map);
+	}
+
+	// 출금 이체 요청
+	public Map<String, Object> requestWithdraw(Map<String, String> map) {
+		// BankApiClient - requestWithdraw()
+		return bankApiClient.requestWithdraw(map);
+	}
+
+	// 거래 취소(환불) 요청
+	public ResponseTokenVO requestAdminAccessToken() {
+		return bankApiClient.requestAdminAccessToken();
+	}
+
+	// 관리자 엑세스 토큰 조회
+	public String getAdminAccessToken() {
+		return bankMapper.selectAdminAccessToken();
+	}
+
+	// 입금 이체 요청
+	public Map<String, Object> requestDeposit(Map<String, String> map) {
+		return bankApiClient.requestDeposit(map);
+	}
+
+	// 송금 (출금+이체) 요청
+	public Map<String, Object> requestTransfer(Map<String, String> map) {
+		Map<String, Object> transferResult = new HashMap<String, Object>();
+		transferResult.put("withdrawResult",  bankApiClient.requestWithdraw2(map));
+		transferResult.put("DepositResult",  bankApiClient.requestDeposit2(map));
+		return transferResult;
 	}
 	
 	

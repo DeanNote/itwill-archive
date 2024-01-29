@@ -9,6 +9,7 @@ import org.apache.commons.lang3.RandomStringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -62,7 +63,10 @@ public class FintechController {
 			model.addAttribute("msg", "로그인 필수!");
 			model.addAttribute("isClose", true); // 현재 창(서브 윈도우) 닫도록 명령
 			return "fail_back";
-		}
+		} 
+
+		System.out.println("에러메세지 : " + authResponse.get("error"));
+		
 		// ----------------------------------------------------
 		// 응답 데이터 중 state 값이 요청 시 사용된 값인지 판별
 		System.out.println("state 삭제 전 : " + session.getAttribute("state"));
@@ -184,6 +188,150 @@ public class FintechController {
 		
 		return "fintech/fintech_account_detail";
 	}
+	
+	// 2.5.1. 출금이체 API
+	@PostMapping("BankPayment")
+	public String bankPayment(@RequestParam Map<String, String> map, HttpSession session, Model model) {
+//		logger.info(">>>>> payment : " + map);
+		
+		String id = (String)session.getAttribute("sId");
+		// 세션아이디가 null 일 경우 로그인 페이지 이동 처리
+		// 엑세스토큰이 null 일 경우 "계좌 인증 필수!" 메세지 출력 후 "forward.jsp" 페이지 포워딩
+		if(id == null) {
+			model.addAttribute("msg", "로그인 필수!");
+//					model.addAttribute("isClose", true); // 새 창이 아니므로 창 닫기 불필요
+			model.addAttribute("targetURL", "MemberLoginForm");
+			return "forward";
+		} else if(session.getAttribute("access_token") == null) {
+			model.addAttribute("msg", "계좌 인증 필수!");
+//					model.addAttribute("isClose", true); // 새 창이 아니므로 창 닫기 불필요
+			model.addAttribute("targetURL", "FintechMain");
+			return "forward";
+		}
+		
+		// 요청에 필요한 엑세스토큰과 세션 아이디를 Map 객체에 추가
+		map.put("access_token", (String)session.getAttribute("access_token"));
+		map.put("id", id);
+		
+		// BankService - requestWithdraw() 메서드 호출하여 상품 구매에 대한 지불(출금이체) 요청
+		// => 파라미터 : Map 객체   리턴타입 : Map<String, Object>(withdrawResult)
+		Map<String, Object> withdrawResult = bankService.requestWithdraw(map);
+		logger.info(">>>>>>> withdrawResult : " + withdrawResult);
+		
+		// 요청 결과를 model 객체에 저장
+		model.addAttribute("withdrawResult", withdrawResult);
+		
+		return "fintech/fintech_payment_result";
+	}
+	
+	
+	
+	
+	
+	@GetMapping("FintechAdminAccessToken")
+	public String FintechAdminAccessToken(HttpSession session, Model model) {
+		System.out.println("맵핑주소 : FintechAdminAccessToken");
+		String id = (String)session.getAttribute("sId");
+		if(id == null) {
+			model.addAttribute("msg", "로그인 필수!");
+			model.addAttribute("targetURL", "MemberLoginForm");
+			return "forward";
+		} else if(!id.equals("admin")) {
+			model.addAttribute("msg", "잘못된 접근입니다.");
+			model.addAttribute("targetURL", "./");
+			return "forward";
+		}
+		
+		//bankService - requestAdminAccessToken()
+		ResponseTokenVO responseToken =  bankService.requestAdminAccessToken();
+		System.out.println("응답 관리자 엑세스 토큰 : " + responseToken);
+		
+		//refresh_token과 user_seq_no 값은 널스트링으로 설정
+		responseToken.setRefresh_token("");
+		responseToken.setUser_seq_no("");
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("id", id);
+		map.put("token", responseToken);
+		bankService.registAccessToken(map);
+		
+		model.addAttribute("msg", "토클 발급 완료!");
+		model.addAttribute("targetURL", "FintechMain");
+		return "forward";
+	}
+	
+	
+	
+	
+	// 결제 취소(환불) <입금 이체 아이티윌 -> 사용자 >
+	@PostMapping("BankRefund")
+	public String BankRefund(@RequestParam Map<String, String> map, HttpSession session, Model model) {
+			
+		String id = (String)session.getAttribute("sId");
+		if(id == null) {
+			model.addAttribute("msg", "로그인 필수!");
+			model.addAttribute("targetURL", "MemberLoginForm");
+			return "forward";
+		} else if(session.getAttribute("access_token") == null) {
+			model.addAttribute("msg", "계좌 인증 필수!");
+			model.addAttribute("targetURL", "FintechMain");
+			return "forward";
+		}
+		
+		
+		
+		// 요청에 필요한 엑세스토큰과 세션 아이디를 Map 객체에 추가
+		// 입금 이체시 필요한 엑세스토큰은 이용기관의 엑세스토큰이므로
+		// 저장된 :admin 계정의 엑세스토큰 (oob) 조회 필요
+		
+//		map.put("access_token", (String)session.getAttribute("access_token"));
+		map.put("access_token", bankService.getAdminAccessToken());
+		map.put("id", id);
+		System.out.println("입금이체 요청 데이터 : " + map);
+		
+		// BankService - requestDeposit() 메서드 호출하여 상품에 대한 환불(입금이체) 요청
+		Map<String, Object> depositResult = bankService.requestDeposit(map);
+		logger.info(">>>>>>> depositResult : " + depositResult);
+		
+		// 요청 결과를 model 객체에 저장
+		model.addAttribute("depositResult", depositResult);
+		
+		return "fintech/fintech_refund_result";
+	}
+	
+	// 송금하기 출금이체 + 입금이체 api
+	@PostMapping("BankTransfer")
+	public String bankTransfer(@RequestParam Map<String, String> map, HttpSession session, Model model) {
+		
+		String id = (String)session.getAttribute("sId");
+		if(id == null) {
+			model.addAttribute("msg", "로그인 필수!");
+			model.addAttribute("targetURL", "MemberLoginForm");
+			return "forward";
+		} else if(session.getAttribute("access_token") == null) {
+			model.addAttribute("msg", "계좌 인증 필수!");
+			model.addAttribute("targetURL", "FintechMain");
+			return "forward";
+		}
+		
+		map.put("access_token", (String)session.getAttribute("access_token"));
+		map.put("id", id);
+		
+		map.put("admin_access_token", bankService.getAdminAccessToken());
+		System.out.println("입금이체 요청 데이터 : " + map);
+		
+		// BankService - requestDeposit() 메서드 호출하여 상품에 대한 환불(입금이체) 요청
+		Map<String, Object> transferResult = bankService.requestTransfer(map);
+		logger.info(">>>>>>> transferResult : " + transferResult);
+		
+		// 요청 결과를 model 객체에 저장
+		model.addAttribute("transferResult", transferResult);
+		
+		return "fintech/fintech_transfer_result";
+	}
+	
+	
+	
 	
 }
 
