@@ -12,6 +12,7 @@ public class Test {
 		 *     "Hello,World" 가 출력
 		 */
 		
+		
 		// 객체 지향 프로그래밍 방식
 		Scanner scan = new Scanner(System.in);
 		System.out.print("첫 번째 문자열을 입력하세요 : ");
