@@ -48,7 +48,8 @@
 		WHERE id = #{id}
 	</select>
 	
-	<select id="selectAdminAccessToken" resultType="string">
+	<!-- 관리자 엑세스 토큰 조회 - SELECT -->
+	<select id="selectAdminAcessToken" resultType="string">
 		SELECT access_token
 		FROM bank_user_info
 		WHERE id = 'admin'

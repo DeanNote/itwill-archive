@@ -20,9 +20,8 @@
 	</header>
 	<article>
 		<!-- 본문 표시 영역 -->
-		<h1>핀테크 출금이체 결과</h1>
+		<h1>핀테크 출금이체(결제) 결과</h1>
 		<%-- withdrawResult 객체에 저장된 데이터 출력 --%>
-		<h3>${user_name} 고객님의 계좌 상세정보 (사용자번호 : ${sessionScope.user_seq_no})</h3>
 		<table border="1">
 			<tr>
 				<th>출금은행명(기관코드)</th>

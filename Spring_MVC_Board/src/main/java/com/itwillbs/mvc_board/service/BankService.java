@@ -78,29 +78,36 @@ public class BankService {
 		return bankApiClient.requestWithdraw(map);
 	}
 
-	// 거래 취소(환불) 요청
+	// 관리자 엑세스토큰(oob) 발급 요청
 	public ResponseTokenVO requestAdminAccessToken() {
+		// BankApiClient - requestAdminAccessToken()
 		return bankApiClient.requestAdminAccessToken();
 	}
 
-	// 관리자 엑세스 토큰 조회
+	// 관리자 엑세스토큰 조회 요청
 	public String getAdminAccessToken() {
-		return bankMapper.selectAdminAccessToken();
+		// BankMapper - selectAdminAccessToken()
+		return bankMapper.selectAdminAcessToken();
 	}
 
 	// 입금 이체 요청
 	public Map<String, Object> requestDeposit(Map<String, String> map) {
+		// BankApiClient - requestDeposit()
 		return bankApiClient.requestDeposit(map);
 	}
 
-	// 송금 (출금+이체) 요청
+	// 송금 요청
+	// 출금이체 후 해당 정보를 Map 객체에 추가하고
+	// 다시 입금이체 후 해당 정보를 Map 객체에 추가하여 리턴
 	public Map<String, Object> requestTransfer(Map<String, String> map) {
 		Map<String, Object> transferResult = new HashMap<String, Object>();
-		transferResult.put("withdrawResult",  bankApiClient.requestWithdraw2(map));
-		transferResult.put("DepositResult",  bankApiClient.requestDeposit2(map));
+		// BankApiClient - requestWithdraw2()
+		transferResult.put("withdrawResult", bankApiClient.requestWithdraw2(map));
+		// BankApiClient - requestDeposit2()
+		transferResult.put("depositResult", bankApiClient.requestDeposit2(map));
+		
 		return transferResult;
 	}
-	
 	
 }
 
