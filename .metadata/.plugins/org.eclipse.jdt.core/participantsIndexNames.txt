@@ -9,6 +9,10 @@ C:\Users\ITWILL\Desktop\workspace_Spring5\.metadata\.plugins\org.eclipse.jst.jsp
 \Sosimin\src\main\java
 C:\Users\ITWILL\Desktop\workspace_Spring5\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2826252134.index
 \SpringTest3_MyBatis\src\main\java
+C:\Users\ITWILL\Desktop\workspace_Spring5\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2004026462.index
+\Spring_MVC_Board\src\main\java
+C:\Users\ITWILL\Desktop\workspace_Spring5\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\820856352.index
+\Sosimin\src\main\java
 C:\Users\ITWILL\Desktop\workspace_Spring5\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\516579648.index
 \SpringTest2\src\main\java
 C:\Users\ITWILL\Desktop\workspace_Spring5\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1130884536.index
