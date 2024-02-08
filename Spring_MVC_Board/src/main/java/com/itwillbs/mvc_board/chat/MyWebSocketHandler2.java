@@ -18,8 +18,10 @@ import org.springframework.web.socket.handler.TextWebSocketHandler;
 
 import com.google.gson.Gson;
 import com.itwillbs.mvc_board.service.ChatService;
+import com.itwillbs.mvc_board.vo.ChatMessage;
 import com.itwillbs.mvc_board.vo.ChatMessage2;
 import com.itwillbs.mvc_board.vo.ChatRoomVO;
+import com.itwillbs.mvc_board.vo.ChatUserVO;
 
 // 웹소켓 핸들링을 위한 클래스 정의 - TextWebSocketHandler 클래스 상속
 // => 이 클래스의 인스턴스는 서버 당 하나의 인스턴스만 생성됨	
@@ -44,6 +46,8 @@ public class MyWebSocketHandler2 extends TextWebSocketHandler {
 	@Override
 	public void afterConnectionEstablished(WebSocketSession session) throws Exception {
 		System.out.println("웹소켓 연결됨!(afterConnectionEstablished)");
+		
+		
 	}
 
 	@Override
@@ -55,6 +59,9 @@ public class MyWebSocketHandler2 extends TextWebSocketHandler {
 		ChatMessage2 chatMessage = gson.fromJson(message.getPayload(), ChatMessage2.class);
 		System.out.println("ChatMessage : " + chatMessage);
 		System.out.println("메세지 도착 시각 : " + getDateTimeForNow());
+		// 메세지 도착 시각 저장
+		chatMessage.setSend_time(getDateTimeForNow());
+		
 		// --------------------------------------------------------------------------
 		// 사용자 아이디와 상대방 아이디를 변수에 저장
 		String sender_id = chatMessage.getSender_id();
@@ -94,7 +101,7 @@ public class MyWebSocketHandler2 extends TextWebSocketHandler {
 			// => 파라미터 : 자신의 아이디(sender_id)   
 			//    리턴타입 : List<ChatRoomVO>(chatRoomList)
 			List<ChatRoomVO> chatRoomList = chatService.getChatRoomList(sender_id);
-			System.out.println(chatRoomList);
+//			System.out.println(chatRoomList);
 			// 조회 결과를 JSON 형식으로 변환하여 메세지로 설정
 			chatMessage.setMessage(gson.toJson(chatRoomList));
 			// 메세지 타입을 채팅방 전체 목록 표시를 수행하도록 TYPE_LIST 타입으로 설정
@@ -102,6 +109,7 @@ public class MyWebSocketHandler2 extends TextWebSocketHandler {
 			// 메세지 전송
 			sendMessage(session, chatMessage);
 		} else if(chatMessage.getType().equals(ChatMessage2.TYPE_START)) { 
+			System.out.println("START");
 			// 채팅창 열기(신규 or 기존 채팅방 구분)
 			boolean needCreateRoom = true; // true : 신규, false : 기존 채팅방 존재
 			
@@ -160,7 +168,7 @@ public class MyWebSocketHandler2 extends TextWebSocketHandler {
 				chatMessage.setType(ChatMessage2.TYPE_START);
 			} else { // 기존 채팅방 입장(열기)
 				// 재입장 메세지 설정하여 클라이언트로 전송
-				
+				// ChatMessage 객체를 통해 재입장 관련 정보 설정
 			}
 			
 			System.out.println("현재 채팅방 목록 : " + rooms);
@@ -172,8 +180,55 @@ public class MyWebSocketHandler2 extends TextWebSocketHandler {
 			return;
 		} // TYPE_START 판별 끝
 		
+		// [ TYPE_ENTER, TYPE_LEAVE, TYPE_TALK 공통 작업 ]
+		// 전체 채팅방 중 룸ID 가 일치하는 채팅방의 참가자 목록 가져오기
+		// => rooms 객체의 get() 메서드 파라미터로 현재 채팅방의 룸ID 전달
+		List<String> currentRoomUserList = rooms.get(chatMessage.getRoom_id());
+		System.out.println("currentRoomUserList : " + currentRoomUserList);
 		
-		
+		// 현재 채팅방 내의 사용자 목록을 반복문으로 접근하여
+		// 사용자ID 와 일치하는 사용자 정보 객체와 웹소켓 세션 객체에 접근
+		if(currentRoomUserList != null) {
+			for(String roomUserId : currentRoomUserList) {
+				// wsSession 객체에서 사용자ID 에 해당하는 세션아이디로 탐색하여 세션 꺼내기
+				WebSocketSession userSession = wsSessions.get(users.get(roomUserId));
+				
+				// sendMessage() 메서드를 호출하여 메세지 전송
+				// => 파라미터 : WebSocketSession 객체, ChatMessage2 객체
+				// => 단, 자신의 세션이 아닌 세션에만 메세지 전송
+				//    (현재 채팅방 사용자 아이디와 전송된 메세지 발신자 아이디가 일치하지 않을 경우)
+				if(!roomUserId.equals(chatMessage.getSender_id())) { // 자신의 세션이 아닐 경우
+					// 메세지 타입 판별(ChatMessage 객체의 type 멤버변수값 활용)
+					if(chatMessage.getType().equals(ChatMessage.TYPE_ENTER)) { // 입장
+						// ChatMessage 객체의 메세지를 "XXX 님이 입장하셨습니다" 로 설정(변경)
+						chatMessage.setMessage(chatMessage.getSender_id() + " 님이 입장하셨습니다.");
+					} else if(chatMessage.getType().equals(ChatMessage.TYPE_LEAVE)) { // 퇴장
+						// ChatMessage 객체의 메세지를 "XXX 님이 퇴장하셨습니다" 로 설정(변경)
+						chatMessage.setMessage(chatMessage.getSender_id() + " 님이 퇴장하셨습니다.");
+					}
+				} else if(chatMessage.getType().equals(ChatMessage.TYPE_LEAVE)) { 
+					// 자신의 세션일 경우 LEAVE 타입인지 판별하여 채팅방 정보 제거
+					// chatService - removeChatRoomUser() 메서드 호출하여 채팅방 정보 제거
+					// => 파라미터 : ChatMessage2 객체   리턴타입 : int(currentRoomUserCnt)
+					int currentRoomUserCnt = chatService.removeChatRoomUser(chatMessage);
+					
+					// 해당 채팅방 사용자가 아무도 없을 경우
+					// rooms 객체에서 채팅방 제거
+					if(currentRoomUserCnt == 0) {
+						rooms.remove(chatMessage.getRoom_id());
+					} 
+				}
+				
+				// 메세지 전송
+				// => 주의! 현재 채팅방 사용자의 세션(userSession) 객체 활용
+				sendMessage(userSession, chatMessage);
+			} // 반복문 종료
+			
+			// ChatService - addMessage() 메서드 호출하여 채팅메세지 DB 에 저장
+			chatService.addMessage(chatMessage);
+		} else { // 현재 채팅방에 사용자가 아무도 없을 경우
+			
+		}
 		
 	}
 	

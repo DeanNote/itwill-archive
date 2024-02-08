@@ -16,16 +16,61 @@
 		separator 속성 : 각 묶음을 구분할 SQL 구문에서의 구분자
 		-->
 		<foreach item="chatRoom" collection="list" separator=",">
-			(#{chatRoom.room_id}, #{chatRoom.user_id}, #{chatRoom.title}, null)  -- List 객체수만큼 반복
+			(#{chatRoom.room_id}, #{chatRoom.sender_id}, #{chatRoom.receiver_id}, #{chatRoom.title}, null)  -- List 객체수만큼 반복
 		</foreach>
 	</insert>
 	
-	<!-- 채팅방 목록 조회 -->
+	<!-- 자신의 채팅방 목록 조회 -->
 	<select id="selectChatRoomList" resultType="chatRoom">
 		SELECT *
 		FROM chat_room_list
-		WHERE user_id = #{sender_id}
+		WHERE sender_id = #{sender_id}
 	</select>
+	
+	<!-- 채팅 메세지 저장 -->
+	<!-- 
+	[ chat_message 테이블 정의 ]
+	CREATE TABLE chat_message (
+		room_id VARCHAR(50) NOT NULL,
+		sender_id VARCHAR(16) NOT NULL,
+		receiver_id VARCHAR(16) NOT NULL,
+		message VARCHAR(2000) NOT NULL,
+		type VARCHAR(10) NOT NULL,
+		send_time VARCHAR(20) NOT NULL
+	); 
+	-->
+	<insert id="insertMessage">
+		INSERT
+		INTO chat_message
+		VALUES (
+			#{room_id}
+			, #{sender_id}
+			, #{receiver_id}
+			, #{message}
+			, #{type}
+			, #{send_time}
+		)
+	</insert>
+	
+	<!-- 채팅방 사용자 삭제 - DELETE -->
+	<!-- 룸ID 와 사용자ID 가 일치하는 레코드 삭제 -->
+	<delete id="deleteChatRoomUser">
+		DELETE
+		FROM chat_room_list
+		WHERE
+			room_id = #{room_id}
+			AND user_id = #{sender_id}
+	</delete>
+	
+	<!-- 현재 채팅방 사용자 수 조회 - SELECT -->
+	<!-- 룸ID 가 일치하는 레코드의 수 조회 -->
+	<select id="selectCurrentChatRoomUser" resultType="int">
+		SELECT COUNT(*)
+		FROM chat_room_list
+		WHERE
+			room_id = #{room_id}
+	</select>
+	
 </mapper>
 
 

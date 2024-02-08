@@ -87,6 +87,8 @@ public class MyWebSocketHandler extends TextWebSocketHandler {
 			chatMessage.setMessage(chatMessage.getNickname() + " 님이 퇴장하셨습니다.");
 		}
 		
+		
+		
 		// -----------------------------------------------------------------------------------
 		// 웹소켓 세션 객체의 sendMessage() 메서드를 호출하여 클라이언트로 메세지 전송
 		// => 파라미터로 TextMessage 객체 전달

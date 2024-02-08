@@ -31,12 +31,51 @@
 		border: 1px solid black;
 	}
 	
+	.chatRoomTitle:hover {
+		background-color: pink;
+	}
+	
 	/* 채팅 메세지 표시 영역 */
 	.chatMessageArea {
 		width: 300px;
 		height: 200px;
 		border: 1px solid gray;
 		overflow-y: auto;
+	}
+	
+	/* 채팅 메세지 */
+	.message {
+		height: 30px;
+	}
+	
+	/* 채팅 메세지 정렬 */
+	.message_align_center {
+		text-align: center;
+	}
+	
+	.message_align_left {
+		text-align: left;
+	}
+	
+	.message_align_right {
+		text-align: right;
+	}
+	
+	.chat_text {
+		font-size: 16px;
+	}
+	
+	.send_time {
+		font-size: 9px;
+		vertical-align: bottom;
+	}
+	
+	.message_align_left .chat_text {
+		background-color: yellow;
+	}
+	
+	.message_align_right .chat_text {
+		background-color: skyblue;
 	}
 	
 	
@@ -144,7 +183,30 @@
 	function appendMessageToTargetRoom(room_id, sender_id, receiver_id, message, type, send_time) {
 // 		console.log(room_id + ", " + sender_id + ", " + receiver_id + ", " + message + ", " + type);
 		// ================================================================
-		// 메세지 시각 등 설정 필요
+		// 메세지 시각 표시 설정
+		// => 현재 시스템의 시각 정보와 비교하여 다음 형식으로 시각 변경
+		//    오늘일 경우 시:분, 같은 연도일 경우 월-일 시:분, 다른 연도일 경우 연-월-일 시:분
+		
+		// --------------------------------------------------------------
+		// 메세지 종류에 따라 정렬 위치 다르게 표시
+		let chat_text = "";
+		let align = "";
+		let message_div = "";
+		
+		if(type != "TALK") { // // 시스템 메세지 판별
+			// 메세지만 표시(사용자 아이디 생략), 가운데 정렬
+			chat_text = "> " + message + " <";
+			message_div = "<div class='message message_align_center'><span class='chat_text'>" + chat_text + "</span></div>";
+		} else if(sender_id == current_user_id) { // 자신의 메세지(발신자가 자신일 경우)
+			// 메세지와 시각 표시(사용자 아이디 생략), 우측 정렬
+			chat_text = message;
+			message_div = "<div class='message message_align_right'><span class='send_time'>" + send_time + "</span><span class='chat_text'>" + chat_text + "</span></div>";
+		} else if(receiver_id == current_user_id) { // 상대방의 메세지(수신자가 자신일 경우)
+			// 발신자 아이디와 메세지와 시각 표시, 좌측 정렬
+			chat_text = sender_id + " : " + message;
+			message_div = "<div class='message message_align_left'><span class='chat_text'>" + chat_text + "</span><span class='send_time'>" + send_time + "</span></div>";
+		}
+		
 		// ================================================================
 		// 단순히 메세지만 표시(임시)
 		// 1) 현재 채팅방 찾기
@@ -153,7 +215,7 @@
 		// 2) 현재 채팅방의 자식들 중 메세지 표시 영역(클래스 선택자 chatMessageArea) 탐색
 		let chatMessageArea = $(chatRoom).find(".chatMessageArea");
 		// 3) 해당 메세지 표시 영역에 메세지 표시
-		$(chatMessageArea).append(message + "<br>");
+		$(chatMessageArea).append(message_div);
 		// 4) 채팅 메세지 출력창 스크롤바를 항상 맨 밑으로 유지
 		// => 메세지 영역의 크기 활용
 		$(chatMessageArea).scrollTop($(".chatMessageArea").height());
@@ -170,22 +232,43 @@
 		// 전달받은 메세지의 타입 판별(ENTER or LEAVE or TALK)
 		if(data.type == "ENTER" || data.type == "LEAVE") { // 입장 또는 퇴장
 			// 입장&퇴장 메세지는 시스템 메세지 형식(>>> xxx <<<) 으로 출력
-			appendMessageToTargetRoom(">>> " + data.message + "<<<");
+			appendMessageToTargetRoom(
+					data.room_id, data.sender_id, data.receiver_id, data.message, data.type, data.send_time);
 			// ------------------------------------------------------------
-			// 채팅방 접속한 사용자 or 나간 사용자 닉네임을 목록에 표시 or 제거
-			// 단, 접속(ENTER)일 경우 표시, 나가기(LEAVE)일 경우 제거
-			if(data.type == "ENTER") {
-				// -------------------------------------------------------------
-				// 채팅방 참여자 목록에 접속자 닉네임(아이디)을 추가
-				$("#chatUserListArea").append("<div id='user_" + data.nickname + "'>" + data.nickname + "</div>");
-				// -------------------------------------------------------------
-			} else {
-				// 채팅방 참여자 목록에서 닉네임(닉네임에 해당하는 ID 선택자 요소) 제거
-				$("#user_" + data.nickname).remove();
+			// 나가기(LEAVE)일 경우 채팅방 및 채팅 목록에서 삭제
+			if(data.type == "LEAVE") { 
+				appendMessageToTargetRoom(
+						data.room_id, data.sender_id, data.receiver_id, "대화가 종료되었습니다", data.type, data.send_time);
+				
+				// 자신이 아이디가 발신자 아이디와 동일할 경우(자신이 나가기 버튼 클릭했을 경우)
+				if(current_user_id == data.sender_id) {
+					// 현재 화면에서 해당 채팅방 삭제 및 채팅방 목록에서도 삭제
+					$("#chatRoomArea").find("." + data.room_id).remove();
+					$("#chatRoomListArea").find("." + data.room_id).remove();
+				}
+				
+// 				lockToFinishChatRoom(data.room_id);
+				
 			}
 		} else if(data.type == "TALK") { // 대화
-			// 대화 메세지는 닉네임 : 메세지 형식으로 출력
-// 			appendMessage(data.nickname + " : " + data.message);
+			// =============================================
+			// 상대방으로부터 채팅 메세지가 수신되었을 경우
+			// 현재 화면에서 상대방과의 채팅방이 열려있지 않을 때 새 채팅방 표시
+			// 또한, 채팅 목록에 해당 채팅방 없으면 표시(추가)
+			if(data.sender_id == current_user_id) { // 내가 보낸 메세지
+				// 채팅창의 수신자 아이디를 그대로 설정
+				createRoom(data.room_id, data.receiver_id);
+// 				appendChatRoomToRoomList(data.room_id, data.receiver_id, "채팅-" + data.receiver_id, null);
+			} else { // 상대방이 보낸 메세지
+				// 채팅창의 수신자 아이디를 상대방(발신자 아이디)으로 설정
+				createRoom(data.room_id, data.sender_id);
+				appendChatRoomToRoomList(data.room_id, data.sender_id, "채팅-" + data.sender_id, null);
+			}
+			
+			// =============================================
+			// 현재 채팅방에 메세지 표시 처리
+			appendMessageToTargetRoom(
+					data.room_id, data.sender_id, data.receiver_id, data.message, data.type, data.send_time);
 		} else if(data.type == "START") { // 채팅방 열기(생성)
 			// createRoom() 함수 호출
 			// => 파라미터 : 룸 아이디, 상대방 아이디
@@ -193,8 +276,10 @@
 		
 			// 현재 채팅방에 메세지 표시
 			appendMessageToTargetRoom(
-					data.room_id, data.sender_id, data.receiver_id, data.message, data.type, "");
+					data.room_id, data.sender_id, data.receiver_id, data.message, data.type, data.send_time);
 		} else if(data.type == "LIST_ADD") {
+			console.log("LIST_ADD");
+			console.log(data.room_id + ", " + data.receiver_id);
 			// 기존 채팅방 목록에 새 채팅방 추가
 			// => 룸ID, 상대방ID, 채팅방 제목, status 값(null) 전달
 			let title = "채팅-" + data.receiver_id;
@@ -217,30 +302,43 @@
 	// =========================================================================
 	// 채팅방 생성
 	function createRoom(room_id, receiver_id) {
-		let room = "<div class='chatRoom " + room_id + "'>"
-					+ "		<div class='chatMessageArea'></div>"
-					+ "			<div class='commandArea'>"
-					+ "				<input type='hidden' class='room_id' value='" + room_id + "'>"
-					+ "				<input type='hidden' class='receiver_id' value='" + receiver_id + "'>"
-					+ "				<input type='text' class='chatMsg' onkeypress='checkEnter(this)'>"
-					+ "				<input type='button' class='btnSend' value='전송' onclick='sendMessage(this)'>"
-					+ "				<input type='button' class='btnQuitRoom' value='나가기' onclick='quitRoom(this)'>"
-					+ "			</div>"
-					+ "</div>"
+		// 룸ID 에 해당하는 class 선택자가 없을 경우에만 새 채팅방 표시
+		// (.chatRoom 이 room_id 에 해당하는 클래스를 가지고 있지 않을 경우에만 표시)
+		if(!$(".chatRoom").hasClass(room_id)) {
+			console.log("채팅방 새로 생성!");
+			// ===========================================================
+			// AJAX 를 활용하여 현재 room_id 와 일치하는 채팅방에 대한
+			// 모든 채팅 목록 조회 요청
+			// => 해보세요
+			// ===========================================================
+			let room = "<div class='chatRoom " + room_id + "'>"
+						+ "		<div class='chatMessageArea'></div>"
+						+ "			<div class='commandArea'>"
+						+ "				<input type='hidden' class='room_id' value='" + room_id + "'>"
+						+ "				<input type='hidden' class='receiver_id' value='" + receiver_id + "'>"
+						+ "				<input type='text' class='chatMsg' onkeypress='checkEnter(this)'>"
+						+ "				<input type='button' class='btnSend' value='전송' onclick='sendMessage(this)'>"
+						+ "				<input type='button' class='btnQuitRoom' value='나가기' onclick='quitRoom(this)'>"
+						+ "			</div>"
+						+ "</div>"
+			
+			
+			$("#chatRoomArea").append(room);
+		}
 		
-		
-		$("#chatRoomArea").append(room);
 	}
 	
 	// =========================================================================
 	// 채팅방 목록에 새 채팅방 추가
 	function appendChatRoomToRoomList(room_id, receiver_id, title, status) {
 		// 채팅방 목록 1개 정보에 chatRoomList 와 room_id 값을 class 선택자로 추가
-		let room = "<div class='chatRoomList " + room_id + "'>"
-					+ "		<div class='chatRoomTitle'>" + title + "</div>"
-					+ "</div>";
-		
-		$("#chatRoomListArea").append(room);
+		// => 단, 해당 채팅방 목록이 없을 경우에만 추가
+		if(!$(".chatRoomList").hasClass(room_id)) {
+			let room = "<div class='chatRoomList " + room_id + "'>"
+						+ "		<div class='chatRoomTitle' ondblclick='createRoom(\"" + room_id + "\", \"" + receiver_id + "\")'>" + title + "</div>"						+ "</div>";
+			
+			$("#chatRoomListArea").append(room);
+		}
 	}
 	// =========================================================================
 	// 웹소켓 연결 해제
@@ -304,7 +402,20 @@
 		$(commandArea).find(".chatMsg").focus();
 	}
 	
-	
+	// ==========================
+	// 채팅방 나가기
+	function quitRoom(target) {
+		console.log("채팅방 종료");
+		
+		// 전달받은 요소 객체(target)의 부모 탐색(<div class='commandArea'></div>)
+		let commandArea = $(target).parent();
+		
+		// 해당 채팅방의 룸 아이디 가져오기
+		let room_id = $(commandArea).find(".room_id").val();
+		
+		// 메세지 전송(LEAVE 타입, 현재 사용자 아이디(발신자), 수신자 불필요, 룸ID, 메세지 불필요)
+		ws.send(getJsonString("LEAVE", current_user_id, "", room_id, ""));
+	}
 	
 </script>
 </head>

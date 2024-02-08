@@ -19,7 +19,8 @@ import lombok.Data;
 @AllArgsConstructor
 public class ChatRoomVO {
 	private String room_id; // 9ee92dc7-9e33-4792-8199-4df8557735f3
-	private String user_id; // 16글자
+	private String sender_id; // 16글자
+	private String receiver_id; // 16글자
 	private String title; // 50글자
 	private String status; // 16글자
 }
