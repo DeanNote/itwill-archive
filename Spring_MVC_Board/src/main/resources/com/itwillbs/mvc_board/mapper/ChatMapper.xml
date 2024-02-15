@@ -59,7 +59,7 @@
 		FROM chat_room_list
 		WHERE
 			room_id = #{room_id}
-			AND user_id = #{sender_id}
+			AND sender_id = #{sender_id}
 	</delete>
 	
 	<!-- 현재 채팅방 사용자 수 조회 - SELECT -->
@@ -67,8 +67,14 @@
 	<select id="selectCurrentChatRoomUser" resultType="int">
 		SELECT COUNT(*)
 		FROM chat_room_list
-		WHERE
-			room_id = #{room_id}
+		WHERE room_id = #{room_id}
+	</select>
+	
+	<!-- 이전 채팅 내역 조회 - SELECT -->
+	<select id="selectChatList" resultType="chatMessage">
+		SELECT * 
+		FROM chat_message
+		WHERE room_id = #{room_id}
 	</select>
 	
 </mapper>

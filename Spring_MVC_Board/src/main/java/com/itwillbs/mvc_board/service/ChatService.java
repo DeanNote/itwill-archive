@@ -44,6 +44,11 @@ public class ChatService {
 		return mapper.selectCurrentChatRoomUser(chatMessage);
 	}
 
+	public List<ChatMessage2> getChatList(ChatMessage2 chatMessage) {
+		// ChatMapper - selectChatList() 메서드 호출하여 이전 채팅 내역 조회 요청
+		return mapper.selectChatList(chatMessage);
+	}
+
 }
 
 

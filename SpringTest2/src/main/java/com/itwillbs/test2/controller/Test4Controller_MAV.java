@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.itwillbs.test2.vo.PersonVO;
-import com.itwillbs.test2.vo.TestVo;
+import com.itwillbs.test2.vo.TestVO;
 
 @Controller
 public class Test4Controller_MAV {
@@ -59,7 +59,7 @@ public class Test4Controller_MAV {
 		person.setName("홍길동");
 		person.setAge(20);
 		
-		TestVo test = new TestVo("제목입니다", "내용입니다");
+		TestVO test = new TestVO("제목입니다", "내용입니다");
 		
 		map.put("person", person);
 		map.put("test", test);

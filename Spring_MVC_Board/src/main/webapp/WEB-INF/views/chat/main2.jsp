@@ -295,7 +295,16 @@
 				console.log(room);
 				appendChatRoomToRoomList(room.room_id, room.receiver_id, room.title, room.status);
 			}
-		} 
+		} else if(data.type == "MESSAGE_LIST") {
+			// 전체 목록을 파싱하여 객체로 변환
+			let chatList = JSON.parse(data.message);
+			
+			for(let chat of chatList) {
+				// 현재 채팅방에 메세지 표시
+				appendMessageToTargetRoom(
+						chat.room_id, chat.sender_id, chat.receiver_id, chat.message, chat.type, chat.send_time);
+			}
+		}
 		
 	}
 	
@@ -307,10 +316,10 @@
 		if(!$(".chatRoom").hasClass(room_id)) {
 			console.log("채팅방 새로 생성!");
 			// ===========================================================
-			// AJAX 를 활용하여 현재 room_id 와 일치하는 채팅방에 대한
-			// 모든 채팅 목록 조회 요청
-			// => 해보세요
+			// 웹소켓 메세지로 이전 채팅 내역 조회 요청("MessageList")
+			ws.send(getJsonString("MESSAGE_LIST", current_user_id, receiver_id, room_id, ""));
 			// ===========================================================
+			// 채팅방 생성
 			let room = "<div class='chatRoom " + room_id + "'>"
 						+ "		<div class='chatMessageArea'></div>"
 						+ "			<div class='commandArea'>"

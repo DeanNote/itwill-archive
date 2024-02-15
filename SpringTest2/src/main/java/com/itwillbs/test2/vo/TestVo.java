@@ -1,15 +1,15 @@
 package com.itwillbs.test2.vo;
 
 // XXXDTO = XXXBean = XXXVO
-public class TestVo {
+public class TestVO {
 	private String subject;
 	private String content;
 	
 	// 기본 생성자
-	public TestVo() {}
+	public TestVO() {}
 
 	// 파라미터 생성자
-	public TestVo(String subject, String content) {
+	public TestVO(String subject, String content) {
 		super();
 		this.subject = subject;
 		this.content = content;

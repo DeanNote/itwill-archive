@@ -39,6 +39,8 @@ public class MyWebSocketHandler2 extends TextWebSocketHandler {
 	// => 채팅방 룸ID(문자열) 와 해당 채팅방 접속자들의 ID 를 목록으로 관리할 List<String> 타입 지정
 	private Map<String, List<String>> rooms = new ConcurrentHashMap<String, List<String>>();
 
+	
+	
 	@Autowired
 	private ChatService chatService;
 	// ===========================================================================================
@@ -46,8 +48,6 @@ public class MyWebSocketHandler2 extends TextWebSocketHandler {
 	@Override
 	public void afterConnectionEstablished(WebSocketSession session) throws Exception {
 		System.out.println("웹소켓 연결됨!(afterConnectionEstablished)");
-		
-		
 	}
 
 	@Override
@@ -178,7 +178,22 @@ public class MyWebSocketHandler2 extends TextWebSocketHandler {
 			sendMessage(session, chatMessage);
 			
 			return;
-		} // TYPE_START 판별 끝
+		} else if(chatMessage.getType().equals(ChatMessage2.TYPE_MESSAGE_LIST)) {
+			// ChatService - getChatList() 메서드 호출하여 기존 채팅방 채팅 목록 조회
+			// => 파라미터 : ChatMessage2 객체   리턴타입 : List<ChatMessage2>(chatList)
+			List<ChatMessage2> chatList = chatService.getChatList(chatMessage);
+//			System.out.println("기존 메세지 목록 갯수 : " + chatList.size());
+			
+			if(chatList.size() > 0) {
+				// 조회 결과를 JSON 형식으로 변환하여 메세지로 설정
+				chatMessage.setMessage(gson.toJson(chatList));
+				
+				// 메세지 전송
+				sendMessage(session, chatMessage);
+			}
+			
+			return;
+		}
 		
 		// [ TYPE_ENTER, TYPE_LEAVE, TYPE_TALK 공통 작업 ]
 		// 전체 채팅방 중 룸ID 가 일치하는 채팅방의 참가자 목록 가져오기
@@ -226,8 +241,6 @@ public class MyWebSocketHandler2 extends TextWebSocketHandler {
 			
 			// ChatService - addMessage() 메서드 호출하여 채팅메세지 DB 에 저장
 			chatService.addMessage(chatMessage);
-		} else { // 현재 채팅방에 사용자가 아무도 없을 경우
-			
 		}
 		
 	}

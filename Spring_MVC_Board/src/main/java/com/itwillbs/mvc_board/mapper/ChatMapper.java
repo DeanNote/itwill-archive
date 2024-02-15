@@ -25,6 +25,9 @@ public interface ChatMapper {
 	// 채팅방 사용자 수 조회
 	int selectCurrentChatRoomUser(ChatMessage2 chatMessage);
 
+	// 이전 채팅 내역 조회
+	List<ChatMessage2> selectChatList(ChatMessage2 chatMessage);
+
 }
 
 

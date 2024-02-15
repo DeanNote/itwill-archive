@@ -6,7 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import com.itwillbs.test2.vo.TestVo;
+import com.itwillbs.test2.vo.TestVO;
 
 @Controller
 public class Test2Controller_Push {
@@ -66,7 +66,7 @@ public class Test2Controller_Push {
 		model.addAttribute("msg", "Hello, World! - model");
 		
 		// model 객체에 "test" 라는 속성명으로 TestVO 객체 1개 저장
-		model.addAttribute("test", new TestVo("제목 - model", "내용 - model"));
+		model.addAttribute("test", new TestVO("제목 - model", "내용 - model"));
 		
 		// 디스패치 방식 포워딩을 통해 "WEB-INF/views/test2/push.jsp" 페이지로 포워딩
 		// => URL 유지, request 객체 유지
