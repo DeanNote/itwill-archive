@@ -13,25 +13,25 @@ public class Ex4 {
 
 	public static void main(String[] args) {
 		/*
-		  객체 직렬화(Serialization) & 역직렬화(Deserialization)
-		  - 자바에서 사용하는 객체는 상태(변수 값)가 계속 변하는 영속성을 부여함.
-		    이 때 어떤 순간의 상태(변수 값)를 파일 또는 네트워크 등으로 
-		    내보내는 것을 '직렬화'라고 하며,반대로 파일이나 네트워크로부터 
-		    데이터를 읽어 객체로 변환하는 것을 '역직렬화'라고 함
-		  - 직렬화란 인스턴스 내용을 연속 스트림으로 만드는 것이고, 스트림을 만들어야
-		    파일에 쓸 수도 있고 네트워크로 전송할 수도 있다.
-		  - 직렬화 과정을 통해 인스턴스 변수 값을 스트림으로 만들게 된다.
-		  - ObjectInputStream, ObjectOutputStream 클래스 사용
-		  - 주의! 직렬화 대상이 되는 클래스를 정의할 때는
-		    반드시 Serializable 인터페이스 상속 필수!
-		  - 만약, 직렬화 클래스 내에서 출력 대상으로부터 제외시킬 변수가 있을 경우
-		    해당 변수 선언부 앞에 transient 키워드를 사용하면 출력대상에서 제외됨
-		    
-		  < 직렬화 문법 >
-		  ObjectInputStream(InputStream in)
-		  
-		  < 역직렬화 문법>
-		  ObjectOutputStream(OutputStream out)
+		 * 객체 직렬화(Serialization) & 역직렬화(Deserialization)
+		 * - 자바에서 사용하는 객체는 상태(변수 값)가 계속 변하는 영속성을 부여함.
+		 *   이 때 어떤 순간의 상태(변수 값)를 파일 또는 네트워크 등으로 
+		 *   내보내는 것을 '직렬화'라고 하며,반대로 파일이나 네트워크로부터 
+		 *   데이터를 읽어 객체로 변환하는 것을 '역직렬화'라고 함
+		 * - 직렬화란 인스턴스 내용을 연속 스트림으로 만드는 것이고, 스트림을 만들어야
+		 *   파일에 쓸 수도 있고 네트워크로 전송할 수도 있다.
+		 * - 직렬화 과정을 통해 인스턴스 변수 값을 스트림으로 만들게 된다.
+		 * - ObjectInputStream, ObjectOutputStream 클래스 사용
+		 * - 주의! 직렬화 대상이 되는 클래스를 정의할 때는
+		 *   반드시 Serializable 인터페이스 상속 필수!
+		 * - 만약, 직렬화 클래스 내에서 출력 대상으로부터 제외시킬 변수가 있을 경우
+		 *   해당 변수 선언부 앞에 transient 키워드를 사용하면 출력대상에서 제외됨
+		 *   
+		 * < 직렬화 문법 >
+		 * ObjectInputStream(InputStream in)
+		 * 
+		 * < 역직렬화 문법>
+		 * ObjectOutputStream(OutputStream out)
 		 */
 		
 		// Person 객체 생성

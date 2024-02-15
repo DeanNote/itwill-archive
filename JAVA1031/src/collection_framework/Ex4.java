@@ -55,7 +55,7 @@ public class Ex4 {
 		
 		// Map 객체 크기만큼 반복문을 사용하면서 차례대로 요소 접근 불가
 		// => 대신, keySet(), values() 결과를 사용하여 반복 가능함
-		// Iterator ite = map.iterator();
+		// Iterator ite = map.iterator(); // Map에서는 iterator() 메서드 사용 불가!
 		for(Object o : keySet) {
 			System.out.println(map.get(o));
 		}

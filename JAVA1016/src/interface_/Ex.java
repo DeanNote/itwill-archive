@@ -45,7 +45,7 @@ public class Ex {
 		// 인터페이스도 인스턴스 생성이 불가능!
 		// => Cannot instantiate the type MyClass
 //		MyExInterface mi = new MyExInterface();
-		
+				
 		// 인터페이스를 구현한 서브클래스(구현체클래스) 인스턴스 생성
 		MySubClass msc = new MySubClass();
 		msc.method1();

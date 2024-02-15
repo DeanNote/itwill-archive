@@ -15,7 +15,6 @@ public class Ex2 {
 		//    특정 범위에 해당하는 정수형 난수를 발생시킴
 		Random r = new Random();
 		
-		
 		// ex) 4자리 인증번호(0000 ~ 9999) 생성
 		for(int i = 1; i <= 10; i++) {
 			// nextInt(int) 메서드는 0 ~ x-1까지 난수 발생시킴
@@ -32,8 +31,6 @@ public class Ex2 {
 			 */
 			String strNum = String.format("%04d", rNum);
 			System.out.println(strNum);
-			//tt
-			
 			
 		}
 		

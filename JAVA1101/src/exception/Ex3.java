@@ -25,30 +25,36 @@ public class Ex3 {
 		// 팀장으로부터 위임받을 때, 현재 메서드가 사장(main()) 일 경우
 		// 더 이상 위임할 수 있는 곳이 없음(문법적으로 throws 로 해결 가능)
 		// => 따라서, 최종적으로 사장(main() ) 이 모든 예외를 처리해야 한다!
-
 		try {
 			팀장();
 		} catch (Exception e) {
+			System.out.println("사장이 모든 예외를 처리!");
 			e.printStackTrace();
-			System.out.println("사장이 모든 일을 처리");
 		}
 		
 	} // main() 메서드 끝
 
-	public static void 팀장() throws Exception { 
+	public static void 팀장() throws Exception {
+		// 1. 대리로부터 위임받은 예외를 직접 처리하는 경우
 //		try {
-			대리();
-//		} catch (ClassNotFoundException | RuntimeException e) {
-//			// TODO Auto-generated catch block
+//			대리();
+//		} catch (ClassNotFoundException e) {
+//			e.printStackTrace();
+//		} catch (RuntimeException e) {
 //			e.printStackTrace();
 //		}
+		
+		// 2. 팀장이 위임받은 예외를 사장(main() ) 에게 위임하는 경우
+		// => RuntimeException 과 ClassNotFoundException 을 명시하거나
+		//    Exception 타입으로 위임 가능
+		대리();
 	}
 	
 	public static void 대리() throws RuntimeException, ClassNotFoundException {
 		// 사원으로부터 예외를 위임받아 처리할 때
 		// 1. 위임받은 대리가 직접 처리하는 경우
 //		try {
-////			사원();
+//			사원();
 //			사원2();
 //		} catch(ArithmeticException e) {
 //			System.out.println("대리가 사원의 ArithmeticException 예외 직접 처리!");
@@ -59,6 +65,10 @@ public class Ex3 {
 //		}
 		
 		// 2. 예외를 위임받은 대리도 팀장에게 다시 위임하는 경우
+		// => 발생 가능성이 있는 예외 클래슬르 모두 throws 키워드 뒤에 명시
+		// => 모든 클래스를 따로 명시하거나, 상위 타입으로 결합하여 명시 가능
+		사원(); // ArithmeticException, NullPointerException
+		사원2(); // ClassNotFoundException
 		
 		
 	}

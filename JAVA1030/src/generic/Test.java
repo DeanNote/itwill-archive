@@ -70,8 +70,8 @@ public class Test {
 		// 강감찬, 30의 파라미터를 갖는 Person 객체 추가
 		list.add(new Person("강감찬", 30));
 		
-		// 문자열 "진진자" 추가
-		list.add("진진자"); // Object 타입이므로 Person 이 아닌 타입도 추가 가능
+		// 문자열 "조혜진" 추가
+		list.add("조혜진"); // Object 타입이므로 Person 이 아닌 타입도 추가 가능
 		// => Person 객체 형태로 꺼내서 사용하는 시점에서 문제가 발생할 수 있다!
 		
 		// 일반 for문을 통한 객체 출력
@@ -85,8 +85,8 @@ public class Test {
 //			// => 실행을 시키면 83번 라인에서 에러가 발생!
 //			// => java.lang.ClassCastException: class java.lang.String 
 //			//    cannot be cast to class generic.Person
-//			// => "진진자" 의 String 형태는 Person 객체로 변경할 수 없음을 알 수 있다!
-//			// => 위의 코드 중 "list.add("진진자"); 을 주석처리하고 다시 실행하면
+//			// => "조혜진" 의 String 형태는 Person 객체로 변경할 수 없음을 알 수 있다!
+//			// => 위의 코드 중 "list.add("조혜진"); 을 주석처리하고 다시 실행하면
 //			//    오류가 없어진다!
 //			
 //			// Person 타입으로 가져오기 전 타입 판별 후 형변환 수행
@@ -130,7 +130,7 @@ public class Test {
 		
 		// Person 타입이 아닌 객체(데이터) 추가 시
 		// 데이터타입 판별 과정에서 오류(컴파일에러)가 발생하게 된다!
-//		list2.add("김아무개"); // 컴파일 에러 발생!
+//		list2.add("이민석"); // 컴파일 에러 발생!
 		// => The method add(Person) in the type List<Person> 
 		//     is not applicable for the arguments (String)
 		

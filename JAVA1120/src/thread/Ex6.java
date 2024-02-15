@@ -90,7 +90,7 @@ class WithdrawThread extends Thread {
 			} 
 			
 			// 전달받은 계좌(account)를 사용하여 출금 수행
-			int money = account.withdraw(amount);
+			account.withdraw(amount);
 		}
 	}
 	
