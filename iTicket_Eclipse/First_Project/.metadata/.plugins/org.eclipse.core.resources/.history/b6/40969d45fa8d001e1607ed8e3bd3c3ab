@@ -1,0 +1,205 @@
+@charset "UTF-8";
+
+/* ================= 지금부터 top/bottom영역에 적용되는 영역 ================== */
+
+#top_area {
+	background-color: #ffffff;
+	padding-top: 15px;
+}
+
+#member_area input[type="button"] { /* 로그인, 회원가입 버튼에 */
+	padding: 6px 15px; /* 안쪽 여백 */
+    background-color: #e50914; /* 배경색 빨간색 */
+    color: white; /* 글씨색 흰색*/
+    border: none; /* 테두리 없음 */
+    cursor: pointer; /* 커서 변경 */
+}
+
+#member_area input[type="button"]:hover { /* 로그인, 회원가입 버튼에 마우스오버 시 */
+	background-color: #ce0912;
+}
+
+
+/* 아이티윌홈으로 ---로그인 회원가입 정렬*/
+#member_area{
+	display: flex;
+	justify-content: space-between; /* 로고랑 (로그인, 회원가입) 양쪽 끝 정렬*/
+}
+/*메뉴영역<div id="menu_nav"> 배경색과 글자 정렬*/
+#menu_nav {
+	background-color: #e50914;
+	text-align: center;
+	margin-top: 50px;
+}
+/*메뉴<nav> 영역 안의 태그<a>에 대한 정렬 */
+#menu_nav nav {
+	margin-top: 10px;
+	display: flex;
+	justify-content: center; /* 양 끝을 기준으로 정렬 */
+}
+/*메뉴(nav)영역 안의 <a>태그 글자에 대한 색 설정 밑 글자 크기 설정*/
+#menu_nav a {
+	color: #fff;
+	text-decoration: none; /* 밑줄 없애는 설정 */
+	font-size: 17px;
+	padding: 20px 60px;
+}
+
+#menu_nav a:hover {
+	background-color: #ce0912;
+}
+
+#main_p {
+	text-align: center;
+}
+
+hr {
+	border: 1px solid #e50914;
+}
+/* ================= 여기까지 top/bottom영역에 적용되는 영역 =================== */
+
+header {
+	position: fixed;
+	left: 0; top: 0;
+	width: 100%;
+	margin-top: -10px;
+	z-index:1;
+}
+
+#wrapper {
+	width: 1024px;
+	margin: 0 auto;	
+}
+
+/* ============== 지금부터 예고편 영역에 적용되는 영역 ================== */
+
+#iframe-container {
+	position: relative;
+	top: 160px;
+	left: 100px;
+	width: 80%;
+	padding-bottom: 56.25%; /* 16:9 비율에 맞게 조절 (예: 9 / 16 * 100 = 56.25) */
+}
+
+#iframe-container iframe {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: #000000;
+}
+/*</div>*/
+
+#exit-btn {/* 예고편 종료에 대한 css 설정*/
+	position: absolute; /*부모를 기준으로 포지션 변경 무모는 iframe-containert*/
+	top: 0; 
+	right: 0; /* top, right 쉽게 말해서 맨 오른쪽 맨 위*/
+	margin: 10px; /*상하좌우 영역 10px씩 차지*/
+	padding: 10px; /*상하좌우 영역 10px씩 차지*/
+	background-color: transparent; /*투명하게*/
+	border: none; /*줄 없음*/
+	font-size: 40px;
+	color: #aaa; /*색 회색*/
+	cursor: pointer; /*마우스 올리면 클릭모양으로 커서 바뀜*/
+}
+
+#exit-btn:hover {
+	color: #333; /* 종료 버튼에 가까이 가면 버튼이 검정색으로 바뀜*/
+}
+/* ============== 여기까지 예고편 영역에 적용되는 영역 ================== */
+
+#main_hr {
+	position: relative;
+	top: 500px;	
+}
+
+
+/*무비차트, 상영예정작, 관람객순에 적용되는 영역 */
+input[type="button"] { /* 모든 버튼에 */
+	position: absolute;
+	top: 780px;
+	padding: 6px 15px; /* 안쪽 여백 */
+	border: none;
+    background-color: #e50914; /* 배경색 빨간색 */
+    color: white; /* 글씨색 흰색*/
+    cursor: pointer; /* 커서 변경 */
+}
+
+input[type="button"]:hover {  /* 모든 버튼에 마우스오버 시 */
+	background-color: #ce0912; /* 배경색 진한빨간색 */
+}	
+
+#Sort { /* 분류 버튼 영역 */
+	text-align: center;	/* 가운데정렬 */
+}
+
+#Sort input { /* 분류 버튼 개별로 */
+	margin: 20px 10px 0 10px;
+	padding: 20px 0; /* 안쪽여백 지정 */
+	width: 90px; /* 너비지정 */
+}
+
+/* 영화 포스터 부분에 대한 크기 정렬*/
+#boxoffice {
+	position: absolute;
+	top: 830px;
+	display: flex;
+	flex-wrap: wrap;
+	margin: 0px auto; /* 상하 0px 좌우 자동 정렬*/
+	/*
+	flex-wrap 속성은
+	나열된 (정렬된)  요소들의 총 넓이가 부모 넓이보다 클때, 이 요소들을 다음 줄에 이어서 나열 해 주는 기능
+	display: flex;와 함께 기재 해야함!
+	
+	만약 이 속성 사용하지 않으면 기본값으로 flex-wrap:nowrap;이 적용됨
+	이 정렬된 (나열된) 요소들의 넓이는 부모 넓이에 맞게 모두 자동 축소또는 확장됨!
+	
+	쉽게 말해서 이거 없애면 아래 포스터들 크기 다 지맘대로 되는것 같음!!!!
+	*/
+}
+#boxoffice div{ /* 영화 포스터 크기와 정렬에 관한 설정*/
+	position: relative; /* 현재위치 기준 정렬*/
+    top: 40px; /* 위에서 아래로 40px*/
+    left: 10px;
+     /* 왼쪽에서 오른쪽으로 10% 움직임*/
+    /*임의로 크기를 정했고, 그리고 API에서 포스터 따오면 수정될 영역임으로
+      원하는데로 크기나 위치 조정해도 됨 */     
+}
+#boxoffice img {
+    width: 180px; 
+    height: 260px; /*포스터 가로 세로 크기설정 (200px, 300px)*/
+    padding: 10px; /* 상하좌우 10px씩 밀어냄*/
+}
+
+#boxoffice input {/* 좋아요 버튼에 대한 설정 */
+	background-color: transparent; /* 배경 투명하게*/
+	color: #000;  /* 무색 */
+	border: none;  /* 테두리 없음 */
+	font-size: 20px; /* 글자 크기 */
+	position: absolute;
+	top: 270;
+	left: 40px;
+	cursor: pointer; /* 마우스 올리면 클릭모양으로 커서 바뀜*/
+}
+
+#advertisement {
+	padding: 10px; /* 안쪽여백지정 */
+	border-radius: 3px; /* 모서리 둥글게 */
+ 	background-color: #f9f8e1; /* 배경색 */
+	border: 2px solid #9d9d9d; /* 테두리 */
+	width: 170px;
+	position: fixed;
+	top: 30%;
+	right: 10px;
+}
+
+#boxoffice input:hover {
+	color: red; /* 좋아요 글자에 마우스 가까이 가져가면 빨간색으로 변함*/
+}
+
+footer {
+	position: relative;
+	top: 630px;
+	width: 100%;	
+}

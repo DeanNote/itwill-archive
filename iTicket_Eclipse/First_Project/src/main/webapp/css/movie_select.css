@@ -1,0 +1,150 @@
+@charset "UTF-8";
+
+
+/* ======== 전체 영역에 적용할 css ======== */
+
+html {
+	height: 100%;
+}
+
+body {
+	height: 100%;
+}
+
+
+header {
+	position: fixed;
+	left: 0; top: 0;
+	width: 100%;
+	z-index:1;
+}
+
+#wrapper {
+	min-height: 100%;
+	position: relative;
+	width: 100%
+}
+
+
+#content {
+	padding: 100px 0;
+	width: 1024px;
+	margin: 100px auto;	
+}
+
+/* 제목 */
+#h01{
+	font-size: 35px; /* 폰트 크기 조정  */
+	text-align: center; /* 스토어 제목 중앙 정렬  */
+}
+
+
+/* ============= 본문에 적용할 css ============== */
+
+button { /* 좌석예매 버튼 */
+    padding: 5px 10px;
+    background-color: #e50914;
+    color: #fff;
+    border: none;
+    border-radius: 3px; /* 모서리 곡률 */
+    cursor: pointer;
+}
+
+button:hover { /* 버튼 가까이 갔을때 어둡 */
+    background-color: #c70711;
+}
+
+
+#reserve_parameter{ /*화면 가운데로 정렬 하는 코드*/
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	margin: 20px;
+}
+
+#reserve_parameter>div{ /* 데이터 입력받는 버튼 크기 조절*/
+	border: 1px solid;
+	width:310px;
+	height:400px;
+/* 	float:left;  왜있는지 모르는 코드 이상 없으면 지울꺼임 */ 
+}
+
+
+.overflow{ /* 데이터가 영역 밖으로 넘어가면 자동으로 스크롤 바 생성*/
+	overflow: auto;
+	display: inline-block;
+}
+
+.overflow b{ /* 제목에 대한 디자인 설정 (영화, 극장, 날짜, 시간)*/
+	background-color: #333;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 40px;
+	color: #fff;
+	font-size: 20px;
+	
+}
+
+
+.movie input,.theater input{ /* 버튼을 영역에 대한 크기 설정(영화, 극장)*/
+	width: 285px;
+	height: 50px;
+	border: none;
+}
+
+.date{ /* 날짜 버튼 영역크기 설정(일부러 조금 작게 함)*/
+	width:160px !important;
+}
+
+.date input{
+	width: 140px;
+	height: 50px;
+	border: none;
+	
+}
+
+.time input{
+	width: 60px;
+	height: 20px;
+	margin: 10px;
+}
+
+.selected {
+	background-color: darkgray; /*클릭되면 빨간색으로 seat배경색 바뀜*/
+}
+#end_param{
+	width:auto;
+	text-align: center;
+	align-items: center;
+	display: flex;
+	justify-content: center;
+	border:3px solid;
+	background-color: #1D1D1C;
+	color:#fff;
+	height: 100px;
+}
+
+
+#end_param td{
+	text-align: center;
+	width: 200px;
+	border-right: 2px solid;
+	height: 50px;
+}
+
+.btnsubmit{
+	width:80px;
+	height: 80px;
+	border-radius: 10px;
+}
+
+/* ================ footer에 적용할 css =============== */
+
+footer {
+	position: absolute;
+	left: 0; bottom: 0;
+	width: 100%;
+	padding-top: 10px;
+}

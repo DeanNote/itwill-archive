@@ -1,0 +1,68 @@
+@charset "UTF-8";
+
+li, a {
+	list-style-type: none;
+	text-decoration: none;	
+}
+
+#movie_detail {
+	position: relative;
+	
+}
+
+#movie_detail .title {
+	position: absolute;
+	left: 300px;
+	bottom:93%;
+	font-size: 50px;
+}
+
+#movie_detail>.detail_info {
+	position: absolute;
+	left: 300px;
+	bottom: 88%;	
+}
+
+.reservBtn {
+	position: relative;
+	top: 10px;
+	left: 10px;
+	border: 1px solid;
+	padding: 10px 67px;
+	margin-right: 50px;
+	
+}
+
+.click_link {
+	margin-top: 100px;
+	margin-bottom: 100px;
+}
+
+.click_link>li {
+	background-color: #08d;
+	display: inline-block;
+	width: 150px;
+	height: 30px;
+	text-align: center;
+	line-height: 30px;
+}
+
+
+#movie_detail>.movie_story {
+	margin-bottom: 100px;
+}
+
+
+#movie_detail>.movie_trailer {
+	margin-bottom: 100px;
+}
+
+
+#movie_detail>.movie_cut {
+	margin-bottom: 100px;
+}
+
+
+#movie_detail>.review {
+	margin-bottom: 100px;
+}

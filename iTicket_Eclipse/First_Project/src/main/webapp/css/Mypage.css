@@ -1,0 +1,59 @@
+@charset "UTF-8";
+
+/* 사이드 메뉴창 */
+.menu{
+	float: left;
+	width: 200px;
+	height: 800px;
+	padding: 10px;
+	box-sizing: border-box;
+}
+
+section{margin-bottom: 20px;}
+.menu_1{display: none;}
+ 	
+label:hover+.menu_1{display: block;}
+ 
+section {border-style : solid ;
+border-color:red;
+margin: 1em 1em;
+padding: 1em; 
+}
+
+
+/* -----------------사이드메뉴창끝----------------------------- */
+
+
+/* 바디부분 상단 */
+.container{
+	float:left;
+	width: 800px;
+	height: 300px;
+	margin-left:auto;
+	box-sizing: border-box;
+}
+
+
+tr, td{
+	padding: 5px;
+	text-align: center;
+	border: 1px solid;
+}
+
+
+div>table {
+	border-collapse: collapse;
+    width: 100%;
+}
+
+/* -----------------바디부분 상단 끝----------------------------- */
+
+
+/* 바디부분 하단 */
+.container_bottom{
+	float:left;
+	width: 800px;
+	height: 300px;
+	margin-top:auto;
+	box-sizing: border-box;
+}

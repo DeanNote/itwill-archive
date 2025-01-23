@@ -1,0 +1,158 @@
+@charset "UTF-8";
+
+/* 스토어 상세 페이지 css  */
+/* 스토어 상세페이지 박스화 */
+* {
+	box-sizing: border-box;
+}
+
+.store_view .store_subject {
+	font-size: 20px;
+	font-weight: 5px;
+}
+
+
+/* ------------------------------------------------------------------------ */
+.store_view .store_subject {
+	margin-top: 50px;
+}
+
+
+/* 박스 위아래 선긋기 */
+.store_view .box_store_view {
+	overflow: hidden;
+	position: relative;
+	margin: 10px 0 0 0;
+	border-top: 1px solid #555;
+	border-bottom: 1px solid #d8d9db;
+	
+}
+
+/* 중간선 */
+.store_view .box_store_view:before {
+	content: '';
+	display: block;
+	position: absolute;
+	left: 479px;
+	top: 0;
+	width: 1px;
+	height: 100%;
+	background-color: #d8d9db;
+}
+
+/* -----------------------------------------------------------------------  */
+
+.store_view .box_store_view .left {
+	float: left;
+	width: 480px;
+	padding: 0 0 30px 0;
+}
+
+.store_view .box_store_view .left .img {
+	display: table;
+	table-layout: fixed;
+	width: 100%
+}
+
+.store_view .box_store_view .left .img p {
+	display: table-cell;
+	height: 400px;
+	text-align: center;
+	vertical-align: middle;	
+}
+
+
+.store_view .box_store_view .right {
+	float: left;
+	width: calc(100% - 480px);
+	padding: 15px 0 30px 40px;
+}
+
+
+.store_view .box_store_view .right .goods_info .line .title {
+	display: table-cell;
+	width: 100px;
+	padding-top: 15px;
+	color: #222;
+	vertical-align: top;
+}
+
+.store_view .box_store_view .right .goods_info .line .contents {
+	display: table-cell;
+	width: calc(100% - 100px);
+	padding-top: 15px;
+	vertical-align: top;
+	font-weight: 5px;
+}
+
+.store_view .box_store_view .right .pay {
+	margin: 15px 0 0 0;
+	border-top: 1px solid #ebebeb;
+}
+
+.store_view .box_store_view .right .pay .title {
+	display: table-cell;
+	width: 100px;
+	padding-top: 20px;
+	color: #222;
+	vertical-align: top;
+}
+
+.store_view .box_store_view .right .pay .receipt .contents {
+	overflow: hidden;
+	display: table-cell;
+	width: calc(100% - 100px);
+	padding-top: 20px;
+	vertical-align: top;
+}
+
+
+.store_view .box_store_view .right .pay .receipt  {
+	display: table;
+	table-layout: fixed;
+	width: 100%;
+}
+
+.store_view .box_store_view .right .pay .receipt .input-text {
+	width: 30px;
+	border: 1px solid #ccc;
+	border-width: 1px 0;
+}
+
+.store_view .box_store_view .right .pay .money {
+	float: right;
+} 
+
+.store_view .box_store_view .right .btn_buy {
+	overflow: hidden;
+	margin: 20px 0 0 0;
+	padding: 20px 0 0 0;
+	border-top: 1px solid #ebebeb;
+}
+
+
+.store_view .box_store_view .right .btn_buy button {
+	display: block;
+	float: right;
+	width: 150px;
+	height: 30px;
+	margin: 0;
+	background-color: #8000ff;
+	border: 1px;
+	font-size: 14px;
+	font-weight: 2px;
+}
+
+
+/* 설명안내 */
+#store_expl01 {
+	margin-top: 20px;	
+}
+#store_expl02 {
+	font-size: 12px;
+}
+
+
+
+
+

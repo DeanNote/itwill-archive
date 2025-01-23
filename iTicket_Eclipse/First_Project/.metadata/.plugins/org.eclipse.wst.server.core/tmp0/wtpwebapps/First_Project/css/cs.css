@@ -1,0 +1,277 @@
+@charset "EUC-KR";
+
+/* ======== 전체 영역에 적용할 css ======== */
+
+#wrapper { /* 전체 영역에 */
+	max-width: 1024; /* 크기 제한 주고*/
+	margin: 0 auto; /* 가운데 정렬 */
+}
+
+h1 { /* 제목영역 */
+	margin-top: 20px; /* 위 띄우기 */
+	margin-bottom: 20px; /* 아래 띄우기 */
+	text-align: center; /* 가운데정렬 */
+	position: relative; /* 포지션 기준 잡기 */
+}
+
+a { /* 하이퍼링크에 */
+	text-decoration: none; /* 밑줄 없애기 */	
+	color: #000000; /* 글씨 색깔 변경 */
+}
+
+nav { /* 내비게이션바에 */
+	position: absolute; /* 상대위치지정 */
+	left: 10%; /* 제목에서부터 왼쪽 10% */
+}
+
+form { /* 폼태그에 */
+	position: absolute; /* 상대위치지정 */
+	left: 25%; /* 제목에서부터 왼쪽 25% */
+	width: 800px; /* 너비 800지정 */
+}
+
+textarea { /* 텍스트박스 */
+  resize: none; /* 크기고정 */
+  width: 600px; /* 너비지정 */
+  height: 300px; /* 높이지정 */
+  border: 1.5px solid #AFAFB2; /* 테두리 */
+}
+
+hr { /* 위아래선 */
+	border: 1.5px solid #AFAFB2; /* 1.5px 회색 */
+	margin: 10px -5px; /* 위아래 띄우고 양옆 줄임 */
+}
+
+#hr_mid { /* 중간선 */
+	border: 1px solid #AFAFB2; /* 1px 회색 */
+	margin: 10px -5px; /* 위아래 띄우고 양옆 줄임 */
+}
+
+input[type="button"], input[type="submit"] { /* 모든 버튼에 */
+	width: 80px; /* 넓이지정 */
+	height: 30px; /* 높이지정 */
+	font-size: 11px; /* 글자크기 지정 */
+}
+
+input[type="submit"] { /* 등록 버튼에 */
+	text-align: center;
+}
+
+/* ======== 전체 영역 테이블에 적용할 css ======== */
+
+#cs_table { /* 자주묻는질문, 공지사항 테이블에 */
+	width: 800px; /* 넓이 지정 */
+	margin: 0 auto; /* 가운데정렬 */
+}
+
+#table1 { /* 자주묻는질문, 공지사항 테이블 제목에 */
+	text-align: center; /* 제목 가운데정렬 */
+	background-color: #f2f2f0; /* 제목 배경색 지정 */
+	border-top: 2px solid #AFAFB2; /* 제목상단줄 */
+	border-bottom: 2px solid #AFAFB2; /* 제목하단줄 */
+	padding: 10px 5px; /* 안쪽 여백 지정 */
+	font-weight: bolder; /* 글자 두껍게 */
+}
+
+#table2 { /* 분실물문의, 1대1질문 테이블에 */
+	text-align: center; /* 제목 가운데정렬 */
+	background-color: #f2f2f0; /* 제목 배경색 지정 */
+	border-top: 2px solid #AFAFB2; /* 제목상단줄 */
+	border-bottom: 2px solid #AFAFB2; /* 제목하단줄 */
+	width: 130px; /* 너비지정 */
+	padding: 10px 5px; /* 안쪽 여백 지정 */
+	font-weight: bolder; /* 글자 두껍게 */
+}
+
+#table3 { /* 모든 표 내용 영역에 */
+	border-top: 2px solid #AFAFB2; /* 상단줄 */
+	border-bottom: 2px solid #AFAFB2; /* 하단줄 */
+	width: 270px; /* 너비지정 */
+	padding: 10px 5px; /* 안쪽 여백 지정 */
+}
+
+
+/* ======== 메뉴바 영역에 적용할 css ======== */
+
+a { /* 하이퍼링크에 */
+	text-decoration: none; /* 밑줄 없애기 */	
+	color: #000000; /* 글씨 색깔 변경 */
+}
+
+#cs_menubar { /* 메뉴바 전체에 */
+	text-align: center; /* 가운데정렬 */
+	width: 160px; /* 넓이지정 */
+	height: 400px; /* 높이지정 */
+ 	border-radius: 5px; /* 모서리 둥글게 */
+ 	background-color: #f2f2f0; /* 배경색 */
+	border: 2px solid #AFAFB2; /* 테두리 */
+} 
+
+#cs_menubar_title { /* 메뉴바 제목에 */
+	background-color: #4A6BD6; /* 배경색*/
+	border-radius: 3px 3px 0 0;  /* 상단 모서리 둥글게 */
+	font-size: 23px; /* 글자크기 */
+	font-weight: bold; /* 글자두껍게 */
+	margin: 0; /* 여백없애기 */
+	padding-top: 25px;  /* 안쪽상단여백 */
+	padding-bottom: 25px; /* 안쪽하단여백 */
+}
+
+#cs_menubar_ul { /* 순서없는 목록 전체에 */
+	text-align: center; /* 가운데정렬 */
+	list-style: none; /* 앞 표시 없애기 */
+	font-size: 16px; /* 글자크기 */
+	padding-left: 5px; /* 왼쪽여백 */
+	margin: 0; /* 바깥여백 없애기 */
+}
+
+#cs_menubar_li { /* 순서없는 목록 각 줄에 */
+	padding-top: 20px; /* 안쪽상단여백 */
+	padding-bottom: 20px; /* 안쪽하단여백 */
+	border-top: 2px solid #AFAFB2; /* 테두리 */
+	width: 160px; /* 너비지정 */
+	margin-left: -5px; /* 왼쪽여백줄이기 */
+}
+
+
+/* ======== 고객센터 메인과 자주묻는 질문, 공지사항에 적용할 css ======== */
+
+#main_shortcuts { /* 바로가기 영역 */
+	margin: 30px 0; /* 상하단 여백 */
+	text-align: center; /* 가운데정렬 */
+}
+
+#main_shortcuts>a { /* 바로가기 a태그 */
+	display: inline-block; /* 나란히 배치하기 위해 변경 */
+	margin: 10px; /* 바깥여백주기 */
+}
+
+#main_faq { /* 자주묻는질문 미리보기 */
+	margin-top: 20px; /* 상단여백 */
+	float: left; /* 왼쪽에 배치 */
+	width: 45%; /* 45%차지 */
+}
+
+#main_notice { /* 공지사항 미리보기 */
+	margin-top: 20px; /* 상단여백 */
+	float: right; /* 오른쪽에 배치 */
+	width: 45%; /* 45%차지 */
+}
+
+#main_faq>h4, #main_notice>h4 { /* 미리보기 제목 */
+	display: inline-block; /* 더보기 버튼과 나란히 배치하기 위해 속성변경 */
+	text-align: left; /* 왼쪽에 배치 */
+}
+
+#main_faq>a, #main_notice>a { /* 더보기 버튼 */
+	text-align: right; /* 오른쪽에 배치 */
+}
+
+#search { /* 빠른검색 */
+	text-align: center; /* 가운데정렬 */
+	background-color: #c6cff2; /* 배경색 */
+	border: none; /* 줄없애기 */
+	padding: 10px 0; /* 안쪽상하단 여백 */
+}
+
+input[type="search"] {
+	border: none; /* 테두리 없애기 */
+	border-bottom: 1.5px solid #AFAFB2; /* 밑줄 */
+	margin: 10px; /* 여백 */
+	height: 30px; /* 높이지정 */
+	width: 350px; /* 넓이지정 */
+}
+
+#search>select { /* 검색창 셀렉트박스에 */
+	border: none; /* 테두리 없애기 */
+	border-bottom: 1.5px solid #AFAFB2; /* 밑줄 */
+	margin: 10px; /* 여백 */
+	height: 30px; /* 높이지정 */
+	width: 150px; /* 넓이지정 */
+}
+
+#fqa_button { /* 분류 버튼 영역 */
+	text-align: center;	/* 가운데정렬 */
+	margin: 5px;
+}
+
+#fqa_button>input { /* 분류 버튼 개별로 */
+	margin: 20px 10px 0;  /* 위20 좌우10 아래0 px */
+	background-color: #f2f2f0; /* 배경색 */
+	border: none; /* 테두리 없음 */
+	padding: 10px; /* 안쪽여백 지정 */
+	width: 90px; /* 너비지정 */
+}
+
+
+#pageNum { /* 페이지번호 전체 영역 */
+	 text-align: center; /* 가운데정렬 */
+	 margin: 5px auto; /* 여백 */
+}
+
+#pageNum>input[type="button"] { /* 공지사항과 자주묻는 페이지번호 */
+	 width: 30px; /* 버튼 너비 지정 */
+}
+
+
+/* ======== 1 : 1 문의와 분실물 문의에 적용할 css ======== */
+
+p { /* 1대1문의, 분실물문의 최상단 안내문 */
+	font-size: 15px; /* 글자크기 지정 */
+	margin-top: 0;
+}
+
+#agree_msg { /* 동의문 영역의 */
+	border: 2px solid #AFAFB2; /* 테두리 지정 */
+	border-radius: 5px; /* 모서리 둥글게 */
+	padding: 10px; /* 안쪽여백지정 */
+}
+
+#warning { /* 주의사항 영역 */
+	float: right; /* 오른쪽 정렬 */
+	color: #ff0000; /* 빨간색 */
+	font-size: 12px; /* 글자작게 */
+}
+
+#input_table { /* 문의 입력창 테이블 전체 */
+	margin-top: 30px; /* 상단여백 */
+	border: 0; /* 테두리 없음 */
+}
+
+#table3>#name, #table3>#id, #table3>#tel,
+#table3>#passwd { /* 이름, 아이디, 전화, 비밀번호 입력창에 */
+	border: none; /* 테두리 없애기 */
+	border-bottom: 1.5px solid #AFAFB2; /* 밑줄 */
+	margin: 10px; /* 여백 */
+	height: 30px; /* 높이지정 */
+	width: 250px; /* 넓이지정 */
+}
+
+#table3>#email, #table3>#title, #table3>#file { /* 이메일, 제목, 파일등록창에 */
+	border: none; /* 테두리 없애기 */
+	border-bottom: 1.5px solid #AFAFB2; /* 밑줄 */
+	margin: 10px; /* 여백 */
+	height: 30px; /* 높이지정 */
+	width: 500px; /* 넓이지정 */
+}
+
+#table3>select, #table3>input[type="datetime-local"] { /* 셀렉트박스와 날짜선택창에 */
+	border: none; /* 테두리 없애기 */
+	border-bottom: 1.5px solid #AFAFB2; /* 밑줄 */
+	margin: 10px; /* 여백 */
+	height: 30px; /* 높이지정 */
+	width: 250px; /* 넓이지정 */
+}	
+
+#table2>b { /* 필수입력항목 별표 */
+	color: #ff0000; /* 빨강색으로 변경 */
+}
+
+#table3>b { /* 비밀번호 안내문 */
+	font-size: 11px; /* 글씨작게 */
+}
+
+#cs_button { /* 모든 버튼 */
+	margin: 30px; /* 주변 띄우고 */
+	text-align: center; /* 가운데정렬 */
+}

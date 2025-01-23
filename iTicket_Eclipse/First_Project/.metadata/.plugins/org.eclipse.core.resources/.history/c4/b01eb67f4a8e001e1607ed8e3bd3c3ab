@@ -1,0 +1,41 @@
+@charset "UTF-8";
+.seat { /* 좌석에 대한 디자인 */
+    width: 30px;
+    height: 30px;
+    background-color: #ccc; 
+    margin: 5px; 
+    display: inline-block;
+    cursor: pointer; /* 커서를 가져다 대면 클릭할 수 있는 표시로 바뀜 */
+}
+.selected {
+	background-color: red; /*클릭되면 빨간색으로 seat배경색 바뀜*/
+}
+.seat:nth-of-type(4), .seat:nth-of-type(12) {
+	margin-right: 60px/*좌석의 4번째열과 12번째 열 옆으로 통로만드는 css*/
+}
+.center{
+	text-align: center;
+	position:relative;
+	position: absolute; 
+}
+
+.right{
+	text-align: right;
+}
+
+
+.bottom_info{
+	border: 1px solid;
+}
+
+
+table, th, td { 
+	border: 2px solid orange; 
+	width: 1000px; 
+	margin: auto;
+	margin-top: 5%;
+	text-align: center;
+	
+	
+}
+table { border-collapse: collapse; }

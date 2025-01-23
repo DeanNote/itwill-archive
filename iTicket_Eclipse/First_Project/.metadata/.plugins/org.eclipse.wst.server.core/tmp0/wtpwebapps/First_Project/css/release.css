@@ -1,0 +1,48 @@
+@charset "EUC-KR";
+
+li {
+	position: relative;
+	left:35%;
+	background-color: #fff;
+	display: inline-block;
+	width: 150px;
+	height: 30px;
+	text-align: center;
+	font-size:30px;
+	line-height: 30px;
+	margin-right: 200px;
+}
+
+li>a {
+	text-decoration: none;
+}
+
+.line {
+	position: relative;
+	left:25%;
+	margin-bottom: 50px;
+	
+}
+
+.poster {
+	margin-right: 50px;
+}
+
+.title {
+	border: 1px solid;
+	position: relative;
+	bottom: 30px;
+	padding: 0 48px;
+	margin-right: 50px;
+	display: inline;
+	
+}
+
+.reservBtn {
+	position: relative;
+	bottom: 10px;
+	border: 1px solid;
+	padding: 10px 67px;
+	margin-right: 50px;
+	text-decoration: none;
+}

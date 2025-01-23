@@ -1,0 +1,131 @@
+@charset "EUC-KR";
+
+
+h3{
+	color:gray;
+}
+
+h1 {
+	margin-top: 20px;
+	margin-bottom: 20px;
+	margin-left: 14em;
+	position: relative;
+}
+
+a { /* 하이퍼링크에 */
+	text-decoration: none; /* 밑줄 없애기 */	
+	color: #190000; /* 글씨 색깔 변경 */
+}
+
+nav { /* nav 위치 고정*/
+	position: absolute;
+	left: 10%;
+}
+
+form { /* form 태그 크기 위치 조정 */
+	position: absolute;
+	left: 25%;
+	width: 1000px;
+}
+
+
+
+/* ======== 메뉴바 영역에 적용할 css ======== */
+
+a { /* 하이퍼링크에 */
+	text-decoration: none; /* 밑줄 없애기 */	
+	color: #190000; /* 글씨 색깔 변경 */
+}
+
+#admin_menubar { /* 메뉴바 전체에 */
+	text-align: center; /* 가운데정렬 */
+	width: 160px; /* 넓이지정 */
+	height: 550px; /* 높이지정 */
+ 	border-radius: 5px; /* 모서리 둥글게 */
+ 	background-color: white; /* 배경색 */
+	border: 2px solid #190000; /* 테두리 */
+/* 	margin: auto; */
+} 
+
+
+
+#menu2{ /* 메뉴 배경색 변경*/
+	background-color: #A0D9E2;
+}
+#menu4{
+	background-color: #AB6CFF;
+}
+
+#menubar3>input{ /* 메뉴바 위치 조정 */
+	padding-top: 10px;
+	padding-bottom: 20px;
+}
+
+#menubar2 { /* 메뉴바2 배경색 위치 크기 조정 */
+	text-align: left;
+	background-color: #CFCFCF;
+	border-top: 2px solid #190000;
+	border-bottom: 2px solid #190000;
+	padding: 10px 0;
+}
+
+
+#side_button>input {
+	margin: 10px 15px 0;
+/*	padding: 10px;*/
+	width: 135px;
+	height: 35px;
+	background-color:#505050;
+	color: white;
+	font-weight: bold;
+}
+
+.menubar3 {
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+#cs_table { /* 회원정보 테이블 가운데 정렬 밑 크기*/
+	width: 1000px;
+	margin: auto;
+	text-align: center;
+}
+
+#table1 { /* 테이블 젤위 색깔 */
+	background-color: #EAEAEA;
+}
+#pageNum { /* 페이지 넘기기 위치 조정*/
+	margin-top : 10px;
+	margin-left: 25em;
+}
+/* 페이지 버튼 색깔 처리 */
+#pageNum1 , #pageNum2, #pageNum3, #pageNum4, #pageNum5 {
+	background-color: #EAEAEA;
+}
+
+
+
+#warning {
+	float: right;
+	color: #ff0000;
+	font-size: 12px;
+}
+
+
+#table2 {
+	text-align: center;
+	background-color: #fff4f4;
+	border-top: 2px solid #190000;	
+	border-bottom: 2px solid #190000;
+	width: 130px;
+}
+
+#table3 { /* 테이블 굵기 높이 지정 */
+	border-top: 2px solid #190000;
+	border-bottom: 2px solid #190000;
+	width: 270px;
+}
+
+
+
+
