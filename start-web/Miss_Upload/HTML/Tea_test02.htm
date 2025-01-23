@@ -1,0 +1,199 @@
+﻿<html>
+ <head>
+  <title>list - 목록 만들기</title>
+ </head>
+ <body>
+ <hr>
+  <h1> &#10048;list - 목록 만들기</h1>
+ <hr>
+ <h2>html목록 종류 </h2>
+ <ul>
+  <li>&lt;ul&gt; - 순서없는 목록</li>
+  <li>&lt;ol&gt; - 순서있는 목록</li>
+  <li>&lt;dl&gt; - 정의 목록</li>
+ </ul>
+
+ <hr>
+ <h2>1. ul - 순서 없는 목록</h2>
+ <ul> 
+  <li><b>html</b> 구조를 담당</li>
+  <li><b>css</b> 디자인을 담당</li>
+  <li><b>javascript</b> 동적인 기능을 담당</li>
+ </ul>
+
+ <ul> 
+  <li>coffee</li>
+  <li>tea</li>
+  <li>milk</li>
+  <li>water</li>
+ </ul>
+
+
+ [문제] 좋아하는 색상 3가지를 순서없는 목록으로 만들기
+ <ul>
+  <li>pink</li> 
+  <li>olive</li>
+  <li>navy</li>
+ </ul>
+
+ <hr>
+ <h2>&lt;!-- 주석 내용 --&gt; 주석 태그</h2>
+  <p>브라우저 화면에 보이지않는 내용을 소스상에만 표시</p>
+ <hr> 
+
+ <h3>web color</h3>
+ <!-- 난 주석 태그 -->
+ <!-- 삼원색은 각 자리별로 최소 0에서 최대 255까지 값을 가짐 -->
+ <ul>
+  <li style="color:red;">
+   빛의 삼원색 (빨강) red=#ff0000=rgb(255,0,0) </li> 
+  <li style="color:#00ff00;">
+   빛의 삼원색 (초록) green=#00ff00=rgb(0,255,0) </li>
+  <li style="color:rgb(0,0,255);">
+   빛의 삼원색 (파랑) blue=#0000ff=rgb(0,0,255) </li>
+  <li style="background:#ffff00;">
+   노랑 yellow=#ffff00=rgb(255,255,0) </li>
+  <li>흰색 white=#ffffff=rgb(255,255,255) </li>
+   <li>검정 black=#000000=rgb(0,0,0) </li>
+ </ul>
+
+ <hr>
+ <h2>2. ol - 순서  있는 목록</h2>
+ <ol>
+  <li>html</li>
+  <li>css</li>
+  <li>javascript</li>
+ </ol>
+
+ <ol>
+  <li>red</li>
+  <li>pink</li>
+  <li>green</li>
+  <li>blue</li>
+ </ol>
+
+ <h3>2-1. type="<i>1</i>/a/A/i/I" 순서  있는 목록의 모양 바꾸기</h3>
+ <ol type="1">
+  <li>html</li>
+  <li>java</li>
+  <li>jsp</li>
+  <li>css</li>
+  <li>db</li>
+  <li>job</li>
+ </ol>
+ 
+ <ol type="a">
+  <li>html</li>
+  <li>java</li>
+  <li>jsp</li>
+  <li>css</li>
+  <li>db</li>
+  <li>job</li>
+ </ol>
+
+ <ol type="A">
+  <li>html</li>
+  <li>java</li>
+  <li>jsp</li>
+  <li>css</li>
+  <li>db</li>
+  <li>job</li>
+ </ol>
+ 
+ <ol type="i">
+  <li>html</li>
+  <li>java</li>
+  <li>jsp</li>
+  <li>css</li>
+  <li>db</li>
+  <li>job</li>
+ </ol>
+ 
+ <ol type="I">
+  <li>html</li>
+  <li>java</li>
+  <li>jsp</li>
+  <li>css</li>
+  <li>db</li>
+  <li>job</li>
+ </ol>
+
+ <h3>2-2. start="n" 순서  있는 목록의 시작 바꾸기</h3>
+ <ol start="10">
+  <li>html</li>
+  <li>java</li>
+  <li>jsp</li>
+  <li>css</li>
+  <li>db</li>
+  <li>job</li>
+ </ol>
+ 
+ [문제] 
+ <ol start="3" type="I">
+  <li>red</li>
+  <li>green</li>
+  <li>blue</li>
+ </ol>
+
+ <h2>하위목록 만들기</h2>
+ <ul>
+   <li>coffee
+   <ul> 
+    <li>hot
+     <ol>
+      <li>~coffee</li>
+      <li>~~coffee</li>
+      <li>~~~coffee</li>
+     </ol> 
+    </li> <!-- 종료태그 위치 주의 -->
+    <li>cold</li>
+   </ul>
+  </li>
+  <li>tea
+   <ul>
+    <li>hot</li> 
+    <li>cold</li>
+   </ul>
+  </li>
+  <li>milk</li>
+ </ul>
+
+
+ <hr>
+ <h2>3. dl - 정의 목록</h2>
+ <dl> 
+  <dt>html</dt>
+  <dd>웹페이지의 구조를 담당.</dd>
+ </dl>
+
+ <dl>
+  <dt>&lt;dl&gt;</dt>
+  <dd> - 정의 목록</dd>
+  <dt>&lt;dt&gt;</dt>
+  <dd> - 정의 내릴 대상</dd>
+  <dt>&lt;dd&gt;</dt>
+  <dd> - 정의 내용</dd>
+ </dl>
+ 
+ <dl>
+  <dt>html</dt>
+  <dd>Hyper Text Markup Language의 약자.</dd>
+  <dd>웹페이지의 구조를 담당.</dd>  
+ </dl>
+
+ [문제] 자신을 정의내리는 목록(3가지 관점)
+ <dl>
+  <dt>&#127793;이순신</dt>
+  <dd>~~~</dd>
+  <dd>~~~</dd>
+  <dd>~~~</dd>
+ </dl>
+
+
+ </body>
+</html>
+
+
+
+
+

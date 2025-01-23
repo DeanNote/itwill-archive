@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+  <title>table - 표 만들기</title>
+   
+   <style type = "text/css">
+   table, th, td {border:1px solid #004488;}
+   </style>
+
+ <body>
+ <hr>
+ <h1>table - 표 만들기</h1>
+
+ <table> 
+
+  <tr>
+   <td><b>tag</b></td>
+   <td><b>설명</b></td>
+  </tr> 
+
+  <tr>
+   <td>table</td>
+   <td>표를 구성하는 태그</td>
+  </tr>
+
+  <tr>
+   <td>tr</td>
+   <td>줄을 구성하는 태그</td>
+  </tr>
+
+  <tr>
+   <td>th</td>
+   <td>제목칸을 구성하는 태그<br>
+   (중앙정렬, 글자는 bold체)
+   </td>
+  </tr>
+
+  <tr>
+   <td>tr</td>
+   <td>칸을 구성하는 태그</td>
+  </tr>
+
+ </table>
+<h2>가로형 표 만들기</h2>
+
+ <table> 
+
+  <tr>
+ 	<td><b>tag</b></td>
+  	<td>table</td>
+	<td>tr</td>
+	<td>th</td>
+	<td>td</td>
+  </tr> 
+
+  <tr>
+    	<td><b>설명</b></td>
+  	<td>표를 구성하는 태그</td>
+	<td>줄을 구성하는 태그</td>
+	<td>제목칸을 구성하는 태그<br>
+           (중앙정렬, 글자는 bold체)</td>
+	<td>칸을 구성하는 태그</td>
+  </tr>
+
+ </table>
+
+<hr>
+
+<h2> 셀병합 </h2>
+
+<table>
+
+<tr>
+ <th colspan="2">셀 합치기</th>
+</tr>
+
+<tr>
+ <td align = "center">속성</td>
+ <td align = "center">설명</td>
+</tr>
+
+<tr>
+ <td>colspan="n"</td>
+ <td>가로로 n개의 칸을 하나로 합치기</td>
+</tr>
+
+<tr>
+ <td>rowspan="n"</td>
+ <td>세로로 n개의 칸을 하나로 합치기</td>
+</tr>
+
+</table>
+
+<h4>[문제] 가로로 칸 합치기</h4>
+
+<table>
+
+<tr>
+ <th colspan ="5">출석표</th>
+</tr>
+
+<tr>
+ <th colspan = "4">출석</th>
+ <th>결석</th>
+</tr>
+
+<tr>
+ <td>지각</td>
+ <td>3명</td>
+ <td>조퇴</td>
+ <td>1명</td>
+ <td>0</td>
+</tr>
+
+</table>
+
+<h4>[문제] 세로로 칸 합치기</h4>
+
+<table>
+
+<tr>
+<td rowspan = "5">현<br>황</td>
+<td rowspan = "2">확진</td>
+<td>격리</td>
+<td rowspan = "3">결석</td>
+</tr>
+
+<tr>
+<td>2</td>
+</tr>
+
+<tr>
+<td rowspan = "3">이상</td>
+<td>고열</td>
+</tr>
+
+<tr>
+<td>기침</td>
+<td rowspan="2">대기</td>
+</tr>
+
+<tr>
+<td>몸살</td>
+</tr>
+
+</table>
+
+<h4>[문제] 복합 칸 합치기</h4>
+<table>
+
+<tr>
+<th colspan = "4">아이티윌 게스트하우스 예약 안내</th>
+
+</tr>
+
+<tr>
+<th>방 이름</th>
+<th>대상</th>
+<th>크기</th>
+<th>가격</th>
+</tr>
+
+<tr>
+<th>유채방</th>
+<td >여성 도미토리</td>
+<td rowspan = "3">4인실</td>
+<td rowspan = "4">1인 20,000원</td>
+</tr>
+
+<tr>
+<th rowspan = "2">동백방</th>
+<td colsapn = "2">남성 도미토리</td>
+
+</tr>
+
+<tr>
+
+<td>가족 1팀</td>
+
+</tr>
+
+<tr>
+<th colspan = "2">천혜향방</th>
+<td>2인실</td>
+
+</tr>
+
+<tr>
+<td colspan = "4"><b>바깥채 단독 : 전화문의 </b>(010-777-5454)</td>
+
+</tr>
+</table>
+
+<hr>
+
+<table>
+<tr>
+<th colspan ="6">자바 개발자반</th>
+</tr>
+
+<tr>
+<th colspan ="2">오라클</th>
+<th colspan ="2">웹표준 UI</th>
+<th colspan ="2">애플리케이션</th>
+</tr>
+
+<tr>
+<td rowspan = "4">1교시<br>~<br>4교시</td>
+<td rowspan = "4"><b>특강</b><br><small>강사</small><br>홍길동</td>
+<td colspan ="2">1교시</td>
+<td colspan ="2">1교시</td>
+</tr>
+
+<tr>
+<td colspan ="2">2교시</td>
+<td colspan ="2">2교시</td>
+</tr>
+
+<tr>
+<td colspan ="2">3교시</td>
+<td colspan ="2">3교시</td>
+</tr>
+
+<tr>
+<td colspan ="2">4교시</td>
+<td colspan ="2">4교시</td>
+</tr>
+
+<tr>
+<td colspan ="2">5교시</td>
+<td rowspan ="4">5교시<br>~<br>8교시</td>
+<td rowspan ="4"><b>특강</b><br><small>강사</small><br>홍길순</td>
+<td colspan ="2">5교시</td>
+</tr>
+
+<tr>
+<td colspan ="2">6교시</td>
+<td colspan ="2">6교시</td>
+</tr>
+
+<tr>
+<td colspan ="2">7교시</td>
+<td rowspan ="2">7교시<br>~<br>8교시</td>
+<td rowspan ="2"><b>특강</b><br><small>강사</small><br>김갑을</td>
+</tr>
+
+<tr>
+<td colspan ="2">8교시</td>
+</tr>
+</table>
+
+
+
+
+ </body>
+</html>
+
+
