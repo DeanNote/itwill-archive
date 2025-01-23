@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	 function check(){
+// 		 alert(document.fr.fruits.value);
+		let Fvalue = document.fr.fruits.value;
+		document.querySelector("#infoArea").innerHTML = Fvalue;
+		
+// 		if(Fvalue ==''){
+// 			alert("과일선택 필수")
+// 			document.fr.fruits.focus();
+// 		} 
+		
+		if(document.fr.fruits.options[0].selected){
+			alert("과일선택 필수");
+			document.fr.fruits.focus();
+		}
+	 }
+	 
+//-------------------------------------------------------------------------------------------------------
+	 function itemSelected(item){
+	 	document.fr.selectedFruit.value = item ;
+	 	// "과일을 선택하세요" 항목 선택 되었을 경우 읽기전용상태 설정
+	 	// 다른거 선택시 상태 해제
+		// HTML 태그 상에서 readonly속성 제어
+		// => 단, 자바스크립트에서 HTML속성 제어시 두단어 이상의 이름일 경우
+		// Camel-case 표기법으로 사용해야 한다!
+		// html = readonly 속성 -->  javascript = readOnly
+// 		if(document.fr.fruits2.value == '과일을 선택하세요'){ //동일의미
+		if(document.fr.fruits2.options[0].selected == true){
+			document.fr.selectedFruit.readOnly = true;//입력창잠금
+		}else {
+			document.fr.selectedFruit.readOnly = false;
+			
+		}
+	 }
+</script>
+</head>
+<body>
+	<h1>test32.html</h1>
+	<form action="test32_2.html" name = "fr">
+<!-- 		<select name = "fruits"> -->
+<!-- 			<option value = "Apple">사과</option> -->
+<!-- 			<option value = "Strawberry" selected="selected">딸기</option> -->
+<!-- 			<option value = "Banana" disabled="disabled">바나나</option> -->
+<!-- 		</select> -->
+
+		<select name = "fruits">
+			<option value ="">과일을 선택하세요</option>
+			<option value = "Apple">사과</option>
+			<option value = "Strawberry">딸기</option>
+			<option value = "Banana">바나나</option>
+		</select>
+		<input type = "button" value = "선택값 확인" onclick = "check()">
+	
+		<hr>
+		<!-- 
+		셀렉트박스 항목변경 감지 이벤트 : change 
+		=> 함수 호출 시 파라미터로 this.value 전달 시 선택된 항목값 직접 함수로 전달 가능
+		-->
+		<select name = "fruits2" onchange="itemSelected(this.value)">
+			<option value ="">과일을 선택하세요</option>
+			<option value = "Apple">사과</option>
+			<option value = "Strawberry">딸기</option>
+			<option value = "Banana">바나나</option>
+		</select>
+		<input type = "text" name ="selectedFruit">
+		<input type="submit" value = "전송">
+		<br>
+	</form>
+	<div id = "infoArea"></div>
+</body>
+</html>

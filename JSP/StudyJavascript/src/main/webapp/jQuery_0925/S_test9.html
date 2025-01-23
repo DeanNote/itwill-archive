@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="../js/jquery-3.7.1.js"></script>
+<script type="text/javascript">
+//9/25(월) jQuery 이벤트 로그인 유효성 검사
+
+	$(function() {
+		/* 
+		문서가 로딩된 후 class 선택자 "td_center" 항목의 css 속성 중
+		"text-align" 속성값을 "center" 로 설정(해당 셀 가운데 정렬)
+		*/
+		$(".td_center").css("text-align","center");
+		// 테이블의 width 속성값을 500px로 설정
+		$("table").css("width","500px");
+		//"td_right" 항목은 우측정렬
+		$(".td_right").css("text-align","right");
+		//===================================================================
+		// 전체선택 체크박스 (id="allCheck") 체크 상태 변화 감지 이벤트 핸들링
+		// => change
+		$("#allCheck").on("change", function() {
+			//전체 선택 체크박스의 체크상태 출력(자바스크립트 속성 접근 prop 활용)
+// 			alert($("#allCheck").prop("checked"));
+			//전체 선택 체크시 모든 체크박스를 체크하고 
+			//해제시 모든 체크박스 체크 해제
+			
+// 			if($("#allCheck").prop("checked")){ 동일의미
+// 			if($("#allCheck").is(":checked")){ //가상선택자와 is 상태가 합쳐서 check되었나? 확인 이런뜻
+// // 				$("input[type=checkbox]").prop("cheked",true); //동일의미 1
+// // 				$(":checkbox").prop("cheked",true); // 동일의미 2
+// 				$(":checkbox[name=check]").prop("checked",true);
+// 			}else {
+// // 				$("input[type=checkbox]").prop("cheked",false);
+// // 				$(":checkbox").prop("checked",false);
+// 				$(":checkbox[name=check]").prop("checked",false);
+// 			} 
+			
+			//each 메서드를 활용하여 모든 체크박스 상태 변경
+			if($("#allCheck").is(":checked")){ //가상선택자와 is 상태가 합쳐서 check되었나? 확인 이런뜻
+				$(":checkbox").each(function(index, item) {
+					//파라미터 item 에 체크박스 1개 객체가 전달됨
+					$(item).prop("checked",true);
+				});
+			}else {
+				$(":checkbox").each(function(index, item) {
+					$(item).prop("checked",false);
+				});
+				} 
+		});//전체선택 끝
+		
+		//셀렉트박스 항목 변경(선택) 이벤트 핸들링 => change 이벤트
+		
+		$("#selectBox").on("change", function() {
+// 			alert($("#selectBox").val());
+
+			//셀렉트박스의 특정항목(전체,vip,일반) 선택여부 판별
+// 			if($("#selectBox").val()=="전체"){
+// 				alert("전체선택");
+// 			}else if ($("#selectBox").val()=="vip") {
+// 				alert("vip선택");
+// 			}else if($("#selectBox").val()=="일반"){
+// 				alert("일반선택");
+// 			}
+// 			if($(this).val()=="전체"){
+// 				alert("전체선택22");
+// 			}
+
+			//셀렉트박스의 value 속성값 비교
+			if($("#selectBox>option").eq(0).is(":checked")){
+				console.log("전체선택");
+			}else if($("#selectBox>option").eq(1).is(":checked")){
+				console.log("vip선택");
+			}else if($("#selectBox>option").eq(2).is(":checked")){
+				console.log("일반선택");
+				
+			}
+		});//셀렉트 이벤트끝
+		
+		/*
+		텍스트박스에 대해 입력값 처리 이벤트
+		keup : 키보드를 눌렀대 "뗄 때" 이벤트 수행(값변경과는 무관)
+		blur : 입력창에서 포커스가 해제 될 때 이벤트 수행(값변경과는 무관)
+		change : 입력창에서 포커스가 해제 될 때 이벤트 수행 이전값 기준으로 값 변경되었을 때 이벤트 수행
+		         => 이전값 기준 값이 변경되지 않았을 때 이벤트 동작X
+		*/
+		
+		// id "keyword" 입력창에 keyup 이벤트 핸들링
+// 		$("#keyword").on("keyup", function() {
+// 			console.log("키보드 눌렀다 땜!");
+// 			$("#resultArea").html($("#keyword").val());
+// 		});
+		
+		// id "keyword" 입력창에 blur 이벤트 핸들링
+// 		$("#keyword").on("blur", function() {
+// 			console.log("focusout!");
+// 			$("#resultArea").html($("#keyword").val());
+// 		});
+		
+		// id "keyword" 입력창에 change 이벤트 핸들링
+		$("#keyword").on("change", function() {
+			console.log("focusout 및 내용 변경됨");
+			$("#resultArea").html($("#keyword").val());
+		});
+		
+		$("#img").on("mouseover", function() {
+			$(this).attr("src","../images/2.jpg");
+		
+		});
+		$("#img").on("mouseout", function() {
+			$(this).attr("src","../images/1.jpg");
+		});
+		
+		
+		
+		
+		
+		
+		
+		
+	});//ready 끝
+</script>
+</head>
+<body>
+	<h1>jQuery - test9.html</h1>
+	<table border="1">
+		<tr>
+			<td colspan="3">
+				<select id="selectBox" name="grade">
+					<option value="전체">전체</option>
+					<option value="VIP">VIP</option>
+					<option value="일반">일반</option>
+				</select>
+			</td>
+		</tr>
+		<tr>
+            <th><input type="checkbox" id="allCheck"></th>
+            <th>번호</th>
+            <th>이름</th>
+        </tr>
+        <tr>
+            <td class="td_center"><input type="checkbox" name="check"></td>
+            <td class="td_center">1</td>
+            <td class="td_center">홍길동</td>
+        </tr>
+        <tr>
+            <td class="td_center"><input type="checkbox" name="check"></td>
+            <td class="td_center">2</td>
+            <td class="td_center">이순신</td>
+        </tr>
+        <tr>
+            <td class="td_center"><input type="checkbox" name="check"></td>
+            <td class="td_center">3</td>
+            <td class="td_center">강감찬</td>
+        </tr>
+        <tr>
+        	<td colspan="3" class="td_right">
+        		<select id="searchType" name="searchType">
+					<option value="이름">이름</option>
+					<option value="아이디">아이디</option>
+				</select>
+        		<input type="text" name="searchKeyword" id="keyword" placeholder="검색어입력">
+        		<input type="button" value="검색" id="btnSearch">
+        	</td>
+        </tr>
+	</table>
+   	<div id="resultArea"></div>
+   	<img alt="" src="../images/1.jpg" width="300",height="200" id="img">
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

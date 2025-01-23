@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="../js/jquery-3.7.1.js"></script>
+<script type="text/javascript">
+	var myTimer; //다른 함수에서도 접근 가능한 전역변수 선언
+	var myShow;
+	var imgArr;
+	$(function() {
+		// 자바스크립트를 활용하여 주기적으로 특정 기능을 수행하고 싶을 경우
+		// => setInterval() 메서드로 주기적 반복을 수행하고
+		//    clearInterval() 메서드로 반복 해제
+// 		var myTimer = setInterval(startTimer, 1000); 
+		// => startTimer 함수를 1000ms(= 1초) 마다 호출
+		
+		//시작 버튼 클릭 시 startTimer()함수 호출
+		$("#btnStart").on("click", function() {
+			startTimer();
+		   	myTimer = setInterval(startTimer, 1000); 
+		});
+		
+		// 종료 버튼 클릭 시 stopTimer() 함수 호출
+		$("#btnStop").on("click", function() {
+// 			stopTimer();
+			
+			//setTimeout()함수를 활용하여 지정된 시간 후에 특정 함수 실행 가능
+			setTimeout(stopTimer, 5000); // 5초 뒤 종료 (=자동차 에프터 블로우)
+		});
+		
+		let index = 0;
+		$("#btnStart2").on("click", function() {
+			let imgArr = ["1.jpg", "2.jpg", "3.jpg"];
+		   	myShow = setInterval(function() {
+		   		$("#img").attr("src", "../images/" + imgArr[index]);
+				index++;
+				if(index == imgArr.length){
+					index=0;
+				}
+			}, 2000); 
+		});
+		
+		$("#btnStop2").on("click", function() {
+			clearInterval(myShow);
+		});
+		
+		
+		
+	});
+	
+	function startTimer() {
+// 		console.log("확인");
+		$("#timer").html(new Date());
+	};
+	
+	function stopTimer() {
+		//중지할려면 clearInterval()함수 호출하여 setInterval()함수를 파라미터로 전달
+		clearInterval(myTimer);
+	};
+//==================================================================================================	
+</script>
+</head>
+<body>
+	<div id="timer"></div>
+	<input type="button" value="시작!" id="btnStart">
+	<input type="button" value="종료!" id="btnStop">
+	<hr>
+	<img id = "img" src="../images/1.jpg" width="300" height="300">
+	<hr>
+	<input type="button" value="슬라이드 쇼 시작!" id="btnStart2">
+	<input type="button" value="슬라이드 쇼 종료!" id="btnStop2">
+	<hr>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	function requestFocus(){
+		document.fr.text1.focus();		
+	}
+	function requestSelect(){
+		document.fr.text1.select();
+	}
+	function showInfo(){
+		let text1 = document.fr.text1.value;
+		let text2 = document.fr.text2.value;
+		let ta = document.fr.ta.value;
+		document.querySelector("#infoArea").innerHTML = 
+			  "text1 : " + text1 + "<br>"
+			+ "text2 : " + text2 + "<br>"
+			+ "ta    : " + ta    + "<br>";
+	}
+// 	function check(){
+// // 		1)입력항목 널스트링("")인지 판별
+// // 		2)입력항목 문자열 길이가(length) 0인지 팔별
+// 		if(document.fr.text1.value == ""){
+// 			alert("첫번째 텍스트 입력 필수!");
+// 			document.fr.text1.focus();		
+// 		} else if (document.fr.text2.value.length == 0) {
+// 			alert("두번째 텍스트 입력 필수!");
+// 			document.fr.text2.focus();		
+// 		} else if (document.fr.ta.value.length == 0) {
+// 			alert("세번째 텍스트 입력 필수!");
+// 			document.fr.ta.focus();		
+// 		} else {
+// 			document.fr.submit();
+// 		}
+// 	}
+
+// 입력값 체크 후 if문 마지막 else문을 통해 submit()메서드 호출하지 않고
+// if문 바깥에서 submit()메서드를 호출할 경우 각 조건 처리 후 return문 활용
+	function check(){
+	// 		1)입력항목 널스트링("")인지 판별
+	// 		2)입력항목 문자열 길이가(length) 0인지 팔별
+			if(document.fr.text1.value == ""){
+				alert("첫번째 텍스트 입력 필수!");
+				document.fr.text1.focus();		
+				return;//현재 함수(check()) 실행을 종료
+			} else if (document.fr.text2.value.length == 0) {
+				alert("두번째 텍스트 입력 필수!");
+				document.fr.text2.focus();		
+				return;//현재 함수(check()) 실행을 종료
+			} else if (document.fr.ta.value.length == 0) {
+				alert("세번째 텍스트 입력 필수!");
+				document.fr.ta.focus();		
+				return;//현재 함수(check()) 실행을 종료
+			} 
+			
+			//if문의 모든 조건이 false 일 경우 실행되는 코드
+			document.fr.submit();
+			
+		}
+		
+	function checkSubmit(){
+	//		1)입력항목 널스트링("")인지 판별
+	//		2)입력항목 문자열 길이가(length) 0인지 팔별
+		if(document.fr.text1.value == ""){
+			alert("첫번째 텍스트 입력 필수!");
+			document.fr.text1.focus();		
+			return false;//submit 동작 취소
+		} else if (document.fr.text2.value.length == 0) {
+			alert("두번째 텍스트 입력 필수!");
+			document.fr.text2.focus();		
+			return false;//submit 동작 취소
+		} else if (document.fr.ta.value.length == 0) {
+			alert("세번째 텍스트 입력 필수!");
+			document.fr.ta.focus();		
+			return false;//submit 동작 취소
+		} 
+	
+		//if문의 모든 조건 판별 결과가 false일 경우 실행되는 코드
+		return true; // submit 동작 수행
+		
+	}
+</script>
+</head>
+<body>
+	<h1>test30.html - form 태그 이벤트</h1>
+	<!-- form 태그 내의 onsubmit 이벤트를 활용하면 submit 버튼 클릭 시 수행할 함수 호출 가능 -->
+	<form action="test30_2.html" name = "fr" id = "fr" onsubmit="checkSubmit()">
+		<!-- form 태그 내의 입력 요소에 required 속성 지정 시  
+		해당 항목이 입력되지 않은 상태로 submit 버튼 클릭해도submit 동작이 수행되지 않는다.
+		(해당 입력 요소에 대한 입력 요청 표시)
+		required="required" 또는 required 형식으로 명시
+		-->
+		
+<!-- 		텍스트 1 <input type ="text" name = "text1" required="required"> -->
+		텍스트 1 <input type ="text" name = "text1">
+		<input type ="button" value = "focus()" onclick="requestFocus()">
+		<input type ="button" value = "select()" onclick="requestSelect()">
+		<br>
+<!-- 		숨김텍스트 <input type ="password" name = "text2" required> -->
+		숨김텍스트 <input type ="password" name = "text2">
+		<br>
+<!-- 		멀티라인텍스트 <textarea rows="5" cols="20" name = "ta" required></textarea> -->
+		멀티라인텍스트 <textarea rows="5" cols="20" name = "ta"></textarea>
+		<br>
+		<input type = "button" value = "입력값 출력" onclick = "showInfo()">
+		<input type = "button" value = "입력값 확인" onclick = "check()">
+		<input type = "submit" value = "입력값 전송">
+			
+	</form>
+	<div id = "infoArea"></div>
+</body>
+</html>

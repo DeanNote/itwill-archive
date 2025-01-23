@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	//btnClick()함수 정의
+	// => 매개변수 없음, 리턴값 없는 함수
+	// => alert()함수를 사용하여 "버튼 5클릭!" 메시지 출력
+	// => 이 함수는 버튼 5클릭시 호출될 함수
+	
+	function btnClick(){
+		alert("버튼 5 클릭!");
+	}
+	
+	function btnClick2(Hello){
+		alert(Hello);
+	}
+	
+	function btnClick3(){
+		return "리턴값";
+	}
+	//퀴즈를 출제하여 정답을 입력받고 비교 후 결과 출력하는 함수 정의
+	function startQiuz(){
+		// 사용자로부터 퀴즈 정답을 입력받아 변수 answer에 저장
+		let answer = prompt("오늘은 몇일인가요?");
+		
+		if(answer == '9월 6일'){
+			alert("정답입니다.");
+			}else{
+				alert("오답입니다.");
+			}
+	}
+	
+	//마우스 오버 이벤트 발생 대상 이미지 확대 zoomin함수 정의
+	function zoomIn(event){
+		event.target.style.transform="scale(1.2)";// 대상을 1.2배 확대
+		event.target.style.zIndex= 1;
+		event.target.style.transition="all 0.5s";
+	}
+	
+	//마우스 아웃 이벤트 발생 대상 이미지 확대취소 zoomout함수 정의
+	function zoomOut(event){
+		event.target.style.transform="scale(1)";// 대상을 1.2배 확대
+		event.target.style.zIndex= 0;
+		event.target.style.transition="all 0.5s";
+	}
+	
+</script>
+</head>
+<body>
+	<h1>test17.html - event</h1>
+	<!-- 
+	HTML 버튼 생성 방법
+	1. <input> type = "button
+	2. <button> 태그 사용
+	 -->
+	<input type="button">
+	<input type="button" value=" 버튼">
+	<button>버튼2</button>
+	<hr>
+	<!-- 
+	버튼 7개 생성하기 
+	click 이벤트에 대한 핸들링 필요
+	onclick 사용 이벤트 처리 => 속성값으로 함수 호출
+	-->
+	<button onclick="alert('버튼 1 클릭')">버튼1</button>
+	<button onclick="alert('버튼 2 클릭')">버튼2</button>
+	<button ondblclick="alert('버튼 3 더블클릭')">버튼3</button>
+	
+	<!-- 하나의 요소에 복수개의 이벤트 열기 가능 -->
+	<button onmouseover="alert('버튼 4 mouseover')" onmouseout="alert('버튼4 mouseout')">버튼4</button>
+	
+	<!-- 버튼 5 클릭 시 사용자 정의 함수 btnClick() 호출 -->
+	<button onclick="btnClick()">버튼5</button>
+	
+	<!-- 버튼 6 클릭 시 사용자 정의 함수 btnClick2() 호출 -->
+	<button onclick="btnClick2('Hello, World')">버튼6</button>
+	
+	<!-- 버튼 7 클릭 시 사용자 정의 함수 btnClick3() 호출(리턴값 전달받아 alert함수로 출력 -->
+	<input type="button" value = "버튼7" onclick="alert(btnClick3())">
+
+	<!-- "오늘의 퀴즈 풀기" 버튼 클릭시 startQiuz()함수 호출 -->
+	<input type="button" value = "오늘의 퀴즈 풀기" onclick="startQiuz()">
+	<hr>
+
+	<!-- 
+	images/1.jpg, 2.jpg, 3.jpg 이미지를 각각 표시(가로크기 : 200, 세로크기 : 150)
+	이미지에 마우스를 갖다 대면(mouseover) zoomIn() 함수 호출하고
+	마우스를 빼면(mouseout) zoomOut() 함수 호출
+	=> 함수 호출 시 파라미터로 자바스크립트 내장객체 event 전달
+	-->
+
+
+	<!-- 이미지 1,2,3 이미지 각각 표시하기 가로 200 세로 150 -->
+	<img src="../images/1.jpg" width="200" height="150" onmouseover="zoomIn(event)" onmouseout="zoomOut(event)">
+	<img src="../images/2.jpg" width="200" height="150" onmouseover="zoomIn(event)" onmouseout="zoomOut(event)">
+	<img src="../images/3.jpg" width="200" height="150" onmouseover="zoomIn(event)" onmouseout="zoomOut(event)">
+
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	function clickButton(){
+		alert("버튼2 클릭됨!");
+	}
+	function mouseover() {
+		document.querySelector("#mouseResultArea").innerHTML = "<h3>마우스오버!</h3>";
+	}
+	function mouseout() {
+		document.querySelector("#mouseResultArea").innerHTML = "<h3>마우스아웃!</h3>";
+	}
+	
+	function mouseover() {
+		document.querySelector("#mouseResultArea").innerHTML = "<h3>마우스오버!</h3>";
+	}
+	function mouseout() {
+		document.querySelector("#mouseResultArea").innerHTML = "<h3>마우스아웃!</h3>";
+	}
+</script>
+</head>
+<body>
+	<h1>test26.html</h1>
+	<input type="button" value ="클릭" onclick = 'alert("버튼클릭됨!")'>
+	<input type="button" value ="클릭" onclick = "clickButton()"> 
+	<hr>
+	<input type="button" value="마우스를 가져다 대세요" 
+			onmouseover="mouseover()"  onmouseout="mouseout()">
+	<div id="mouseResultArea"></div>
+	
+</body>
+</html>

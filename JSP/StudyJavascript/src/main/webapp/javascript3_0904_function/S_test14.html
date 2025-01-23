@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+// 2. 전달인자는 없고, 리턴값은 있는 함수 정의
+function sister_2(){
+	document.write("동생 : 물 시켜서 물 떴다<br>")	
+	// 리턴값은 함수 내에서 return문을 명시하고 
+	// 리턴 문 뒤에 리턴할 데이터를 값 또는 변수의 형태로 지정
+// 	return "물"; //문자열 "물"을 함수 호출한 곳으로 리턴
+	let cup  = "물";
+	return cup;
+	// => 함수 내에서 return문이 실행되면 현재 실행중이 함수를 즉시 종료하고
+	//	  함수를 호출한 위치로 돌아감
+	// 	  (이 때, return 문에 기술된 리턴값도 함께 가지고 돌아가서 전달함)
+}// sister_2 함수 끝
+	
+	document.write("동생 물 떠온나<br>")	
+// 	let item = sister_2();
+// => 결국 let item = "물"; 코드와 동일한 코드가 된다/
+	document.write("동생이 떠온것 : " + sister_2());
+</script>
+</head>
+<body>
+
+</body>
+</html>

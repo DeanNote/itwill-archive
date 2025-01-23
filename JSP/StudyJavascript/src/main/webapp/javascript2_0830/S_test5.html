@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<script>
+	//변수 a 선언 및 정수 10으로 초기화
+    let a = 10;
+// 	a++; //변수 a의 값을 1만큼 증가
+// 	document.write("a = "+a);
+	let b = a++ +5;
+	
+	document.write("b = "+b+ '<br>');
+	document.write("a = "+a+ '<br>');
+	document.write("<hr>");
+	
+	let a2 = 10;
+	let b2 = ++a2 +5;
+	document.write("b2 = "+b2+ '<br>');
+	document.write("a2 = "+a2+ '<br>');
+	document.write("<hr>");
+
+	let c = 10;
+	//변수 c의 값을 1만큼 증가시키는 방법 3가지
+	document.write(c+1+ '<br>');
+	c += 1;
+	document.write(c+ '<br>');
+	c++;
+	document.write(c+ '<br>');
+	document.write("<hr>");
+	//비교연산자(관계연산자)를 통한 문자열의 크기 비교
+	// 각각의 문자를 차례대로 아스키코드 형태로 비교
+	// A [65] a [97] 0 [48]
+	document.write("javascript">"Javascript");
+	document.write("<br>");
+	document.write("Javascript">"javascript");
+	document.write("<br>");
+	document.write("<hr>");
+	
+	
+	document.write(2 == "2"); //t
+	document.write("<br>"); 
+	document.write(2 === "2"); //f
+	document.write("<br>"); 
+	document.write("2" === "2"); //t
+	document.write("<br>");
+	document.write("<hr>");
+	
+	document.write("2" != "2"); //f
+	document.write("<br>"); 
+	document.write(2 != "2");  //f
+	document.write(2 !== "2"); //t
+	document.write("<br>"); 
+	document.write(2 != 2); //f
+	document.write("<br>"); 
+	document.write("<hr>");
+	
+	
+	
+	document.write(2 + "2");// +가 연결연산자로 사용되어 2+"2" 문자열 결합 "22"
+	document.write("<br>");
+	document.write(2 - "2"); // +가 산술연산 시 정수로 변환하여 2-2=0
+	
+	
+	
+	
+	
+	
+	
+	
+	</script>
+	
+	<h1>test5.html.ddd</h1>
+	
+</body>
+</html>

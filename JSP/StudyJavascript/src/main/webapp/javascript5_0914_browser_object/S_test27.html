@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+
+function a (a){
+// document.querySelector("#name").style.background = "skyblue"
+a.style.background = "skyblue"
+}
+
+	function b (b){
+	// document.querySelector("#name").style.background = "white"
+		b.style.background = "white"
+	}
+	
+	function changeColor3 (c){
+	// document.querySelector("#name").style.background = "white"
+		c.style.background = "skyblue"
+	}
+	
+	function checkId(a){
+	// 	alert(a.value);
+	// 	console.log(a.value);
+		let span = a.value;
+	// 	sapn.innerhtml = 'a.value';
+	}
+</script>
+</head>
+<body>
+	<h1>test27.HTML</h1>
+	<!--  이름 입력창에 포커스 위치 (focus) 입력창 색상을 skyblue로 변경 -->
+	<!--  이름 입력창에 포커스 해제 (blur) 입력창 색상을 white로 변경 -->
+	이름 : <input type ="text" id = "name" onfocus = "a(this)" onblur = "b(this)"><br>
+	나이 : <input type ="text" id = "age" 
+					onfocus = "changeColor3(this)" onblur = 'this.style.background = "white"'><br>
+					
+	<hr>
+	<!--  입력받은 아이디를 검증하여 결과를 span  태그 영역에 출력하기 -->
+	아이디(keyup) <input type ="text" id = "id1" onkeyup="checkId(this)">
+	<span id = "checkIdResult1"></span><br>
+	아이디(change) <input type ="text" id = "id2" onchange>
+	<span id = "checkIdResult2"></span><br>
+	아이디(blur) <input type ="text" id = "id3" onblur>
+	<span id = "checkIdResult3"></span><br>
+</body>
+</html>

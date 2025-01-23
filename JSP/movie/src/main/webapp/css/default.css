@@ -1,0 +1,71 @@
+@charset "UTF-8";
+
+/* 아이티윌홈으로 ---로그인 회원가입 정렬*/
+#member_area{
+	display: flex;
+	justify-content: space-between;
+	padding:5px;
+}
+
+article>nav>a{
+	text-decoration: none;
+	padding-left: 10px;
+	padding-right: 10px;
+	margin: 5px;
+	font-size: 25px;
+}
+
+.iframe-container {
+position: relative;
+  width: 100%;
+  height: 0;
+  overflow: hidden;  
+  padding-top: calc(9/16 * 100%);
+}
+
+iframe {
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+}
+
+
+
+#boxoffice>img{
+	position: relative;
+    top: 40px;
+    left: 10%;
+    width: 200px;
+    height: 300px;
+    padding: 10px;
+}
+
+#like>input{
+	position: relative;
+    top: 20px;
+    left: 10%;
+    width: 200px;
+    height: 40px;
+    margin: 10px;
+    
+}
+
+#Sort>a{
+	font-size: 20px;
+	font-style: oblique;
+	text-decoration: none;
+	position: relative;
+	top: 30px;
+	left: 12%;
+	margin:20px;
+	
+}
+
+
+footer{
+	font-size: 15px;
+	text-align: center;
+	margin-top: 10%;
+}

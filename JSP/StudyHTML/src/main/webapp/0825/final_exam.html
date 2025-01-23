@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1 align="center">회원가입</h1>
+	<div align="center">
+	<form>
+	<table border="1"> 
+		<div align="center">
+		<tr> 
+			<th align="center">이름</th> 
+			<td><input type="text"></td> 
+			
+		</tr>	
+		<tr> 
+			<th align="center">ID</th> 
+			<td><input type="text" placeholder="4~8 글자사이입력"> 
+				<input type="submit" value="ID중복확인">
+			</td>
+		</tr>
+		<tr>
+			<th align="center">비밀번호</th>
+			<td><input type="password" placeholder="4~8 글자사이입력"> 
+		</tr>
+		<tr>
+			<th align="center">비밀번호확인</th>
+			<td><input type="password"></td>
+		</tr>
+		<tr>
+			<th align="center">주민번호</th>
+			<td><input type="text" size=6> - <input type="text"size=7></td>
+		</tr>
+		<tr>
+		     <th align="center">E-Mail</th>
+			 <td><input type="text"size=10>@<input type="text"size=10>
+				 <select>
+					<option>직접입력</option>
+					<option>naver.com</option> 
+					<option>gmail.com</option>
+					<option>nate.com</option>
+			 </td>
+		</tr>
+		<tr>
+			<th align="center">직업</th>
+			<td>
+			<select>
+				<option>항목을 선택하세요</option>
+				<option>개발자</option> 
+				<option>DB엔지니어</option>
+				<option>서버엔지니어</option>
+			</td>	
+		</tr>
+		<tr>
+			<th align="center">성별</th>
+			<td>
+			<input type="radio" name="gender2" id="gender_male"><label for="gender_male">남</label>
+			<input type="radio" name="gender2" id="gender_female"><label for="gender_female">여</label>
+			</td>
+		</tr>
+		<tr>
+			<th align="center">취미</th>
+			<td>
+			<input type="checkbox" name="h1" id="ho1"><label for="ho1">여행</label>
+			<input type="checkbox" name="h2" id="ho2"><label for="ho2">독서</label>
+			<input type="checkbox" name="h3" id="ho3"><label for="ho3">게임</label>
+			<input type="checkbox" name="h4" id="ho4"><label for="ho4">전체선택</label>
+			</td>
+		</tr>
+		<tr>
+			<th align="center">가입동기</th>
+		    <td><textarea rows="10" cols="30"></textarea></td>
+		</tr>
+		<tr>		
+			<td colspan="2" align="center">		
+			<input type="submit" value="가입">
+			<input type="reset" value="초기화">
+			<input type="button" value="돌아가기">
+		</tr>
+		</div>
+	</table>
+	</form>
+	</div>
+	
+</body>
+</html>

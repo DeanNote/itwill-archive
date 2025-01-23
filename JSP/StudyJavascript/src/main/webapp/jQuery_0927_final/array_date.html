@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script type="text/javascript">
+//javascript 마지막 개념~
+
+	// 1. new Date() : 현재 시스템(=클라이언트)의 날짜 및 시각 정보 기준으로 Date 객체 생성
+	let date1 = new Date();
+	document.write(date1+"<br>"); 
+	// => 세계 날짜 및 시각의 표준 표기법으로 출력
+	// => Wed Sep 27 2023 11:13:01 GMT+0900 (한국 표준시)
+	
+	// 2. new Date("yyyy-mm-dd") 지정된 날짜 기준 정보 생성
+	let date2 = new Date("2000-01-02");
+	document.write(date2+"<br>"); 
+	
+	// 3. new Date("yyyy-MM-ddThh:mm:ss")//지정된 날짜 및 시각 기준 정보 생성
+	let date3 = new Date("2020-12-31T11:17:00");
+	document.write(date3+"<br>"); 
+	
+	document.write("<hr>");
+	//=======================================================================================
+	// Date 객체에서 각각의 정보 추출하기
+	// => Date 객체의 getXXX() 메서드를 호출하여 각각의정보 추출 가능
+	let now = new Date();
+	document.write("현재 연도 : " + now.getFullYear() + "<br>")
+	document.write("현재 월 : " + (now.getMonth()+1) + "<br>") // 1월은 javascript에선 0월
+	document.write("현재 일 : " + now.getDate() + "<br>") //day는 요일 date가 날짜
+	//=======================================================================================
+	// getDay() : 요일을 0~6사이의 정수값으로 관리 0:일요일 6:토요일
+	// => 값 판별을 통해 0~6사이의 값중 해당되는 요일을 문자열로 출력하기
+	
+	//1) switch문
+// 	document.write("현재 요일 : ")
+// 	switch (now.getDay()) {
+// 	case 0:
+// 		document.write("일요일")
+// 		break;
+// 	case 1:
+// 		document.write("월요일")
+// 		break;
+// 	case 2:
+// 		document.write("화요일")
+// 		break;
+// 	case 3:
+// 		document.write("수요일")
+// 		break;
+// 	case 4:
+// 		document.write("목요일")
+// 		break;
+// 	case 5:
+// 		document.write("금요일")
+// 		break;
+// 	case 6:
+// 		document.write("토요일")
+// 		break;
+
+// 	}
+	// 2) 배열
+	let dayArr = ["일","월","화","수","목","금","토"]
+	document.write("현재 요일 : " + dayArr[now.getDay()] +"요일<br>");
+	// -----------------------------------------------------------------
+	// 시작 정보 활용
+	let hour = now.getHours();
+	let min = now.getMinutes();
+	let sec = now.getSeconds();
+	document.write("현재시간 : " + hour + "시" + min + "분" + sec + "초");
+	//===================================================================
+	//getTime() : 기준일 1970-1-1 
+	let nowDate = new Date();// 계산의 기준이 될 날짜
+	let tgDate = new Date("2023-08-21");
+	let nowtime = new Date().getTime();
+	let tgtime = tgDate.getTime();
+	document.write("<hr>"+"현재 날짜 : " + nowtime + "ms<br>")
+	document.write("대상 날짜 : " + tgtime + "ms<br>")
+	
+	//D-Day 계산 원리
+	// 두 날짜 간의 차이 계산 => 기준일자 - 대상일자
+	// 1) 뺄셈 결과값이 양수 : 기준일자가 대상일자보다 큼(=기준일자보다 과거 = XX일 지남)
+	// 2) 뺄셈 결과값이 음수 : 기준일자가 대상일자보다 작음(=기준일자보다 미래 = XX일 남음)
+	// 3) 뺄셈 결과값이 0 : 기준일자가 대상일자와 동일(=지금)
+	
+// 	let differenceTime = nowtime - tgtime;
+// 	document.write("두 날짜의 차 : " + differenceTime +"ms<br>")
+	// 밀리초 단위를 일 단위로 변환을 위해 계산 
+	// 밀리초 -> 초 -> 분 -> 시 -> 일 순으로 변환
+	// 따라서, 기준값(밀리초)을 1000으로 나누면 초 단위로 변환
+	// 다시 60으로 나누면 분
+	// 다시 60으로 나누면 시
+	// 다시 24로 나누면 일
+// 	let differenceTime = (nowtime - tgtime)/86400000;
+	// => 모든 값을 곱한 결과를 계산 대상으로 사용하는 대신
+	//	  기본 단위를 모두 계산 과정으로 명시하면 차후 유지보수 편리
+// 	let differenceTime = (nowtime - tgtime)/1000/60/60/24;
+	// 소수점 절색(버림)을 위해 Math 객체의 round()메서드를 활용
+	let differenceTime = Math.round((nowtime - tgtime)/1000/60/60/24);
+	document.write("두 날짜의 차 : " + differenceTime +"일<br>")
+	if(differenceTime==0){
+		document.write("지금!" + differenceTime)
+	}else if(differenceTime>0){
+		document.write(differenceTime + " 일 지남!")
+	}else if(differenceTime<0){
+		document.write(differenceTime + " 일 남음!")
+	}
+</script>
+<title>Insert title here</title>
+</head>
+<body>
+
+</body>
+</html>

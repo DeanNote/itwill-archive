@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="../js/jquery-3.7.1.js"></script>
+<script type="text/javascript">
+	$(function() {
+		//확인버튼 클릭 시 이벤트 처리
+		//확인 버튼의 value 속성값 출력하기
+// 		let a = $("input[type=button]").eq(0).val();
+// 		alert(a);
+
+		//확인 버튼에 대한 클릭 이벤트 처리 ->"확인 버튼 클릭!" 메세지 출력
+		//1) click()메서드 활용
+// 		$("input[type=button]").eq(0).click(function() {
+// 			console.log("확인 버튼 클릭!");
+// 		});
+		//2)on()메서드 활용
+// 		$("input[type=button]").eq(0).on("click",function(){
+// 			console.log("확인 버튼 클릭22!");
+// 		});
+		
+		//취소버튼 클릭시 "취소 버튼 클릭!" 출력
+// 		$("input[type=button]").eq(1).on("click", function() {
+// 			console.log("취소 버튼 클릭!");
+// 		});
+		//---------------------------------------------------------------
+		//
+		$(":button").on("click", function() {
+// 			alert("버튼클릭!");
+			// $(this) 활용 시 클릭된 대상 요소를 객체로 지정
+// 		 	alert($(this).val());
+			
+			// 확인 or 취소 버튼 판별
+// 			let a = $(this).val();
+// 			if(a == "확인"){
+// 				alert("확인버튼클릭!");
+// 			}else if(a == "취소") {
+// 				alert("취소버튼클릭!");
+// 			}
+
+// 		 	alert($(this).val()+" 버튼 클릭!");
+			//------------------------------------------------------
+			//확인버튼 클릭시 이벤트 헨들링
+			//입력받은 아이디 패스워드  선택된 교과목 명을 textarea에 출력
+			//val() html() text()
+		});
+			
+		$("input[type=button]").eq(0).on("click", function() {
+			let id = $("#id").val();
+			let passwd = $("input[type=password]").val();
+			let subject = $("#selectBox").val();
+			
+			$("#resultArea").val(
+				"아이디 : " + id + "\n"
+				+"패스워드 : " + passwd + "\n"
+				+"선택과목 : " + subject 
+			);
+		
+			
+		}); // 버튼 끝
+		
+		//textarea클릭 이벤트 처리
+// 		$("#resultArea").on("click", function() {
+// 			alert("textarea클릭됨!")
+// 		});
+		
+		//div영역(id"clickDiv")클릭 이벤트
+// 		$("#clickDiv").on("click", function() {
+// 			alert("Div영역 클릭됨");
+// 		});
+		
+		//testarea에 대한 focus(), blur() 이벤트 처리
+		// 포커스 위치할때 textare에 "textarea focus in"메세지 출력
+		// 포커스 아웃할때 textare에 "textarea focus out"메세지 출력
+		$("#resultArea").on("mouseover", function() {
+			$("#resultArea").val("textarea focus in");
+		});
+		$("#resultArea").on("mouseout", function() {
+			$("#resultArea").val("textarea focus out");
+		});
+		
+	});// ready 함수 끝
+	
+</script>
+</head>
+<body>
+	<h1>S_test7.html</h1>
+	<div id = "wrap">
+		<div id="inputbox">
+			아이디 : <input type="text" name="id" id="id"><br>
+			패스워드 : <input type="password" name="passwd" id="passwd" onm><br>
+			<select id="selectBox" name="subject">
+				<option value="JAVA">JAVA</option>
+				<option value="JSP">JSP</option>
+				<option value="Spring Framework" selected="selected">Spring Framework</option>
+			</select>
+		</div>
+		<textarea rows="5" cols="20" id="resultArea"></textarea>
+		<br>
+		<input type="button" value ="확인">
+		<input type="button" value ="취소">
+	</div>
+	-----------
+	<div id="clickDiv">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+	-----------
+</body>
+</html>

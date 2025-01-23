@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	function func1(){
+		//현재 웹브라우저에 저장된 방문 기록 갯수 확인
+		alert(history.length); 
+	}
+	function func2(){
+		//브라우저 뒤로가기
+		history.back();
+	}
+	function func3(){
+		//브라우저 앞으로가기
+		history.forward();
+	}
+	function func4(){
+		//브라우저 x값 만큼 이동하기 -2 = 2페이지 뒤로가기
+		history.go(-2);
+	}
+	function func5(){
+		//브라우저 x값 만큼 이동하기 2 = 2페이지 앞으로가기
+		history.go(2);
+	}
+</script>
+</head>
+<body>
+	<h1>S_test21.html - history</h1>
+	<input type = "button" value = "방문기록갯수확인"  onclick = "func1()"><br>
+	<input type = "button" value = "이전 페이지"       onclick = "func2()"><br>
+	<input type = "button" value = "다음 페이지"       onclick = "func3()"><br>
+	<input type = "button" value = "2단계 이전 페이지" onclick = "func4()"><br>
+	<input type = "button" value = "2단계 다음 페이지" onclick = "func5()"><br>
+		
+</body>
+</html>

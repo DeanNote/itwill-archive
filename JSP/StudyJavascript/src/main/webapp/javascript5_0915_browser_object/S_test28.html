@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	function changeImage() {
+		let img = document.querySelector("#img");
+		console.log(img);
+		
+		img.src = "2.jpg";
+	
+	function recoveryImage() {
+		document.querySelector("#img").src = "1.jpg";
+	}
+	window.onload = function() { // onload 이벤트 전용 함수로 사용됨
+		let img = document.querySelector("#img");
+		let btnChangeImg = document.querySelector("#btnChangeImg");
+		console.log(btnChangeImg);
+		btnChangeImg.onclick = changeImage; // 주의! 소괄호 명시하지 말 것!
+		
+		document.querySelector("#btnRecoveryImg").onclick = function() {
+			document.querySelector("#img").src = "1.jpg";
+		};
+		
+		// -------------------------------------
+		// id 선택자 "name" 요소에 focus, blur 이벤트 연결
+		// => 익명 함수를 사용하여 각각의 이벤트 핸들링(= 처리)
+		// => 포커스 요청 시 요소의 배경색(style.background)을 "SKYBLUE" 로 변경하고
+		//    포커스 해제 시 "WHITE" 또는 "" 으로 변경
+		let elemName = document.querySelector("#name");
+		
+		elemName.onfocus = function() {
+			elemName.style.background = "SKYBLUE";
+		};
+		
+		elemName.onblur = function() {
+			elemName.style.background = ""; // 기본값으로 설정(브라우저 기본값)
+		};
+		
+		
+</script>
+</head>
+<!-- <body onload="changeImage()"> body 영역 로딩이 끝나면 changeImage() 함수 자동 호출됨 -->
+<body>
+	<h1>test28.html</h1>
+	<!-- 이미지교체 버튼 클릭 시 2.jpg 표시, 이미지복원 버튼 클릭 시 1.jpg 표시 -->
+	<img src="1.jpg" id="img" width="200" height="150"><br>
+	<input type="button" id="btnChangeImg" value="이미지교체">
+	<input type="button" id="btnRecoveryImg" value="이미지복원">
+	
+	<hr>
+	
+	이름 : <input type="text" id="name">
+	
+	<script type="text/javascript">
+		// img 태그 아래쪽에서 스크립트를 실행하여 해당 요소를 객체로 다룰 수 있다!
+// 		let btnChangeImg = document.querySelector("#img");
+// 		console.log(btnChangeImg); // null;
+	</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

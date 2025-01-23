@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	function func1(){
+		let nameElement = document.querySelector("#name");
+		nameElement.value = '이순신';
+		 
+		document.querySelector("#header2").style.background = "PINK";
+		
+		let headers =document.querySelectorAll(".header5")
+		for(let header5 of headers){
+			header5.style.background = "YELLOW"
+		}
+		
+		let tags =document.querySelectorAll("h4")
+		for(let h4 of tags){
+			h4.style.background = "GREEN"
+		}
+	}	
+</script>
+</head>
+<body>
+	<h1>S_test24.html</h1>
+<!-- 	id선택자는 중복  x -->
+	<input type= "text" id = "name"><br>
+	<input type= "text" id = "name2"><br>
+	<input type = "button" value = "확인" onclick = "func1()">
+	<hr>
+	<h3 id ="header1">Header-1</h3>
+	<h3 id ="header2">Header-2</h3>
+	<h4 id ="header3">Header-3</h4>
+	<h4 id ="header4">Header-4</h4>
+	<hr>
+<!-- 	Class 선택자는 중복 가능 -->
+	<h3 class = " header5">Header = 5_1</h3>
+	<h3 class = " header5">Header = 5_2</h3>
+</body>
+</html>
